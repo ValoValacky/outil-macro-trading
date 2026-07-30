@@ -5,8 +5,10 @@ par force macro relative, a partir de donnees publiques et gratuites :
 
 - **BIS** (Bank for International Settlements) : taux directeurs (`stats.bis.org`, dataset `WS_CBPOL`)
 - **OECD** (SDMX API) : inflation (CPI), croissance du PIB, taux de chomage (`sdmx.oecd.org`)
+- **CFTC** (Commitment of Traders) : positionnement net des grands speculateurs sur futures de
+  devises (`publicreporting.cftc.gov`, dataset "Legacy Futures Only")
 
-Aucune de ces deux sources ne necessite de cle API.
+Aucune de ces sources ne necessite de cle API.
 
 ## Avertissement
 
@@ -29,8 +31,10 @@ data_sources/
   common.py       -> mapping devise <-> code pays (OECD/BIS), helper HTTP avec retry
   bis_rates.py     -> taux directeurs (BIS)
   oecd_macro.py    -> CPI, chomage, PIB (OECD)
+  cot_report.py    -> positionnement net des grands speculateurs (CFTC)
 scoring/
   engine.py        -> transformation indicateurs -> scores -3/+3 -> classement + matrice de paires
+  history.py       -> reconstruction de l'historique du score (sans stockage persistant)
 app.py             -> dashboard Streamlit
 ```
 
@@ -64,16 +68,16 @@ OECD (aucune documentation officielle simple ne les liste directement) :
 
 ### Codes pays
 
-| Devise | Code OECD (`REF_AREA`) | Code BIS (`REF_AREA`) |
-|---|---|---|
-| USD | USA | US |
-| EUR | EA20 (proxy DEU pour le PIB) | XM |
-| GBP | GBR | GB |
-| JPY | JPN | JP |
-| AUD | AUS | AU |
-| NZD | NZL | NZ |
-| CAD | CAN | CA |
-| CHF | CHE | CH |
+| Devise | Code OECD (`REF_AREA`) | Code BIS (`REF_AREA`) | Contrat CFTC (COT) |
+|---|---|---|---|
+| USD | USA | US | USD INDEX (proxy, panier de devises) |
+| EUR | EA20 (proxy DEU pour le PIB/chomage) | XM | EURO FX |
+| GBP | GBR | GB | BRITISH POUND |
+| JPY | JPN | JP | JAPANESE YEN |
+| AUD | AUS | AU | AUSTRALIAN DOLLAR |
+| NZD | NZL | NZ | NZ DOLLAR |
+| CAD | CAN | CA | CANADIAN DOLLAR |
+| CHF | CHE | CH | SWISS FRANC |
 
 ## Methodologie de scoring (resume)
 
@@ -82,17 +86,44 @@ Chaque indicateur recoit un score de -3 (tres defavorable a la devise) a +3
 
 | Indicateur | Poids | Logique |
 |---|---|---|
-| Taux directeur (variation) | 40% | Hausse recente = positif (flux de capitaux) |
-| Inflation (niveau + momentum) | 25% | Ecart a la cible ~2%, qui se creuse = negatif |
-| Croissance du PIB (niveau) | 20% | Croissance forte = positif |
-| Chomage (variation) | 15% | Baisse recente = positif |
+| Taux directeur (variation) | 30% | Hausse recente = positif (flux de capitaux) |
+| Positionnement COT (dynamique) | 25% | Momentum 4 sem. + retournement de signe, pas le niveau brut |
+| Inflation (niveau + momentum) | 20% | Ecart a la cible ~2%, qui se creuse = negatif |
+| Croissance du PIB (niveau) | 15% | Croissance forte = positif |
+| Chomage (variation) | 10% | Baisse recente = positif |
 
 Voir `scoring/engine.py` pour le detail exact des seuils.
+
+### Positionnement institutionnel (COT) : lecture par dynamique, pas par niveau
+
+Le tableau de bord ne score pas le niveau absolu du positionnement des grands
+speculateurs (qui est souvent durablement positif ou negatif pour certaines
+devises), mais sa **dynamique recente** :
+- **Franchissement du zero** (le net passe de positif a negatif ou l'inverse
+  sur les 12 dernieres semaines) = signal le plus fort, score maximal (+3/-3).
+- Sinon, la **variation sur 4 semaines** determine le score : un biais qui se
+  renforce compte plus qu'un biais deja ancien et stable.
+
+Quatre etiquettes qualitatives resument la situation (`classify_momentum`) :
+`retournement haussier/baissier`, `renforcement haussier/baissier`,
+`affaiblissement haussier/baissier` — avec un code couleur dans le dashboard.
+
+### Historique du score sans base de donnees
+
+`scoring/history.py` ne stocke rien : il recalcule le score composite "tel
+qu'il aurait ete" a chaque date passee (fenetre glissante "as of" sur les
+memes series BIS/OECD/CFTC deja recuperees). Ca evite toute fragilite liee
+au caractere ephemere de l'hebergement gratuit (conteneur qui redemarre =
+perte d'un fichier local), au prix d'un peu plus de calcul a chaque
+chargement.
 
 ## Roadmap / evolutions possibles
 
 - Ajouter une couche de confirmation technique (structure de marche, moyennes
   mobiles) comme filtre pedagogique complementaire au score macro.
+- Volume/VSA via les futures CME (le forex spot n'a pas de volume centralise) :
+  proxy raisonnable mais pas une lecture VSA "pure" du spot.
+- Backtesting historique des poids du scoring pour les valider empiriquement.
 - Remplacer/completer OECD par une source payante (ex: Trading Economics) si
   le besoin de donnees plus fraiches/plus larges se confirme.
 - Deploiement : voir section dediee ci-dessous.
