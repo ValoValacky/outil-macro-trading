@@ -7,6 +7,8 @@ Ce n'est PAS un conseil en investissement ni un generateur de signaux
 d'execution automatique.
 """
 
+import time
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -45,13 +47,26 @@ MOMENTUM_COLORS = {
 @st.cache_data(ttl=CACHE_TTL_SECONDS, show_spinner=False)
 def load_currency_raw(currency: str, start_period: str):
     """Recupere les series historiques brutes (une seule fois, mises en cache) -
-    utilisees a la fois pour le score actuel et pour la reconstruction historique."""
+    utilisees a la fois pour le score actuel et pour la reconstruction historique.
+
+    Un leger espacement entre les appels OECD (meme hote) reduit le risque de
+    declencher son rate-limit, notamment sur les hebergements gratuits a IP
+    partagee (Streamlit Community Cloud) ou le quota peut deja etre entame
+    par d'autres applications."""
+    policy = fetch_policy_rate_history(currency)
+    cpi = fetch_cpi_yoy(currency, start_period=start_period)
+    time.sleep(1)
+    gdp = fetch_gdp_growth(currency, start_period=start_period)
+    time.sleep(1)
+    unemployment = fetch_unemployment_rate(currency, start_period=start_period)
+    cot = fetch_cot_history(currency, weeks_back=COT_WEEKS_BACK)
+
     return {
-        "policy": fetch_policy_rate_history(currency),
-        "cpi": fetch_cpi_yoy(currency, start_period=start_period),
-        "gdp": fetch_gdp_growth(currency, start_period=start_period),
-        "unemployment": fetch_unemployment_rate(currency, start_period=start_period),
-        "cot": fetch_cot_history(currency, weeks_back=COT_WEEKS_BACK),
+        "policy": policy,
+        "cpi": cpi,
+        "gdp": gdp,
+        "unemployment": unemployment,
+        "cot": cot,
     }
 
 

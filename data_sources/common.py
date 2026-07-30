@@ -36,8 +36,8 @@ BIS_AREA = {
 }
 
 DEFAULT_TIMEOUT = 20
-MAX_RETRIES = 3
-BACKOFF_SECONDS = 8
+MAX_RETRIES = 4
+BACKOFF_SECONDS = 10
 
 
 def http_get(url: str, params: dict | None = None, headers: dict | None = None):
