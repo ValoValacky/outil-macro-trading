@@ -19,12 +19,14 @@ import pandas as pd
 
 # Poids relatifs de chaque indicateur dans le score composite.
 # Le taux directeur pese le plus lourd (c'est le driver macro le plus direct
-# sur le marche des changes), suivi de l'inflation puis de l'activite reelle.
+# sur le marche des changes), suivi du positionnement institutionnel (COT),
+# puis de l'inflation et de l'activite reelle.
 DEFAULT_WEIGHTS = {
-    "policy_rate": 0.40,
-    "cpi_yoy": 0.25,
-    "gdp_growth_yoy": 0.20,
-    "unemployment_rate": 0.15,
+    "policy_rate": 0.30,
+    "cot_positioning": 0.25,
+    "cpi_yoy": 0.20,
+    "gdp_growth_yoy": 0.15,
+    "unemployment_rate": 0.10,
 }
 
 
@@ -103,6 +105,33 @@ def _score_gdp(level: float | None, change: float | None) -> int:
     return -3
 
 
+def _score_cot(cot_summary: dict) -> int:
+    """Score base sur la DYNAMIQUE du positionnement institutionnel (COT), pas
+    sur son niveau absolu : un franchissement du zero (retournement net long/
+    net short) est le signal le plus fort ; sinon on regarde le momentum a 4
+    semaines (la tendance recente compte plus que le niveau brut)."""
+    if cot_summary.get("level_pct_oi") is None:
+        return 0
+
+    if cot_summary.get("crossed_zero"):
+        return 3 if cot_summary.get("cross_direction") == "bearish_to_bullish" else -3
+
+    change_4w = cot_summary.get("change_4w") or 0
+    if change_4w >= 15:
+        return 3
+    if change_4w >= 7:
+        return 2
+    if change_4w > 0:
+        return 1
+    if change_4w == 0:
+        return 0
+    if change_4w > -7:
+        return -1
+    if change_4w > -15:
+        return -2
+    return -3
+
+
 def _score_unemployment(change: float | None) -> int:
     """Un chomage qui baisse est positif pour la devise (economie qui se tend)."""
     if change is None:
@@ -124,11 +153,20 @@ def score_currency(
     cpi_summary: dict,
     gdp_summary: dict,
     unemployment_summary: dict,
+    cot_summary: dict,
     weights: dict | None = None,
 ) -> CurrencyScore:
     weights = weights or DEFAULT_WEIGHTS
 
     indicators = [
+        IndicatorScore(
+            indicator="cot_positioning",
+            level=cot_summary.get("level_pct_oi"),
+            change=cot_summary.get("change_4w"),
+            score=_score_cot(cot_summary),
+            weight=weights["cot_positioning"],
+            as_of=cot_summary.get("as_of"),
+        ),
         IndicatorScore(
             indicator="policy_rate",
             level=policy_rate_summary.get("level"),
