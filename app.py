@@ -23,12 +23,14 @@ from data_sources.oecd_macro import (
     fetch_unemployment_rate,
     summarize_series,
 )
+from data_sources.technical import build_technical_summary
 from scoring.engine import build_detail_table, build_pair_matrix, build_ranking, score_currency
 from scoring.history import build_multi_currency_history
 
 st.set_page_config(page_title="Force macro des devises", layout="wide")
 
 CACHE_TTL_SECONDS = 6 * 3600  # les indicateurs macro bougent rarement plus d'une fois par jour
+TECHNICAL_CACHE_TTL_SECONDS = 3600  # les prix bougent plus vite que la macro
 COT_WEEKS_BACK = 26
 SCORE_HISTORY_WEEKS = 12
 
@@ -68,6 +70,11 @@ def load_currency_raw(currency: str, start_period: str):
         "unemployment": unemployment,
         "cot": cot,
     }
+
+
+@st.cache_data(ttl=TECHNICAL_CACHE_TTL_SECONDS, show_spinner=False)
+def load_technical(base: str, quote: str):
+    return build_technical_summary(base, quote)
 
 
 def main():
@@ -211,6 +218,64 @@ def main():
         st.plotly_chart(fig_hist, use_container_width=True)
     else:
         st.info("Historique indisponible pour le moment.")
+
+    st.divider()
+    st.subheader("Confirmation technique par paire")
+    st.caption(
+        "La macro et le COT donnent la DIRECTION. Cette section donne le TIMING : "
+        "structure de marche, moyennes mobiles, RSI et niveaux cles sur la paire choisie. "
+        "Prix quotidiens Yahoo Finance — le forex spot n'a pas de volume centralise fiable."
+    )
+
+    # Suggestion par defaut : la case la plus verte de la heatmap (plus gros ecart macro)
+    matrix_no_diag = matrix.copy()
+    for c in matrix_no_diag.columns:
+        matrix_no_diag.loc[c, c] = float("-inf")
+    best_base, best_quote = matrix_no_diag.stack().idxmax()
+
+    col_a, col_b = st.columns(2)
+    with col_a:
+        tech_base = st.selectbox("Devise de base", options=selected_currencies, index=selected_currencies.index(best_base))
+    with col_b:
+        quote_options = [c for c in selected_currencies if c != tech_base]
+        default_quote_idx = quote_options.index(best_quote) if best_quote in quote_options else 0
+        tech_quote = st.selectbox("Devise de cotation", options=quote_options, index=default_quote_idx)
+
+    tech = load_technical(tech_base, tech_quote)
+
+    if not tech.get("available"):
+        st.info(f"Donnees de prix indisponibles pour {tech_base}/{tech_quote} pour le moment.")
+    else:
+        price_df = tech["price_history"]
+        fig_price = go.Figure()
+        fig_price.add_trace(
+            go.Candlestick(
+                x=price_df["date"], open=price_df["open"], high=price_df["high"],
+                low=price_df["low"], close=price_df["close"], name=tech["pair"],
+            )
+        )
+        fig_price.add_trace(go.Scatter(x=price_df["date"], y=price_df["close"].rolling(20).mean(), name="MM20", line=dict(width=1)))
+        fig_price.add_trace(go.Scatter(x=price_df["date"], y=price_df["close"].rolling(50).mean(), name="MM50", line=dict(width=1)))
+        fig_price.update_layout(margin=dict(l=0, r=0, t=10, b=0), height=450, xaxis_rangeslider_visible=False)
+        st.plotly_chart(fig_price, use_container_width=True)
+
+        tcol1, tcol2, tcol3, tcol4 = st.columns(4)
+        tcol1.metric("Structure", tech["structure"])
+        tcol2.metric("Moyennes mobiles", tech["ma_alignment"])
+        tcol3.metric("RSI (14)", tech["rsi"], tech["rsi_flag"] or "neutre")
+        tcol4.metric("Biais technique", tech["technical_bias"])
+        if tech.get("key_level_note"):
+            st.caption(f"⚠️ {tech['key_level_note']} — zone de reaction possible.")
+
+        # Confluence : macro (heatmap) + COT des 2 jambes + technique
+        macro_bias = matrix.loc[tech_base, tech_quote]
+        base_cot = classify_momentum(cot_summaries.get(tech_base, {}))
+        quote_cot = classify_momentum(cot_summaries.get(tech_quote, {}))
+        st.markdown(
+            f"**Confluence {tech['pair']}** — Macro : biais {'haussier' if macro_bias > 0 else 'baissier' if macro_bias < 0 else 'neutre'} "
+            f"({macro_bias:+.2f}) · COT {tech_base} : *{base_cot}* · COT {tech_quote} : *{quote_cot}* · "
+            f"Technique : *{tech['technical_bias']}*"
+        )
 
     st.subheader("Donnees brutes")
     for cs in currency_scores:
