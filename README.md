@@ -7,6 +7,8 @@ par force macro relative, a partir de donnees publiques et gratuites :
 - **OECD** (SDMX API) : inflation (CPI), croissance du PIB, taux de chomage (`sdmx.oecd.org`)
 - **CFTC** (Commitment of Traders) : positionnement net des grands speculateurs sur futures de
   devises (`publicreporting.cftc.gov`, dataset "Legacy Futures Only")
+- **Yahoo Finance** (`yfinance`) : prix quotidiens des paires de devises, pour la confirmation
+  technique (structure de marche, moyennes mobiles, RSI)
 
 Aucune de ces sources ne necessite de cle API.
 
@@ -32,6 +34,7 @@ data_sources/
   bis_rates.py     -> taux directeurs (BIS)
   oecd_macro.py    -> CPI, chomage, PIB (OECD)
   cot_report.py    -> positionnement net des grands speculateurs (CFTC)
+  technical.py     -> structure de marche, MM, RSI, niveaux cles (Yahoo Finance)
 scoring/
   engine.py        -> transformation indicateurs -> scores -3/+3 -> classement + matrice de paires
   history.py       -> reconstruction de l'historique du score (sans stockage persistant)
@@ -117,10 +120,29 @@ au caractere ephemere de l'hebergement gratuit (conteneur qui redemarre =
 perte d'un fichier local), au prix d'un peu plus de calcul a chaque
 chargement.
 
+### Confirmation technique par paire
+
+`data_sources/technical.py` recupere les prix quotidiens (Yahoo Finance,
+ticker `BASEQUOTE=X`) d'une paire choisie et calcule :
+- **Structure de marche** : detection des swing highs/lows (fenetre de 5
+  bougies de part et d'autre) -> haussiere si Higher High + Higher Low,
+  baissiere si Lower High + Lower Low, sinon range.
+- **Moyennes mobiles** 20/50 : alignement prix > MM20 > MM50 (haussier),
+  inverse (baissier), ou mixte.
+- **RSI(14)** : avec flag surachat (>=70) / survente (<=30).
+- **Proximite d'un niveau cle** : distance au plus haut/bas sur 60 jours
+  (alerte si <1.5%, zone ou une reaction est plus probable).
+
+Le dashboard combine ce biais technique avec le biais macro (cellule de la
+heatmap) et la dynamique COT des deux devises de la paire, dans un seul
+resume de confluence. La paire par defaut proposee est celle avec le plus
+gros ecart dans la heatmap (`matrix.stack().idxmax()`).
+
+**Limite assumee** : le forex spot est un marche OTC decentralise sans volume
+reel. Aucune donnee de volume n'est utilisee ici (voir roadmap "Volume/VSA").
+
 ## Roadmap / evolutions possibles
 
-- Ajouter une couche de confirmation technique (structure de marche, moyennes
-  mobiles) comme filtre pedagogique complementaire au score macro.
 - Volume/VSA via les futures CME (le forex spot n'a pas de volume centralise) :
   proxy raisonnable mais pas une lecture VSA "pure" du spot.
 - Backtesting historique des poids du scoring pour les valider empiriquement.
