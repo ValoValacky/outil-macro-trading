@@ -24,6 +24,7 @@ from data_sources.oecd_macro import (
     summarize_series,
 )
 from data_sources.technical import build_technical_summary
+from data_sources.vsa import FLAG_POLARITY, FUTURES_TICKER, summarize_vsa
 from scoring.engine import build_detail_table, build_pair_matrix, build_ranking, score_currency
 from scoring.history import build_multi_currency_history
 
@@ -75,6 +76,11 @@ def load_currency_raw(currency: str, start_period: str):
 @st.cache_data(ttl=TECHNICAL_CACHE_TTL_SECONDS, show_spinner=False)
 def load_technical(base: str, quote: str):
     return build_technical_summary(base, quote)
+
+
+@st.cache_data(ttl=TECHNICAL_CACHE_TTL_SECONDS, show_spinner=False)
+def load_vsa(currency: str):
+    return summarize_vsa(currency)
 
 
 def main():
@@ -220,6 +226,48 @@ def main():
         st.info("Historique indisponible pour le moment.")
 
     st.divider()
+    st.subheader("Volume institutionnel (VSA) — futures CME")
+    st.caption(
+        "Le forex spot n'a pas de volume centralise fiable : on utilise le volume reel des futures "
+        "CME (le prix suit tres etroitement le spot par arbitrage) pour reperer des patterns Volume "
+        "Spread Analysis (climax, no demand/supply, spring, up-thrust, effort sans resultat). "
+        "Lecture d'aide, pas un signal automatique fiable a 100% — la VSA reste discretionnaire."
+    )
+    vsa_summaries = {}
+    vsa_rows = []
+    for ccy in selected_currencies:
+        if ccy not in FUTURES_TICKER:
+            vsa_rows.append({"currency": ccy, "dernier signal": "indisponible (pas de future USD direct)", "au": None, "polarite": "neutral"})
+            continue
+        v = load_vsa(ccy)
+        vsa_summaries[ccy] = v
+        if not v.get("available"):
+            vsa_rows.append({"currency": ccy, "dernier signal": "donnees indisponibles", "au": None, "polarite": "neutral"})
+            continue
+        flag = v.get("latest_flag") or "aucun signal recent"
+        vsa_rows.append(
+            {
+                "currency": ccy,
+                "dernier signal": flag,
+                "au": v.get("latest_flag_date"),
+                "polarite": FLAG_POLARITY.get(v.get("latest_flag"), "neutral"),
+            }
+        )
+    vsa_df = pd.DataFrame(vsa_rows)
+    VSA_COLORS = {"bullish": "#66bd63", "bearish": "#d73027", "neutral": "#999999"}
+
+    def _highlight_vsa(row):
+        color = VSA_COLORS.get(vsa_df.loc[row.name, "polarite"], "#ffffff")
+        return [f"background-color: {color}; color: white" if col == "dernier signal" else "" for col in row.index]
+
+    st.dataframe(vsa_df.drop(columns=["polarite"]).style.apply(_highlight_vsa, axis=1), use_container_width=True)
+    st.caption(
+        "spring / no supply / climax baissier = plutot favorable a la devise. "
+        "up-thrust / no demand / climax haussier = plutot defavorable. "
+        "USD absent : pas de future CME direct ni de proxy volume fiable trouve."
+    )
+
+    st.divider()
     st.subheader("Confirmation technique par paire")
     st.caption(
         "La macro et le COT donnent la DIRECTION. Cette section donne le TIMING : "
@@ -267,13 +315,16 @@ def main():
         if tech.get("key_level_note"):
             st.caption(f"⚠️ {tech['key_level_note']} — zone de reaction possible.")
 
-        # Confluence : macro (heatmap) + COT des 2 jambes + technique
+        # Confluence : macro (heatmap) + COT des 2 jambes + VSA des 2 jambes + technique
         macro_bias = matrix.loc[tech_base, tech_quote]
         base_cot = classify_momentum(cot_summaries.get(tech_base, {}))
         quote_cot = classify_momentum(cot_summaries.get(tech_quote, {}))
+        base_vsa = vsa_summaries.get(tech_base, {}).get("latest_flag") or "aucun signal"
+        quote_vsa = vsa_summaries.get(tech_quote, {}).get("latest_flag") or "aucun signal"
         st.markdown(
             f"**Confluence {tech['pair']}** — Macro : biais {'haussier' if macro_bias > 0 else 'baissier' if macro_bias < 0 else 'neutre'} "
-            f"({macro_bias:+.2f}) · COT {tech_base} : *{base_cot}* · COT {tech_quote} : *{quote_cot}* · "
+            f"({macro_bias:+.2f}) · COT {tech_base} : *{base_cot}* / VSA {tech_base} : *{base_vsa}* · "
+            f"COT {tech_quote} : *{quote_cot}* / VSA {tech_quote} : *{quote_vsa}* · "
             f"Technique : *{tech['technical_bias']}*"
         )
 
