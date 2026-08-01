@@ -7,8 +7,8 @@ par force macro relative, a partir de donnees publiques et gratuites :
 - **OECD** (SDMX API) : inflation (CPI), croissance du PIB, taux de chomage (`sdmx.oecd.org`)
 - **CFTC** (Commitment of Traders) : positionnement net des grands speculateurs sur futures de
   devises (`publicreporting.cftc.gov`, dataset "Legacy Futures Only")
-- **Yahoo Finance** (`yfinance`) : prix quotidiens des paires de devises, pour la confirmation
-  technique (structure de marche, moyennes mobiles, RSI)
+- **Yahoo Finance** (`yfinance`) : prix quotidiens des paires de devises (confirmation technique)
+  et volume reel des futures CME de devises (Volume Spread Analysis)
 
 Aucune de ces sources ne necessite de cle API.
 
@@ -35,6 +35,7 @@ data_sources/
   oecd_macro.py    -> CPI, chomage, PIB (OECD)
   cot_report.py    -> positionnement net des grands speculateurs (CFTC)
   technical.py     -> structure de marche, MM, RSI, niveaux cles (Yahoo Finance)
+  vsa.py           -> Volume Spread Analysis sur futures CME (Yahoo Finance)
 scoring/
   engine.py        -> transformation indicateurs -> scores -3/+3 -> classement + matrice de paires
   history.py       -> reconstruction de l'historique du score (sans stockage persistant)
@@ -141,10 +142,31 @@ gros ecart dans la heatmap (`matrix.stack().idxmax()`).
 **Limite assumee** : le forex spot est un marche OTC decentralise sans volume
 reel. Aucune donnee de volume n'est utilisee ici (voir roadmap "Volume/VSA").
 
+### Volume Spread Analysis (VSA) sur futures CME
+
+`data_sources/vsa.py` recupere le volume reel des futures de devises (CME,
+via Yahoo Finance : `6E=F`, `6B=F`, `6J=F`, `6A=F`, `6N=F`, `6C=F`, `6S=F` -
+pas de contrat direct pour l'USD). Pour chaque bougie recente, on calcule :
+- `volume_ratio` = volume / moyenne mobile 20 jours du volume
+- `spread_ratio` = (high-low) / moyenne mobile 20 jours du spread
+- `close_position` = position de la cloture dans le range de la bougie
+
+Et on en deduit des patterns VSA objectivables : **climax** (volume et
+spread tres au-dessus de la moyenne, cloture qui contredit la direction du
+mouvement -> essoufflement possible), **no demand/no supply** (mouvement sur
+volume anormalement faible -> manque de conviction), **effort sans resultat**
+(gros volume, peu de mouvement de prix -> absorption possible), **spring** /
+**up-thrust** (faux breakout d'un plus bas/haut recent qui se retourne sur
+volume).
+
+**Limite assumee et importante** : la VSA (methode Wyckoff / Tom Williams)
+est fondamentalement une lecture discretionnaire de contexte. Ces regles
+formalisent les cas les plus objectivables, mais restent une aide a la
+lecture, pas un signal fiable a 100% - a combiner avec le reste (macro, COT,
+structure technique), jamais seule.
+
 ## Roadmap / evolutions possibles
 
-- Volume/VSA via les futures CME (le forex spot n'a pas de volume centralise) :
-  proxy raisonnable mais pas une lecture VSA "pure" du spot.
 - Backtesting historique des poids du scoring pour les valider empiriquement.
 - Remplacer/completer OECD par une source payante (ex: Trading Economics) si
   le besoin de donnees plus fraiches/plus larges se confirme.
