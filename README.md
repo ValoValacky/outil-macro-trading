@@ -165,9 +165,42 @@ formalisent les cas les plus objectivables, mais restent une aide a la
 lecture, pas un signal fiable a 100% - a combiner avec le reste (macro, COT,
 structure technique), jamais seule.
 
+### Backtest historique (analyse hors-dashboard)
+
+`scoring/backtest.py` (script d'analyse, pas branche sur le dashboard en
+production - trop lent/couteux en requetes pour tourner a chaque session
+utilisateur) teste si suivre la paire suggeree par l'outil chaque semaine
+(devise la plus forte vs la plus faible du score composite, tenue 4
+semaines) aurait ete rentable, et decompose la performance facteur par
+facteur (isole chaque indicateur du score composite).
+
+**Resultats (52 semaines testees, horizon 4 semaines, aout 2026)** :
+
+| Strategie | Rendement moyen | Taux de reussite |
+|---|---|---|
+| Composite (poids actuels) | -0.31% | 42.3% |
+| Taux directeur seul | -0.31% | 32.7% |
+| Inflation seule | -0.63% | 38.5% |
+| COT seul | -0.08% | 38.5% |
+| PIB seul | +0.13% | 57.7% |
+| Chomage seul | +0.44% | 61.7% |
+
+**Constat** : sur cette periode, le chomage et le PIB (les 2 facteurs les
+moins ponderes actuellement : 10% et 15%) performent isolement mieux que le
+taux directeur (le plus pondere : 30%), qui a le pire taux de reussite.
+
+**Decision prise (avec l'utilisateur)** : ne pas re-ponderer le scoring sur
+la base de ce seul test. Avec ~52 semaines qui se chevauchent (fenetre de 4
+semaines glissante d'une semaine sur l'autre), l'echantillon independant
+reel est trop petit (~13 observations) pour recalibrer sans tomber dans le
+surapprentissage (on testerait et calibrerait sur les memes donnees). Le
+resultat est garde comme piste de recherche a revalider avec des donnees
+fraiches (hors-echantillon) avant tout changement de poids.
+
 ## Roadmap / evolutions possibles
 
-- Backtesting historique des poids du scoring pour les valider empiriquement.
+- Revalider (ou infirmer) le constat ci-dessus avec des donnees fraiches
+  dans quelques mois, avant d'envisager un changement de ponderation.
 - Remplacer/completer OECD par une source payante (ex: Trading Economics) si
   le besoin de donnees plus fraiches/plus larges se confirme.
 - Deploiement : voir section dediee ci-dessous.
