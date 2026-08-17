@@ -39,8 +39,43 @@ data_sources/
 scoring/
   engine.py        -> transformation indicateurs -> scores -3/+3 -> classement + matrice de paires
   history.py       -> reconstruction de l'historique du score (sans stockage persistant)
+journal/
+  <PAIRE>/<DATE>.md -> entrees du journal de trading (voir section dediee)
+journal_incoming/  -> depot pour les captures d'ecran en attente d'integration au journal
 app.py             -> dashboard Streamlit
 ```
+
+## Journal de trading
+
+Section "Journal de trading" du dashboard (bascule via le menu "Vue" dans la
+barre laterale) : historique chronologique de toutes les analyses, un onglet
+par paire, la plus recente en premier.
+
+**Stockage** : chaque entree est un fichier Markdown avec front-matter dans
+`journal/<PAIRE>/<DATE>.md` :
+
+```
+---
+pair: EUR/JPY
+date: 2026-08-16
+type: Graphique MT5 (COT Strength+RSI / Larry Williams)
+image: 2026-08-16.png
+---
+
+## 1. ...
+```
+
+Le champ `image` (optionnel, `null` si absent) pointe vers un fichier dans le
+meme dossier que l'entree. Contrairement aux donnees macro (recalculees a la
+volee), le journal est un **vrai historique** qui doit persister : il est donc
+versionne dans le depot Git, jamais genere a la demande - c'est ce qui lui
+permet de survivre aux redemarrages de l'hebergement gratuit.
+
+**Ajout d'une nouvelle entree** : dépose la capture d'ecran dans
+`journal_incoming/` ; lors de l'analyse suivante, le fichier est deplace vers
+`journal/<PAIRE>/<DATE>.png`, un `.md` est ecrit a cote, et les deux sont
+commit + push - la nouvelle entree apparait alors automatiquement dans le
+dashboard deploye.
 
 ## Notes techniques importantes
 
