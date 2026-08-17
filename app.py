@@ -7,7 +7,10 @@ Ce n'est PAS un conseil en investissement ni un generateur de signaux
 d'execution automatique.
 """
 
+import os
+import re
 import time
+from glob import glob
 
 import pandas as pd
 import plotly.express as px
@@ -83,27 +86,81 @@ def load_vsa(currency: str):
     return summarize_vsa(currency)
 
 
-def main():
+JOURNAL_DIR = "journal"
+
+
+def _parse_journal_entry(filepath: str) -> dict:
+    """Parse un fichier journal (front-matter YAML simple + corps Markdown)."""
+    with open(filepath, encoding="utf-8") as f:
+        text = f.read()
+
+    match = re.match(r"^---\n(.*?)\n---\n(.*)$", text, re.DOTALL)
+    meta, body = {}, text
+    if match:
+        fm_text, body = match.groups()
+        for line in fm_text.splitlines():
+            if ":" in line:
+                key, value = line.split(":", 1)
+                meta[key.strip()] = value.strip()
+
+    pair_folder = os.path.basename(os.path.dirname(filepath))
+    image_name = meta.get("image")
+    image_path = None
+    if image_name and image_name.lower() != "null":
+        candidate = os.path.join(os.path.dirname(filepath), image_name)
+        if os.path.exists(candidate):
+            image_path = candidate
+
+    return {
+        "pair_folder": pair_folder,
+        "pair_label": meta.get("pair", pair_folder),
+        "date": meta.get("date", ""),
+        "type": meta.get("type", ""),
+        "image_path": image_path,
+        "body": body.strip(),
+    }
+
+
+def load_journal_entries() -> list[dict]:
+    return [_parse_journal_entry(fp) for fp in sorted(glob(os.path.join(JOURNAL_DIR, "*", "*.md")))]
+
+
+def render_journal():
+    st.title("Journal de trading")
+    st.caption(
+        "Historique chronologique de toutes les analyses realisees, classees par paire. "
+        "Outil educatif et informatif, ne constitue pas un conseil en investissement."
+    )
+
+    entries = load_journal_entries()
+    if not entries:
+        st.info("Aucune entree pour le moment.")
+        return
+
+    pair_folders = sorted({e["pair_folder"] for e in entries})
+    tabs = st.tabs(pair_folders)
+    for tab, pair_folder in zip(tabs, pair_folders):
+        with tab:
+            pair_entries = sorted(
+                (e for e in entries if e["pair_folder"] == pair_folder),
+                key=lambda e: e["date"],
+                reverse=True,
+            )
+            for i, entry in enumerate(pair_entries):
+                label = f"{entry['date']} — {entry['pair_label']} ({entry['type']})"
+                with st.expander(label, expanded=(i == 0)):
+                    if entry["image_path"]:
+                        st.image(entry["image_path"], use_container_width=True)
+                    st.markdown(entry["body"])
+
+
+def render_dashboard(selected_currencies: list[str], start_period: str):
     st.title("Force macro des devises majeures")
     st.caption(
         "Outil educatif et informatif. Ne constitue pas un conseil en investissement. "
         "Sources : OECD (sdmx.oecd.org), BIS (stats.bis.org) et CFTC (publicreporting.cftc.gov), "
         "donnees publiques gratuites."
     )
-
-    with st.sidebar:
-        st.header("Parametres")
-        selected_currencies = st.multiselect(
-            "Devises a analyser", options=CURRENCIES, default=CURRENCIES
-        )
-        start_period = st.text_input("Debut de l'historique (AAAA-MM)", value="2023-01")
-        st.caption(
-            "Les donnees sont mises en cache "
-            f"{CACHE_TTL_SECONDS // 3600}h pour respecter les limites de requetes "
-            "des API publiques."
-        )
-        if st.button("Forcer le rafraichissement"):
-            st.cache_data.clear()
 
     if not selected_currencies:
         st.warning("Selectionne au moins une devise dans le panneau de gauche.")
@@ -342,6 +399,31 @@ def main():
         "Cet outil ne fournit aucune recommandation d'achat ou de vente. "
         "Il propose une grille de lecture macro a des fins pedagogiques uniquement."
     )
+
+
+def main():
+    with st.sidebar:
+        st.header("Parametres")
+        view = st.radio("Vue", ["Dashboard macro", "Journal de trading"])
+
+        selected_currencies, start_period = CURRENCIES, "2023-01"
+        if view == "Dashboard macro":
+            selected_currencies = st.multiselect(
+                "Devises a analyser", options=CURRENCIES, default=CURRENCIES
+            )
+            start_period = st.text_input("Debut de l'historique (AAAA-MM)", value="2023-01")
+            st.caption(
+                "Les donnees sont mises en cache "
+                f"{CACHE_TTL_SECONDS // 3600}h pour respecter les limites de requetes "
+                "des API publiques."
+            )
+            if st.button("Forcer le rafraichissement"):
+                st.cache_data.clear()
+
+    if view == "Dashboard macro":
+        render_dashboard(selected_currencies, start_period)
+    else:
+        render_journal()
 
 
 if __name__ == "__main__":
