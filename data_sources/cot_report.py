@@ -7,68 +7,44 @@ vendredi avec les positions arretees au mardi precedent.
 On suit les positions "Non-Commercial" (grands speculateurs institutionnels :
 hedge funds, CTA...) sur les futures de devises - c'est la lecture standard
 utilisee par les analystes de flux ("positionnement net des specs").
+
+Le fetch reutilise horiizon.cot_index_lw (projet HORIIZON, meme dataset CFTC
+Legacy, meme categorie Non-Commercial) au lieu de requeter le CFTC en double -
+un seul point de verite pour ce calcul, deja verifie independamment. 2026-08-25.
 """
 
-from datetime import date, timedelta
+import sys
+from pathlib import Path
 
 import pandas as pd
 
-from .common import http_get
+_HORIIZON_DIR = Path(__file__).resolve().parents[2] / "HORIIZON"
+if str(_HORIIZON_DIR) not in sys.path:
+    sys.path.insert(0, str(_HORIIZON_DIR))
 
-COT_BASE = "https://publicreporting.cftc.gov/resource/6dca-aqww.json"
-
-# Nom exact du contrat cote CFTC pour chaque devise. Le dollar n'a pas de
-# future "USD" direct dans ce dataset : le USD Index (DXY) sert de proxy
-# (positionnement sur le dollar contre un panier de devises).
-COT_CONTRACT_NAME = {
-    "USD": "USD INDEX",
-    "EUR": "EURO FX",
-    "GBP": "BRITISH POUND",
-    "JPY": "JAPANESE YEN",
-    "AUD": "AUSTRALIAN DOLLAR",
-    "NZD": "NZ DOLLAR",
-    "CAD": "CANADIAN DOLLAR",
-    "CHF": "SWISS FRANC",
-}
+from horiizon.cot_index_lw import fetch_legacy_history  # noqa: E402
+from horiizon.cot_strength import CURRENCY_CODES  # noqa: E402
 
 
 def fetch_cot_history(currency: str, weeks_back: int = 26) -> pd.DataFrame:
     """Historique hebdomadaire du positionnement Non-Commercial pour une devise."""
-    contract = COT_CONTRACT_NAME[currency]
-    start_date = (date.today() - timedelta(weeks=weeks_back + 2)).isoformat()
-
-    params = {
-        "$limit": weeks_back + 10,
-        "$order": "report_date_as_yyyy_mm_dd DESC",
-        "$where": (
-            f"contract_market_name='{contract}' "
-            f"AND report_date_as_yyyy_mm_dd >= '{start_date}'"
-        ),
-    }
-    resp = http_get(COT_BASE, params=params)
-    rows = resp.json()
-    if not rows:
+    weeks = fetch_legacy_history(CURRENCY_CODES[currency], history_weeks=weeks_back + 10)
+    if not weeks:
         return pd.DataFrame()
 
-    df = pd.DataFrame(rows)[
-        ["report_date_as_yyyy_mm_dd", "noncomm_positions_long_all", "noncomm_positions_short_all", "open_interest_all"]
-    ].rename(
-        columns={
-            "report_date_as_yyyy_mm_dd": "date",
-            "noncomm_positions_long_all": "noncomm_long",
-            "noncomm_positions_short_all": "noncomm_short",
-            "open_interest_all": "open_interest",
-        }
-    )
-    df["date"] = pd.to_datetime(df["date"])
-    for col in ["noncomm_long", "noncomm_short", "open_interest"]:
-        df[col] = df[col].astype(float)
+    weeks = sorted(weeks, key=lambda w: w.report_date)[-weeks_back:]
 
+    df = pd.DataFrame({
+        "date": [pd.Timestamp(w.report_date) for w in weeks],
+        "noncomm_long": [w.noncomm_long for w in weeks],
+        "noncomm_short": [w.noncomm_short for w in weeks],
+        "open_interest": [w.open_interest for w in weeks],
+    })
     df["net_position"] = df["noncomm_long"] - df["noncomm_short"]
     df["net_pct_oi"] = (df["net_position"] / df["open_interest"] * 100).round(2)
     df["currency"] = currency
 
-    return df.sort_values("date").reset_index(drop=True)
+    return df.reset_index(drop=True)
 
 
 def summarize_cot_momentum(history: pd.DataFrame) -> dict:
