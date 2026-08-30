@@ -8,43 +8,60 @@ On suit les positions "Non-Commercial" (grands speculateurs institutionnels :
 hedge funds, CTA...) sur les futures de devises - c'est la lecture standard
 utilisee par les analystes de flux ("positionnement net des specs").
 
-Le fetch reutilise horiizon.cot_index_lw (projet HORIIZON, meme dataset CFTC
-Legacy, meme categorie Non-Commercial) au lieu de requeter le CFTC en double -
-un seul point de verite pour ce calcul, deja verifie independamment. 2026-08-25.
+Fetch autonome (pas d'import cross-projet vers HORIIZON) : Streamlit
+Community Cloud ne deploie QUE ce depot GitHub (outil-macro-trading), le
+dossier HORIIZON n'existe pas a cote sur la machine du cloud - un import
+cross-dossier qui marche en local casse silencieusement en production
+(ModuleNotFoundError constate le 2026-08-31). Les codes de contrats CFTC et
+la logique de fetch sont donc dupliques ici plutot que partages.
 """
 
-import sys
-from pathlib import Path
-
+import requests
 import pandas as pd
 
-_HORIIZON_DIR = Path(__file__).resolve().parents[2] / "HORIIZON"
-if str(_HORIIZON_DIR) not in sys.path:
-    sys.path.insert(0, str(_HORIIZON_DIR))
+LEGACY_API_URL = "https://publicreporting.cftc.gov/resource/6dca-aqww.json"
 
-from horiizon.cot_index_lw import fetch_legacy_history  # noqa: E402
-from horiizon.cot_strength import CURRENCY_CODES  # noqa: E402
+# Codes de contrats CFTC (rapport Legacy "Futures Only"), identiques a ceux
+# de horiizon/cot_strength.py et de l'indicateur MT5 COT_Strength_RSI.mq5.
+CURRENCY_CODES: dict[str, str] = {
+    "USD": "098662",
+    "EUR": "099741",
+    "GBP": "096742",
+    "JPY": "097741",
+    "CHF": "092741",
+    "CAD": "090741",
+    "AUD": "232741",
+    "NZD": "112741",
+}
 
 
 def fetch_cot_history(currency: str, weeks_back: int = 26) -> pd.DataFrame:
     """Historique hebdomadaire du positionnement Non-Commercial pour une devise."""
-    weeks = fetch_legacy_history(CURRENCY_CODES[currency], history_weeks=weeks_back + 10)
-    if not weeks:
+    params = {
+        "cftc_contract_market_code": CURRENCY_CODES[currency],
+        "$select": "report_date_as_yyyy_mm_dd,noncomm_positions_long_all,"
+                   "noncomm_positions_short_all,open_interest_all",
+        "$order": "report_date_as_yyyy_mm_dd DESC",
+        "$limit": str(weeks_back + 10),
+    }
+    resp = requests.get(LEGACY_API_URL, params=params, timeout=15)
+    resp.raise_for_status()
+    rows = resp.json()
+    if not rows:
         return pd.DataFrame()
 
-    weeks = sorted(weeks, key=lambda w: w.report_date)[-weeks_back:]
-
     df = pd.DataFrame({
-        "date": [pd.Timestamp(w.report_date) for w in weeks],
-        "noncomm_long": [w.noncomm_long for w in weeks],
-        "noncomm_short": [w.noncomm_short for w in weeks],
-        "open_interest": [w.open_interest for w in weeks],
+        "date": [pd.Timestamp(row["report_date_as_yyyy_mm_dd"]) for row in rows],
+        "noncomm_long": [float(row["noncomm_positions_long_all"]) for row in rows],
+        "noncomm_short": [float(row["noncomm_positions_short_all"]) for row in rows],
+        "open_interest": [float(row["open_interest_all"]) for row in rows],
     })
+    df = df.sort_values("date").tail(weeks_back).reset_index(drop=True)
     df["net_position"] = df["noncomm_long"] - df["noncomm_short"]
     df["net_pct_oi"] = (df["net_position"] / df["open_interest"] * 100).round(2)
     df["currency"] = currency
 
-    return df.reset_index(drop=True)
+    return df
 
 
 def summarize_cot_momentum(history: pd.DataFrame) -> dict:

@@ -10,31 +10,36 @@ Bot Trading FTMO / Gold Swing Confluence System.
 Source des donnees : CFTC "Traders in Financial Futures" (dataset gpe5-46if),
 categorie Leveraged Funds - memes contrats CFTC (EUR=099741, USD=098662) que
 l'indicateur MT5 COT_Strength_RSI.mq5 et horiizon/cot_strength.py, pour ne
-jamais raconter deux histoires differentes sur la meme donnee source.
+jamais raconter deux histoires differentes sur la meme donnee source. Les
+codes de contrats sont dupliques ici (pas importes depuis HORIIZON) : voir
+la note dans market_structure.py sur les limites du deploiement Streamlit
+Community Cloud (un seul depot GitHub, pas de dossiers voisins).
 """
 from __future__ import annotations
 
-import sys
 from dataclasses import dataclass
 from datetime import date
-from pathlib import Path
 
 import pandas as pd
 import requests
 
-_HORIIZON_DIR = Path(__file__).resolve().parents[2] / "HORIIZON"
-if str(_HORIIZON_DIR) not in sys.path:
-    sys.path.insert(0, str(_HORIIZON_DIR))
-_BOT_SRC_DIR = Path(__file__).resolve().parents[2] / "Bot Trading FTMO" / "src"
-if str(_BOT_SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(_BOT_SRC_DIR))
-
-from horiizon.cot_strength import CURRENCY_CODES  # noqa: E402
-from market_structure import Bias, analyze_structure  # noqa: E402
-
-from .technical import fetch_price_history  # noqa: E402
+from .market_structure import Bias, analyze_structure
+from .technical import fetch_price_history
 
 CFTC_API_URL = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
+
+# Codes de contrats CFTC (rapport TFF), identiques a ceux de
+# horiizon/cot_strength.py et de l'indicateur MT5 COT_Strength_RSI.mq5.
+CURRENCY_CODES: dict[str, str] = {
+    "USD": "098662",
+    "EUR": "099741",
+    "GBP": "096742",
+    "JPY": "097741",
+    "CHF": "092741",
+    "CAD": "090741",
+    "AUD": "232741",
+    "NZD": "112741",
+}
 
 BASE_CCY = "EUR"
 QUOTE_CCY = "USD"
