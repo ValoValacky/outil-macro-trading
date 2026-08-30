@@ -16,6 +16,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+from plotly.subplots import make_subplots
 
 from data_sources.bis_rates import fetch_policy_rate_history, summarize_policy_rate
 from data_sources.common import CURRENCIES
@@ -26,6 +27,7 @@ from data_sources.oecd_macro import (
     fetch_unemployment_rate,
     summarize_series,
 )
+from data_sources.leveraged_funds_eurusd import build_report as build_leveraged_funds_report
 from data_sources.technical import build_technical_summary
 from data_sources.vsa import FLAG_POLARITY, FUTURES_TICKER, summarize_vsa
 from scoring.engine import build_detail_table, build_pair_matrix, build_ranking, score_currency
@@ -37,6 +39,7 @@ CACHE_TTL_SECONDS = 6 * 3600  # les indicateurs macro bougent rarement plus d'un
 TECHNICAL_CACHE_TTL_SECONDS = 3600  # les prix bougent plus vite que la macro
 COT_WEEKS_BACK = 26
 SCORE_HISTORY_WEEKS = 12
+LEVERAGED_FUNDS_CACHE_TTL_SECONDS = 6 * 3600
 
 # Couleurs pour la lecture rapide de la dynamique COT (voir classify_momentum)
 MOMENTUM_COLORS = {
@@ -84,6 +87,11 @@ def load_technical(base: str, quote: str):
 @st.cache_data(ttl=TECHNICAL_CACHE_TTL_SECONDS, show_spinner=False)
 def load_vsa(currency: str):
     return summarize_vsa(currency)
+
+
+@st.cache_data(ttl=LEVERAGED_FUNDS_CACHE_TTL_SECONDS, show_spinner=False)
+def load_leveraged_funds_report():
+    return build_leveraged_funds_report()
 
 
 JOURNAL_DIR = "journal"
@@ -401,10 +409,139 @@ def render_dashboard(selected_currencies: list[str], start_period: str):
     )
 
 
+DIVERGENCE_LABELS = {
+    "divergence_baissiere": ("warning", "Divergence baissiere prix / COT"),
+    "divergence_haussiere": ("warning", "Divergence haussiere prix / COT"),
+    "convergence": ("success", "Convergence prix / COT"),
+    "neutre": ("info", "Pas de lecture nette"),
+    "indetermine": ("info", "Structure pas encore etablie"),
+}
+
+
+def render_leveraged_funds_eurusd():
+    st.title("COT Leveraged Funds — EUR/USD")
+    st.caption(
+        "Lecture approfondie du positionnement des Leveraged Funds (hedge funds, CTA, gestion "
+        "systematique) sur le contrat Euro FX (CFTC, rapport Traders in Financial Futures). "
+        "Le COT definit le contexte (biais swing), pas l'entree — l'entree vient du graphique. "
+        "Outil educatif, ne constitue pas un conseil en investissement."
+    )
+
+    if st.button("Forcer le rafraichissement des donnees COT/prix"):
+        st.cache_data.clear()
+
+    with st.spinner("Recuperation de l'historique CFTC (5 ans) et du prix EUR/USD..."):
+        try:
+            report = load_leveraged_funds_report()
+        except Exception as exc:
+            st.error(f"Impossible de recuperer les donnees CFTC : {exc}")
+            return
+
+    if not report.get("available"):
+        st.warning(report.get("reason", "Donnees indisponibles pour le moment."))
+        return
+
+    if report["lag_warning"]:
+        st.warning(report["lag_warning"])
+
+    st.caption(
+        f"Dernier rapport COT integre : **{report['as_of']}** · "
+        f"{report['history_weeks_used']} semaines d'historique utilisees pour le percentile."
+    )
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Net Position (contrats)", f"{report['net_pair']:+,.0f}".replace(",", " "))
+    col2.metric(
+        "Weekly Change",
+        f"{report['weekly_change']:+,.0f}".replace(",", " ") if report["weekly_change"] is not None else "—",
+    )
+    col3.metric(
+        "Delta 4 semaines",
+        f"{report['delta_4w']:+,.0f}".replace(",", " ") if report["delta_4w"] is not None else "—",
+    )
+    col4.metric("Percentile (historique utilise)", f"{report['percentile']:.0f}e")
+    if report["net_pair_pct_oi"] is not None:
+        st.caption(f"Net Position / Open Interest (EUR − USD) : {report['net_pair_pct_oi']:+.2f} pts — comparabilite dans le temps (section 5.2 du guide).")
+
+    st.divider()
+    st.subheader("D'ou vient le mouvement ? (decomposition Longs/Shorts sur 4 semaines)")
+    st.caption(
+        "Distingue une accumulation longue reelle d'un simple short covering, ou une nouvelle "
+        "vente d'une reduction de longs — evite de traiter toute hausse de la position nette "
+        "comme un achat agressif (section 3.3 du guide)."
+    )
+    fcol1, fcol2 = st.columns(2)
+    for col, flow in ((fcol1, report["flow_base"]), (fcol2, report["flow_quote"])):
+        with col:
+            st.markdown(f"**{flow['currency']}** — {flow['classification']}")
+            dl = flow["delta_longs_4w"]
+            ds = flow["delta_shorts_4w"]
+            st.write(
+                f"Δ Longs 4S : {dl:+,.0f}".replace(",", " ") if dl is not None else "Δ Longs 4S : —"
+            )
+            st.write(
+                f"Δ Shorts 4S : {ds:+,.0f}".replace(",", " ") if ds is not None else "Δ Shorts 4S : —"
+            )
+
+    st.divider()
+    st.subheader("Grille d'interpretation operationnelle")
+    interp = report["interpretation"]
+    st.info(f"**{interp['situation']}**\n\nLecture probable : {interp['lecture']}\n\nReaction de methode : {interp['reaction']}")
+
+    st.divider()
+    st.subheader("Divergence / convergence prix ↔ COT")
+    st.caption(
+        "Compare la structure de marche du prix EUR/USD (BOS/CHoCH, meme detection que Bot "
+        "Trading FTMO / Gold Swing Confluence System) a la structure du Net Position Leveraged "
+        "Funds sur la meme fenetre hebdomadaire (section 3.5 du guide)."
+    )
+    div = report["divergence"]
+    if div.get("available"):
+        kind, label = DIVERGENCE_LABELS.get(div["verdict"], ("info", div["verdict"]))
+        getattr(st, kind)(f"**{label}** — {div['message']}\n\nBiais prix : *{div['price_bias']}* · Biais COT : *{div['cot_bias']}*")
+    else:
+        st.info("Pas assez de donnees pour comparer les structures sur cette fenetre.")
+
+    st.divider()
+    st.subheader("Net Position — historique complet")
+    history = report["history"]
+    fig = make_subplots(rows=2, cols=1, shared_xaxes=True, row_heights=[0.7, 0.3], vertical_spacing=0.05)
+    fig.add_trace(
+        go.Scatter(x=history["date"], y=history["net_pair"], name="Net Position", line=dict(color="#1f77b4")),
+        row=1, col=1,
+    )
+    fig.add_hline(y=0, line_dash="dot", line_color="gray", row=1, col=1)
+    weekly_colors = ["#2ca02c" if v >= 0 else "#d62728" for v in history["weekly_change"].fillna(0)]
+    fig.add_trace(
+        go.Bar(x=history["date"], y=history["weekly_change"], name="Weekly Change", marker_color=weekly_colors),
+        row=2, col=1,
+    )
+    fig.update_layout(margin=dict(l=0, r=0, t=10, b=0), height=520, showlegend=False)
+    fig.update_yaxes(title_text="Net Position (contrats)", row=1, col=1)
+    fig.update_yaxes(title_text="Weekly Change", row=2, col=1)
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.subheader("Fiche hebdomadaire (8 dernieres semaines)")
+    recent = report["recent_table"].rename(
+        columns={"date": "Semaine", "net_pair": "Net Position", "weekly_change": "Weekly Change", "delta_4w": "Delta 4S"}
+    )
+    st.dataframe(recent, use_container_width=True, hide_index=True)
+
+    st.divider()
+    st.caption(
+        "Limites methodologiques (section 5 du guide) : le COT porte sur les futures Euro FX "
+        "declares (pas tout le marche spot/forward/OTC), la categorie Leveraged Funds est "
+        "heterogene, les positions sont agregees, et les donnees ont un decalage d'au moins "
+        "3 jours (positions arretees le mardi, publiees le vendredi). Un evenement macro peut "
+        "invalider rapidement un biais COT — le positionnement reste secondaire par rapport a "
+        "la gestion du risque et a la reaction effective du prix."
+    )
+
+
 def main():
     with st.sidebar:
         st.header("Parametres")
-        view = st.radio("Vue", ["Dashboard macro", "Journal de trading"])
+        view = st.radio("Vue", ["Dashboard macro", "COT Leveraged Funds EUR/USD", "Journal de trading"])
 
         selected_currencies, start_period = CURRENCIES, "2023-01"
         if view == "Dashboard macro":
@@ -422,6 +559,8 @@ def main():
 
     if view == "Dashboard macro":
         render_dashboard(selected_currencies, start_period)
+    elif view == "COT Leveraged Funds EUR/USD":
+        render_leveraged_funds_eurusd()
     else:
         render_journal()
 
