@@ -21,6 +21,7 @@ from plotly.subplots import make_subplots
 from data_sources.bis_rates import fetch_policy_rate_history, summarize_policy_rate
 from data_sources.common import CURRENCIES
 from data_sources.cot_report import classify_momentum, fetch_cot_history, summarize_cot_momentum
+from data_sources.cot_coherence import check_pair_coherence, fetch_tff_positioning
 from data_sources.oecd_macro import (
     fetch_cpi_yoy,
     fetch_gdp_growth,
@@ -87,6 +88,11 @@ def load_technical(base: str, quote: str):
 @st.cache_data(ttl=TECHNICAL_CACHE_TTL_SECONDS, show_spinner=False)
 def load_vsa(currency: str):
     return summarize_vsa(currency)
+
+
+@st.cache_data(ttl=CACHE_TTL_SECONDS, show_spinner=False)
+def load_tff_positioning(currency: str):
+    return fetch_tff_positioning(currency)
 
 
 @st.cache_data(ttl=LEVERAGED_FUNDS_CACHE_TTL_SECONDS, show_spinner=False)
@@ -392,6 +398,32 @@ def render_dashboard(selected_currencies: list[str], start_period: str):
             f"COT {tech_quote} : *{quote_cot}* / VSA {tech_quote} : *{quote_vsa}* · "
             f"Technique : *{tech['technical_bias']}*"
         )
+
+        # Controle de coherence COT inter-categories (voir data_sources/cot_coherence.py) -
+        # ajoute le 2026-08-31 suite a un cas reel ou le rapport Legacy (Non-Commercial)
+        # divergeait des Leveraged Funds ET Asset Managers du rapport TFF sur l'AUD.
+        try:
+            tff_base_df = load_tff_positioning(tech_base)
+            tff_quote_df = load_tff_positioning(tech_quote)
+            coherence = check_pair_coherence(
+                tech_base, tech_quote, tff_base_df, tff_quote_df,
+                cot_summaries.get(tech_base, {}).get("level_pct_oi"),
+                cot_summaries.get(tech_quote, {}).get("level_pct_oi"),
+            )
+            if coherence.get("available"):
+                signs_str = " · ".join(f"{cat} : *{s}*" for cat, s in coherence["signs"].items())
+                if coherence["coherent"]:
+                    st.success(f"**Cohérence COT inter-catégories : OK** — {signs_str}")
+                else:
+                    st.warning(
+                        f"**Divergence COT inter-catégories** — les catégories d'acteurs ne sont "
+                        f"pas d'accord entre elles, à traiter avec prudence, pas comme une "
+                        f"confirmation nette : {signs_str}"
+                    )
+            else:
+                st.caption("Contrôle de cohérence COT inter-catégories : données TFF indisponibles pour le moment.")
+        except Exception as exc:
+            st.caption(f"Contrôle de cohérence COT inter-catégories indisponible : {exc}")
 
     st.subheader("Donnees brutes")
     for cs in currency_scores:
