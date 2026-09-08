@@ -29,6 +29,7 @@ from data_sources.oecd_macro import (
     summarize_series,
 )
 from data_sources.leveraged_funds_eurusd import build_report as build_leveraged_funds_report
+from data_sources.leveraged_funds_ranking import build_ranking_report
 from data_sources.technical import build_technical_summary
 from data_sources.vsa import FLAG_POLARITY, FUTURES_TICKER, summarize_vsa
 from scoring.engine import build_detail_table, build_pair_matrix, build_ranking, score_currency
@@ -98,6 +99,11 @@ def load_tff_positioning(currency: str):
 @st.cache_data(ttl=LEVERAGED_FUNDS_CACHE_TTL_SECONDS, show_spinner=False)
 def load_leveraged_funds_report():
     return build_leveraged_funds_report()
+
+
+@st.cache_data(ttl=LEVERAGED_FUNDS_CACHE_TTL_SECONDS, show_spinner=False)
+def load_ranking_report():
+    return build_ranking_report()
 
 
 JOURNAL_DIR = "journal"
@@ -570,10 +576,64 @@ def render_leveraged_funds_eurusd():
     )
 
 
+def render_ranking():
+    st.title("Classement hebdo Leveraged Funds")
+    st.caption(
+        "Classe les 8 devises majeures par force COT (CFTC, Leveraged Funds) et suggere les "
+        "paires les plus tranchees a surveiller. Aide a la decision manuelle (quelle paire "
+        "regarder cette semaine) - ne place aucun ordre, ne pilote aucun robot. Outil educatif, "
+        "ne constitue pas un conseil en investissement."
+    )
+
+    if st.button("Forcer le rafraichissement du classement"):
+        st.cache_data.clear()
+
+    with st.spinner("Recuperation des donnees COT (8 devises)..."):
+        try:
+            report = load_ranking_report()
+        except Exception as exc:
+            st.error(f"Impossible de recuperer les donnees CFTC : {exc}")
+            return
+
+    if not report.get("available"):
+        st.warning("Donnees indisponibles pour le moment.")
+        return
+
+    st.caption(f"Semaine COT du **{report['report_date']}**.")
+
+    st.subheader("Classement des devises (fort -> faible)")
+    st.caption(
+        "Score = moyenne ponderee de l'Index COT trimestre (biais structurel, 60%) et mois "
+        "(momentum recent, 40%). Confluent = les deux fenetres pointent dans le meme sens "
+        "(une devise non confluente est probablement en transition/retournement)."
+    )
+    st.dataframe(report["strength_df"], use_container_width=True, hide_index=True)
+
+    if report["excluded"]:
+        st.caption(
+            "Devises ecartees du classement des paires (mois et trimestre en desaccord) : "
+            + ", ".join(report["excluded"])
+        )
+
+    st.subheader("TOP paires a surveiller cette semaine")
+    if report["pairs_df"].empty:
+        st.info("Aucune paire ne passe le filtre de confluence cette semaine.")
+    else:
+        st.dataframe(report["pairs_df"], use_container_width=True, hide_index=True)
+        st.caption(
+            "\"Symbole MT5\" = nom exact a chercher dans MetaTrader. \"Sens\" = BUY/SELL a "
+            "appliquer directement dessus. \"Conviction\" = ecart de score entre les deux "
+            "devises - plus haut = duo plus tranche, pas une probabilite de gain."
+        )
+
+
 def main():
     with st.sidebar:
         st.header("Parametres")
-        view = st.radio("Vue", ["Dashboard macro", "COT Leveraged Funds EUR/USD", "Journal de trading"])
+        view = st.radio(
+            "Vue",
+            ["Dashboard macro", "COT Leveraged Funds EUR/USD", "Classement hebdo Leveraged Funds", "Journal de trading"],
+        )
 
         selected_currencies, start_period = CURRENCIES, "2023-01"
         if view == "Dashboard macro":
@@ -593,6 +653,8 @@ def main():
         render_dashboard(selected_currencies, start_period)
     elif view == "COT Leveraged Funds EUR/USD":
         render_leveraged_funds_eurusd()
+    elif view == "Classement hebdo Leveraged Funds":
+        render_ranking()
     else:
         render_journal()
 
