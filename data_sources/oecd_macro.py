@@ -53,7 +53,9 @@ def _parse_jsondata(payload: dict) -> pd.DataFrame:
     if not series:
         return pd.DataFrame(columns=["date", "value"])
 
-    obs_dims = payload["data"]["structures"][0]["dimensions"]["observation"]
+    # OECD a renomme "structures" (liste) en "structure" (objet) cote septembre 2026 -
+    # verifie par requete directe le 2026-09-15, ce n'etait pas un simple rate-limit.
+    obs_dims = payload["data"]["structure"]["dimensions"]["observation"]
     time_values = next(d["values"] for d in obs_dims if d["id"] == "TIME_PERIOD")
     time_labels = [v["id"] for v in time_values]
 
@@ -87,10 +89,22 @@ def _fetch(flow: str, key: str, start_period: str) -> pd.DataFrame:
 def fetch_cpi_yoy(currency: str, start_period: str = "2018-01") -> pd.DataFrame:
     area = OECD_AREA[currency]
     df = pd.DataFrame()
+    last_exc = None
     for flow, key_template in _CPI_CANDIDATES:
-        df = _fetch(flow, key_template.format(area=area), start_period)
+        try:
+            df = _fetch(flow, key_template.format(area=area), start_period)
+        except Exception as exc:
+            # Un candidat qui 404 (ex: JPY/NZD n'existent pas sous ce flow/frequence) ne
+            # doit pas empecher d'essayer les candidats suivants - bug decouvert le
+            # 2026-09-15 : JPY et NZD ne recevaient jamais leur bon format (COICOP2018 /
+            # trimestriel, deja documente ci-dessus) car la 1ere erreur arretait la boucle.
+            last_exc = exc
+            continue
         if not df.empty:
             break
+    else:
+        if df.empty and last_exc is not None:
+            raise last_exc
     df["currency"] = currency
     df["indicator"] = "cpi_yoy"
     return df
@@ -99,10 +113,18 @@ def fetch_cpi_yoy(currency: str, start_period: str = "2018-01") -> pd.DataFrame:
 def fetch_unemployment_rate(currency: str, start_period: str = "2018-01") -> pd.DataFrame:
     area = OECD_UNEMPLOYMENT_AREA_OVERRIDE.get(currency, OECD_AREA[currency])
     df = pd.DataFrame()
+    last_exc = None
     for key_template in _UNEMPLOYMENT_KEY_CANDIDATES:
-        df = _fetch(_UNEMPLOYMENT_FLOW, key_template.format(area=area), start_period)
+        try:
+            df = _fetch(_UNEMPLOYMENT_FLOW, key_template.format(area=area), start_period)
+        except Exception as exc:
+            last_exc = exc
+            continue
         if not df.empty:
             break
+    else:
+        if df.empty and last_exc is not None:
+            raise last_exc
     df["currency"] = currency
     df["indicator"] = "unemployment_rate"
     if currency in OECD_UNEMPLOYMENT_AREA_OVERRIDE:
