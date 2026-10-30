@@ -201,9 +201,9 @@ def render_dashboard(selected_currencies: list[str], start_period: str):
                     score_currency(
                         ccy,
                         policy_rate_summary=summarize_policy_rate(raw["policy"]),
-                        cpi_summary=summarize_series(raw["cpi"]),
-                        gdp_summary=summarize_series(raw["gdp"]),
-                        unemployment_summary=summarize_series(raw["unemployment"]),
+                        cpi_summary=summarize_series(raw["cpi"], reference_date=pd.Timestamp.today()),
+                        gdp_summary=summarize_series(raw["gdp"], reference_date=pd.Timestamp.today()),
+                        unemployment_summary=summarize_series(raw["unemployment"], reference_date=pd.Timestamp.today()),
                         cot_summary=cot_summary,
                     )
                 )
@@ -438,6 +438,7 @@ def render_dashboard(selected_currencies: list[str], start_period: str):
                 st.write(
                     f"**{ind.indicator}** — niveau: {ind.level} | "
                     f"variation: {ind.change} | score: {ind.score} | au {ind.as_of}"
+                    + (" | ⚠ donnée trop ancienne, ignorée (score 0)" if ind.stale else "")
                 )
 
     st.divider()

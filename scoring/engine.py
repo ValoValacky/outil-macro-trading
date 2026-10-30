@@ -38,6 +38,7 @@ class IndicatorScore:
     score: int
     weight: float
     as_of: str | None = None
+    stale: bool = False
 
 
 @dataclass
@@ -182,6 +183,7 @@ def score_currency(
             score=_score_cpi(cpi_summary.get("level"), cpi_summary.get("change")),
             weight=weights["cpi_yoy"],
             as_of=cpi_summary.get("as_of"),
+            stale=bool(cpi_summary.get("stale")),
         ),
         IndicatorScore(
             indicator="gdp_growth_yoy",
@@ -190,6 +192,7 @@ def score_currency(
             score=_score_gdp(gdp_summary.get("level"), gdp_summary.get("change")),
             weight=weights["gdp_growth_yoy"],
             as_of=gdp_summary.get("as_of"),
+            stale=bool(gdp_summary.get("stale")),
         ),
         IndicatorScore(
             indicator="unemployment_rate",
@@ -198,8 +201,12 @@ def score_currency(
             score=_score_unemployment(unemployment_summary.get("change")),
             weight=weights["unemployment_rate"],
             as_of=unemployment_summary.get("as_of"),
+            stale=bool(unemployment_summary.get("stale")),
         ),
     ]
+    for ind in indicators:
+        if ind.stale:
+            ind.score = 0  # donnee trop ancienne : neutre plutot que trompeuse
 
     composite = sum(ind.score * ind.weight for ind in indicators)
     return CurrencyScore(currency=currency, composite_score=round(composite, 2), indicators=indicators)

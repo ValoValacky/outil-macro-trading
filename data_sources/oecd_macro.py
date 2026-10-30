@@ -7,6 +7,8 @@ dataflows/codelists OECD) et validees par des requetes reelles pour les 8
 devises majeures. Voir README.md, section "Notes techniques", pour le detail.
 """
 
+import csv
+import io
 from datetime import date
 
 import pandas as pd
@@ -86,7 +88,40 @@ def _fetch(flow: str, key: str, start_period: str) -> pd.DataFrame:
     return _parse_jsondata(resp.json())
 
 
+_ECB_HICP_EA_URL = "https://data-api.ecb.europa.eu/service/data/ICP/M.U2.N.000000.4.ANR"
+
+
+def _fetch_ecb_hicp_ea(start_period: str) -> pd.DataFrame:
+    """Inflation zone euro (HICP, glissement annuel) via l'API BCE, composition variable
+    (suit EA20 -> EA21). Ajoutee le 2026-10-30 : la serie OECD EA20 s'arrete a 2025-12
+    (passage a 21 pays) et il n'existe pas de code EA21 cote OECD."""
+    resp = http_get(_ECB_HICP_EA_URL, params={"startPeriod": start_period, "format": "csvdata"})
+    rows = list(csv.reader(io.StringIO(resp.text)))
+    header = rows[0]
+    t, v = header.index("TIME_PERIOD"), header.index("OBS_VALUE")
+    data = [(r[t], float(r[v])) for r in rows[1:] if len(r) > v and r[v] not in ("", "NaN")]
+    df = pd.DataFrame(data, columns=["date", "value"])
+    df["date"] = pd.PeriodIndex(df["date"], freq="M").to_timestamp()
+    return df.sort_values("date").reset_index(drop=True)
+
+
 def fetch_cpi_yoy(currency: str, start_period: str = "2018-01") -> pd.DataFrame:
+    df = _fetch_cpi_oecd(currency, start_period)
+    if currency == "EUR":
+        # Prend la source la plus recente entre OECD et BCE (les deux peuvent trainer).
+        try:
+            ecb = _fetch_ecb_hicp_ea(start_period)
+            if not ecb.empty and (df.empty or ecb["date"].max() > df["date"].max()):
+                ecb["currency"] = currency
+                ecb["indicator"] = "cpi_yoy"
+                ecb["note"] = "source: BCE (HICP zone euro, composition variable)"
+                return ecb
+        except Exception:
+            pass  # la BCE est un complement : on garde OECD si elle echoue
+    return df
+
+
+def _fetch_cpi_oecd(currency: str, start_period: str) -> pd.DataFrame:
     area = OECD_AREA[currency]
     df = pd.DataFrame()
     last_exc = None
@@ -158,8 +193,21 @@ def fetch_all_macro(currency: str, start_period: str = "2018-01") -> dict[str, p
     return result
 
 
-def summarize_series(df: pd.DataFrame, value_col: str = "value", trend_periods: int = 3) -> dict:
-    """Resume une serie macro : derniere valeur + variation sur les N dernieres periodes."""
+_STALE_DAYS_MONTHLY = 150
+_STALE_DAYS_QUARTERLY = 330
+
+
+def summarize_series(
+    df: pd.DataFrame,
+    value_col: str = "value",
+    trend_periods: int = 3,
+    reference_date=None,
+) -> dict:
+    """Resume une serie macro : derniere valeur + variation sur les N dernieres periodes.
+
+    Si reference_date est fourni (usage live uniquement, pas dans les rejeux historiques),
+    une serie dont la derniere observation est trop ancienne pour sa frequence est marquee
+    "stale" : le moteur de score l'ignore au lieu de la laisser peser silencieusement."""
     if df.empty:
         return {"level": None, "change": None, "as_of": None}
 
@@ -167,8 +215,13 @@ def summarize_series(df: pd.DataFrame, value_col: str = "value", trend_periods: 
     past_idx = max(0, len(df) - 1 - trend_periods)
     past_value = df.iloc[past_idx][value_col]
 
-    return {
+    summary = {
         "level": float(latest[value_col]),
         "change": float(latest[value_col] - past_value),
         "as_of": latest["date"].date().isoformat(),
     }
+    if reference_date is not None:
+        spacing = df["date"].diff().dt.days.median() if len(df) > 2 else 30
+        limit = _STALE_DAYS_QUARTERLY if spacing and spacing > 45 else _STALE_DAYS_MONTHLY
+        summary["stale"] = (pd.Timestamp(reference_date) - latest["date"]).days > limit
+    return summary
