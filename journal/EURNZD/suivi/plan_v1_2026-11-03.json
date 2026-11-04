@@ -1,0 +1,98 @@
+{
+  "pair": "EURNZD",
+  "created": "2026-11-03 04:00",
+  "created_server_date": "2026-11-03",
+  "valid_until": "2026-11-06",
+  "version": 1,
+  "pip": 0.0001,
+  "bias": "acheteur un peu plus solide (nouveau sommet H4, prix au-dessus de la zone de valeur et des 4 moyennes D1), mais étiré vers des résistances 1,9957-1,9977 : pas d'achat au marché",
+  "levels": {
+    "entree_A": 1.9845,
+    "invalidation_biais": 1.977,
+    "niveau_H4_B": 1.99546,
+    "poc_nu": 1.9977,
+    "tp1_A": 1.9955,
+    "tp2_A": 2.0022,
+    "tp1_B": 2.007,
+    "tp2_B": 2.0165
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat sur repli (ordre posé)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.9845,
+      "sl": 1.977,
+      "tp": [
+        1.9955,
+        2.0022
+      ],
+      "lot_800eur": 2.13,
+      "condition_texte": "aucune (ordre en attente chez le courtier)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture H4 sous 1,9770",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 1.977
+      },
+      "statut": "en_attente",
+      "note": "BUY LIMIT 2,13 lots @ 1,9845 déjà posé"
+    },
+    {
+      "id": "B",
+      "nom": "Achat sur cassure",
+      "side": "buy",
+      "type": "stop",
+      "entry": 1.9965,
+      "sl": 1.988,
+      "tp": [
+        2.007,
+        2.0165
+      ],
+      "lot_800eur": 1.9,
+      "lot_texte": "≈ 1,9 lot (800 EUR, SL 85 pip)",
+      "condition_texte": "seulement après une clôture H4 au-dessus de 1,99546",
+      "condition": {
+        "type": "h4_close_above",
+        "level": 1.99546
+      },
+      "invalidation_texte": "clôture H4 sous 1,9770",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 1.977
+      },
+      "statut": "en_attente"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-03 23:45",
+      "texte": "emploi NZ T3 (impact fort) : PASSÉ"
+    },
+    {
+      "quand_serveur": "2026-11-04 12:00",
+      "texte": "inflation flash zone euro"
+    },
+    {
+      "quand_serveur": "2026-11-05 20:00",
+      "texte": "Lagarde"
+    },
+    {
+      "quand_serveur": "2026-11-06 23:45",
+      "texte": "élections législatives NZ (impact fort)"
+    }
+  ],
+  "regles": "Ne pas armer le plan B dans l'heure qui précède ni dans les minutes qui suivent une annonce NZ. Pas d'achat au marché étiré. L'idée vendeuse ne devient crédible qu'avec une clôture H4 sous 1,9770 (cible 1,9540).",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "A BUY LIMIT 1,9845 maintenu, B BUY STOP 1,9965 après clôture H4 > 1,99546"
+    }
+  ]
+}
