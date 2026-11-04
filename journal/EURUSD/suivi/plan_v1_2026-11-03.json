@@ -1,0 +1,62 @@
+{
+  "pair": "EURUSD",
+  "created": "2026-11-03 12:46",
+  "created_server_date": "2026-11-03",
+  "valid_until": "2026-11-06",
+  "version": 1,
+  "bias": "neutre : tendance de fond baissière (-606 pips en 10 semaines), mais triple support 1,1105-1,1135 et divergence haussière RSI D1",
+  "pip": 0.0001,
+  "levels": {
+    "support_bas": 1.1105,
+    "support_haut": 1.1135,
+    "cassure_baisse": 1.1100,
+    "haut_lundi": 1.1237,
+    "res_2": 1.1269,
+    "res_3": 1.1369
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat sur le triple support",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.1120,
+      "sl": 1.1090,
+      "tp": [1.1177, 1.1237, 1.1269],
+      "lot_800eur": 3.0,
+      "condition_texte": "seulement si le SELL du robot 20260801 est fermé",
+      "condition": {"type": "no_position", "magic": 20260801},
+      "invalidation_texte": "clôture D1 sous 1,1100",
+      "invalidation": {"type": "d1_close_below", "level": 1.1100},
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de continuation",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.1090,
+      "sl": 1.1140,
+      "tp": [1.1000, 1.0900],
+      "lot_800eur": 1.8,
+      "condition_texte": "seulement après une clôture D1 sous 1,1100",
+      "condition": {"type": "d1_close_below", "level": 1.1100},
+      "invalidation_texte": "clôture D1 au-dessus de 1,1237 (haut de lundi) : ouvre 1,1269 puis 1,1369",
+      "invalidation": {"type": "d1_close_above", "level": 1.1237},
+      "statut": "en_attente"
+    }
+  ],
+  "positions_suivies": [
+    {"ticket": 575823211, "side": "sell", "volume": 0.76, "entry": 1.11961, "sl": 1.12311, "tp": 1.11086, "magic": 20260801, "origine": "robot Bot Trading FTMO"}
+  ],
+  "evenements": [
+    {"quand_serveur": "2026-11-03 17:00", "texte": "JOLTS (USD)"},
+    {"quand_serveur": "2026-11-03 17:16", "texte": "élections américaines"},
+    {"quand_serveur": "2026-11-04 12:00", "texte": "inflation flash zone euro (EUR)"},
+    {"quand_serveur": "2026-11-06 15:30", "texte": "emploi américain NFP (USD)"}
+  ],
+  "regles": "Pas de trade neuf au milieu du canal 1,1105-1,1277. Ne pas poser en même temps le plan A EURUSD et un plan A USDCAD (paris opposés sur le dollar). Aucun trade entre 16h15 et 18h30 le jour des élections.",
+  "journal": [
+    {"date": "2026-11-03", "version": 1, "decision": "plan initial", "resume": "neutre, plans A/B, SELL du robot ouvert à 1,11961"}
+  ]
+}
