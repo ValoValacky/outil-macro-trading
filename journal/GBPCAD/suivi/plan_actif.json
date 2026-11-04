@@ -1,0 +1,98 @@
+{
+  "created": "2026-11-04 20:15",
+  "created_server_date": "2026-11-04",
+  "valid_until": "2026-11-13",
+  "version": 1,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "GBPCAD",
+  "bias": "dans un range de 3 mois (1,8607-1,8926) : le prix a repris la Kijun, les moyennes et le nuage D1 et se trouve aux 2/3 du range, juste sous la MM100 D1 (1,8801) ; pas de tendance claire en W1 ; fonds à levier vendeurs du CAD à -96 747 (record sur 8 semaines)",
+  "levels": {
+    "haut_jour": 1.88293,
+    "nuage_d1_haut": 1.87798,
+    "kijun_d1": 1.87665,
+    "mm200_d1": 1.8646,
+    "bas_29_10": 1.86074,
+    "haut_donchian20": 1.89057,
+    "haut_06_10": 1.89257,
+    "haut_05_08": 1.8953,
+    "haut_juillet": 1.90429,
+    "nuage_w1_haut": 1.84674
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du repli sur le nuage / Kijun D1",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.8755,
+      "sl": 1.868,
+      "tp": [
+        1.885,
+        1.8905,
+        1.8955
+      ],
+      "lot_800eur": 1.68,
+      "lot_texte": "0,84 lot (risque 401 EUR, demi-risque : USDCAD déjà acheté = même pari « CAD faible »)",
+      "condition_texte": "aucune ; ordre posé après la BoE de jeudi (pas avant 15h30 serveur)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,8650 (MM200 D1 perdue) : on annule l'achat et on passe au plan B",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.865
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure du bas du range",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.86,
+      "sl": 1.869,
+      "tp": [
+        1.8467,
+        1.8388
+      ],
+      "lot_800eur": 1.4,
+      "lot_texte": "1,40 lot (risque 800 EUR)",
+      "condition_texte": "seulement après une clôture D1 sous 1,8650",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.865
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,8800 (retour dans le range)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.88
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-05 14:00",
+      "texte": "Banque d'Angleterre (taux + vote + conférence 14h30) : aucun ordre GBP en attente de 13h30 à 15h30, à poser après"
+    },
+    {
+      "quand_serveur": "2026-11-05 23:00",
+      "texte": "Budget du Canada (CAD)"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "emploi américain NFP + emploi canadien (USD, CAD) : pas d'ordre de 15h00 à 16h00"
+    }
+  ],
+  "regles": "Thème « CAD faible » : USDCAD acheté (793 EUR de risque ouvert) + GBPCAD A : demi-risque. GBPCAD A (achat) est l'opposé de GBPAUD A (vente) côté livre. Le plan A est au milieu du range : pas d'achat au marché, on attend le repli. Pas d'ordre autour de la BoE (jeudi 13h30-15h30), du budget canadien (jeudi 23h00) ni du NFP/emploi canadien (vendredi 15h00-16h00).",
+  "journal": [
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan initial D1",
+      "resume": "GBPCAD 1,8816, range 1,8607-1,8926, reprise du nuage D1"
+    }
+  ]
+}

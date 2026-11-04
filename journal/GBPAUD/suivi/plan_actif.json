@@ -1,0 +1,91 @@
+{
+  "created": "2026-11-04 20:15",
+  "created_server_date": "2026-11-04",
+  "valid_until": "2026-11-13",
+  "version": 1,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "GBPAUD",
+  "bias": "rebond de 505 pip depuis 1,88576 (29/10) jusqu'à 1,93624 aujourd'hui, repoussé exactement sur la base du nuage hebdomadaire (1,93156) et le double sommet 1,9361 (28/06) - 1,9401 (22/03) ; bougie D1 en cours avec une mèche haute de 133 pip. Fond hebdomadaire encore baissier (sommets 2,047 → 2,029 → 1,940 → 1,936 → 1,923). BoE jeudi 14h00.",
+  "levels": {
+    "haut_jour": 1.93624,
+    "base_nuage_w1": 1.93156,
+    "haut_22_03": 1.9401,
+    "kijun_d1": 1.911,
+    "mm50_d1": 1.89396,
+    "bas_29_10": 1.88576,
+    "haut_nuage_w1": 1.98648
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du retest de la mèche (base du nuage hebdo)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 1.934,
+      "sl": 1.944,
+      "tp": [
+        1.911,
+        1.894,
+        1.886
+      ],
+      "lot_800eur": 1.28,
+      "lot_texte": "0,64 lot (risque 399 EUR, demi-risque : AUDNZD déjà acheté et AUDCHF A = même pari « AUD fort »)",
+      "condition_texte": "aucune ; ordre posé après la BoE de jeudi (pas avant 15h30 serveur)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,9400 (sommet du 22/03 dépassé) : on annule la vente et on passe au plan B",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.94
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la cassure du double sommet",
+      "side": "buy",
+      "type": "stop",
+      "entry": 1.943,
+      "sl": 1.929,
+      "tp": [
+        1.96,
+        1.986
+      ],
+      "lot_800eur": 0.92,
+      "lot_texte": "0,92 lot (risque 800 EUR)",
+      "condition_texte": "seulement après une clôture D1 au-dessus de 1,9400",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.94
+      },
+      "invalidation_texte": "clôture D1 sous 1,9100 (Kijun D1)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.91
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-05 14:00",
+      "texte": "Banque d'Angleterre (taux + vote + conférence 14h30) : aucun ordre GBP en attente de 13h30 à 15h30, à poser après"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "emploi américain NFP + emploi canadien (USD, CAD) : pas d'ordre de 15h00 à 16h00"
+    }
+  ],
+  "regles": "GBPAUD A (vente) et GBPCAD A (achat) sont deux paris opposés sur la livre : à ne pas laisser actifs ensemble sans le savoir (ils se neutralisent et il reste un pari AUD fort / CAD faible). La BoE de jeudi peut faire 150 pip : ordre posé seulement après. ATR D1 116 pip : pas d'ordre au milieu.",
+  "journal": [
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan initial D1",
+      "resume": "GBPAUD 1,9212, mèche haute à 1,93624 rejetée sur la base du nuage W1"
+    }
+  ]
+}
