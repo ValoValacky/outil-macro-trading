@@ -53,15 +53,13 @@
       "nom": "Vente de la résistance 4200-4215",
       "side": "sell",
       "type": "limit",
-      "entry": 4205.0,
-      "sl": 4237.0,
+      "entry": 4203.0,
+      "sl": 4236.37,
       "tp": [
-        4144.0,
-        4098.0,
-        4041.0
+        4094.84
       ],
       "lot_800eur": 0.28,
-      "lot_texte": "0,14 lot (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
+      "ordre_reel": "SELL LIMIT 0.14 lot @4203.00 SL 4236.37 TP 4094.84, ticket 578619414, pose le 2026-11-05 19:25:26 serveur (un seul TP, pas de sorties partielles)", "lot_texte": "0,14 lot (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
       "condition_texte": "aucune ; ordre posé d'avance sur MM100/MM50 D1 et MM20 W1",
       "condition": {
         "type": "none"
@@ -71,7 +69,7 @@
         "type": "d1_close_above",
         "level": 4237.0
       },
-      "statut": "en_attente"
+      "statut": "pose_en_attente_de_fill"
     },
     {
       "id": "C",
