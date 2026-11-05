@@ -2,7 +2,7 @@
   "created": "2026-11-04 20:15",
   "created_server_date": "2026-11-04",
   "valid_until": "2026-11-13",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -31,16 +31,17 @@
       ],
       "lot_800eur": 1.28,
       "lot_texte": "0,64 lot (risque 399 EUR, demi-risque : AUDNZD déjà acheté et AUDCHF A = même pari « AUD fort »)",
-      "condition_texte": "aucune ; ordre posé après la BoE de jeudi (pas avant 15h30 serveur)",
+      "condition_texte": "17h-24h du 05/11 : le prix (1,9389) est AU-DESSUS de l'entrée 1,9340, donc ce n'est plus un ordre limite posable. A ne se pose que si une bougie D1 clôture SOUS 1,9340 (retour sous la base du nuage W1) ; alors SELL LIMIT 1,9340 redevient valable",
       "condition": {
-        "type": "none"
+        "type": "d1_close_below",
+        "level": 1.934
       },
       "invalidation_texte": "clôture D1 au-dessus de 1,9400 (sommet du 22/03 dépassé) : on annule la vente et on passe au plan B",
       "invalidation": {
         "type": "d1_close_above",
         "level": 1.94
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -86,6 +87,12 @@
       "version": 1,
       "decision": "plan initial D1",
       "resume": "GBPAUD 1,9212, mèche haute à 1,93624 rejetée sur la base du nuage W1"
+    },
+    {
+      "date": "2026-11-05",
+      "version": 2,
+      "decision": "A mis en veille (prix 1,9389 au-dessus de l'entrée après +204 pip depuis la BoE ; journée AUD faible, pas livre forte) ; B toujours en veille ; décision à la clôture D1 de ce soir",
+      "resume": "profil du jour : magasin US VPOC 1,9371 (+150 pip vs magasin 1), prix 133 pip au-dessus de la zone de valeur du jour"
     }
   ]
 }
