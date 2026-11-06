@@ -1,0 +1,121 @@
+{
+  "pair": "XAUUSD",
+  "created": "2026-11-05 14:50",
+  "created_server_date": "2026-11-05",
+  "valid_until": "2026-11-10",
+  "version": 1,
+  "pip": 1.0,
+  "timeframe": "H4",
+  "bias": "rebond de +249 $ en 4 séances (3870 → 4119, haut du jour 4146,72) arrivé exactement sur la moyenne 200 H4 (4119) et sur le POC hebdomadaire du 19/10 (4121) ; la journée s'est installée au-dessus de la zone de valeur d'hier (3958-4070) ; au-dessus : 4144-4190 (valeur des deux semaines précédentes) puis 4200-4215 (MM100/MM50 D1 + MM20 W1) ; tendance de fond W1 baissière (sommet 5598)",
+  "levels": {
+    "haut_jour": 4146.72,
+    "vah_jour": 4141.0,
+    "poc_jour": 4124.5,
+    "ema200_h4": 4119.1,
+    "porte_singles": 4098.5,
+    "vah_hier": 4070.5,
+    "bas_ib": 4057.74,
+    "poc_nu_04_11": 4041.0,
+    "mm20_h4": 3999.0,
+    "mm100_d1": 4203.1,
+    "mm50_d1": 4214.5,
+    "mm20_w1": 4211.3,
+    "bas_29_10": 3870.07
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du repli sur la porte (singles 4097-4100)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 4098.0,
+      "sl": 4054.0,
+      "tp": [
+        4144.0,
+        4200.0,
+        4214.0
+      ],
+      "lot_800eur": 0.2,
+      "lot_texte": "0,10 lot (risque 392 EUR, demi-risque : un achat d'or = pari « dollar plus faible », l'opposé de ton USDCAD acheté et de ta vente EURUSD)",
+      "condition_texte": "aucune ; ordre posé d'avance (de préférence après l'ouverture américaine de 16h30 serveur)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture H4 sous 4054 (plus bas du jour et bas de l'IB perdus) : on annule A et C s'arme",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 4054.0
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la résistance 4200-4215",
+      "side": "sell",
+      "type": "limit",
+      "entry": 4203.0,
+      "sl": 4236.37,
+      "tp": [
+        4094.84
+      ],
+      "lot_800eur": 0.28,
+      "ordre_reel": "SELL LIMIT 0.14 lot @4203.00 SL 4236.37 TP 4094.84, ticket 578619414, pose le 2026-11-05 19:25:26 serveur (un seul TP, pas de sorties partielles)", "lot_texte": "0,14 lot (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
+      "condition_texte": "aucune ; ordre posé d'avance sur MM100/MM50 D1 et MM20 W1",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 4237 : la résistance est cédée, on annule",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 4237.0
+      },
+      "statut": "pose_en_attente_de_fill"
+    },
+    {
+      "id": "C",
+      "nom": "Vente de la cassure du support du jour",
+      "side": "sell",
+      "type": "stop",
+      "entry": 4040.0,
+      "sl": 4082.0,
+      "tp": [
+        3999.0,
+        3956.0,
+        3925.0
+      ],
+      "lot_800eur": 0.21,
+      "lot_texte": "0,10 lot (risque 374 EUR, demi-risque)",
+      "condition_texte": "seulement après une clôture H4 sous 4054",
+      "condition": {
+        "type": "h4_close_below",
+        "level": 4054.0
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 4147 (nouveau haut accepté)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 4147.0
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-05 16:30",
+      "texte": "ouverture américaine (début du 2e « magasin » du profil) : pas d'ordre de 16h15 à 16h45"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "emploi américain NFP (USD) : pas d'ordre de 15h00 à 16h00, l'or peut faire 100 $ en quelques minutes"
+    }
+  ],
+  "regles": "Valeur : 1 $ de mouvement = 89 EUR par lot (1 lot = 100 oz). Thème « dollar » : l'or acheté (A) est l'opposé de USDCAD acheté + EURUSD vendu ; B et C vont dans le même sens que ces deux positions : B et C comptent donc dans le total « dollar plus fort » (~1 400 EUR déjà). Pas d'achat au marché après +249 $ en 4 jours. ATR D1 84 $, ATR H4 37 $. Profil du jour : ne sert qu'à placer les niveaux, aucun test n'a trouvé d'avantage mécanique.",
+  "journal": [
+    {
+      "date": "2026-11-05",
+      "version": 1,
+      "decision": "plan initial H4",
+      "resume": "XAUUSD 4119, journée au-dessus de la valeur d'hier, POC du jour 4124,5, singles 4097-4100"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "pair": "USDCAD",
-  "created": "2026-11-03 12:00",
-  "created_server_date": "2026-11-03",
+  "created": "2026-11-06 14:00",
+  "created_server_date": "2026-11-06",
   "valid_until": "2026-11-06",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "bias": "tendance de fond haussière, correction de 3 semaines (-358 pip) sur un empilement de supports 1,3942-1,3956 avec divergence haussière H4 ; rien au milieu",
   "levels": {
@@ -42,8 +42,9 @@
         "type": "d1_close_below",
         "level": 1.393
       },
-      "statut": "déclenché",
-      "note": "BUY 4,97 lot @ 1,39499 ouvert le 04/11 à 11h35 heure serveur (ticket 576268007), SL 1,39249, TP 1,39952 (TP1 seulement)"
+      "statut": "terminé",
+      "note": "BUY 4,97 lot @ 1,39499 ouvert le 04/11 à 11h35 heure serveur (ticket 576268007), SL 1,39249, TP 1,39952 (TP1 seulement)",
+      "note_v2": "TP1 1,3995 touché jeudi 17h55 : 4,97 lots fermés en entier, +1 416,67 EUR (gain réel)."
     },
     {
       "id": "B",
@@ -68,7 +69,8 @@
         "type": "d1_close_above",
         "level": 1.4016
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture D1 du 05/11 à 1,40185, au-dessus de 1,4016."
     }
   ],
   "positions_suivies": [
@@ -118,6 +120,12 @@
       "version": 1,
       "decision": "plan A déclenché",
       "resume": "BUY 4,97 lot @ 1,39499 ouvert à 11h35 par l'utilisatrice (Magic Panel)"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 2,
+      "decision": "A terminé au TP1 (+1 416,67 EUR), B annulé (clôture D1 1,40185 > 1,4016) ; plan expire ce soir",
+      "resume": "nouvel achat MagicPanel 1,31 lot @ 1,4065 à 14h01, hors plan, 1h30 avant NFP + emploi canadien"
     }
   ]
 }

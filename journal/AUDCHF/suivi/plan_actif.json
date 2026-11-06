@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-04 20:15",
-  "created_server_date": "2026-11-04",
+  "created": "2026-11-06 14:00",
+  "created_server_date": "2026-11-06",
   "valid_until": "2026-11-13",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "AUDCHF",
@@ -42,7 +42,8 @@
         "type": "d1_close_below",
         "level": 0.5655
       },
-      "statut": "en_attente"
+      "statut": "terminé",
+      "note_v2": "Déclenché jeudi 16h56 (0,70 lot @ 0,56898), SL 0,56375 touché vendredi 05h18 : -402,90 EUR (perte réelle)."
     },
     {
       "id": "B",
@@ -88,6 +89,12 @@
       "version": 1,
       "decision": "plan initial D1",
       "resume": "AUDCHF 0,5729, fausse cassure du plus bas (0,56599) + retour, volume 1,6x"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 2,
+      "decision": "A terminé au SL (-402,90 EUR) ; B reste en veille (et interdit tant qu'AUDNZD acheté est ouvert)",
+      "resume": "clôture D1 du 05/11 à 0,56559, 0,9 pip au-dessus du seuil 0,5655 de B ; bougie du jour à 0,5629"
     }
   ]
 }

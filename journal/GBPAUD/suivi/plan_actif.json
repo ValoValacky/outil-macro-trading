@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-04 20:15",
-  "created_server_date": "2026-11-04",
+  "created": "2026-11-06 14:00",
+  "created_server_date": "2026-11-06",
   "valid_until": "2026-11-13",
-  "version": 2,
+  "version": 3,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -41,7 +41,8 @@
         "type": "d1_close_above",
         "level": 1.94
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v3": "Invalidé : clôture D1 du 05/11 à 1,94136, au-dessus de 1,9400."
     },
     {
       "id": "B",
@@ -66,10 +67,20 @@
         "type": "d1_close_below",
         "level": 1.91
       },
-      "statut": "en_veille"
+      "statut": "déclenché",
+      "note_v3": "Armé par la clôture D1 1,94136 ; réel : BUY 0,87 lot @ 1,94393, SL 1,92837, TP 1,96231 (vendredi 00h49), risque ~830 EUR alors que le v2 conseillait 0,46 lot (~400 EUR)."
     }
   ],
-  "positions_suivies": [],
+  "positions_suivies": [
+    {
+      "ticket": 578791191,
+      "plan": "B",
+      "lot": 0.87,
+      "entry": 1.94393,
+      "sl": 1.92837,
+      "tp": 1.96231
+    }
+  ],
   "evenements": [
     {
       "quand_serveur": "2026-11-05 14:00",
@@ -93,6 +104,12 @@
       "version": 2,
       "decision": "A mis en veille (prix 1,9389 au-dessus de l'entrée après +204 pip depuis la BoE ; journée AUD faible, pas livre forte) ; B toujours en veille ; décision à la clôture D1 de ce soir",
       "resume": "profil du jour : magasin US VPOC 1,9371 (+150 pip vs magasin 1), prix 133 pip au-dessus de la zone de valeur du jour"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 3,
+      "decision": "A annulé, B déclenché (0,87 lot réel au lieu de 0,46 conseillé)",
+      "resume": "clôture D1 05/11 1,94136 ; prix 1,9487, position +262 EUR"
     }
   ]
 }
