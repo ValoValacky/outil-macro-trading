@@ -1,97 +1,94 @@
 {
-  "pair": "EURNZD",
-  "created": "2026-11-09 10:45",
+  "created": "2026-11-09 14:55",
   "created_server_date": "2026-11-09",
-  "valid_until": "2026-11-06",
-  "version": 3,
+  "valid_until": "2026-11-13",
+  "version": 4,
   "pip": 0.0001,
-  "bias": "acheteur confirmé hier (emploi néo-zélandais faible : +159 pip, clôture D1 2,00336), puis repli de 150 pip depuis 2,0112 jusqu'au retest 1,9955-1,9965 ; on n'achète pas la poursuite, on attend un repli",
+  "pair": "EURNZD",
+  "bias": "large range de 3 mois 1,950-2,017 ; la semaine dernière a fait +313 pips jusqu'au plafond 2,0111-2,0172 (4 sommets depuis septembre), puis le prix est revenu au milieu (1,9934). La Foule vend les deux devises à l'extrême : pas de camp clair. On vend le plafond, et l'achat du repli reste en veille (règle 1).",
   "levels": {
-    "entree_A": 1.9845,
-    "invalidation_biais": 1.977,
-    "niveau_H4_B": 1.99546,
-    "poc_nu": 1.9977,
-    "tp1_A": 1.9955,
-    "tp2_A": 2.0022,
-    "tp1_B": 2.007,
-    "tp2_B": 2.0165,
-    "retest_cassure": 1.9955,
-    "haut_du_jour": 2.0112
+    "plancher_octobre": 1.954,
+    "bas_zone_valeur": 1.98705,
+    "mm50_d1": 1.99233,
+    "poc_semaine": 1.99257,
+    "ema200_h4": 1.98931,
+    "haut_zone_valeur": 2.0046,
+    "plafond": 2.01716
   },
   "plans": [
     {
       "id": "A",
-      "nom": "Achat sur repli (ordre posé)",
-      "side": "buy",
+      "nom": "Vente du plafond 2,0111-2,0172",
+      "side": "sell",
       "type": "limit",
-      "entry": 1.9845,
-      "sl": 1.977,
+      "entry": 2.015,
+      "sl": 2.0235,
       "tp": [
-        1.9955,
-        2.0022
+        2.004,
+        1.993
       ],
-      "lot_800eur": 2.13,
-      "condition_texte": "aucune (ordre en attente chez le courtier)",
+      "lot_800eur": 1.9,
+      "lot_texte": "0,95 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "aucune (ordre posé d'avance sous les 4 sommets 2,0111 / 2,0149 / 2,0164 / 2,0172)",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture H4 sous 1,9770",
+      "invalidation_texte": "clôture D1 au-dessus de 2,0235",
       "invalidation": {
-        "type": "h4_close_below",
-        "level": 1.977
+        "type": "d1_close_above",
+        "level": 2.0235
       },
-      "statut": "annulé",
-      "note": "BUY LIMIT 2,13 lots @ 1,9845 déjà posé",
-      "note_v2": "Maintenu : ordre posé à 119 pip sous le prix, se déclenche seulement sur un vrai repli sous le retest 1,9955.",
-      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
+      "statut": "en_attente"
     },
     {
       "id": "B",
-      "nom": "Achat sur cassure",
+      "nom": "Achat du repli sur la zone de valeur",
       "side": "buy",
-      "type": "stop",
-      "entry": 1.9965,
-      "sl": 1.988,
+      "type": "limit",
+      "entry": 1.9875,
+      "sl": 1.9765,
       "tp": [
-        2.007,
-        2.0165
+        2.004,
+        2.016
       ],
-      "lot_800eur": 1.9,
-      "lot_texte": "≈ 1,9 lot (800 EUR, SL 85 pip)",
-      "condition_texte": "seulement après une clôture H4 au-dessus de 1,99546",
+      "lot_800eur": 1.43,
+      "lot_texte": "0,72 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "EN VEILLE : interdit par la règle 1 si un plan « euro vendu » est posé (EURUSD A, EURJPY A, EURNZD A)",
       "condition": {
-        "type": "h4_close_above",
-        "level": 1.99546
+        "type": "none"
       },
-      "invalidation_texte": "clôture H4 sous 1,9770",
+      "invalidation_texte": "clôture D1 sous 1,9765",
       "invalidation": {
-        "type": "h4_close_below",
-        "level": 1.977
+        "type": "d1_close_below",
+        "level": 1.9765
       },
-      "statut": "annulé",
-      "note_v2": "Périmé : la clôture H4 au-dessus de 1,99546 a eu lieu à 20h le 03/11 (2,00336), mais le prix était déjà 40 pip au-dessus de l'entrée 1,9965 : un BUY STOP sous le marché n'est pas exécutable tel quel."
+      "statut": "en_veille"
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-03 23:45",
-      "texte": "emploi NZ T3 (impact fort) : PASSÉ"
+      "quand_serveur": "2026-11-10 11:00",
+      "texte": "Waller (Fed) parle (USD, moyen)"
     },
     {
-      "quand_serveur": "2026-11-04 12:00",
-      "texte": "inflation flash zone euro"
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     },
     {
-      "quand_serveur": "2026-11-05 20:00",
-      "texte": "Lagarde"
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen)"
     },
     {
-      "quand_serveur": "2026-11-06 23:45",
-      "texte": "élections législatives NZ (impact fort)"
+      "quand_serveur": "2026-11-12 21:30",
+      "texte": "Mme Lagarde parle (EUR, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     }
   ],
-  "regles": "Pas d'achat au marché après un mouvement de 187 pip/jour (ATR 141). Concentration : AUDNZD acheté (1,51 lot) et EURNZD acheté (2,13 lots en attente) sont deux paris « NZD faible » : ne pas ajouter un troisième. Pas d'ordre autour des annonces NZ (vendredi 23h45 élections).",
+  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
   "journal": [
     {
       "date": "2026-11-03",
@@ -110,6 +107,12 @@
       "version": 3,
       "decision": "tous les plans expirés (bilan de semaine)",
       "resume": "plan expiré le 06/11 (A jamais atteint, à 53 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "nouveau plan de la semaine (analyse du lundi)",
+      "resume": "A Vente du plafond 2,0111-2,0172 (en_attente) ; B Achat du repli sur la zone de valeur (en_veille)"
     }
   ]
 }

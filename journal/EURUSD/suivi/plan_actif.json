@@ -1,51 +1,49 @@
 {
-  "pair": "EURUSD",
-  "created": "2026-11-09 10:45",
+  "created": "2026-11-09 14:55",
   "created_server_date": "2026-11-09",
-  "valid_until": "2026-11-06",
-  "version": 4,
-  "bias": "rebond court terme (dollar faible : +0,68 % sur EURUSD, +2,8 % or) arrivé au SOMMET du canal 1,1105-1,1277 ; tendance de fond baissière non invalidée tant que le D1 ne clôture pas au-dessus de 1,1277",
+  "valid_until": "2026-11-13",
+  "version": 5,
   "pip": 0.0001,
+  "pair": "EURUSD",
+  "bias": "range de 4 semaines 1,1105-1,1273 dans une tendance de fond baissière ; vendredi, l'emploi américain fort a ramené le prix au plancher (1,1131), il remonte aujourd'hui au milieu (1,1193). On vend le haut du range, on ne poursuit rien au milieu.",
   "levels": {
-    "support_bas": 1.1105,
-    "support_haut": 1.1135,
-    "cassure_baisse": 1.11,
-    "retest_haut_lundi": 1.1237,
-    "sommet_canal": 1.1277,
-    "res_2": 1.1269,
-    "res_3": 1.1369,
-    "tp1_vente": 1.1177
+    "plancher": 1.11045,
+    "bas_vendredi": 1.1131,
+    "mm20_d1": 1.11908,
+    "poc_semaine": 1.11915,
+    "haut_zone_valeur": 1.1247,
+    "ema200_h4": 1.12566,
+    "sommet_range": 1.12731,
+    "mm50_d1": 1.13429
   },
   "plans": [
     {
       "id": "A",
-      "nom": "Achat sur le triple support",
-      "side": "buy",
+      "nom": "Vente du haut du range",
+      "side": "sell",
       "type": "limit",
-      "entry": 1.112,
-      "sl": 1.109,
+      "entry": 1.1262,
+      "sl": 1.131,
       "tp": [
-        1.1177,
-        1.1237,
-        1.1269
+        1.1192,
+        1.114
       ],
-      "lot_800eur": 3.0,
-      "condition_texte": "seulement si le SELL du robot 20260801 est fermé",
+      "lot_800eur": 1.88,
+      "lot_texte": "0,94 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » tant que la vente d'or B est posée",
+      "condition_texte": "aucune (ordre posé d'avance sous les sommets 1,1268-1,1273)",
       "condition": {
-        "type": "no_position",
-        "magic": 20260801
+        "type": "none"
       },
-      "invalidation_texte": "clôture D1 sous 1,1100",
+      "invalidation_texte": "clôture D1 au-dessus de 1,1277 : on retire l'ordre (la cassure ouvre 1,1343 puis 1,1369)",
       "invalidation": {
-        "type": "d1_close_below",
-        "level": 1.11
+        "type": "d1_close_above",
+        "level": 1.1277
       },
-      "statut": "annulé",
-      "note_v2": "Périmé : le rebond a déjà atteint 1,1177 et 1,1237 sans nous ; l'entrée 1,1120 est à 140 pip du prix, le rapport gain/risque n'existe plus."
+      "statut": "en_attente"
     },
     {
       "id": "B",
-      "nom": "Vente de continuation",
+      "nom": "Vente de la cassure du plancher",
       "side": "sell",
       "type": "stop",
       "entry": 1.109,
@@ -54,92 +52,69 @@
         1.1,
         1.09
       ],
-      "lot_800eur": 1.8,
+      "lot_800eur": 1.78,
+      "lot_texte": "0,89 lot = 0,25 % (risque 400 EUR)",
       "condition_texte": "seulement après une clôture D1 sous 1,1100",
       "condition": {
         "type": "d1_close_below",
         "level": 1.11
       },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1237 (haut de lundi) : ouvre 1,1269 puis 1,1369",
+      "invalidation_texte": "clôture D1 au-dessus de 1,1200 (retour au milieu du range)",
       "invalidation": {
         "type": "d1_close_above",
-        "level": 1.1237
+        "level": 1.12
       },
-      "statut": "annulé",
-      "note_v2": "Inchangé, mais à 160 pip du prix : non armé (il faut une clôture D1 sous 1,1100).",
-      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
+      "statut": "en_veille"
     },
     {
       "id": "C",
-      "nom": "Vente au sommet du canal",
-      "side": "sell",
+      "nom": "Achat sur le plancher (contre-tendance)",
+      "side": "buy",
       "type": "limit",
-      "entry": 1.1275,
-      "sl": 1.1335,
+      "entry": 1.112,
+      "sl": 1.1088,
       "tp": [
-        1.1177,
-        1.1105
+        1.119,
+        1.1245
       ],
-      "lot_800eur": 1.5,
-      "condition_texte": "aucune (ordre posé d'avance au sommet du canal)",
+      "lot_800eur": 2.77,
+      "lot_texte": "1,38 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "EN VEILLE : interdit par la règle 1 tant que la vente d'or (dollar acheté) ou une vente EUR est posée",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1277 : on annule la vente (la cassure ouvre 1,1369)",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 1.1277
-      },
-      "statut": "annulé",
-      "lot_texte": "0,75 lot (risque 400 EUR, moitié du risque normal car USDCAD déjà acheté = même pari)",
-      "note_v3": "Gardé à demi-risque : vendre EURUSD double le pari « dollar plus fort » de l'USDCAD.",
-      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
-    },
-    {
-      "id": "D",
-      "nom": "Achat sur retest après cassure confirmée",
-      "side": "buy",
-      "type": "limit",
-      "entry": 1.125,
-      "sl": 1.1195,
-      "tp": [
-        1.1369
-      ],
-      "lot_800eur": 1.6,
-      "condition_texte": "seulement après une clôture D1 au-dessus de 1,1277",
-      "condition": {
-        "type": "d1_close_above",
-        "level": 1.1277
-      },
-      "invalidation_texte": "clôture D1 sous 1,1237",
+      "invalidation_texte": "clôture D1 sous 1,1100",
       "invalidation": {
         "type": "d1_close_below",
-        "level": 1.1237
+        "level": 1.11
       },
-      "statut": "annulé",
-      "note_v3": "Retiré à la demande : acheter l'euro (dollar plus faible) contredit ton USDCAD acheté (dollar plus fort)."
+      "statut": "en_veille"
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-04 17:00",
-      "texte": "ISM services USD : pas d'ordre de 16h30 à 17h30"
+      "quand_serveur": "2026-11-10 11:00",
+      "texte": "Waller (Fed) parle (USD, moyen)"
     },
     {
-      "quand_serveur": "2026-11-05 15:30",
-      "texte": "demandes d'allocations chômage USD"
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     },
     {
-      "quand_serveur": "2026-11-05 20:00",
-      "texte": "Lagarde parle (EUR)"
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen)"
     },
     {
-      "quand_serveur": "2026-11-06 15:30",
-      "texte": "emploi américain NFP (USD) : pas d'ordre de 15h00 à 16h00"
+      "quand_serveur": "2026-11-12 21:30",
+      "texte": "Mme Lagarde parle (EUR, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     }
   ],
-  "regles": "USDCAD ACHAT ouvert (4,97 lots, 794 EUR de risque) = pari « dollar plus fort ». Le plan C (vente EURUSD) est le même pari : demi-risque seulement. Plan D (achat EURUSD) retiré. Pas de poursuite d'achat à 1,126. Aucun ordre 16h30-17h30 (ISM) ni 15h00-16h00 vendredi (NFP).",
+  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
   "journal": [
     {
       "date": "2026-11-03",
@@ -164,6 +139,12 @@
       "version": 4,
       "decision": "tous les plans expirés (bilan de semaine)",
       "resume": "plan expiré le 06/11 (B jamais armé, C manqué à 2 pip, ordre C retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 5,
+      "decision": "nouveau plan de la semaine (analyse du lundi)",
+      "resume": "A Vente du haut du range (en_attente) ; B Vente de la cassure du plancher (en_veille) ; C Achat sur le plancher (contre-tendance) (en_veille)"
     }
   ]
 }

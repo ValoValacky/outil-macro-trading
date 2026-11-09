@@ -1,0 +1,169 @@
+{
+  "pair": "EURUSD",
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
+  "valid_until": "2026-11-06",
+  "version": 4,
+  "bias": "rebond court terme (dollar faible : +0,68 % sur EURUSD, +2,8 % or) arrivé au SOMMET du canal 1,1105-1,1277 ; tendance de fond baissière non invalidée tant que le D1 ne clôture pas au-dessus de 1,1277",
+  "pip": 0.0001,
+  "levels": {
+    "support_bas": 1.1105,
+    "support_haut": 1.1135,
+    "cassure_baisse": 1.11,
+    "retest_haut_lundi": 1.1237,
+    "sommet_canal": 1.1277,
+    "res_2": 1.1269,
+    "res_3": 1.1369,
+    "tp1_vente": 1.1177
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat sur le triple support",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.112,
+      "sl": 1.109,
+      "tp": [
+        1.1177,
+        1.1237,
+        1.1269
+      ],
+      "lot_800eur": 3.0,
+      "condition_texte": "seulement si le SELL du robot 20260801 est fermé",
+      "condition": {
+        "type": "no_position",
+        "magic": 20260801
+      },
+      "invalidation_texte": "clôture D1 sous 1,1100",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.11
+      },
+      "statut": "annulé",
+      "note_v2": "Périmé : le rebond a déjà atteint 1,1177 et 1,1237 sans nous ; l'entrée 1,1120 est à 140 pip du prix, le rapport gain/risque n'existe plus."
+    },
+    {
+      "id": "B",
+      "nom": "Vente de continuation",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.109,
+      "sl": 1.114,
+      "tp": [
+        1.1,
+        1.09
+      ],
+      "lot_800eur": 1.8,
+      "condition_texte": "seulement après une clôture D1 sous 1,1100",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.11
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,1237 (haut de lundi) : ouvre 1,1269 puis 1,1369",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.1237
+      },
+      "statut": "annulé",
+      "note_v2": "Inchangé, mais à 160 pip du prix : non armé (il faut une clôture D1 sous 1,1100).",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
+    },
+    {
+      "id": "C",
+      "nom": "Vente au sommet du canal",
+      "side": "sell",
+      "type": "limit",
+      "entry": 1.1275,
+      "sl": 1.1335,
+      "tp": [
+        1.1177,
+        1.1105
+      ],
+      "lot_800eur": 1.5,
+      "condition_texte": "aucune (ordre posé d'avance au sommet du canal)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,1277 : on annule la vente (la cassure ouvre 1,1369)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.1277
+      },
+      "statut": "annulé",
+      "lot_texte": "0,75 lot (risque 400 EUR, moitié du risque normal car USDCAD déjà acheté = même pari)",
+      "note_v3": "Gardé à demi-risque : vendre EURUSD double le pari « dollar plus fort » de l'USDCAD.",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
+    },
+    {
+      "id": "D",
+      "nom": "Achat sur retest après cassure confirmée",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.125,
+      "sl": 1.1195,
+      "tp": [
+        1.1369
+      ],
+      "lot_800eur": 1.6,
+      "condition_texte": "seulement après une clôture D1 au-dessus de 1,1277",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.1277
+      },
+      "invalidation_texte": "clôture D1 sous 1,1237",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.1237
+      },
+      "statut": "annulé",
+      "note_v3": "Retiré à la demande : acheter l'euro (dollar plus faible) contredit ton USDCAD acheté (dollar plus fort)."
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-04 17:00",
+      "texte": "ISM services USD : pas d'ordre de 16h30 à 17h30"
+    },
+    {
+      "quand_serveur": "2026-11-05 15:30",
+      "texte": "demandes d'allocations chômage USD"
+    },
+    {
+      "quand_serveur": "2026-11-05 20:00",
+      "texte": "Lagarde parle (EUR)"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "emploi américain NFP (USD) : pas d'ordre de 15h00 à 16h00"
+    }
+  ],
+  "regles": "USDCAD ACHAT ouvert (4,97 lots, 794 EUR de risque) = pari « dollar plus fort ». Le plan C (vente EURUSD) est le même pari : demi-risque seulement. Plan D (achat EURUSD) retiré. Pas de poursuite d'achat à 1,126. Aucun ordre 16h30-17h30 (ISM) ni 15h00-16h00 vendredi (NFP).",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "neutre, plans A/B, SELL du robot ouvert à 1,11961"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 2,
+      "decision": "A annulé, B en veille, C et D ajoutés",
+      "resume": "SELL du robot stoppé à 1,12311 (-241 EUR) ; EURUSD +75 pip dans la nuit (dollar faible), prix 1,1260 au sommet du canal"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 3,
+      "decision": "D annulé, C à demi-risque",
+      "resume": "USDCAD acheté déclenché : on évite les paris opposés sur le dollar"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "tous les plans expirés (bilan de semaine)",
+      "resume": "plan expiré le 06/11 (B jamais armé, C manqué à 2 pip, ordre C retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+    }
+  ]
+}

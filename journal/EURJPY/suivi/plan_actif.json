@@ -1,113 +1,97 @@
 {
-  "pair": "EURJPY",
-  "created": "2026-11-09 10:45",
+  "created": "2026-11-09 14:55",
   "created_server_date": "2026-11-09",
-  "valid_until": "2026-11-06",
-  "version": 3,
+  "valid_until": "2026-11-13",
+  "version": 4,
   "pip": 0.01,
-  "bias": "toujours baissier de fond, mais rebond de +2,3 yen en deux jours porté par un euro plus fort (dollar faible) : le prix a traversé le sommet du 16/10 (177,96) et touche 178,40, sous la MM50 D1 (178,93)",
+  "pair": "EURJPY",
+  "bias": "tendance de fond baissière (sommet 187,95 en avril), range D1 de 3 semaines 175,07-178,48 ; le rebond de la semaine dernière a été repoussé sous la MM50 D1 (178,43). La Foule vend l'euro et achète le yen : on vend les rebonds.",
   "levels": {
-    "plancher_bas": 174.5,
-    "plus_bas_30_10": 175.07,
-    "kijun_D1": 177.19,
-    "sommet_16_10": 177.96,
-    "MM50_D1": 178.93,
-    "base_nuage_D1": 180.88,
-    "haut_du_jour": 178.4,
-    "sl_A2": 179.85
+    "plancher_250j": 175.068,
+    "bas_vendredi": 176.152,
+    "poc_semaine": 176.785,
+    "mm20_d1": 176.785,
+    "ema200_h4": 177.626,
+    "haut_zone_valeur": 177.8,
+    "mm50_d1": 178.433,
+    "haut_semaine": 178.475,
+    "ema200_d1": 181.231
   },
   "plans": [
     {
       "id": "A",
-      "nom": "Vente du rebond",
+      "nom": "Vente du rebond sous la MM50 D1",
       "side": "sell",
       "type": "limit",
-      "entry": 177.9,
-      "sl": 179.0,
+      "entry": 178.3,
+      "sl": 179.2,
       "tp": [
-        175.1,
-        173.0
+        176.8,
+        175.2
       ],
-      "lot_800eur": 1.2,
-      "condition_texte": "aucune (ordre posé d'avance)",
+      "lot_800eur": 1.59,
+      "lot_texte": "0,79 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "aucune (ordre posé d'avance sous MM50 D1 178,43 et le haut de la semaine 178,48)",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture D1 au-dessus de 179,00 (au-dessus de 180,88 = fin de la tendance baissière D1)",
+      "invalidation_texte": "clôture D1 au-dessus de 179,20",
       "invalidation": {
         "type": "d1_close_above",
-        "level": 179.0
+        "level": 179.2
       },
-      "statut": "annulé",
-      "note_v2": "Périmé : le prix a traversé 177,90 sans rejet (théoriquement -41 pip) ; le plan n'avait pas été posé chez le courtier."
+      "statut": "en_attente"
     },
     {
       "id": "B",
-      "nom": "Vente de la cassure",
+      "nom": "Vente de la cassure du plancher",
       "side": "sell",
       "type": "stop",
-      "entry": 174.9,
-      "sl": 176.0,
+      "entry": 174.8,
+      "sl": 175.8,
       "tp": [
-        172.8,
-        171.0
-      ],
-      "lot_800eur": 1.2,
-      "condition_texte": "seulement après une clôture D1 sous 175,07",
-      "condition": {
-        "type": "d1_close_below",
-        "level": 175.07
-      },
-      "invalidation_texte": "retour au-dessus de 176,00 en clôture D1 sans clôture sous 175,07",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 176.0
-      },
-      "statut": "annulé",
-      "note_v2": "Invalidé : clôture D1 de mardi à 177,594, au-dessus de 176,00 sans clôture sous 175,07."
-    },
-    {
-      "id": "A2",
-      "nom": "Vente du rebond sous la MM50",
-      "side": "sell",
-      "type": "limit",
-      "entry": 178.85,
-      "sl": 179.85,
-      "tp": [
-        177.19,
-        175.1
+        173.5,
+        172.0
       ],
       "lot_800eur": 1.4,
-      "lot_texte": "0,7 lot (risque 395 EUR, demi-risque : même pari « euro baisse » que le plan C EURUSD)",
-      "condition_texte": "aucune (ordre posé d'avance sous la MM50 D1 178,93)",
+      "lot_texte": "0,70 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "seulement après une clôture D1 sous 175,00",
       "condition": {
-        "type": "none"
+        "type": "d1_close_below",
+        "level": 175.0
       },
-      "invalidation_texte": "clôture D1 au-dessus de 179,85 ; au-dessus de 180,88 = fin de la tendance baissière D1",
+      "invalidation_texte": "clôture D1 au-dessus de 176,80",
       "invalidation": {
         "type": "d1_close_above",
-        "level": 179.85
+        "level": 176.8
       },
-      "statut": "annulé",
-      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
+      "statut": "en_veille"
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-04 12:00",
-      "texte": "inflation flash zone euro : PASSÉ"
+      "quand_serveur": "2026-11-10 11:00",
+      "texte": "Waller (Fed) parle (USD, moyen)"
     },
     {
-      "quand_serveur": "2026-11-05 20:00",
-      "texte": "Lagarde"
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     },
     {
-      "quand_serveur": "2026-11-06 18:00",
-      "texte": "Ueda (BoJ) : impact fort sur le yen, pas d'ordre autour"
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-12 21:30",
+      "texte": "Mme Lagarde parle (EUR, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
     }
   ],
-  "regles": "A2 et le plan C d'EURUSD sont le même pari (euro qui baisse) : demi-risque chacun, un seul si l'autre est déclenché. Pas d'ordre autour de Lagarde (jeudi 20h00) ni d'Ueda (vendredi 18h00). Valeur du pip 5,65 EUR/lot.",
+  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
   "journal": [
     {
       "date": "2026-11-03",
@@ -126,6 +110,12 @@
       "version": 3,
       "decision": "tous les plans expirés (bilan de semaine)",
       "resume": "plan expiré le 06/11 (A2 jamais atteint, à 38 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "nouveau plan de la semaine (analyse du lundi)",
+      "resume": "A Vente du rebond sous la MM50 D1 (en_attente) ; B Vente de la cassure du plancher (en_veille)"
     }
   ]
 }

@@ -1,0 +1,131 @@
+{
+  "pair": "USDCAD",
+  "created": "2026-11-06 14:00",
+  "created_server_date": "2026-11-06",
+  "valid_until": "2026-11-06",
+  "version": 2,
+  "pip": 0.0001,
+  "bias": "tendance de fond haussière, correction de 3 semaines (-358 pip) sur un empilement de supports 1,3942-1,3956 avec divergence haussière H4 ; rien au milieu",
+  "levels": {
+    "support_haut": 1.3956,
+    "support_bas": 1.3942,
+    "cassure_baisse_D1": 1.393,
+    "sl_A": 1.3925,
+    "tp1_A": 1.3995,
+    "tp2_A": 1.4016,
+    "tp3_A": 1.406,
+    "tp1_B": 1.389,
+    "tp2_B": 1.383,
+    "tp3_B": 1.3732
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat sur le support",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.395,
+      "sl": 1.3925,
+      "tp": [
+        1.3995,
+        1.4016,
+        1.406
+      ],
+      "lot_800eur": 5.0,
+      "lot_texte": "5,0 lots à 0,5 % (posé : 4,97 lot)",
+      "condition_texte": "aucune",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,3930 (bascule vers B)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.393
+      },
+      "statut": "terminé",
+      "note": "BUY 4,97 lot @ 1,39499 ouvert le 04/11 à 11h35 heure serveur (ticket 576268007), SL 1,39249, TP 1,39952 (TP1 seulement)",
+      "note_v2": "TP1 1,3995 touché jeudi 17h55 : 4,97 lots fermés en entier, +1 416,67 EUR (gain réel)."
+    },
+    {
+      "id": "B",
+      "nom": "Vente sur cassure du support",
+      "side": "sell",
+      "type": "limit",
+      "entry": 1.394,
+      "sl": 1.3985,
+      "tp": [
+        1.389,
+        1.383,
+        1.3732
+      ],
+      "lot_800eur": 2.8,
+      "condition_texte": "seulement après une clôture D1 sous 1,3930",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.393
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,4016 (rebond plus franc : ouvre 1,4060 puis 1,4100)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.4016
+      },
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture D1 du 05/11 à 1,40185, au-dessus de 1,4016."
+    }
+  ],
+  "positions_suivies": [
+    {
+      "ticket": 576268007,
+      "side": "buy",
+      "volume": 4.97,
+      "entry": 1.39499,
+      "sl": 1.39249,
+      "tp": 1.39952,
+      "magic": 20260900,
+      "origine": "Magic Panel (plan A)"
+    }
+  ],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-04 17:00",
+      "texte": "ISM services USD"
+    },
+    {
+      "quand_serveur": "2026-11-05 15:30",
+      "texte": "chômage hebdo USD"
+    },
+    {
+      "quand_serveur": "2026-11-05 17:30",
+      "texte": "Macklem (BoC)"
+    },
+    {
+      "quand_serveur": "2026-11-05 23:00",
+      "texte": "budget canadien"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "NFP USD + emploi canadien : réduire ou protéger la position avant"
+    }
+  ],
+  "regles": "Le dollar pilote la paire (corrélation +0,77 avec le DXY) : un dollar qui baisse fait perdre l'USDCAD acheté. Risque cumulé avec les autres paris « dollar plus fort ». Pas de nouvel ordre 16h15-18h30 les jours d'annonces.",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "A achat 1,3950 préféré, B vente après clôture D1 sous 1,3930"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan A déclenché",
+      "resume": "BUY 4,97 lot @ 1,39499 ouvert à 11h35 par l'utilisatrice (Magic Panel)"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 2,
+      "decision": "A terminé au TP1 (+1 416,67 EUR), B annulé (clôture D1 1,40185 > 1,4016) ; plan expire ce soir",
+      "resume": "nouvel achat MagicPanel 1,31 lot @ 1,4065 à 14h01, hors plan, 1h30 avant NFP + emploi canadien"
+    }
+  ]
+}
