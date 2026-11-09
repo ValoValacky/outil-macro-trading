@@ -1,9 +1,9 @@
 {
   "pair": "EURJPY",
-  "created": "2026-11-04 13:00",
-  "created_server_date": "2026-11-04",
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
   "valid_until": "2026-11-06",
-  "version": 2,
+  "version": 3,
   "pip": 0.01,
   "bias": "toujours baissier de fond, mais rebond de +2,3 yen en deux jours porté par un euro plus fort (dollar faible) : le prix a traversé le sommet du 16/10 (177,96) et touche 178,40, sous la MM50 D1 (178,93)",
   "levels": {
@@ -88,7 +88,8 @@
         "type": "d1_close_above",
         "level": 179.85
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
     }
   ],
   "positions_suivies": [],
@@ -119,6 +120,12 @@
       "version": 2,
       "decision": "A et B annulés, A2 ajouté",
       "resume": "EURJPY 178,30 (+81 pip aujourd'hui) : entrée 177,90 dépassée, B invalidé par la clôture D1 à 177,59"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "tous les plans expirés (bilan de semaine)",
+      "resume": "plan expiré le 06/11 (A2 jamais atteint, à 38 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
     }
   ]
 }

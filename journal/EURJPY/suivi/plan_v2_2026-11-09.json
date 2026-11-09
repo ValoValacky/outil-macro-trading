@@ -1,0 +1,124 @@
+{
+  "pair": "EURJPY",
+  "created": "2026-11-04 13:00",
+  "created_server_date": "2026-11-04",
+  "valid_until": "2026-11-06",
+  "version": 2,
+  "pip": 0.01,
+  "bias": "toujours baissier de fond, mais rebond de +2,3 yen en deux jours porté par un euro plus fort (dollar faible) : le prix a traversé le sommet du 16/10 (177,96) et touche 178,40, sous la MM50 D1 (178,93)",
+  "levels": {
+    "plancher_bas": 174.5,
+    "plus_bas_30_10": 175.07,
+    "kijun_D1": 177.19,
+    "sommet_16_10": 177.96,
+    "MM50_D1": 178.93,
+    "base_nuage_D1": 180.88,
+    "haut_du_jour": 178.4,
+    "sl_A2": 179.85
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du rebond",
+      "side": "sell",
+      "type": "limit",
+      "entry": 177.9,
+      "sl": 179.0,
+      "tp": [
+        175.1,
+        173.0
+      ],
+      "lot_800eur": 1.2,
+      "condition_texte": "aucune (ordre posé d'avance)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 179,00 (au-dessus de 180,88 = fin de la tendance baissière D1)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 179.0
+      },
+      "statut": "annulé",
+      "note_v2": "Périmé : le prix a traversé 177,90 sans rejet (théoriquement -41 pip) ; le plan n'avait pas été posé chez le courtier."
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure",
+      "side": "sell",
+      "type": "stop",
+      "entry": 174.9,
+      "sl": 176.0,
+      "tp": [
+        172.8,
+        171.0
+      ],
+      "lot_800eur": 1.2,
+      "condition_texte": "seulement après une clôture D1 sous 175,07",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 175.07
+      },
+      "invalidation_texte": "retour au-dessus de 176,00 en clôture D1 sans clôture sous 175,07",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 176.0
+      },
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture D1 de mardi à 177,594, au-dessus de 176,00 sans clôture sous 175,07."
+    },
+    {
+      "id": "A2",
+      "nom": "Vente du rebond sous la MM50",
+      "side": "sell",
+      "type": "limit",
+      "entry": 178.85,
+      "sl": 179.85,
+      "tp": [
+        177.19,
+        175.1
+      ],
+      "lot_800eur": 1.4,
+      "lot_texte": "0,7 lot (risque 395 EUR, demi-risque : même pari « euro baisse » que le plan C EURUSD)",
+      "condition_texte": "aucune (ordre posé d'avance sous la MM50 D1 178,93)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 179,85 ; au-dessus de 180,88 = fin de la tendance baissière D1",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 179.85
+      },
+      "statut": "en_attente"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-04 12:00",
+      "texte": "inflation flash zone euro : PASSÉ"
+    },
+    {
+      "quand_serveur": "2026-11-05 20:00",
+      "texte": "Lagarde"
+    },
+    {
+      "quand_serveur": "2026-11-06 18:00",
+      "texte": "Ueda (BoJ) : impact fort sur le yen, pas d'ordre autour"
+    }
+  ],
+  "regles": "A2 et le plan C d'EURUSD sont le même pari (euro qui baisse) : demi-risque chacun, un seul si l'autre est déclenché. Pas d'ordre autour de Lagarde (jeudi 20h00) ni d'Ueda (vendredi 18h00). Valeur du pip 5,65 EUR/lot.",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "A vente du rebond 177,90, B vente de la cassure sous 175,07"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 2,
+      "decision": "A et B annulés, A2 ajouté",
+      "resume": "EURJPY 178,30 (+81 pip aujourd'hui) : entrée 177,90 dépassée, B invalidé par la clôture D1 à 177,59"
+    }
+  ]
+}

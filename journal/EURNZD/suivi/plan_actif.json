@@ -1,9 +1,9 @@
 {
   "pair": "EURNZD",
-  "created": "2026-11-04 13:00",
-  "created_server_date": "2026-11-04",
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
   "valid_until": "2026-11-06",
-  "version": 2,
+  "version": 3,
   "pip": 0.0001,
   "bias": "acheteur confirmé hier (emploi néo-zélandais faible : +159 pip, clôture D1 2,00336), puis repli de 150 pip depuis 2,0112 jusqu'au retest 1,9955-1,9965 ; on n'achète pas la poursuite, on attend un repli",
   "levels": {
@@ -40,9 +40,10 @@
         "type": "h4_close_below",
         "level": 1.977
       },
-      "statut": "en_attente",
+      "statut": "annulé",
       "note": "BUY LIMIT 2,13 lots @ 1,9845 déjà posé",
-      "note_v2": "Maintenu : ordre posé à 119 pip sous le prix, se déclenche seulement sur un vrai repli sous le retest 1,9955."
+      "note_v2": "Maintenu : ordre posé à 119 pip sous le prix, se déclenche seulement sur un vrai repli sous le retest 1,9955.",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
     },
     {
       "id": "B",
@@ -103,6 +104,12 @@
       "version": 2,
       "decision": "B annulé (périmé), A maintenu",
       "resume": "emploi NZ faible : EURNZD +159 pip hier, haut 2,0112 ce matin, repli à 1,9964"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "tous les plans expirés (bilan de semaine)",
+      "resume": "plan expiré le 06/11 (A jamais atteint, à 53 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
     }
   ]
 }

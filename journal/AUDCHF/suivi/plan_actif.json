@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-06 14:00",
-  "created_server_date": "2026-11-06",
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
   "valid_until": "2026-11-13",
-  "version": 2,
+  "version": 3,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "AUDCHF",
@@ -57,7 +57,7 @@
         0.5448
       ],
       "lot_800eur": 1.13,
-      "lot_texte": "1,13 lot (risque 800 EUR) : seulement si AUDNZD acheté est déjà sorti",
+      "lot_texte": "0,56 lot (risque 400 EUR) : demi-risque, 2e pari en vente sur l'AUD (GBPAUD acheté) = règle 2",
       "condition_texte": "seulement après une clôture D1 sous 0,5655",
       "condition": {
         "type": "d1_close_below",
@@ -68,7 +68,8 @@
         "type": "d1_close_above",
         "level": 0.5756
       },
-      "statut": "en_veille"
+      "statut": "armé",
+      "note_v3": "Armé par la clôture D1 du 06/11 à 0,56318 (< 0,5655). AUDNZD est sorti (SL lundi 00h05, -805 EUR), donc la condition « AUDNZD sorti » est remplie. Non posé chez le courtier."
     }
   ],
   "positions_suivies": [],
@@ -82,7 +83,7 @@
       "texte": "emploi américain NFP + emploi canadien (USD, CAD) : pas d'ordre de 15h00 à 16h00"
     }
   ],
-  "regles": "Thème « AUD fort » : AUDNZD acheté (784 EUR de risque ouvert) + AUDCHF A + GBPAUD A (vente) = trois paris sur la même devise : demi-risque chacun pour A. Pas d'achat au marché après une bougie D1 de 80 pip. Aucun ordre autour du NFP (vendredi 15h00-16h00).",
+  "regles": "AUD déjà vendu une fois via GBPAUD acheté (533 EUR) : B = 2e vente d'AUD, donc 400 EUR maximum (règle 2) ; total AUD 933 EUR < 1 200 (règle 3). Pas d'ordre dans l'heure avant une annonce forte AUD ou CHF.",
   "journal": [
     {
       "date": "2026-11-04",
@@ -95,6 +96,12 @@
       "version": 2,
       "decision": "A terminé au SL (-402,90 EUR) ; B reste en veille (et interdit tant qu'AUDNZD acheté est ouvert)",
       "resume": "clôture D1 du 05/11 à 0,56559, 0,9 pip au-dessus du seuil 0,5655 de B ; bougie du jour à 0,5629"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "B armé, lot réduit à 0,56 lot (400 EUR, règle 2)",
+      "resume": "clôture D1 06/11 0,56318 sous 0,5655 ; AUDNZD sorti au SL ; prix 0,5642 sur la MM200 D1 (0,5644)"
     }
   ]
 }

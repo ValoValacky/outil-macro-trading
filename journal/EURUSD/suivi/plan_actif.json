@@ -1,9 +1,9 @@
 {
   "pair": "EURUSD",
-  "created": "2026-11-04 13:00",
-  "created_server_date": "2026-11-04",
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
   "valid_until": "2026-11-06",
-  "version": 3,
+  "version": 4,
   "bias": "rebond court terme (dollar faible : +0,68 % sur EURUSD, +2,8 % or) arrivé au SOMMET du canal 1,1105-1,1277 ; tendance de fond baissière non invalidée tant que le D1 ne clôture pas au-dessus de 1,1277",
   "pip": 0.0001,
   "levels": {
@@ -65,8 +65,9 @@
         "type": "d1_close_above",
         "level": 1.1237
       },
-      "statut": "en_veille",
-      "note_v2": "Inchangé, mais à 160 pip du prix : non armé (il faut une clôture D1 sous 1,1100)."
+      "statut": "annulé",
+      "note_v2": "Inchangé, mais à 160 pip du prix : non armé (il faut une clôture D1 sous 1,1100).",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
     },
     {
       "id": "C",
@@ -89,9 +90,10 @@
         "type": "d1_close_above",
         "level": 1.1277
       },
-      "statut": "en_attente",
+      "statut": "annulé",
       "lot_texte": "0,75 lot (risque 400 EUR, moitié du risque normal car USDCAD déjà acheté = même pari)",
-      "note_v3": "Gardé à demi-risque : vendre EURUSD double le pari « dollar plus fort » de l'USDCAD."
+      "note_v3": "Gardé à demi-risque : vendre EURUSD double le pari « dollar plus fort » de l'USDCAD.",
+      "raison_annulation": "Expiré le 06/11 sans déclenchement ; ordre retiré avant le week-end."
     },
     {
       "id": "D",
@@ -156,6 +158,12 @@
       "version": 3,
       "decision": "D annulé, C à demi-risque",
       "resume": "USDCAD acheté déclenché : on évite les paris opposés sur le dollar"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "tous les plans expirés (bilan de semaine)",
+      "resume": "plan expiré le 06/11 (B jamais armé, C manqué à 2 pip, ordre C retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
     }
   ]
 }
