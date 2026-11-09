@@ -61,7 +61,7 @@
       ],
       "lot_800eur": 0.28,
       "ordre_reel": "SELL LIMIT 0.14 lot @4203.00 SL 4236.37 TP 4094.84, ticket 578619414, pose le 2026-11-05 19:25:26 serveur (un seul TP, pas de sorties partielles)",
-      "lot_texte": "0,14 lot (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
+      "lot_texte": "0,14 lot = 0,25 % de risque dans Magic Panel (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
       "condition_texte": "aucune ; ordre posé d'avance sur MM100/MM50 D1 et MM20 W1",
       "condition": {
         "type": "none"
@@ -86,7 +86,7 @@
         3925.0
       ],
       "lot_800eur": 0.21,
-      "lot_texte": "0,10 lot (risque 374 EUR, demi-risque)",
+      "lot_texte": "0,10 lot = 0,23 % de risque (bouton le plus proche : 0,25 % ≈ 400 EUR, accepté par la règle 2) (risque 374 EUR, demi-risque)",
       "condition_texte": "seulement après une clôture H4 sous 4054",
       "condition": {
         "type": "h4_close_below",

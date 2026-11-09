@@ -57,7 +57,7 @@
         0.5448
       ],
       "lot_800eur": 1.13,
-      "lot_texte": "0,56 lot (risque 400 EUR) : demi-risque, 2e pari en vente sur l'AUD (GBPAUD acheté) = règle 2",
+      "lot_texte": "0,56 lot = 0,25 % de risque dans Magic Panel (≈ 400 EUR sur 159 537 EUR d'équité) : demi-risque, 2e pari en vente sur l'AUD (GBPAUD acheté) = règle 2",
       "condition_texte": "seulement après une clôture D1 sous 0,5655",
       "condition": {
         "type": "d1_close_below",
@@ -100,7 +100,7 @@
     {
       "date": "2026-11-09",
       "version": 3,
-      "decision": "B armé, lot réduit à 0,56 lot (400 EUR, règle 2)",
+      "decision": "B armé, lot réduit à 0,56 lot (400 EUR, règle 2) ; à régler à 0,25 % dans Magic Panel",
       "resume": "clôture D1 06/11 0,56318 sous 0,5655 ; AUDNZD sorti au SL ; prix 0,5642 sur la MM200 D1 (0,5644)"
     }
   ]

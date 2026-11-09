@@ -33,7 +33,7 @@
         1.8955
       ],
       "lot_800eur": 1.68,
-      "lot_texte": "0,84 lot (risque 401 EUR, demi-risque : USDCAD déjà acheté = même pari « CAD faible »)",
+      "lot_texte": "0,84 lot = 0,25 % de risque dans Magic Panel (risque 401 EUR, demi-risque : USDCAD déjà acheté = même pari « CAD faible »)",
       "condition_texte": "aucune ; ordre posé après la BoE de jeudi (pas avant 15h30 serveur)",
       "condition": {
         "type": "none"
