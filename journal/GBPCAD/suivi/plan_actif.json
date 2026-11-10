@@ -1,27 +1,78 @@
 {
-  "created": "2026-11-04 20:15",
-  "created_server_date": "2026-11-04",
-  "valid_until": "2026-11-13",
-  "version": 1,
+  "created": "2026-11-10 11:55",
+  "created_server_date": "2026-11-10",
+  "valid_until": "2026-11-19",
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
-  "bias": "dans un range de 3 mois (1,8607-1,8926) : le prix a repris la Kijun, les moyennes et le nuage D1 et se trouve aux 2/3 du range, juste sous la MM100 D1 (1,8801) ; pas de tendance claire en W1 ; fonds à levier vendeurs du CAD à -96 747 (record sur 8 semaines)",
+  "bias": "cassure par le haut du range de 3 mois (1,8607-1,8926) : clôture D1 du 09/11 à 1,89757 (+133 pip), deux semaines à +310 pip depuis 1,86074 ; mais étirée (RSI D1 68, RSI H4 81, 2,3 ATR au-dessus de la MM20 D1) et faite sur un volume SOUS la moyenne (0,87 fois). Prochaine résistance : sommet de l'année 1,90429 (07/07). On n'achète pas au marché : on attend un retour sur l'ancien plafond 1,8926-1,8953.",
   "levels": {
-    "haut_jour": 1.88293,
-    "nuage_d1_haut": 1.87798,
-    "kijun_d1": 1.87665,
-    "mm200_d1": 1.8646,
-    "bas_29_10": 1.86074,
-    "haut_donchian20": 1.89057,
-    "haut_06_10": 1.89257,
+    "sommet_annee": 1.90429,
+    "plus_haut_10_11": 1.89967,
     "haut_05_08": 1.8953,
-    "haut_juillet": 1.90429,
-    "nuage_w1_haut": 1.84674
+    "ancien_plafond": 1.89257,
+    "plafond_16_10": 1.89057,
+    "bas_zone_valeur_semaine": 1.8884,
+    "bas_09_11": 1.88406,
+    "mm100_d1": 1.88067,
+    "kijun_d1": 1.87951,
+    "mm20_d1": 1.87849,
+    "nuage_d1_haut": 1.87798,
+    "mm200_d1": 1.86502
   },
   "plans": [
     {
       "id": "A",
+      "nom": "Achat du retour sur l'ancien plafond (retest de la cassure)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.894,
+      "sl": 1.8865,
+      "tp": [
+        1.9035,
+        1.915
+      ],
+      "lot_800eur": 1.69,
+      "lot_texte": "BUY LIMIT, PAS d'achat au marché : 0,84 lot = bouton 0,25 % de Magic Panel (≈ 399 EUR) ; 2e pari « livre achetée » avec GBPAUD (règle 2 : 400 EUR max)",
+      "condition_texte": "aucune : ordre en attente posé d'avance à 1,8940 (41 pip sous le prix du 10/11 à 11h Paris) ; ne pas le poser si le prix est déjà sous 1,8940 ; pas de nouvel ordre jeudi 12/11 de 7h00 à 8h00 Paris (PIB britannique 8h00 Paris)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,8900 (retour dans l'ancien range = cassure ratée) : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.89
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure ratée (retour dans le range)",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.887,
+      "sl": 1.897,
+      "tp": [
+        1.875,
+        1.865
+      ],
+      "lot_800eur": 1.27,
+      "lot_texte": "SELL STOP 0,63 lot = 0,25 % (≈ 397 EUR) ; swap vendeur -16 EUR par lot et par nuit (≈ -10 EUR/nuit)",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,8900 ; ET INTERDIT règle 1 tant que GBPAUD est acheté (livre déjà achetée)",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.89
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,9045 (sommet de l'année cassé : la cassure a réussi) ; une fois déclenché, c'est le SL 1,8970 qui protège",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.9045
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "A0",
       "nom": "Achat du repli sur le nuage / Kijun D1",
       "side": "buy",
       "type": "limit",
@@ -43,10 +94,11 @@
         "type": "d1_close_below",
         "level": 1.865
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "note_v2": "Remplacé : clôture D1 du 09/11 à 1,89757 au-dessus du haut du range 1,8926 ; l'achat à 1,8755 (228 pip plus bas) n'a plus de sens. Ordre jamais posé."
     },
     {
-      "id": "B",
+      "id": "B0",
       "nom": "Vente de la cassure du bas du range",
       "side": "sell",
       "type": "stop",
@@ -68,31 +120,38 @@
         "type": "d1_close_above",
         "level": 1.88
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture D1 du 04/11 à 1,88231 au-dessus de 1,8800."
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-05 14:00",
-      "texte": "Banque d'Angleterre (taux + vote + conférence 14h30) : aucun ordre GBP en attente de 13h30 à 15h30, à poser après"
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT), 14h30 Paris : touche GBPCAD indirectement"
     },
     {
-      "quand_serveur": "2026-11-05 23:00",
-      "texte": "Budget du Canada (CAD)"
+      "quand_serveur": "2026-11-11 15:00",
+      "texte": "jour férié au Canada et aux États-Unis : marché plus mince"
     },
     {
-      "quand_serveur": "2026-11-06 15:30",
-      "texte": "emploi américain NFP + emploi canadien (USD, CAD) : pas d'ordre de 15h00 à 16h00"
+      "quand_serveur": "2026-11-12 09:00",
+      "texte": "PIB britannique mensuel + trimestriel (GBP, FORT), 8h00 Paris : pas de nouvel ordre de 7h00 à 8h00 Paris"
     }
   ],
-  "regles": "Thème « CAD faible » : USDCAD acheté (793 EUR de risque ouvert) + GBPCAD A : demi-risque. GBPCAD A (achat) est l'opposé de GBPAUD A (vente) côté livre. Le plan A est au milieu du range : pas d'achat au marché, on attend le repli. Pas d'ordre autour de la BoE (jeudi 13h30-15h30), du budget canadien (jeudi 23h00) ni du NFP/emploi canadien (vendredi 15h00-16h00).",
+  "regles": "Contrôle devise par devise : A = livre achetée (2e fois avec GBPAUD, 400 EUR max, règle 2) + huard vendu (1re fois) ; total livre ≈ 931 EUR < 1 200 (règle 3). B = livre vendue : INTERDIT règle 1 tant que GBPAUD est ouvert. Heures en Paris (serveur = Paris + 1 h).",
   "journal": [
     {
       "date": "2026-11-04",
       "version": 1,
       "decision": "plan initial D1",
       "resume": "GBPCAD 1,8816, range 1,8607-1,8926, reprise du nuage D1"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 2,
+      "decision": "nouveau plan après la cassure du range (analyse D1 du 10/11)",
+      "resume": "A BUY LIMIT 1,8940 retest (en_attente) ; B SELL STOP 1,8870 si cassure ratée (en_veille, règle 1) ; anciens A/B annulés"
     }
   ]
 }
