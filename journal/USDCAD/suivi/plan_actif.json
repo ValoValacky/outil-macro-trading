@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:00",
+  "created": "2026-11-10 15:40",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "pair": "USDCAD",
   "bias": "la correction de 3 semaines (1,4300 → 1,3929) est finie : semaine en forte hausse (+171 pips, clôture 1,41297 au plus haut) après un emploi américain fort et un emploi canadien faible ; prix au-dessus de toutes les moyennes D1. On achète un repli, pas la poursuite.",
@@ -41,7 +41,8 @@
         "type": "d1_close_below",
         "level": 1.399
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v5": "Le blocage par le robot a disparu, mais règle 1 : acheter le dollar est incompatible avec l'achat d'or A et EURUSD C (dollar vendu). Reste en veille tant que le côté « dollar vendu » est choisi. Prix 1,4163, entrée 103 pip plus bas."
     },
     {
       "id": "B",
@@ -66,7 +67,8 @@
         "type": "d1_close_below",
         "level": 1.404
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v5": "Prix déjà au-dessus de 1,415 après l'inflation US : la condition (clôture D1 > 1,414) sera jugée sur la clôture du soir ; un BUY STOP à 1,415 serait sous le prix, donc impossible à poser. Revu demain matin."
     }
   ],
   "positions_suivies": [],
@@ -90,6 +92,10 @@
     {
       "quand_serveur": "2026-11-13 15:30",
       "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    },
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "10/11 15h30 serveur (14h30 Paris) : inflation US plus forte que prévu (CPI 0,4 % vs 0,3 % ; core 0,3 % vs 0,2 %). Dollar en hausse : EURUSD 1,1210 → 1,1179, or 4069 → 4039, USDCAD 1,4135 → 1,4163. Le robot EURUSD (achat 0,8 @1,12203) a été stoppé à 1,11844 (-258,6 EUR) : plus aucune exposition au dollar."
     }
   ],
   "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
@@ -123,6 +129,7 @@
       "version": 4,
       "decision": "A en veille (règle 1 : USD vendu par le robot EURUSD), B toujours en veille",
       "resume": "D1 09/11 clôture 1,41180 (-1 pip) ; prix 1,4126 ; A à 66 pip, jamais touché"
-    }
+    },
+    "2026-11-10 15:40 v5 : après CPI : A en veille (règle 1, côté dollar vendu choisi), B à revoir sur la clôture D1."
   ]
 }

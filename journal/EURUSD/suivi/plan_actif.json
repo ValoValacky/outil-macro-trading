@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:00",
+  "created": "2026-11-10 15:40",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "range de 4 semaines 1,1105-1,1273 dans une tendance de fond baissière ; vendredi, l'emploi américain fort a ramené le prix au plancher (1,1131), il remonte aujourd'hui au milieu (1,1193). On vend le haut du range, on ne poursuit rien au milieu.",
@@ -39,7 +39,8 @@
         "type": "d1_close_above",
         "level": 1.1277
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v7": "Toujours en veille, mais maintenant pour l'EURO (règle 1 : EURNZD achète l'euro), plus pour le dollar."
     },
     {
       "id": "B",
@@ -79,7 +80,7 @@
         1.1245
       ],
       "lot_800eur": 2.77,
-      "lot_texte": "1,38 lot = 0,25 % (risque 400 EUR)",
+      "lot_texte": "BUY LIMIT 1,1120, 1,38 lot = 0,25 % (≈ 400 EUR) ; 2e pari « euro acheté » avec EURNZD (règle 2) et 1er « dollar vendu » (2e si l'achat d'or A est posé)",
       "condition_texte": "EN VEILLE : interdit par la règle 1 tant que la vente d'or (XAUUSD B, dollar acheté) est posée ; si l'ordre d'or est retiré, C serait le 2e pari « euro acheté » (avec le robot) à 0,25 % = 400 EUR",
       "condition": {
         "type": "none"
@@ -89,7 +90,8 @@
         "type": "d1_close_below",
         "level": 1.11
       },
-      "statut": "en_veille"
+      "statut": "en_attente",
+      "note_v7": "Autorisé depuis la sortie du robot EURUSD (stoppé après l'inflation US). Prix 1,1179, entrée 59 pip plus bas. NE PAS acheter au marché. Règle 1 : interdit si USDCAD A est posé (dollar acheté). Attention règle 6 : si un robot EURUSD reprend une vente, retirer l'ordre."
     }
   ],
   "positions_suivies": [],
@@ -113,6 +115,10 @@
     {
       "quand_serveur": "2026-11-13 15:30",
       "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    },
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "10/11 15h30 serveur (14h30 Paris) : inflation US plus forte que prévu (CPI 0,4 % vs 0,3 % ; core 0,3 % vs 0,2 %). Dollar en hausse : EURUSD 1,1210 → 1,1179, or 4069 → 4039, USDCAD 1,4135 → 1,4163. Le robot EURUSD (achat 0,8 @1,12203) a été stoppé à 1,11844 (-258,6 EUR) : plus aucune exposition au dollar."
     }
   ],
   "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
@@ -152,6 +158,7 @@
       "version": 6,
       "decision": "A en veille (règle 1, achat du robot), B annulé (clôture D1 1,12237 > 1,1200), C en veille",
       "resume": "robot structure-bot BUY 0,8 lot @ 1,12203 à 00:46 ; prix 1,1235 à 27 pip de l'entrée A ; CPI US 15h30"
-    }
+    },
+    "2026-11-10 15:40 v7 : robot EURUSD stoppé après CPI ; C autorisé à 0,25 % ; A en veille (règle 1 euro)."
   ]
 }

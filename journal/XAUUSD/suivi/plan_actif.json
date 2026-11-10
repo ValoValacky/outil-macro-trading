@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 14:20",
+  "created": "2026-11-10 15:40",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 5,
+  "version": 6,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -34,8 +34,8 @@
         4145.0
       ],
       "lot_800eur": 0.21,
-      "lot_texte": "BUY LIMIT bouton 0,25 % ≈ 0,11 lot ≈ 400 EUR (1 $ = 89 EUR par lot) ; 2e pari « dollar vendu » avec le robot EURUSD (règle 2 : 400 EUR max) ; swap acheteur -92 EUR par lot et par nuit (≈ -10 EUR/nuit)",
-      "condition_texte": "aucune, MAIS ne pas poser avant 15h30 Paris (inflation américaine 14h30) ; ne pas le poser si le prix est déjà sous 4032 ; ordre en attente, NE PAS acheter au marché",
+      "lot_texte": "BUY LIMIT bouton 0,25 % ≈ 0,11 lot ≈ 400 EUR (achat contre la tendance D1, on garde le petit bouton même si le dollar est libre) ; swap ≈ -10 EUR/nuit",
+      "condition_texte": "Poser seulement si la H4 de 16h00 serveur clôture au-dessus de 4025 et si le prix est encore au-dessus de 4032",
       "condition": {
         "type": "none"
       },
@@ -44,7 +44,8 @@
         "type": "h4_close_below",
         "level": 3990.0
       },
-      "statut": "en_attente"
+      "statut": "en_attente",
+      "note_v6": "Après l'inflation US, l'or est descendu à 4038,86 (6,9 $ au-dessus de l'entrée). Règle ajoutée : attendre la clôture H4 de 15h00 Paris (16h00 serveur). Si elle clôture sous 4025 (plancher cassé), NE RIEN poser. Sinon, poser après 15h30 Paris seulement si le prix est encore au-dessus de 4032. Règle 1 : retirer USDCAD A / or B si cet achat est posé."
     },
     {
       "id": "B",
@@ -68,7 +69,8 @@
         "type": "d1_close_above",
         "level": 4235.0
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut."
     },
     {
       "id": "ancien_A",
@@ -167,6 +169,10 @@
     {
       "quand_serveur": "2026-11-13 15:30",
       "texte": "prix à la production PPI (USD, FORT), 14h30 Paris : aucun nouvel ordre USD de 13h30 à 15h30 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "10/11 15h30 serveur (14h30 Paris) : inflation US plus forte que prévu (CPI 0,4 % vs 0,3 % ; core 0,3 % vs 0,2 %). Dollar en hausse : EURUSD 1,1210 → 1,1179, or 4069 → 4039, USDCAD 1,4135 → 1,4163. Le robot EURUSD (achat 0,8 @1,12203) a été stoppé à 1,11844 (-258,6 EUR) : plus aucune exposition au dollar."
     }
   ],
   "regles": "USD : le robot EURUSD vend du dollar (253 EUR). Acheter l'or = vendre du dollar → 2e pari, 400 EUR maximum (règle 2). Vendre l'or = acheter du dollar → INTERDIT (règle 1). Valeur : 1 $ = 89 EUR par lot. ATR H4 36 $, ATR D1 86 $. Heures en Paris (serveur = Paris + 1 h).",
@@ -200,6 +206,7 @@
       "version": 5,
       "decision": "nouvelle analyse H4 (10/11 après-midi)",
       "resume": "A BUY LIMIT 4032 bas du range (à poser après 15h30 Paris) ; B vente 4195 en veille (règle 1) ; anciens plans clos"
-    }
+    },
+    "2026-11-10 15:40 v6 : après CPI : A maintenu avec un filtre (H4 de 16h serveur au-dessus de 4025) ; B en veille règle 1."
   ]
 }
