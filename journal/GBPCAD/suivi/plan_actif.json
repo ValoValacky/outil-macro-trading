@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 13:10",
+  "created": "2026-11-10 14:20",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-19",
-  "version": 3,
+  "version": 4,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
@@ -44,7 +44,8 @@
         "type": "d1_close_below",
         "level": 1.89
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "note_v4": "Ordre BUY LIMIT 1,89396 retiré par l'utilisatrice le 10/11 après-midi : elle a choisi GBPNZD (même pari « livre achetée », règle 2). Jamais déclenché."
     },
     {
       "id": "B",
@@ -158,6 +159,12 @@
       "version": 3,
       "decision": "A posé (BUY LIMIT 1,89396, 0,84 lot), conforme au plan",
       "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 4,
+      "decision": "A retiré par l'utilisatrice (remplacé par GBPNZD), B toujours en veille",
+      "resume": "plus aucun ordre GBPCAD"
     }
   ]
 }

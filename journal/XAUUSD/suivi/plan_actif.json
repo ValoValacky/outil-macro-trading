@@ -1,30 +1,77 @@
 {
-  "pair": "XAUUSD",
-  "created": "2026-11-10 13:10",
+  "created": "2026-11-10 14:20",
   "created_server_date": "2026-11-10",
-  "valid_until": "2026-11-10",
-  "version": 4,
+  "valid_until": "2026-11-13",
+  "version": 5,
   "pip": 1.0,
   "timeframe": "H4",
-  "bias": "rebond de +249 $ en 4 séances (3870 → 4119, haut du jour 4146,72) arrivé exactement sur la moyenne 200 H4 (4119) et sur le POC hebdomadaire du 19/10 (4121) ; la journée s'est installée au-dessus de la zone de valeur d'hier (3958-4070) ; au-dessus : 4144-4190 (valeur des deux semaines précédentes) puis 4200-4215 (MM100/MM50 D1 + MM20 W1) ; tendance de fond W1 baissière (sommet 5598)",
+  "pair": "XAUUSD",
+  "bias": "D1 baissier de fond (sous les MM50/100/200 D1 4190/4200/4457 et la MM20 W1 4207) ; rebond depuis 3870 (30/10) puis RANGE H4 depuis le 05/11 : double sommet 4146,72 / 4148,44, creux 4025-4054. Prix 4076 au milieu, sous l'EMA200 H4 (4114). Vendre l'or est INTERDIT (règle 1 : le robot EURUSD vend du dollar). Seul côté autorisé : acheter le bas du range, contre la tendance D1, à petit risque.",
   "levels": {
-    "haut_jour": 4146.72,
-    "vah_jour": 4141.0,
-    "poc_jour": 4124.5,
-    "ema200_h4": 4119.1,
-    "porte_singles": 4098.5,
-    "vah_hier": 4070.5,
-    "bas_ib": 4057.74,
-    "poc_nu_04_11": 4041.0,
-    "mm20_h4": 3999.0,
-    "mm100_d1": 4203.1,
-    "mm50_d1": 4214.5,
-    "mm20_w1": 4211.3,
-    "bas_29_10": 3870.07
+    "mm20_w1": 4206.85,
+    "mm100_d1": 4200.42,
+    "mm50_d1": 4190.2,
+    "double_sommet": 4148.44,
+    "poc_semaine_en_cours": 4119.75,
+    "ema200_h4": 4114.16,
+    "ema20_h4": 4087.72,
+    "kijun_h4": 4072.34,
+    "poc_semaine_passee": 4065.75,
+    "ema50_h4": 4058.94,
+    "bas_range": 4025.09,
+    "bas_30_10": 3870.07
   },
   "plans": [
     {
       "id": "A",
+      "nom": "Achat du bas du range H4 (contre-tendance D1)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 4032.0,
+      "sl": 3990.0,
+      "tp": [
+        4110.0,
+        4145.0
+      ],
+      "lot_800eur": 0.21,
+      "lot_texte": "BUY LIMIT bouton 0,25 % ≈ 0,11 lot ≈ 400 EUR (1 $ = 89 EUR par lot) ; 2e pari « dollar vendu » avec le robot EURUSD (règle 2 : 400 EUR max) ; swap acheteur -92 EUR par lot et par nuit (≈ -10 EUR/nuit)",
+      "condition_texte": "aucune, MAIS ne pas poser avant 15h30 Paris (inflation américaine 14h30) ; ne pas le poser si le prix est déjà sous 4032 ; ordre en attente, NE PAS acheter au marché",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture H4 sous 3990 (= SL : le range est cassé par le bas) ; si une clôture D1 passe au-dessus de 4150, le range est cassé par le haut : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 3990.0
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la résistance 4190-4207 (MM50/MM100 D1 + MM20 W1)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 4195.0,
+      "sl": 4235.0,
+      "tp": [
+        4120.0,
+        4065.0
+      ],
+      "lot_800eur": 0.22,
+      "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,11 lot",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que le robot EURUSD est acheté (vendre l'or = acheter du dollar)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 4235",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 4235.0
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "ancien_A",
       "nom": "Achat du repli sur la porte (singles 4097-4100)",
       "side": "buy",
       "type": "limit",
@@ -50,7 +97,7 @@
       "note_v2": "Invalidé : clôture H4 de 04h00 le 06/11 à 4041,63, sous 4054. Ordre jamais posé (aucune perte réelle ; en théorie entrée 4098 puis SL)."
     },
     {
-      "id": "B",
+      "id": "ancien_B",
       "nom": "Vente de la résistance 4200-4215",
       "side": "sell",
       "type": "limit",
@@ -75,7 +122,7 @@
       "note_v4": "Ordre SELL LIMIT 4202,49 (0,14 lot) retiré par l'utilisatrice le 10/11 vers 12h15 Paris, avant l'inflation américaine : plan expirant le soir même + conflit règle 1 sur le dollar (robot EURUSD vendeur de dollar). Jamais déclenché (plus haut 4148,44), aucune perte."
     },
     {
-      "id": "C",
+      "id": "ancien_C",
       "nom": "Vente de la cassure du support du jour",
       "side": "sell",
       "type": "stop",
@@ -106,15 +153,23 @@
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-05 16:30",
-      "texte": "ouverture américaine (début du 2e « magasin » du profil) : pas d'ordre de 16h15 à 16h45"
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT), 14h30 Paris : aucun nouvel ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
     },
     {
-      "quand_serveur": "2026-11-06 15:30",
-      "texte": "emploi américain NFP (USD) : pas d'ordre de 15h00 à 16h00, l'or peut faire 100 $ en quelques minutes"
+      "quand_serveur": "2026-11-11 15:00",
+      "texte": "jour férié aux États-Unis et au Canada : marché plus mince"
+    },
+    {
+      "quand_serveur": "2026-11-12 09:00",
+      "texte": "PIB britannique (GBP, FORT), 8h00 Paris : pas de nouvel ordre GBP de 7h00 à 8h00 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT), 14h30 Paris : aucun nouvel ordre USD de 13h30 à 15h30 Paris"
     }
   ],
-  "regles": "Valeur : 1 $ de mouvement = 89 EUR par lot (1 lot = 100 oz). Thème « dollar » : l'or acheté (A) est l'opposé de USDCAD acheté + EURUSD vendu ; B et C vont dans le même sens que ces deux positions : B et C comptent donc dans le total « dollar plus fort » (~1 400 EUR déjà). Pas d'achat au marché après +249 $ en 4 jours. ATR D1 84 $, ATR H4 37 $. Profil du jour : ne sert qu'à placer les niveaux, aucun test n'a trouvé d'avantage mécanique.",
+  "regles": "USD : le robot EURUSD vend du dollar (253 EUR). Acheter l'or = vendre du dollar → 2e pari, 400 EUR maximum (règle 2). Vendre l'or = acheter du dollar → INTERDIT (règle 1). Valeur : 1 $ = 89 EUR par lot. ATR H4 36 $, ATR D1 86 $. Heures en Paris (serveur = Paris + 1 h).",
   "journal": [
     {
       "date": "2026-11-05",
@@ -139,6 +194,12 @@
       "version": 4,
       "decision": "B retiré par l'utilisatrice, C expiré : plus aucun plan or actif",
       "resume": "or 4074 à 13h18 serveur ; nouvelle analyse nécessaire pour retrader l'or"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 5,
+      "decision": "nouvelle analyse H4 (10/11 après-midi)",
+      "resume": "A BUY LIMIT 4032 bas du range (à poser après 15h30 Paris) ; B vente 4195 en veille (règle 1) ; anciens plans clos"
     }
   ]
 }
