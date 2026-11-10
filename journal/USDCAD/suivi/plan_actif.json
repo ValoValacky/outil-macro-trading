@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 15:40",
+  "created": "2026-11-10 19:05",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 5,
+  "version": 6,
   "pip": 0.0001,
   "pair": "USDCAD",
   "bias": "la correction de 3 semaines (1,4300 → 1,3929) est finie : semaine en forte hausse (+171 pips, clôture 1,41297 au plus haut) après un emploi américain fort et un emploi canadien faible ; prix au-dessus de toutes les moyennes D1. On achète un repli, pas la poursuite.",
@@ -41,8 +41,9 @@
         "type": "d1_close_below",
         "level": 1.399
       },
-      "statut": "en_veille",
-      "note_v5": "Le blocage par le robot a disparu, mais règle 1 : acheter le dollar est incompatible avec l'achat d'or A et EURUSD C (dollar vendu). Reste en veille tant que le côté « dollar vendu » est choisi. Prix 1,4163, entrée 103 pip plus bas."
+      "statut": "en_attente",
+      "note_v5": "Le blocage par le robot a disparu, mais règle 1 : acheter le dollar est incompatible avec l'achat d'or A et EURUSD C (dollar vendu). Reste en veille tant que le côté « dollar vendu » est choisi. Prix 1,4163, entrée 103 pip plus bas.",
+      "note_v6": "Redevient autorisé le 10/11 18h Paris : le côté « dollar vendu » (or A, EURUSD C) est abandonné. BUY LIMIT 1,4060, 0,25 %. Avec la vente d'or D = 2 paris dollar acheté (max)."
     },
     {
       "id": "B",
@@ -130,6 +131,7 @@
       "decision": "A en veille (règle 1 : USD vendu par le robot EURUSD), B toujours en veille",
       "resume": "D1 09/11 clôture 1,41180 (-1 pip) ; prix 1,4126 ; A à 66 pip, jamais touché"
     },
-    "2026-11-10 15:40 v5 : après CPI : A en veille (règle 1, côté dollar vendu choisi), B à revoir sur la clôture D1."
+    "2026-11-10 15:40 v5 : après CPI : A en veille (règle 1, côté dollar vendu choisi), B à revoir sur la clôture D1.",
+    "2026-11-10 19:05 v6 : A réautorisé (côté dollar acheté choisi)."
   ]
 }

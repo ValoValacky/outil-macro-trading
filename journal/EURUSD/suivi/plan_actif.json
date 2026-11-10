@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 15:40",
+  "created": "2026-11-10 19:05",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 7,
+  "version": 8,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "range de 4 semaines 1,1105-1,1273 dans une tendance de fond baissière ; vendredi, l'emploi américain fort a ramené le prix au plancher (1,1131), il remonte aujourd'hui au milieu (1,1193). On vend le haut du range, on ne poursuit rien au milieu.",
@@ -40,7 +40,8 @@
         "level": 1.1277
       },
       "statut": "en_veille",
-      "note_v7": "Toujours en veille, mais maintenant pour l'EURO (règle 1 : EURNZD achète l'euro), plus pour le dollar."
+      "note_v7": "Toujours en veille, mais maintenant pour l'EURO (règle 1 : EURNZD achète l'euro), plus pour le dollar.",
+      "note_v8": "En veille règle 1 (euro acheté via EURNZD). Si l'utilisatrice retire EURNZD, A (SELL LIMIT 1,1262) redevient possible."
     },
     {
       "id": "B",
@@ -90,8 +91,9 @@
         "type": "d1_close_below",
         "level": 1.11
       },
-      "statut": "en_attente",
-      "note_v7": "Autorisé depuis la sortie du robot EURUSD (stoppé après l'inflation US). Prix 1,1179, entrée 59 pip plus bas. NE PAS acheter au marché. Règle 1 : interdit si USDCAD A est posé (dollar acheté). Attention règle 6 : si un robot EURUSD reprend une vente, retirer l'ordre."
+      "statut": "annulé",
+      "note_v7": "Autorisé depuis la sortie du robot EURUSD (stoppé après l'inflation US). Prix 1,1179, entrée 59 pip plus bas. NE PAS acheter au marché. Règle 1 : interdit si USDCAD A est posé (dollar acheté). Attention règle 6 : si un robot EURUSD reprend une vente, retirer l'ordre.",
+      "note_v8": "Annulé le 10/11 18h Paris (jamais posé) : achat contre la tendance D1 (sous MM50/100/200 D1 et MM20 W1) et sous EMA20/50/200 H4 après l'inflation US, prix 1,1153. Une vente EURUSD reste INTERDITE (règle 1) tant que l'ordre d'achat EURNZD (euro acheté) existe."
     }
   ],
   "positions_suivies": [],
@@ -159,6 +161,7 @@
       "decision": "A en veille (règle 1, achat du robot), B annulé (clôture D1 1,12237 > 1,1200), C en veille",
       "resume": "robot structure-bot BUY 0,8 lot @ 1,12203 à 00:46 ; prix 1,1235 à 27 pip de l'entrée A ; CPI US 15h30"
     },
-    "2026-11-10 15:40 v7 : robot EURUSD stoppé après CPI ; C autorisé à 0,25 % ; A en veille (règle 1 euro)."
+    "2026-11-10 15:40 v7 : robot EURUSD stoppé après CPI ; C autorisé à 0,25 % ; A en veille (règle 1 euro).",
+    "2026-11-10 19:05 v8 : C annulé (contre-tendance) ; vente EURUSD bloquée par EURNZD (règle 1)."
   ]
 }

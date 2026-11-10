@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 15:40",
+  "created": "2026-11-10 19:05",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 6,
+  "version": 7,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -44,8 +44,9 @@
         "type": "h4_close_below",
         "level": 3990.0
       },
-      "statut": "en_attente",
-      "note_v6": "Après l'inflation US, l'or est descendu à 4038,86 (6,9 $ au-dessus de l'entrée). Règle ajoutée : attendre la clôture H4 de 15h00 Paris (16h00 serveur). Si elle clôture sous 4025 (plancher cassé), NE RIEN poser. Sinon, poser après 15h30 Paris seulement si le prix est encore au-dessus de 4032. Règle 1 : retirer USDCAD A / or B si cet achat est posé."
+      "statut": "annulé",
+      "note_v6": "Après l'inflation US, l'or est descendu à 4038,86 (6,9 $ au-dessus de l'entrée). Règle ajoutée : attendre la clôture H4 de 15h00 Paris (16h00 serveur). Si elle clôture sous 4025 (plancher cassé), NE RIEN poser. Sinon, poser après 15h30 Paris seulement si le prix est encore au-dessus de 4032. Règle 1 : retirer USDCAD A / or B si cet achat est posé.",
+      "note_v7": "Annulé à 18h Paris sur la relecture demandée par l'utilisatrice (jamais posé) : après l'inflation US, la H4 de 16h serveur est descendue à 4013,45 (sous le plancher 4025), prix 4021, sous EMA20/50/200 H4, tendance D1 baissière. Acheter = contre toutes les tendances."
     },
     {
       "id": "B",
@@ -70,7 +71,8 @@
         "level": 4235.0
       },
       "statut": "en_veille",
-      "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut."
+      "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut.",
+      "note_v7": "Toujours possible plus tard (même sens que D) ; en veille, prix trop loin (4195)."
     },
     {
       "id": "ancien_A",
@@ -150,6 +152,31 @@
       "statut": "annulé",
       "note_v2": "Armé par la clôture H4 4041,63. Entrée théorique 4040 touchée à 08h00 (plus bas 4035,80) mais rien posé chez le courtier ; le prix est revenu à 4067. Peut être posé en SELL STOP 4040 après 16h00 seulement (NFP), tant que le prix reste au-dessus de 4040.",
       "note_v4": "Expiré le 10/11 sans armement (aucune clôture H4 sous 4054) ; interdit règle 1 de toute façon."
+    },
+    {
+      "id": "D",
+      "nom": "Vente du retour sur le plancher cassé (avec la tendance D1)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 4055.0,
+      "sl": 4090.0,
+      "tp": [
+        3975.0,
+        3900.0
+      ],
+      "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,13 lot ≈ 400 EUR (35 $ x ~89 EUR/lot) ; 1er pari « dollar acheté » (règle 1 OK depuis l'annulation des plans « dollar vendu »)",
+      "condition_texte": "Poser seulement si la H4 qui clôture à 19h00 Paris (20h00 serveur) le 10/11, ou une suivante, clôture sous 4025",
+      "condition": {
+        "type": "h4_close_below",
+        "level": 4025.0
+      },
+      "invalidation_texte": "Clôture H4 au-dessus de 4090 avant déclenchement",
+      "invalidation": {
+        "type": "h4_close_above",
+        "level": 4090.0
+      },
+      "statut": "en_attente",
+      "note_v7": "Créé le 10/11 18h Paris : 4055 = plancher cassé 4025-4060 + EMA50 H4 4056. SL 4090 au-dessus de l'ouverture de la H4 de l'inflation (4087). TP 3975 (creux 23/10), 3900 (creux 02-03/11)."
     }
   ],
   "positions_suivies": [],
@@ -207,6 +234,7 @@
       "decision": "nouvelle analyse H4 (10/11 après-midi)",
       "resume": "A BUY LIMIT 4032 bas du range (à poser après 15h30 Paris) ; B vente 4195 en veille (règle 1) ; anciens plans clos"
     },
-    "2026-11-10 15:40 v6 : après CPI : A maintenu avec un filtre (H4 de 16h serveur au-dessus de 4025) ; B en veille règle 1."
+    "2026-11-10 15:40 v6 : après CPI : A maintenu avec un filtre (H4 de 16h serveur au-dessus de 4025) ; B en veille règle 1.",
+    "2026-11-10 19:05 v7 : A annulé (plancher percé, contre-tendance) ; nouveau D SELL LIMIT 4055 / SL 4090 / TP 3975-3900 si H4 clôture < 4025."
   ]
 }
