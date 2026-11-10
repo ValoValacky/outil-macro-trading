@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:55",
+  "created": "2026-11-10 13:10",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
@@ -34,7 +34,7 @@
         1.915
       ],
       "lot_800eur": 1.69,
-      "lot_texte": "BUY LIMIT, PAS d'achat au marché : 0,84 lot = bouton 0,25 % de Magic Panel (≈ 399 EUR) ; 2e pari « livre achetée » avec GBPAUD (règle 2 : 400 EUR max)",
+      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,84 lot @ 1,89396, SL 1,8865, TP 1,9035 ; risque ≈ 395 EUR = 0,25 % ; 2e pari « livre achetée » avec GBPAUD (règle 2 : maximum atteint)",
       "condition_texte": "aucune : ordre en attente posé d'avance à 1,8940 (41 pip sous le prix du 10/11 à 11h Paris) ; ne pas le poser si le prix est déjà sous 1,8940 ; pas de nouvel ordre jeudi 12/11 de 7h00 à 8h00 Paris (PIB britannique 8h00 Paris)",
       "condition": {
         "type": "none"
@@ -152,6 +152,12 @@
       "version": 2,
       "decision": "nouveau plan après la cassure du range (analyse D1 du 10/11)",
       "resume": "A BUY LIMIT 1,8940 retest (en_attente) ; B SELL STOP 1,8870 si cassure ratée (en_veille, règle 1) ; anciens A/B annulés"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 3,
+      "decision": "A posé (BUY LIMIT 1,89396, 0,84 lot), conforme au plan",
+      "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
     }
   ]
 }

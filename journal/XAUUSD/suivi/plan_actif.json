@@ -1,9 +1,9 @@
 {
   "pair": "XAUUSD",
-  "created": "2026-11-10 11:00",
+  "created": "2026-11-10 13:10",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-10",
-  "version": 3,
+  "version": 4,
   "pip": 1.0,
   "timeframe": "H4",
   "bias": "rebond de +249 $ en 4 séances (3870 → 4119, haut du jour 4146,72) arrivé exactement sur la moyenne 200 H4 (4119) et sur le POC hebdomadaire du 19/10 (4121) ; la journée s'est installée au-dessus de la zone de valeur d'hier (3958-4070) ; au-dessus : 4144-4190 (valeur des deux semaines précédentes) puis 4200-4215 (MM100/MM50 D1 + MM20 W1) ; tendance de fond W1 baissière (sommet 5598)",
@@ -71,7 +71,8 @@
         "type": "d1_close_above",
         "level": 4237.0
       },
-      "statut": "pose_en_attente_de_fill"
+      "statut": "annulé",
+      "note_v4": "Ordre SELL LIMIT 4202,49 (0,14 lot) retiré par l'utilisatrice le 10/11 vers 12h15 Paris, avant l'inflation américaine : plan expirant le soir même + conflit règle 1 sur le dollar (robot EURUSD vendeur de dollar). Jamais déclenché (plus haut 4148,44), aucune perte."
     },
     {
       "id": "C",
@@ -97,8 +98,9 @@
         "type": "d1_close_above",
         "level": 4147.0
       },
-      "statut": "en_veille",
-      "note_v2": "Armé par la clôture H4 4041,63. Entrée théorique 4040 touchée à 08h00 (plus bas 4035,80) mais rien posé chez le courtier ; le prix est revenu à 4067. Peut être posé en SELL STOP 4040 après 16h00 seulement (NFP), tant que le prix reste au-dessus de 4040."
+      "statut": "annulé",
+      "note_v2": "Armé par la clôture H4 4041,63. Entrée théorique 4040 touchée à 08h00 (plus bas 4035,80) mais rien posé chez le courtier ; le prix est revenu à 4067. Peut être posé en SELL STOP 4040 après 16h00 seulement (NFP), tant que le prix reste au-dessus de 4040.",
+      "note_v4": "Expiré le 10/11 sans armement (aucune clôture H4 sous 4054) ; interdit règle 1 de toute façon."
     }
   ],
   "positions_suivies": [],
@@ -131,6 +133,12 @@
       "version": 3,
       "decision": "C en veille (règle 1), B posé mais expire ce soir : à retirer",
       "resume": "D1 09/11 clôture 4139,54, prix 4102 ; ordre B à 100 $ du prix ; CPI US 15h30"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 4,
+      "decision": "B retiré par l'utilisatrice, C expiré : plus aucun plan or actif",
+      "resume": "or 4074 à 13h18 serveur ; nouvelle analyse nécessaire pour retrader l'or"
     }
   ]
 }

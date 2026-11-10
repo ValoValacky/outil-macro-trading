@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:00",
+  "created": "2026-11-10 13:10",
   "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 5,
+  "version": 6,
   "pip": 0.0001,
   "pair": "EURNZD",
   "bias": "large range de 3 mois 1,950-2,017 ; la semaine dernière a fait +313 pips jusqu'au plafond 2,0111-2,0172 (4 sommets depuis septembre), puis le prix est revenu au milieu (1,9934). La Foule vend les deux devises à l'extrême : pas de camp clair. On vend le plafond, et l'achat du repli reste en veille (règle 1).",
@@ -45,15 +45,15 @@
       "nom": "Achat du repli sur la zone de valeur",
       "side": "buy",
       "type": "limit",
-      "entry": 1.9875,
-      "sl": 1.9765,
+      "entry": 1.98748,
+      "sl": 1.97749,
       "tp": [
-        2.004,
+        2.00403,
         2.016
       ],
       "lot_800eur": 1.43,
-      "lot_texte": "0,72 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE (décision de l'utilisatrice) : le blocage règle 1 est levé tant qu'aucune vente d'euro n'est posée ; autorisé comme 2e pari « euro acheté » (avec le robot EURUSD) à 0,72 lot = 0,25 % (400 EUR) ; pas d'ordre de 14h30 à 16h30 (CPI US)",
+      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,79 lot, SL 1,97749 (100 pip au lieu de 110), TP 2,00403 ; risque ≈ 399 EUR = 0,25 % ; 2e pari « euro acheté » avec le robot EURUSD (règle 2 : maximum atteint)",
+      "condition_texte": "aucune : ordre posé le 10/11 ; tant qu'il est posé, aucune vente d'euro (règle 1)",
       "condition": {
         "type": "none"
       },
@@ -62,7 +62,7 @@
         "type": "d1_close_below",
         "level": 1.9765
       },
-      "statut": "en_veille"
+      "statut": "en_attente"
     }
   ],
   "positions_suivies": [],
@@ -119,6 +119,12 @@
       "version": 5,
       "decision": "A en veille (règle 1, achat EURUSD du robot) ; B reste en veille mais redevient autorisé (2e pari euro acheté)",
       "resume": "prix 1,9934 ; plus bas 1,98946 à 20 pip de l'entrée B ; A à 216 pip"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 6,
+      "decision": "B posé (BUY LIMIT 1,98748, 0,79 lot, SL 1,97749)",
+      "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
     }
   ]
 }
