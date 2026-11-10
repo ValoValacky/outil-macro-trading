@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-09 14:55",
-  "created_server_date": "2026-11-09",
+  "created": "2026-11-10 11:00",
+  "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 3,
+  "version": 4,
   "pip": 0.0001,
   "pair": "USDCAD",
   "bias": "la correction de 3 semaines (1,4300 → 1,3929) est finie : semaine en forte hausse (+171 pips, clôture 1,41297 au plus haut) après un emploi américain fort et un emploi canadien faible ; prix au-dessus de toutes les moyennes D1. On achète un repli, pas la poursuite.",
@@ -32,7 +32,7 @@
       ],
       "lot_800eur": 1.8,
       "lot_texte": "0,90 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » (or) et 2e « huard vendu » si GBPCAD A est posé",
-      "condition_texte": "aucune (ordre posé d'avance sur 1,4056-1,4069 : EMA200 H4 + ancien sommet du 28/10)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le dollar US est déjà vendu par le robot EURUSD (achat 0,8 lot). Redevient possible si le robot sort.",
       "condition": {
         "type": "none"
       },
@@ -41,7 +41,7 @@
         "type": "d1_close_below",
         "level": 1.399
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -117,6 +117,12 @@
       "version": 3,
       "decision": "nouveau plan de la semaine (analyse du lundi)",
       "resume": "A Achat du repli sur l'ancienne résistance (en_attente) ; B Achat de la cassure du haut de vendredi (en_veille)"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 4,
+      "decision": "A en veille (règle 1 : USD vendu par le robot EURUSD), B toujours en veille",
+      "resume": "D1 09/11 clôture 1,41180 (-1 pip) ; prix 1,4126 ; A à 66 pip, jamais touché"
     }
   ]
 }

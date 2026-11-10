@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-09 14:55",
-  "created_server_date": "2026-11-09",
+  "created": "2026-11-10 11:00",
+  "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "pair": "EURNZD",
   "bias": "large range de 3 mois 1,950-2,017 ; la semaine dernière a fait +313 pips jusqu'au plafond 2,0111-2,0172 (4 sommets depuis septembre), puis le prix est revenu au milieu (1,9934). La Foule vend les deux devises à l'extrême : pas de camp clair. On vend le plafond, et l'achat du repli reste en veille (règle 1).",
@@ -29,7 +29,7 @@
       ],
       "lot_800eur": 1.9,
       "lot_texte": "0,95 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "aucune (ordre posé d'avance sous les 4 sommets 2,0111 / 2,0149 / 2,0164 / 2,0172)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le robot structure-bot a acheté EURUSD cette nuit (0,8 lot, EUR acheté / USD vendu). Redevient possible si le robot sort.",
       "condition": {
         "type": "none"
       },
@@ -38,7 +38,7 @@
         "type": "d1_close_above",
         "level": 2.0235
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -53,7 +53,7 @@
       ],
       "lot_800eur": 1.43,
       "lot_texte": "0,72 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : interdit par la règle 1 si un plan « euro vendu » est posé (EURUSD A, EURJPY A, EURNZD A)",
+      "condition_texte": "EN VEILLE (décision de l'utilisatrice) : le blocage règle 1 est levé tant qu'aucune vente d'euro n'est posée ; autorisé comme 2e pari « euro acheté » (avec le robot EURUSD) à 0,72 lot = 0,25 % (400 EUR) ; pas d'ordre de 14h30 à 16h30 (CPI US)",
       "condition": {
         "type": "none"
       },
@@ -113,6 +113,12 @@
       "version": 4,
       "decision": "nouveau plan de la semaine (analyse du lundi)",
       "resume": "A Vente du plafond 2,0111-2,0172 (en_attente) ; B Achat du repli sur la zone de valeur (en_veille)"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 5,
+      "decision": "A en veille (règle 1, achat EURUSD du robot) ; B reste en veille mais redevient autorisé (2e pari euro acheté)",
+      "resume": "prix 1,9934 ; plus bas 1,98946 à 20 pip de l'entrée B ; A à 216 pip"
     }
   ]
 }

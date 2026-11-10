@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-09 14:55",
-  "created_server_date": "2026-11-09",
+  "created": "2026-11-10 11:00",
+  "created_server_date": "2026-11-10",
   "valid_until": "2026-11-13",
-  "version": 5,
+  "version": 6,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "range de 4 semaines 1,1105-1,1273 dans une tendance de fond baissière ; vendredi, l'emploi américain fort a ramené le prix au plancher (1,1131), il remonte aujourd'hui au milieu (1,1193). On vend le haut du range, on ne poursuit rien au milieu.",
@@ -30,7 +30,7 @@
       ],
       "lot_800eur": 1.88,
       "lot_texte": "0,94 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » tant que la vente d'or B est posée",
-      "condition_texte": "aucune (ordre posé d'avance sous les sommets 1,1268-1,1273)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le robot structure-bot a acheté EURUSD cette nuit (0,8 lot, EUR acheté / USD vendu) ; vendre l'euro ici = règle 1 cassée. Redevient possible si la position du robot est fermée.",
       "condition": {
         "type": "none"
       },
@@ -39,7 +39,7 @@
         "type": "d1_close_above",
         "level": 1.1277
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -64,7 +64,8 @@
         "type": "d1_close_above",
         "level": 1.12
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v6": "Invalidé : clôture D1 du 09/11 à 1,12237, au-dessus de 1,1200."
     },
     {
       "id": "C",
@@ -79,7 +80,7 @@
       ],
       "lot_800eur": 2.77,
       "lot_texte": "1,38 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : interdit par la règle 1 tant que la vente d'or (dollar acheté) ou une vente EUR est posée",
+      "condition_texte": "EN VEILLE : interdit par la règle 1 tant que la vente d'or (XAUUSD B, dollar acheté) est posée ; si l'ordre d'or est retiré, C serait le 2e pari « euro acheté » (avec le robot) à 0,25 % = 400 EUR",
       "condition": {
         "type": "none"
       },
@@ -145,6 +146,12 @@
       "version": 5,
       "decision": "nouveau plan de la semaine (analyse du lundi)",
       "resume": "A Vente du haut du range (en_attente) ; B Vente de la cassure du plancher (en_veille) ; C Achat sur le plancher (contre-tendance) (en_veille)"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 6,
+      "decision": "A en veille (règle 1, achat du robot), B annulé (clôture D1 1,12237 > 1,1200), C en veille",
+      "resume": "robot structure-bot BUY 0,8 lot @ 1,12203 à 00:46 ; prix 1,1235 à 27 pip de l'entrée A ; CPI US 15h30"
     }
   ]
 }

@@ -112,7 +112,7 @@ def simulate(p, arm_time):
 print("\n--- 2. Les plans, un par un ---")
 for p in plan["plans"]:
     if p["statut"] == "annulé":
-        print(f"\n[Plan {p['id']}] {p['nom']} : ANNULÉ ({p.get('note_v2') or p.get('note_v3') or ''})"); continue
+        print(f"\n[Plan {p['id']}] {p['nom']} : ANNULÉ ({next((p[k] for k in sorted((k for k in p if k.startswith('note_v')), key=lambda k: int(k[6:]) if k[6:].isdigit() else 0, reverse=True)), '')})"); continue
     print(f"\n[Plan {p['id']}] {p['nom']} : {p['side'].upper()} {p['type'].upper()} {p['entry']:.5f} | SL {p['sl']:.5f} | TP {', '.join(f'{x:.4f}' for x in p['tp'])} | lot {p.get('lot_texte', str(p['lot_800eur']) + ' (800 EUR)')} | statut enregistre : {p['statut']}")
     ok, det = cond_met(p["condition"]); print(f"   condition d'armement ({p['condition_texte']}) -> {det}")
     iv, det2 = cond_met(p["invalidation"]); print(f"   invalidation ({p['invalidation_texte']}) -> {det2}")

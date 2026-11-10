@@ -1,0 +1,122 @@
+{
+  "created": "2026-11-09 14:55",
+  "created_server_date": "2026-11-09",
+  "valid_until": "2026-11-13",
+  "version": 3,
+  "pip": 0.0001,
+  "pair": "USDCAD",
+  "bias": "la correction de 3 semaines (1,4300 → 1,3929) est finie : semaine en forte hausse (+171 pips, clôture 1,41297 au plus haut) après un emploi américain fort et un emploi canadien faible ; prix au-dessus de toutes les moyennes D1. On achète un repli, pas la poursuite.",
+  "levels": {
+    "plancher_semaine": 1.39294,
+    "haut_zone_valeur": 1.4,
+    "mm50_d1": 1.40464,
+    "ema200_h4": 1.40557,
+    "ancien_haut_28_10": 1.40685,
+    "mm20_d1": 1.40719,
+    "haut_vendredi": 1.41376,
+    "poc_nu_12_10": 1.42118,
+    "sommets_octobre": 1.42998
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du repli sur l'ancienne résistance",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.406,
+      "sl": 1.399,
+      "tp": [
+        1.4135,
+        1.421,
+        1.429
+      ],
+      "lot_800eur": 1.8,
+      "lot_texte": "0,90 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » (or) et 2e « huard vendu » si GBPCAD A est posé",
+      "condition_texte": "aucune (ordre posé d'avance sur 1,4056-1,4069 : EMA200 H4 + ancien sommet du 28/10)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,3990 (retour dans la zone de valeur de la semaine dernière)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.399
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la cassure du haut de vendredi",
+      "side": "buy",
+      "type": "stop",
+      "entry": 1.415,
+      "sl": 1.4075,
+      "tp": [
+        1.421,
+        1.429
+      ],
+      "lot_800eur": 1.68,
+      "lot_texte": "0,84 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "seulement après une clôture D1 au-dessus de 1,4140",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.414
+      },
+      "invalidation_texte": "clôture D1 sous 1,4040",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.404
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-10 11:00",
+      "texte": "Waller (Fed) parle (USD, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    },
+    {
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-12 21:30",
+      "texte": "Mme Lagarde parle (EUR, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    }
+  ],
+  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "A achat 1,3950 préféré, B vente après clôture D1 sous 1,3930"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan A déclenché",
+      "resume": "BUY 4,97 lot @ 1,39499 ouvert à 11h35 par l'utilisatrice (Magic Panel)"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 2,
+      "decision": "A terminé au TP1 (+1 416,67 EUR), B annulé (clôture D1 1,40185 > 1,4016) ; plan expire ce soir",
+      "resume": "nouvel achat MagicPanel 1,31 lot @ 1,4065 à 14h01, hors plan, 1h30 avant NFP + emploi canadien"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "nouveau plan de la semaine (analyse du lundi)",
+      "resume": "A Achat du repli sur l'ancienne résistance (en_attente) ; B Achat de la cassure du haut de vendredi (en_veille)"
+    }
+  ]
+}

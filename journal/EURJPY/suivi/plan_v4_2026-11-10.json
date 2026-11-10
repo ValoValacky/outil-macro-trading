@@ -1,0 +1,121 @@
+{
+  "created": "2026-11-09 14:55",
+  "created_server_date": "2026-11-09",
+  "valid_until": "2026-11-13",
+  "version": 4,
+  "pip": 0.01,
+  "pair": "EURJPY",
+  "bias": "tendance de fond baissière (sommet 187,95 en avril), range D1 de 3 semaines 175,07-178,48 ; le rebond de la semaine dernière a été repoussé sous la MM50 D1 (178,43). La Foule vend l'euro et achète le yen : on vend les rebonds.",
+  "levels": {
+    "plancher_250j": 175.068,
+    "bas_vendredi": 176.152,
+    "poc_semaine": 176.785,
+    "mm20_d1": 176.785,
+    "ema200_h4": 177.626,
+    "haut_zone_valeur": 177.8,
+    "mm50_d1": 178.433,
+    "haut_semaine": 178.475,
+    "ema200_d1": 181.231
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du rebond sous la MM50 D1",
+      "side": "sell",
+      "type": "limit",
+      "entry": 178.3,
+      "sl": 179.2,
+      "tp": [
+        176.8,
+        175.2
+      ],
+      "lot_800eur": 1.59,
+      "lot_texte": "0,79 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "aucune (ordre posé d'avance sous MM50 D1 178,43 et le haut de la semaine 178,48)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 179,20",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 179.2
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure du plancher",
+      "side": "sell",
+      "type": "stop",
+      "entry": 174.8,
+      "sl": 175.8,
+      "tp": [
+        173.5,
+        172.0
+      ],
+      "lot_800eur": 1.4,
+      "lot_texte": "0,70 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "seulement après une clôture D1 sous 175,00",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 175.0
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 176,80",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 176.8
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-10 11:00",
+      "texte": "Waller (Fed) parle (USD, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    },
+    {
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-12 21:30",
+      "texte": "Mme Lagarde parle (EUR, moyen)"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+    }
+  ],
+  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
+  "journal": [
+    {
+      "date": "2026-11-03",
+      "version": 1,
+      "decision": "plan initial",
+      "resume": "A vente du rebond 177,90, B vente de la cassure sous 175,07"
+    },
+    {
+      "date": "2026-11-04",
+      "version": 2,
+      "decision": "A et B annulés, A2 ajouté",
+      "resume": "EURJPY 178,30 (+81 pip aujourd'hui) : entrée 177,90 dépassée, B invalidé par la clôture D1 à 177,59"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "tous les plans expirés (bilan de semaine)",
+      "resume": "plan expiré le 06/11 (A2 jamais atteint, à 38 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "nouveau plan de la semaine (analyse du lundi)",
+      "resume": "A Vente du rebond sous la MM50 D1 (en_attente) ; B Vente de la cassure du plancher (en_veille)"
+    }
+  ]
+}
