@@ -1,0 +1,101 @@
+{
+  "created": "2026-11-10 14:20",
+  "created_server_date": "2026-11-10",
+  "valid_until": "2026-11-13",
+  "version": 1,
+  "pip": 0.0001,
+  "timeframe": "H4",
+  "pair": "GBPNZD",
+  "bias": "tendance D1 haussière (plus haut de l'année 2,41794 le 06/11, toutes les MM D1 montantes) ; en H4 le repli a cassé le creux du 05/11 (2,38458 → 2,38110 ce matin) : correction à court terme dans une tendance de fond haussière. On achète le repli sur 2,3664-2,3720 (ancien plafond d'octobre + POC nu 2,36985 + bas du nuage H4 2,3719), pas au prix actuel.",
+  "levels": {
+    "plus_haut_annee": 2.41794,
+    "kijun_h4": 2.39952,
+    "ema20_h4": 2.39227,
+    "ema50_h4": 2.38749,
+    "bas_10_11": 2.3811,
+    "ema100_h4": 2.37748,
+    "bas_nuage_h4": 2.37191,
+    "poc_nu_26_10": 2.36985,
+    "ancien_plafond": 2.36661,
+    "ema200_h4": 2.36349,
+    "bas_27_10": 2.3355
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du repli sur l'ancien plafond (ordre posé)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 2.37,
+      "sl": 2.354,
+      "tp": [
+        2.395,
+        2.416
+      ],
+      "lot_800eur": 1.0,
+      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,50 lot = 0,25 % (≈ 402 EUR) ; TP posé 2,3950 seulement (2e objectif 2,4160 à gérer à la main) ; 2e pari « livre achetée » (avec GBPAUD) et 2e « kiwi vendu » (avec EURNZD) : maximum de la règle 2 atteint sur GBP et NZD",
+      "condition_texte": "aucune : ordre en attente posé le 10/11 (prix 2,3846, 146 pip au-dessus de l'entrée)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture H4 sous 2,3540 (= SL : l'ancien plafond et l'EMA200 H4 sont perdus)",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 2.354
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Rachat de la reprise (cassure de la Kijun H4)",
+      "side": "buy",
+      "type": "stop",
+      "entry": 2.4005,
+      "sl": 2.3805,
+      "tp": [
+        2.4175
+      ],
+      "lot_800eur": 0.8,
+      "lot_texte": "BUY STOP 0,40 lot = 0,25 %",
+      "condition_texte": "EN VEILLE : INTERDIT règle 2 tant que A est posé (ce serait le 3e pari « livre achetée ») ; documenté seulement si A est retiré",
+      "condition": {
+        "type": "h4_close_above",
+        "level": 2.3995
+      },
+      "invalidation_texte": "clôture H4 sous 2,3800",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 2.38
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT), 14h30 Paris : aucun nouvel ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
+    },
+    {
+      "quand_serveur": "2026-11-11 15:00",
+      "texte": "jour férié aux États-Unis et au Canada : marché plus mince"
+    },
+    {
+      "quand_serveur": "2026-11-12 09:00",
+      "texte": "PIB britannique (GBP, FORT), 8h00 Paris : pas de nouvel ordre GBP de 7h00 à 8h00 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "prix à la production PPI (USD, FORT), 14h30 Paris : aucun nouvel ordre USD de 13h30 à 15h30 Paris"
+    }
+  ],
+  "regles": "GBP : GBPAUD + GBPNZD A = 2 paris (≈ 934 EUR) : aucun 3e achat de livre (règle 2), aucune vente de livre (règle 1). NZD : EURNZD B + GBPNZD A = 2 ventes de kiwi : maximum atteint. Heures en Paris (serveur = Paris + 1 h).",
+  "journal": [
+    {
+      "date": "2026-11-10",
+      "version": 1,
+      "decision": "plan initial H4 (analyse du 10/11)",
+      "resume": "A BUY LIMIT 2,3700 posé par l'utilisatrice (0,50 lot, SL 2,3540, TP 2,3950) ; B en veille (règle 2) ; GBPCAD A retiré au profit de GBPNZD"
+    }
+  ]
+}

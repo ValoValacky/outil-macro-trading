@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 19:05",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-11 11:15",
+  "created_server_date": "2026-11-11",
   "valid_until": "2026-11-13",
-  "version": 7,
+  "version": 8,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -61,7 +61,7 @@
       ],
       "lot_800eur": 0.22,
       "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,11 lot",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que le robot EURUSD est acheté (vendre l'or = acheter du dollar)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e pari dollar acheté après USDCAD A et la vente d'or D) et ce serait une 2e vente d'or en plus de D.",
       "condition": {
         "type": "none"
       },
@@ -72,7 +72,8 @@
       },
       "statut": "en_veille",
       "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut.",
-      "note_v7": "Toujours possible plus tard (même sens que D) ; en veille, prix trop loin (4195)."
+      "note_v7": "Toujours possible plus tard (même sens que D) ; en veille, prix trop loin (4195).",
+      "note_v8": "11/11 : raison mise à jour (robot EURUSD sorti)."
     },
     {
       "id": "ancien_A",
@@ -164,7 +165,7 @@
         3975.0,
         3900.0
       ],
-      "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,13 lot ≈ 400 EUR (35 $ x ~89 EUR/lot) ; 1er pari « dollar acheté » (règle 1 OK depuis l'annulation des plans « dollar vendu »)",
+      "lot_texte": "SELL 0,12 lot réel = 0,24 % (≈ 377 EUR jusqu'au SL) ; plan 0,13 lot",
       "condition_texte": "Poser seulement si la H4 qui clôture à 19h00 Paris (20h00 serveur) le 10/11, ou une suivante, clôture sous 4025",
       "condition": {
         "type": "h4_close_below",
@@ -175,11 +176,21 @@
         "type": "h4_close_above",
         "level": 4090.0
       },
-      "statut": "en_attente",
-      "note_v7": "Créé le 10/11 18h Paris : 4055 = plancher cassé 4025-4060 + EMA50 H4 4056. SL 4090 au-dessus de l'ouverture de la H4 de l'inflation (4087). TP 3975 (creux 23/10), 3900 (creux 02-03/11)."
+      "statut": "déclenché",
+      "note_v7": "Créé le 10/11 18h Paris : 4055 = plancher cassé 4025-4060 + EMA50 H4 4056. SL 4090 au-dessus de l'ouverture de la H4 de l'inflation (4087). TP 3975 (creux 23/10), 3900 (creux 02-03/11).",
+      "note_v8": "11/11 : ordre exécuté à 07h15 serveur (06h15 Paris) à 4055,04. La condition « clôture H4 sous 4025 » n'était PAS remplie : posé sans le filtre. On gère la position telle quelle (SL 4090)."
     }
   ],
-  "positions_suivies": [],
+  "positions_suivies": [
+    {
+      "ticket": 581710100,
+      "plan": "D",
+      "lot": 0.12,
+      "entry": 4055.04,
+      "sl": 4090.0,
+      "tp": 3975.0
+    }
+  ],
   "evenements": [
     {
       "quand_serveur": "2026-11-10 15:30",
@@ -235,6 +246,12 @@
       "resume": "A BUY LIMIT 4032 bas du range (à poser après 15h30 Paris) ; B vente 4195 en veille (règle 1) ; anciens plans clos"
     },
     "2026-11-10 15:40 v6 : après CPI : A maintenu avec un filtre (H4 de 16h serveur au-dessus de 4025) ; B en veille règle 1.",
-    "2026-11-10 19:05 v7 : A annulé (plancher percé, contre-tendance) ; nouveau D SELL LIMIT 4055 / SL 4090 / TP 3975-3900 si H4 clôture < 4025."
+    "2026-11-10 19:05 v7 : A annulé (plancher percé, contre-tendance) ; nouveau D SELL LIMIT 4055 / SL 4090 / TP 3975-3900 si H4 clôture < 4025.",
+    {
+      "date": "2026-11-11",
+      "version": 8,
+      "decision": "D déclenché (SELL 0,12 lot @4055,04 posé sans attendre le filtre H4) ; B en veille règle 2",
+      "resume": "Position réelle ouverte le 11/11 07h15 serveur à 4055,04 (SL 4090, TP 3975), +55 EUR ; aucune clôture H4 sous 4025 n'avait eu lieu (filtre non respecté)"
+    }
   ]
 }

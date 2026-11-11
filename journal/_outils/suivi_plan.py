@@ -113,7 +113,7 @@ print("\n--- 2. Les plans, un par un ---")
 for p in plan["plans"]:
     if p["statut"] == "annulé":
         print(f"\n[Plan {p['id']}] {p['nom']} : ANNULÉ ({next((p[k] for k in sorted((k for k in p if k.startswith('note_v')), key=lambda k: int(k[6:]) if k[6:].isdigit() else 0, reverse=True)), '')})"); continue
-    print(f"\n[Plan {p['id']}] {p['nom']} : {p['side'].upper()} {p['type'].upper()} {p['entry']:.5f} | SL {p['sl']:.5f} | TP {', '.join(f'{x:.4f}' for x in p['tp'])} | lot {p.get('lot_texte', str(p['lot_800eur']) + ' (800 EUR)')} | statut enregistre : {p['statut']}")
+    print(f"\n[Plan {p['id']}] {p['nom']} : {p['side'].upper()} {p['type'].upper()} {p['entry']:.5f} | SL {p['sl']:.5f} | TP {', '.join(f'{x:.4f}' for x in p['tp'])} | lot {p.get('lot_texte') or (str(p['lot_800eur']) + ' (800 EUR)' if 'lot_800eur' in p else (str(p.get('lot', '?')) + ' lot'))} | statut enregistre : {p['statut']}")
     ok, det = cond_met(p["condition"]); print(f"   condition d'armement ({p['condition_texte']}) -> {det}")
     iv, det2 = cond_met(p["invalidation"]); print(f"   invalidation ({p['invalidation_texte']}) -> {det2}")
     arm = None
@@ -178,5 +178,5 @@ for c in sorted(ccy):
 print("   (plan écrit avec le COT du 27/10 ; un nouveau rapport arrive en général le vendredi soir ou samedi)")
 print("\nÉvénements prévus dans le plan :", " | ".join(f"{e['quand_serveur']} {e['texte']}" for e in plan.get("evenements", [])))
 print("Règles du plan :", plan.get("regles", ""))
-print("Journal du plan :", " ; ".join(f"{j['date']} v{j['version']} {j['decision']}" for j in plan["journal"]))
+print("Journal du plan :", " ; ".join((f"{j.get('date', '')} v{j.get('version', '')} {j.get('decision', '')}" if isinstance(j, dict) else str(j)) for j in plan.get("journal", [])))
 mt5.shutdown()

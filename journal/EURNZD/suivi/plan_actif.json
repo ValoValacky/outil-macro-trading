@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 13:10",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-11 11:15",
+  "created_server_date": "2026-11-11",
   "valid_until": "2026-11-13",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "pair": "EURNZD",
   "bias": "large range de 3 mois 1,950-2,017 ; la semaine dernière a fait +313 pips jusqu'au plafond 2,0111-2,0172 (4 sommets depuis septembre), puis le prix est revenu au milieu (1,9934). La Foule vend les deux devises à l'extrême : pas de camp clair. On vend le plafond, et l'achat du repli reste en veille (règle 1).",
@@ -29,7 +29,7 @@
       ],
       "lot_800eur": 1.9,
       "lot_texte": "0,95 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le robot structure-bot a acheté EURUSD cette nuit (0,8 lot, EUR acheté / USD vendu). Redevient possible si le robot sort.",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que le BUY LIMIT B (euro acheté, même paire) est posé. Ne redevient possible que si B est retiré ou terminé.",
       "condition": {
         "type": "none"
       },
@@ -38,7 +38,8 @@
         "type": "d1_close_above",
         "level": 2.0235
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v7": "11/11 : raison mise à jour (le robot EURUSD est sorti le 10/11)."
     },
     {
       "id": "B",
@@ -125,6 +126,12 @@
       "version": 6,
       "decision": "B posé (BUY LIMIT 1,98748, 0,79 lot, SL 1,97749)",
       "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
+    },
+    {
+      "date": "2026-11-11",
+      "version": 7,
+      "decision": "B poursuit (BUY LIMIT posé) ; A en veille (règle 1 car B achète l'euro)",
+      "resume": "D1 10/11 clôture 1,99203 ; plus bas du jour 1,98905 (16 pip de l'entrée B 1,98748) ; prix 1,9930"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 19:05",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-11 11:15",
+  "created_server_date": "2026-11-11",
   "valid_until": "2026-11-13",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "pair": "USDCAD",
   "bias": "la correction de 3 semaines (1,4300 → 1,3929) est finie : semaine en forte hausse (+171 pips, clôture 1,41297 au plus haut) après un emploi américain fort et un emploi canadien faible ; prix au-dessus de toutes les moyennes D1. On achète un repli, pas la poursuite.",
@@ -31,8 +31,8 @@
         1.429
       ],
       "lot_800eur": 1.8,
-      "lot_texte": "0,90 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » (or) et 2e « huard vendu » si GBPCAD A est posé",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le dollar US est déjà vendu par le robot EURUSD (achat 0,8 lot). Redevient possible si le robot sort.",
+      "lot_texte": "BUY LIMIT posé : 0,92 lot = 0,26 % (≈ 407 EUR) ; plan 0,90 lot = 0,25 %",
+      "condition_texte": "Aucune : BUY LIMIT posé le 10/11 (0,92 lot, SL 1,3990, TP 1,4135). Le dollar est acheté 2 fois (avec la vente d'or) : maximum de la règle 2 atteint.",
       "condition": {
         "type": "none"
       },
@@ -43,7 +43,8 @@
       },
       "statut": "en_attente",
       "note_v5": "Le blocage par le robot a disparu, mais règle 1 : acheter le dollar est incompatible avec l'achat d'or A et EURUSD C (dollar vendu). Reste en veille tant que le côté « dollar vendu » est choisi. Prix 1,4163, entrée 103 pip plus bas.",
-      "note_v6": "Redevient autorisé le 10/11 18h Paris : le côté « dollar vendu » (or A, EURUSD C) est abandonné. BUY LIMIT 1,4060, 0,25 %. Avec la vente d'or D = 2 paris dollar acheté (max)."
+      "note_v6": "Redevient autorisé le 10/11 18h Paris : le côté « dollar vendu » (or A, EURUSD C) est abandonné. BUY LIMIT 1,4060, 0,25 %. Avec la vente d'or D = 2 paris dollar acheté (max).",
+      "note_v7": "11/11 : l'ancienne raison « robot EURUSD » est périmée (robot stoppé le 10/11)."
     },
     {
       "id": "B",
@@ -68,8 +69,9 @@
         "type": "d1_close_below",
         "level": 1.404
       },
-      "statut": "en_veille",
-      "note_v5": "Prix déjà au-dessus de 1,415 après l'inflation US : la condition (clôture D1 > 1,414) sera jugée sur la clôture du soir ; un BUY STOP à 1,415 serait sous le prix, donc impossible à poser. Revu demain matin."
+      "statut": "annulé",
+      "note_v5": "Prix déjà au-dessus de 1,415 après l'inflation US : la condition (clôture D1 > 1,414) sera jugée sur la clôture du soir ; un BUY STOP à 1,415 serait sous le prix, donc impossible à poser. Revu demain matin.",
+      "note_v7": "11/11 : armé par la clôture D1 du 10/11 (1,41864) mais jamais posé (règle 2 : 3e dollar acheté) ; le prix est déjà à 1,4215, au-dessus de l'entrée 1,4150 et même du TP1 : on ne le pose plus."
     }
   ],
   "positions_suivies": [],
@@ -132,6 +134,12 @@
       "resume": "D1 09/11 clôture 1,41180 (-1 pip) ; prix 1,4126 ; A à 66 pip, jamais touché"
     },
     "2026-11-10 15:40 v5 : après CPI : A en veille (règle 1, côté dollar vendu choisi), B à revoir sur la clôture D1.",
-    "2026-11-10 19:05 v6 : A réautorisé (côté dollar acheté choisi)."
+    "2026-11-10 19:05 v6 : A réautorisé (côté dollar acheté choisi).",
+    {
+      "date": "2026-11-11",
+      "version": 7,
+      "decision": "A poursuit (BUY LIMIT posé, raison de veille périmée retirée) ; B annulé (prix déjà au-dessus de l'entrée, TP1 théorique touché sans nous)",
+      "resume": "D1 10/11 clôture 1,41864 ; prix 1,4215 ; B aurait été acheté à 1,4150 puis TP1 1,4210 à 08h30 serveur (en veille, jamais posé) ; ordre réel A 0,92 lot @1,40600"
+    }
   ]
 }

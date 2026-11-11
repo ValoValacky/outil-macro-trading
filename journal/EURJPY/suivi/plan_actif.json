@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:00",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-11 11:15",
+  "created_server_date": "2026-11-11",
   "valid_until": "2026-11-13",
-  "version": 5,
+  "version": 6,
   "pip": 0.01,
   "pair": "EURJPY",
   "bias": "tendance de fond baissière (sommet 187,95 en avril), range D1 de 3 semaines 175,07-178,48 ; le rebond de la semaine dernière a été repoussé sous la MM50 D1 (178,43). La Foule vend l'euro et achète le yen : on vend les rebonds.",
@@ -31,7 +31,7 @@
       ],
       "lot_800eur": 1.59,
       "lot_texte": "0,79 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 : le robot structure-bot a acheté EURUSD cette nuit (0,8 lot, EUR acheté / USD vendu) ; vendre l'euro ici = règle 1 cassée. Redevient possible si le robot sort.",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que le BUY LIMIT EURNZD B (euro acheté) est posé ; vendre l'euro = être acheté ET vendu sur l'euro. (Le robot EURUSD n'est plus en cause : stoppé le 10/11 après l'inflation US.)",
       "condition": {
         "type": "none"
       },
@@ -40,7 +40,8 @@
         "type": "d1_close_above",
         "level": 179.2
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v6": "11/11 : robot EURUSD sorti le 10/11 ; le blocage vient maintenant de l'ordre EURNZD B (euro acheté)."
     },
     {
       "id": "B",
@@ -123,6 +124,12 @@
       "version": 5,
       "decision": "A en veille (règle 1, achat EURUSD du robot), B annulé (clôture D1 177,225 > 176,80)",
       "resume": "prix 177,65, A à 65 pip, jamais touché"
+    },
+    {
+      "date": "2026-11-11",
+      "version": 6,
+      "decision": "A reste en veille (raison mise à jour : règle 1 à cause d'EURNZD B, plus le robot)",
+      "resume": "D1 10/11 clôture 177,231 ; prix 177,02, entrée A 178,30 à 128 pip ; aucune invalidation"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 14:20",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-11 11:15",
+  "created_server_date": "2026-11-11",
   "valid_until": "2026-11-13",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
@@ -67,7 +67,8 @@
         "type": "h4_close_below",
         "level": 2.38
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture H4 du 11/11 04h00 serveur à 2,37921, sous 2,3800. Jamais posé (interdit règle 2 de toute façon)."
     }
   ],
   "positions_suivies": [],
@@ -96,6 +97,12 @@
       "version": 1,
       "decision": "plan initial H4 (analyse du 10/11)",
       "resume": "A BUY LIMIT 2,3700 posé par l'utilisatrice (0,50 lot, SL 2,3540, TP 2,3950) ; B en veille (règle 2) ; GBPCAD A retiré au profit de GBPNZD"
+    },
+    {
+      "date": "2026-11-11",
+      "version": 2,
+      "decision": "B annulé (clôture H4 sous 2,3800) ; A (BUY LIMIT posé) poursuit",
+      "resume": "H4 de 04h00 serveur le 11/11 clôture 2,37921 < 2,3800 : invalidation de B ; plus bas 2,37748 (75 pip au-dessus de l'entrée A) ; prix 2,3824"
     }
   ]
 }
