@@ -2,7 +2,7 @@
   "created": "2026-11-12 13:33",
   "created_server_date": "2026-11-12",
   "valid_until": "2026-11-20",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -27,15 +27,14 @@
       "nom": "Achat du repli sur la Tenkan D1 / POC nu 1,9221-1,9290",
       "side": "buy",
       "type": "limit",
-      "entry": 1.926,
-      "sl": 1.915,
+      "entry": 1.92601,
+      "sl": 1.91501,
       "tp": [
-        1.947,
-        1.952
+        1.94952
       ],
       "lot_800eur": 1.18,
-      "lot_texte": "BUY LIMIT 0,59 lot = 0,25 % (risque 400 EUR) ; 2e pari « livre achetée » (avec GBPNZD) et 2e « AUD vendu » (avec AUDCHF) : 400 EUR maximum (règle 2)",
-      "condition_texte": "aucune : ordre en attente à poser quand l'utilisatrice le décide (prix 1,9436, 176 pip au-dessus). Un seul des deux plans A ou B (règle 2 : livre déjà achetée par GBPNZD).",
+      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,58 lot @1,92601, SL 1,91501, TP 1,94952 (plan : TP 1,9470 / 1,9520) ; risque 392 EUR = 0,25 % ; 2e pari livre achetée (avec GBPNZD) : B devient INTERDIT (règle 2)",
+      "condition_texte": "aucune : BUY LIMIT posé le 12/11 ; tant qu'il est posé, B est interdit (règle 2) et aucune vente de livre (règle 1)",
       "condition": {
         "type": "none"
       },
@@ -179,6 +178,12 @@
       "version": 6,
       "decision": "nouvelle analyse D1 (12/11) : A BUY LIMIT 1,9260 à poser, B BUY STOP 1,9535 en veille",
       "resume": "prix 1,9436 ; range 1,9336-1,9498 depuis le 06/11 au-dessus de l'ancienne résistance 1,936-1,940 ; un seul achat de livre possible (règle 2)"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 7,
+      "decision": "A posé (BUY LIMIT 1,92601, 0,58 lot, SL 1,91501, TP 1,94952)",
+      "resume": "ordre réel vérifié dans MT5 ; conforme au plan (TP unique 1,9495 entre TP1 et TP2)"
     }
   ]
 }

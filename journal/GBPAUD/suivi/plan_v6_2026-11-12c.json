@@ -1,0 +1,184 @@
+{
+  "created": "2026-11-12 13:33",
+  "created_server_date": "2026-11-12",
+  "valid_until": "2026-11-20",
+  "version": 6,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "GBPAUD",
+  "bias": "W1 : la suite de sommets de plus en plus bas (2,0473 → 2,0287 → 1,9401 → 1,9361 → 1,9229) est cassée : plus haut 1,95282 le 06/11, premier sommet plus haut depuis un an ; prix dans le nuage W1 (1,9238-1,9787), sur la MM200 W1 (1,9451). D1 : au-dessus de toutes les moyennes (MM20 1,9178, MM50 1,9012, MM200 1,9014) et du nuage D1 ; depuis le 06/11, petit range 1,9336-1,9498 posé sur l'ancienne résistance 1,9361-1,9401 (devenue support), volume en baisse. COT 03/11 : les deux sources montrent la livre rachetée (fonds à levier +9 468, spéculateurs Legacy +19 593), l'AUD ne bouge pas. Seul côté étudié : l'achat (un seul des deux plans, règle 2).",
+  "levels": {
+    "sommet_06_11": 1.95282,
+    "haut_range_h4": 1.94977,
+    "ancienne_resistance_haut": 1.9401,
+    "ancienne_resistance_bas": 1.9361,
+    "bas_range_12_11": 1.9336,
+    "tenkan_d1": 1.92756,
+    "haut_11_10": 1.92288,
+    "poc_nu_02_11": 1.9221,
+    "kijun_d1": 1.91929,
+    "mm20_d1": 1.91784,
+    "haut_nuage_w1": 1.97874,
+    "mm100_w1": 1.9834
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du repli sur la Tenkan D1 / POC nu 1,9221-1,9290",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.926,
+      "sl": 1.915,
+      "tp": [
+        1.947,
+        1.952
+      ],
+      "lot_800eur": 1.18,
+      "lot_texte": "BUY LIMIT 0,59 lot = 0,25 % (risque 400 EUR) ; 2e pari « livre achetée » (avec GBPNZD) et 2e « AUD vendu » (avec AUDCHF) : 400 EUR maximum (règle 2)",
+      "condition_texte": "aucune : ordre en attente à poser quand l'utilisatrice le décide (prix 1,9436, 176 pip au-dessus). Un seul des deux plans A ou B (règle 2 : livre déjà achetée par GBPNZD).",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,9150 (sous la Kijun D1 et la MM20 D1) : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.915
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la sortie du range par le haut",
+      "side": "buy",
+      "type": "stop",
+      "entry": 1.9535,
+      "sl": 1.9395,
+      "tp": [
+        1.97,
+        1.985
+      ],
+      "lot_800eur": 0.93,
+      "lot_texte": "BUY STOP 0,46 lot = 0,25 % (risque 400 EUR) ; INTERDIT si A est posé (ce serait le 3e pari livre achetée, règle 2)",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 1,9500, ET seulement si le BUY LIMIT A n'est pas posé (règle 2).",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.95
+      },
+      "invalidation_texte": "clôture D1 sous 1,9330 (le support 1,9336-1,9401 est perdu)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.933
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "ancien_A",
+      "nom": "Vente du retest de la mèche (base du nuage hebdo)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 1.934,
+      "sl": 1.944,
+      "tp": [
+        1.911,
+        1.894,
+        1.886
+      ],
+      "lot_800eur": 1.28,
+      "lot_texte": "0,64 lot (risque 399 EUR, demi-risque : AUDNZD déjà acheté et AUDCHF A = même pari « AUD fort »)",
+      "condition_texte": "17h-24h du 05/11 : le prix (1,9389) est AU-DESSUS de l'entrée 1,9340, donc ce n'est plus un ordre limite posable. A ne se pose que si une bougie D1 clôture SOUS 1,9340 (retour sous la base du nuage W1) ; alors SELL LIMIT 1,9340 redevient valable",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.934
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,9400 (sommet du 22/03 dépassé) : on annule la vente et on passe au plan B",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.94
+      },
+      "statut": "annulé",
+      "note_v3": "Invalidé : clôture D1 du 05/11 à 1,94136, au-dessus de 1,9400.",
+      "note_v6": "Plan du 04/11 : invalidé par la clôture D1 du 05/11 à 1,94136."
+    },
+    {
+      "id": "ancien_B",
+      "nom": "Achat de la cassure du double sommet",
+      "side": "buy",
+      "type": "stop",
+      "entry": 1.943,
+      "sl": 1.934,
+      "tp": [
+        1.96,
+        1.986
+      ],
+      "lot_800eur": 0.92,
+      "lot_texte": "0,87 lot posé (risque réel jusqu'au SL 1,9340 ≈ 532 EUR = 0,33 %) ; plan conseillait 0,46 lot",
+      "condition_texte": "TERMINÉ : position 0,87 lot fermée au SL 1,9340 le 12/11 à 00:05 serveur (23h05 Paris le 11/11), résultat -588,02 EUR (dont -547,15 de prix)",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.94
+      },
+      "invalidation_texte": "clôture D1 sous 1,9100 (Kijun D1)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.91
+      },
+      "statut": "annulé",
+      "note_v3": "Armé par la clôture D1 1,94136 ; réel : BUY 0,87 lot @ 1,94393, SL 1,92837, TP 1,96231 (vendredi 00h49), risque ~830 EUR alors que le v2 conseillait 0,46 lot (~400 EUR).",
+      "note_v6": "Plan du 04/11 : achat 0,87 lot @1,94393 terminé au SL 1,9340 le 12/11 00:05 serveur, -588,02 EUR."
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen) : ne touche GBPAUD qu'indirectement"
+    },
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "PPI américain (USD, FORT), 14h30 Paris : ne touche GBPAUD qu'indirectement"
+    },
+    {
+      "quand_serveur": "2026-11-16 00:00",
+      "texte": "semaine du 16/11 : calendrier GBP/AUD à vérifier lundi (inflation UK et emploi australien possibles)"
+    }
+  ],
+  "regles": "GBP : livre achetée 1 fois (BUY LIMIT GBPNZD, 401 EUR) : un seul nouvel achat de livre, 400 EUR (règle 2) → A OU B, jamais les deux. AUD : vendu 1 fois (SELL STOP AUDCHF, 346 EUR) : 2e vente à 400 EUR maximum. Vendre la livre (GBPAUD ou GBPCAD B) reste INTERDIT règle 1 tant que GBPNZD est posé. Valeur du pip ≈ 6,15 EUR par lot. Swap acheteur ≈ -7 EUR par lot et par nuit. Heures en Paris (serveur = Paris + 1 h).",
+  "journal": [
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan initial D1",
+      "resume": "GBPAUD 1,9212, mèche haute à 1,93624 rejetée sur la base du nuage W1"
+    },
+    {
+      "date": "2026-11-05",
+      "version": 2,
+      "decision": "A mis en veille (prix 1,9389 au-dessus de l'entrée après +204 pip depuis la BoE ; journée AUD faible, pas livre forte) ; B toujours en veille ; décision à la clôture D1 de ce soir",
+      "resume": "profil du jour : magasin US VPOC 1,9371 (+150 pip vs magasin 1), prix 133 pip au-dessus de la zone de valeur du jour"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 3,
+      "decision": "A annulé, B déclenché (0,87 lot réel au lieu de 0,46 conseillé)",
+      "resume": "clôture D1 05/11 1,94136 ; prix 1,9487, position +262 EUR"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 4,
+      "decision": "B poursuit ; SL aligné sur le SL réel 1,9340",
+      "resume": "D1 09/11 clôture 1,94072 ; position 0,87 lot @ 1,94393, SL remonté à 1,9340 par l'utilisatrice, P&L -59 EUR"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 5,
+      "decision": "B terminé au SL (-588,02 EUR) ; plus aucun plan actif",
+      "resume": "SL 1,9340 touché à 00:05 serveur (creux 1,93360, bascule de minuit) puis remontée à 1,9424 ; le plan ne recommande pas de racheter sans nouvelle analyse"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 6,
+      "decision": "nouvelle analyse D1 (12/11) : A BUY LIMIT 1,9260 à poser, B BUY STOP 1,9535 en veille",
+      "resume": "prix 1,9436 ; range 1,9336-1,9498 depuis le 06/11 au-dessus de l'ancienne résistance 1,936-1,940 ; un seul achat de livre possible (règle 2)"
+    }
+  ]
+}
