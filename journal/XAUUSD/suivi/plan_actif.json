@@ -2,7 +2,7 @@
   "created": "2026-11-12 13:33",
   "created_server_date": "2026-11-12",
   "valid_until": "2026-11-13",
-  "version": 10,
+  "version": 11,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -26,15 +26,14 @@
       "nom": "Vente du rebond sous l'ancien plancher 3982-4000",
       "side": "sell",
       "type": "limit",
-      "entry": 3998.0,
-      "sl": 4042.0,
+      "entry": 3997.6,
+      "sl": 4042.3,
       "tp": [
-        3930.0,
-        3878.0
+        3923.39
       ],
       "lot_800eur": 0.2,
-      "lot_texte": "SELL LIMIT 0,10 lot = 0,25 % (risque 400 EUR) ; 2e pari « dollar acheté » (avec USDCAD) : 400 EUR maximum (règle 2)",
-      "condition_texte": "aucune : ordre en attente (prix 3946, entrée 52 $ plus haut). Ne pas poser si le prix est déjà au-dessus de 3998.",
+      "lot_texte": "SELL LIMIT posé par l'utilisatrice : 0,09 lot @3997,60, SL 4042,30, TP 3923,39 (plan : TP 3930 / 3878) ; risque 363 EUR = 0,23 % ; 2e pari dollar acheté (avec USDCAD) : B devient INTERDIT (règle 2)",
+      "condition_texte": "aucune : SELL LIMIT posé le 12/11 ; tant qu'il est posé ou ouvert, B est interdit (règle 2) et aucun achat d'or (règle 1)",
       "condition": {
         "type": "none"
       },
@@ -188,6 +187,12 @@
       "version": 10,
       "decision": "nouvelle analyse H4 (12/11) : A SELL LIMIT 3998 à poser, B SELL STOP 3860 en veille",
       "resume": "or 3946 après le TP de D (+856 EUR) ; tendance H4 et D1 baissières ; un seul pari dollar acheté possible (règle 2)"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 11,
+      "decision": "A posé (SELL LIMIT 3997,60, 0,09 lot, SL 4042,30, TP 3923,39)",
+      "resume": "ordre réel vérifié dans MT5 ; conforme au plan (TP un peu plus bas, sous le plus bas du jour 3924,43)"
     }
   ]
 }
