@@ -1,161 +1,77 @@
 {
-  "created": "2026-11-12 12:30",
+  "created": "2026-11-12 13:33",
   "created_server_date": "2026-11-12",
   "valid_until": "2026-11-13",
-  "version": 9,
+  "version": 10,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
-  "bias": "D1 baissier de fond (sous les MM50/100/200 D1 4190/4200/4457 et la MM20 W1 4207) ; rebond depuis 3870 (30/10) puis RANGE H4 depuis le 05/11 : double sommet 4146,72 / 4148,44, creux 4025-4054. Prix 4076 au milieu, sous l'EMA200 H4 (4114). Vendre l'or est INTERDIT (règle 1 : le robot EURUSD vend du dollar). Seul côté autorisé : acheter le bas du range, contre la tendance D1, à petit risque.",
+  "bias": "D1 baissier (sous MM20 4041, MM50 4166, MM100 4199, MM200 4444 et la MM20 W1 4200 ; RSI D1 41). H4 : sommets de plus en plus bas 4148 → 4067 → 4000, prix sous toutes les EMA H4 (20 : 4022, 50 : 4037, 200 : 4102) et sous le nuage H4 (4008-4055) ; plus bas du jour 3924, RSI H4 33. Supports : 3924 puis 3891-3895 (02-03/11) puis 3870 (plus bas de l'année, MM100 W1 3896). Seul côté autorisé : la vente (acheter l'or = vendre le dollar = INTERDIT règle 1 avec le BUY LIMIT USDCAD).",
   "levels": {
-    "mm20_w1": 4206.85,
-    "mm100_d1": 4200.42,
-    "mm50_d1": 4190.2,
-    "double_sommet": 4148.44,
-    "poc_semaine_en_cours": 4119.75,
-    "ema200_h4": 4114.16,
-    "ema20_h4": 4087.72,
-    "kijun_h4": 4072.34,
-    "poc_semaine_passee": 4065.75,
-    "ema50_h4": 4058.94,
-    "bas_range": 4025.09,
-    "bas_30_10": 3870.07
+    "ema200_h4": 4101.71,
+    "ema50_h4": 4036.6,
+    "kijun_h4": 4036.43,
+    "ema20_h4": 4022.17,
+    "tenkan_d1": 4019.68,
+    "haut_12_11": 4000.27,
+    "cassure_11_11": 3982.51,
+    "bas_12_11": 3924.43,
+    "bas_02_11": 3890.93,
+    "mm100_w1": 3895.73,
+    "bas_annee": 3870.07
   },
   "plans": [
     {
       "id": "A",
-      "nom": "Achat du bas du range H4 (contre-tendance D1)",
-      "side": "buy",
+      "nom": "Vente du rebond sous l'ancien plancher 3982-4000",
+      "side": "sell",
       "type": "limit",
-      "entry": 4032.0,
-      "sl": 3990.0,
+      "entry": 3998.0,
+      "sl": 4042.0,
       "tp": [
-        4110.0,
-        4145.0
+        3930.0,
+        3878.0
       ],
-      "lot_800eur": 0.21,
-      "lot_texte": "BUY LIMIT bouton 0,25 % ≈ 0,11 lot ≈ 400 EUR (achat contre la tendance D1, on garde le petit bouton même si le dollar est libre) ; swap ≈ -10 EUR/nuit",
-      "condition_texte": "Poser seulement si la H4 de 16h00 serveur clôture au-dessus de 4025 et si le prix est encore au-dessus de 4032",
+      "lot_800eur": 0.2,
+      "lot_texte": "SELL LIMIT 0,10 lot = 0,25 % (risque 400 EUR) ; 2e pari « dollar acheté » (avec USDCAD) : 400 EUR maximum (règle 2)",
+      "condition_texte": "aucune : ordre en attente (prix 3946, entrée 52 $ plus haut). Ne pas poser si le prix est déjà au-dessus de 3998.",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture H4 sous 3990 (= SL : le range est cassé par le bas) ; si une clôture D1 passe au-dessus de 4150, le range est cassé par le haut : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation_texte": "clôture H4 au-dessus de 4042 avant déclenchement : retirer l'ordre (une fois déclenché, c'est le SL qui protège)",
       "invalidation": {
-        "type": "h4_close_below",
-        "level": 3990.0
+        "type": "h4_close_above",
+        "level": 4042.0
       },
-      "statut": "annulé",
-      "note_v6": "Après l'inflation US, l'or est descendu à 4038,86 (6,9 $ au-dessus de l'entrée). Règle ajoutée : attendre la clôture H4 de 15h00 Paris (16h00 serveur). Si elle clôture sous 4025 (plancher cassé), NE RIEN poser. Sinon, poser après 15h30 Paris seulement si le prix est encore au-dessus de 4032. Règle 1 : retirer USDCAD A / or B si cet achat est posé.",
-      "note_v7": "Annulé à 18h Paris sur la relecture demandée par l'utilisatrice (jamais posé) : après l'inflation US, la H4 de 16h serveur est descendue à 4013,45 (sous le plancher 4025), prix 4021, sous EMA20/50/200 H4, tendance D1 baissière. Acheter = contre toutes les tendances."
+      "statut": "en_attente"
     },
     {
       "id": "B",
-      "nom": "Vente de la résistance 4190-4207 (MM50/MM100 D1 + MM20 W1)",
-      "side": "sell",
-      "type": "limit",
-      "entry": 4195.0,
-      "sl": 4235.0,
-      "tp": [
-        4120.0,
-        4065.0
-      ],
-      "lot_800eur": 0.22,
-      "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,11 lot",
-      "condition_texte": "EN VEILLE : autorisé par les règles depuis la fermeture de D (2e dollar acheté à 400 EUR), mais entrée 4195 à ~244 $ (2,7 ATR D1) du prix et plan valable jusqu'au 13/11 : ne pas poser.",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 4235",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 4235.0
-      },
-      "statut": "en_veille",
-      "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut.",
-      "note_v7": "Toujours possible plus tard (même sens que D) ; en veille, prix trop loin (4195).",
-      "note_v8": "11/11 : raison mise à jour (robot EURUSD sorti)."
-    },
-    {
-      "id": "ancien_A",
-      "nom": "Achat du repli sur la porte (singles 4097-4100)",
-      "side": "buy",
-      "type": "limit",
-      "entry": 4098.0,
-      "sl": 4054.0,
-      "tp": [
-        4144.0,
-        4200.0,
-        4214.0
-      ],
-      "lot_800eur": 0.2,
-      "lot_texte": "0,10 lot (risque 392 EUR, demi-risque : un achat d'or = pari « dollar plus faible », l'opposé de ton USDCAD acheté et de ta vente EURUSD)",
-      "condition_texte": "aucune ; ordre posé d'avance (de préférence après l'ouverture américaine de 16h30 serveur)",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture H4 sous 4054 (plus bas du jour et bas de l'IB perdus) : on annule A et C s'arme",
-      "invalidation": {
-        "type": "h4_close_below",
-        "level": 4054.0
-      },
-      "statut": "annulé",
-      "note_v2": "Invalidé : clôture H4 de 04h00 le 06/11 à 4041,63, sous 4054. Ordre jamais posé (aucune perte réelle ; en théorie entrée 4098 puis SL)."
-    },
-    {
-      "id": "ancien_B",
-      "nom": "Vente de la résistance 4200-4215",
-      "side": "sell",
-      "type": "limit",
-      "entry": 4203.0,
-      "sl": 4236.37,
-      "tp": [
-        4094.84
-      ],
-      "lot_800eur": 0.28,
-      "ordre_reel": "SELL LIMIT 0.14 lot @4203.00 SL 4236.37 TP 4094.84, ticket 578619414, pose le 2026-11-05 19:25:26 serveur (un seul TP, pas de sorties partielles)",
-      "lot_texte": "0,14 lot = 0,25 % de risque dans Magic Panel (risque 399 EUR, demi-risque : « dollar plus fort » déjà à ~1 400 EUR avec USDCAD et EURUSD)",
-      "condition_texte": "aucune ; ordre posé (4202,49). EXPIRE CE SOIR 10/11 : à retirer avant la clôture. Il crée en plus le conflit règle 1 sur l'USD avec l'achat EURUSD du robot",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 4237 : la résistance est cédée, on annule",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 4237.0
-      },
-      "statut": "annulé",
-      "note_v4": "Ordre SELL LIMIT 4202,49 (0,14 lot) retiré par l'utilisatrice le 10/11 vers 12h15 Paris, avant l'inflation américaine : plan expirant le soir même + conflit règle 1 sur le dollar (robot EURUSD vendeur de dollar). Jamais déclenché (plus haut 4148,44), aucune perte."
-    },
-    {
-      "id": "ancien_C",
-      "nom": "Vente de la cassure du support du jour",
+      "nom": "Vente de la cassure du plus bas de l'année",
       "side": "sell",
       "type": "stop",
-      "entry": 4040.0,
-      "sl": 4082.0,
+      "entry": 3860.0,
+      "sl": 3905.0,
       "tp": [
-        3999.0,
-        3956.0,
-        3925.0
+        3800.0,
+        3760.0
       ],
-      "lot_800eur": 0.21,
-      "lot_texte": "0,10 lot = 0,23 % de risque (bouton le plus proche : 0,25 % ≈ 400 EUR, accepté par la règle 2) (risque 374 EUR, demi-risque)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 : USD déjà vendu par le robot EURUSD",
+      "lot_800eur": 0.2,
+      "lot_texte": "SELL STOP 0,10 lot = 0,25 % (risque 400 EUR) ; INTERDIT si A est posé ou ouvert (3e dollar acheté, règle 2)",
+      "condition_texte": "EN VEILLE : seulement après une clôture H4 sous 3870 (plus bas de l'année), ET seulement si A n'est ni posé ni ouvert.",
       "condition": {
         "type": "h4_close_below",
-        "level": 4054.0
+        "level": 3870.0
       },
-      "invalidation_texte": "clôture D1 au-dessus de 4147 (nouveau haut accepté)",
+      "invalidation_texte": "clôture H4 au-dessus de 3925 avant déclenchement",
       "invalidation": {
-        "type": "d1_close_above",
-        "level": 4147.0
+        "type": "h4_close_above",
+        "level": 3925.0
       },
-      "statut": "annulé",
-      "note_v2": "Armé par la clôture H4 4041,63. Entrée théorique 4040 touchée à 08h00 (plus bas 4035,80) mais rien posé chez le courtier ; le prix est revenu à 4067. Peut être posé en SELL STOP 4040 après 16h00 seulement (NFP), tant que le prix reste au-dessus de 4040.",
-      "note_v4": "Expiré le 10/11 sans armement (aucune clôture H4 sous 4054) ; interdit règle 1 de toute façon."
+      "statut": "en_veille"
     },
     {
-      "id": "D",
+      "id": "ancien_D",
       "nom": "Vente du retour sur le plancher cassé (avec la tendance D1)",
       "side": "sell",
       "type": "limit",
@@ -176,35 +92,52 @@
         "type": "h4_close_above",
         "level": 4090.0
       },
-      "statut": "terminé",
+      "statut": "annulé",
       "note_v7": "Créé le 10/11 18h Paris : 4055 = plancher cassé 4025-4060 + EMA50 H4 4056. SL 4090 au-dessus de l'ouverture de la H4 de l'inflation (4087). TP 3975 (creux 23/10), 3900 (creux 02-03/11).",
-      "note_v8": "11/11 : ordre exécuté à 07h15 serveur (06h15 Paris) à 4055,04. La condition « clôture H4 sous 4025 » n'était PAS remplie : posé sans le filtre. On gère la position telle quelle (SL 4090)."
+      "note_v8": "11/11 : ordre exécuté à 07h15 serveur (06h15 Paris) à 4055,04. La condition « clôture H4 sous 4025 » n'était PAS remplie : posé sans le filtre. On gère la position telle quelle (SL 4090).",
+      "note_v10": "Plan du 10/11 : SELL 0,12 lot @4055,04 terminé au TP 3975 le 12/11 02:02 serveur, +856,32 EUR."
+    },
+    {
+      "id": "ancien_B",
+      "nom": "Vente de la résistance 4190-4207 (MM50/MM100 D1 + MM20 W1)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 4195.0,
+      "sl": 4235.0,
+      "tp": [
+        4120.0,
+        4065.0
+      ],
+      "lot_800eur": 0.22,
+      "lot_texte": "SELL LIMIT bouton 0,25 % ≈ 0,11 lot",
+      "condition_texte": "EN VEILLE : autorisé par les règles depuis la fermeture de D (2e dollar acheté à 400 EUR), mais entrée 4195 à ~244 $ (2,7 ATR D1) du prix et plan valable jusqu'au 13/11 : ne pas poser.",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 4235",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 4235.0
+      },
+      "statut": "annulé",
+      "note_v6": "Plus bloqué par le robot (sorti), mais règle 1 : incompatible avec l'achat d'or A / EURUSD C. Reste en veille ; prix 4039, entrée 156 $ plus haut.",
+      "note_v7": "Toujours possible plus tard (même sens que D) ; en veille, prix trop loin (4195).",
+      "note_v8": "11/11 : raison mise à jour (robot EURUSD sorti).",
+      "note_v10": "Plan du 10/11 : SELL LIMIT 4195 jamais posé, remplacé par la nouvelle analyse du 12/11 (244 $ au-dessus du prix)."
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-10 15:30",
-      "texte": "inflation américaine CPI (USD, FORT), 14h30 Paris : aucun nouvel ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
-    },
-    {
-      "quand_serveur": "2026-11-11 15:00",
-      "texte": "jour férié aux États-Unis et au Canada : marché plus mince"
-    },
-    {
-      "quand_serveur": "2026-11-12 09:00",
-      "texte": "PIB britannique (GBP, FORT), 8h00 Paris : pas de nouvel ordre GBP de 7h00 à 8h00 Paris"
+      "quand_serveur": "2026-11-12 15:30",
+      "texte": "chômage hebdo US (USD, moyen), 14h30 Paris"
     },
     {
       "quand_serveur": "2026-11-13 15:30",
-      "texte": "prix à la production PPI (USD, FORT), 14h30 Paris : aucun nouvel ordre USD de 13h30 à 15h30 Paris"
-    },
-    {
-      "quand_serveur": "2026-11-10 15:30",
-      "texte": "10/11 15h30 serveur (14h30 Paris) : inflation US plus forte que prévu (CPI 0,4 % vs 0,3 % ; core 0,3 % vs 0,2 %). Dollar en hausse : EURUSD 1,1210 → 1,1179, or 4069 → 4039, USDCAD 1,4135 → 1,4163. Le robot EURUSD (achat 0,8 @1,12203) a été stoppé à 1,11844 (-258,6 EUR) : plus aucune exposition au dollar."
+      "texte": "PPI américain (USD, FORT), 14h30 Paris : aucun NOUVEL ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur) ; un ordre déjà posé reste actif pendant l'annonce"
     }
   ],
-  "regles": "USD : le robot EURUSD vend du dollar (253 EUR). Acheter l'or = vendre du dollar → 2e pari, 400 EUR maximum (règle 2). Vendre l'or = acheter du dollar → INTERDIT (règle 1). Valeur : 1 $ = 89 EUR par lot. ATR H4 36 $, ATR D1 86 $. Heures en Paris (serveur = Paris + 1 h).",
+  "regles": "USD : dollar acheté 1 fois (BUY LIMIT USDCAD, 407 EUR). Vendre l'or = acheter du dollar → 2e pari, 400 EUR maximum (règle 2) : A OU B, jamais les deux. Acheter l'or = vendre du dollar → INTERDIT règle 1 tant que le BUY LIMIT USDCAD existe. L'or n'est pas compté par controle_devises.py : contrôle à la main. Valeur : 1 $ ≈ 90 EUR par lot. ATR H4 34 $, ATR D1 88 $. Heures en Paris (serveur = Paris + 1 h).",
   "journal": [
     {
       "date": "2026-11-05",
@@ -249,6 +182,12 @@
       "version": 9,
       "decision": "D terminé au TP1 (+856,32 EUR) ; B en veille (trop loin, expire demain)",
       "resume": "or 3951 à 12h35 serveur, plus bas 3924 ; B ne serait plus interdit (règle 2 libérée) mais 244 $ au-dessus du prix"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 10,
+      "decision": "nouvelle analyse H4 (12/11) : A SELL LIMIT 3998 à poser, B SELL STOP 3860 en veille",
+      "resume": "or 3946 après le TP de D (+856 EUR) ; tendance H4 et D1 baissières ; un seul pari dollar acheté possible (règle 2)"
     }
   ]
 }
