@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 14:20",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-12 12:30",
+  "created_server_date": "2026-11-12",
   "valid_until": "2026-11-19",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
@@ -60,7 +60,7 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL STOP 0,63 lot = 0,25 % (≈ 397 EUR) ; swap vendeur -16 EUR par lot et par nuit (≈ -10 EUR/nuit)",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,8900 ; ET INTERDIT règle 1 tant que GBPAUD est acheté (livre déjà achetée)",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,8900 ; ET INTERDIT règle 1 tant que le BUY LIMIT GBPNZD (livre achetée) est posé (GBPAUD est fermé depuis le 12/11).",
       "condition": {
         "type": "d1_close_below",
         "level": 1.89
@@ -165,6 +165,12 @@
       "version": 4,
       "decision": "A retiré par l'utilisatrice (remplacé par GBPNZD), B toujours en veille",
       "resume": "plus aucun ordre GBPCAD"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 5,
+      "decision": "B reste en veille (pas de clôture D1 < 1,8900 ; règle 1 désormais à cause de GBPNZD)",
+      "resume": "clôtures D1 10/11 1,89323 et 11/11 1,89154 ; prix 1,8908"
     }
   ]
 }

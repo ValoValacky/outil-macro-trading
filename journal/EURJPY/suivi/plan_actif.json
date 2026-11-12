@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-11 11:15",
-  "created_server_date": "2026-11-11",
+  "created": "2026-11-12 12:30",
+  "created_server_date": "2026-11-12",
   "valid_until": "2026-11-13",
-  "version": 6,
+  "version": 7,
   "pip": 0.01,
   "pair": "EURJPY",
   "bias": "tendance de fond baissière (sommet 187,95 en avril), range D1 de 3 semaines 175,07-178,48 ; le rebond de la semaine dernière a été repoussé sous la MM50 D1 (178,43). La Foule vend l'euro et achète le yen : on vend les rebonds.",
@@ -31,7 +31,7 @@
       ],
       "lot_800eur": 1.59,
       "lot_texte": "0,79 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que le BUY LIMIT EURNZD B (euro acheté) est posé ; vendre l'euro = être acheté ET vendu sur l'euro. (Le robot EURUSD n'est plus en cause : stoppé le 10/11 après l'inflation US.)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que la position EURNZD achetée (euro acheté) est ouverte ; vendre l'euro = être acheté ET vendu sur l'euro.",
       "condition": {
         "type": "none"
       },
@@ -130,6 +130,12 @@
       "version": 6,
       "decision": "A reste en veille (raison mise à jour : règle 1 à cause d'EURNZD B, plus le robot)",
       "resume": "D1 10/11 clôture 177,231 ; prix 177,02, entrée A 178,30 à 128 pip ; aucune invalidation"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 7,
+      "decision": "A reste en veille (règle 1 : position EURNZD achetée ouverte)",
+      "resume": "D1 11/11 clôture 177,201 ; prix 177,15, entrée A 178,30 à 115 pip"
     }
   ]
 }

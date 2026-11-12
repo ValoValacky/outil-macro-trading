@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 11:00",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-12 12:30",
+  "created_server_date": "2026-11-12",
   "valid_until": "2026-11-13",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -57,7 +57,7 @@
       ],
       "lot_800eur": 0.92,
       "lot_texte": "0,87 lot posé (risque réel jusqu'au SL 1,9340 ≈ 532 EUR = 0,33 %) ; plan conseillait 0,46 lot",
-      "condition_texte": "seulement après une clôture D1 au-dessus de 1,9400",
+      "condition_texte": "TERMINÉ : position 0,87 lot fermée au SL 1,9340 le 12/11 à 00:05 serveur (23h05 Paris le 11/11), résultat -588,02 EUR (dont -547,15 de prix)",
       "condition": {
         "type": "d1_close_above",
         "level": 1.94
@@ -67,20 +67,11 @@
         "type": "d1_close_below",
         "level": 1.91
       },
-      "statut": "déclenché",
+      "statut": "terminé",
       "note_v3": "Armé par la clôture D1 1,94136 ; réel : BUY 0,87 lot @ 1,94393, SL 1,92837, TP 1,96231 (vendredi 00h49), risque ~830 EUR alors que le v2 conseillait 0,46 lot (~400 EUR)."
     }
   ],
-  "positions_suivies": [
-    {
-      "ticket": 578791191,
-      "plan": "B",
-      "lot": 0.87,
-      "entry": 1.94393,
-      "sl": 1.92837,
-      "tp": 1.96231
-    }
-  ],
+  "positions_suivies": [],
   "evenements": [
     {
       "quand_serveur": "2026-11-05 14:00",
@@ -116,6 +107,12 @@
       "version": 4,
       "decision": "B poursuit ; SL aligné sur le SL réel 1,9340",
       "resume": "D1 09/11 clôture 1,94072 ; position 0,87 lot @ 1,94393, SL remonté à 1,9340 par l'utilisatrice, P&L -59 EUR"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 5,
+      "decision": "B terminé au SL (-588,02 EUR) ; plus aucun plan actif",
+      "resume": "SL 1,9340 touché à 00:05 serveur (creux 1,93360, bascule de minuit) puis remontée à 1,9424 ; le plan ne recommande pas de racheter sans nouvelle analyse"
     }
   ]
 }

@@ -1,0 +1,170 @@
+{
+  "created": "2026-11-10 14:20",
+  "created_server_date": "2026-11-10",
+  "valid_until": "2026-11-19",
+  "version": 4,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "GBPCAD",
+  "bias": "cassure par le haut du range de 3 mois (1,8607-1,8926) : clôture D1 du 09/11 à 1,89757 (+133 pip), deux semaines à +310 pip depuis 1,86074 ; mais étirée (RSI D1 68, RSI H4 81, 2,3 ATR au-dessus de la MM20 D1) et faite sur un volume SOUS la moyenne (0,87 fois). Prochaine résistance : sommet de l'année 1,90429 (07/07). On n'achète pas au marché : on attend un retour sur l'ancien plafond 1,8926-1,8953.",
+  "levels": {
+    "sommet_annee": 1.90429,
+    "plus_haut_10_11": 1.89967,
+    "haut_05_08": 1.8953,
+    "ancien_plafond": 1.89257,
+    "plafond_16_10": 1.89057,
+    "bas_zone_valeur_semaine": 1.8884,
+    "bas_09_11": 1.88406,
+    "mm100_d1": 1.88067,
+    "kijun_d1": 1.87951,
+    "mm20_d1": 1.87849,
+    "nuage_d1_haut": 1.87798,
+    "mm200_d1": 1.86502
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du retour sur l'ancien plafond (retest de la cassure)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.894,
+      "sl": 1.8865,
+      "tp": [
+        1.9035,
+        1.915
+      ],
+      "lot_800eur": 1.69,
+      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,84 lot @ 1,89396, SL 1,8865, TP 1,9035 ; risque ≈ 395 EUR = 0,25 % ; 2e pari « livre achetée » avec GBPAUD (règle 2 : maximum atteint)",
+      "condition_texte": "aucune : ordre en attente posé d'avance à 1,8940 (41 pip sous le prix du 10/11 à 11h Paris) ; ne pas le poser si le prix est déjà sous 1,8940 ; pas de nouvel ordre jeudi 12/11 de 7h00 à 8h00 Paris (PIB britannique 8h00 Paris)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,8900 (retour dans l'ancien range = cassure ratée) : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.89
+      },
+      "statut": "annulé",
+      "note_v4": "Ordre BUY LIMIT 1,89396 retiré par l'utilisatrice le 10/11 après-midi : elle a choisi GBPNZD (même pari « livre achetée », règle 2). Jamais déclenché."
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure ratée (retour dans le range)",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.887,
+      "sl": 1.897,
+      "tp": [
+        1.875,
+        1.865
+      ],
+      "lot_800eur": 1.27,
+      "lot_texte": "SELL STOP 0,63 lot = 0,25 % (≈ 397 EUR) ; swap vendeur -16 EUR par lot et par nuit (≈ -10 EUR/nuit)",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,8900 ; ET INTERDIT règle 1 tant que GBPAUD est acheté (livre déjà achetée)",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.89
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,9045 (sommet de l'année cassé : la cassure a réussi) ; une fois déclenché, c'est le SL 1,8970 qui protège",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.9045
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "A0",
+      "nom": "Achat du repli sur le nuage / Kijun D1",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.8755,
+      "sl": 1.868,
+      "tp": [
+        1.885,
+        1.8905,
+        1.8955
+      ],
+      "lot_800eur": 1.68,
+      "lot_texte": "0,84 lot = 0,25 % de risque dans Magic Panel (risque 401 EUR, demi-risque : USDCAD déjà acheté = même pari « CAD faible »)",
+      "condition_texte": "aucune ; ordre posé après la BoE de jeudi (pas avant 15h30 serveur)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 1,8650 (MM200 D1 perdue) : on annule l'achat et on passe au plan B",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.865
+      },
+      "statut": "annulé",
+      "note_v2": "Remplacé : clôture D1 du 09/11 à 1,89757 au-dessus du haut du range 1,8926 ; l'achat à 1,8755 (228 pip plus bas) n'a plus de sens. Ordre jamais posé."
+    },
+    {
+      "id": "B0",
+      "nom": "Vente de la cassure du bas du range",
+      "side": "sell",
+      "type": "stop",
+      "entry": 1.86,
+      "sl": 1.869,
+      "tp": [
+        1.8467,
+        1.8388
+      ],
+      "lot_800eur": 1.4,
+      "lot_texte": "1,40 lot (risque 800 EUR)",
+      "condition_texte": "seulement après une clôture D1 sous 1,8650",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.865
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,8800 (retour dans le range)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.88
+      },
+      "statut": "annulé",
+      "note_v2": "Invalidé : clôture D1 du 04/11 à 1,88231 au-dessus de 1,8800."
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-10 15:30",
+      "texte": "inflation américaine CPI (USD, FORT), 14h30 Paris : touche GBPCAD indirectement"
+    },
+    {
+      "quand_serveur": "2026-11-11 15:00",
+      "texte": "jour férié au Canada et aux États-Unis : marché plus mince"
+    },
+    {
+      "quand_serveur": "2026-11-12 09:00",
+      "texte": "PIB britannique mensuel + trimestriel (GBP, FORT), 8h00 Paris : pas de nouvel ordre de 7h00 à 8h00 Paris"
+    }
+  ],
+  "regles": "Contrôle devise par devise : A = livre achetée (2e fois avec GBPAUD, 400 EUR max, règle 2) + huard vendu (1re fois) ; total livre ≈ 931 EUR < 1 200 (règle 3). B = livre vendue : INTERDIT règle 1 tant que GBPAUD est ouvert. Heures en Paris (serveur = Paris + 1 h).",
+  "journal": [
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan initial D1",
+      "resume": "GBPCAD 1,8816, range 1,8607-1,8926, reprise du nuage D1"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 2,
+      "decision": "nouveau plan après la cassure du range (analyse D1 du 10/11)",
+      "resume": "A BUY LIMIT 1,8940 retest (en_attente) ; B SELL STOP 1,8870 si cassure ratée (en_veille, règle 1) ; anciens A/B annulés"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 3,
+      "decision": "A posé (BUY LIMIT 1,89396, 0,84 lot), conforme au plan",
+      "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
+    },
+    {
+      "date": "2026-11-10",
+      "version": 4,
+      "decision": "A retiré par l'utilisatrice (remplacé par GBPNZD), B toujours en veille",
+      "resume": "plus aucun ordre GBPCAD"
+    }
+  ]
+}
