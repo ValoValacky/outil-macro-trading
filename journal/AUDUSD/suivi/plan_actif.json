@@ -1,0 +1,92 @@
+{
+  "created": "2026-11-12 15:43",
+  "created_server_date": "2026-11-12",
+  "valid_until": "2026-11-20",
+  "version": 1,
+  "pip": 0.0001,
+  "pair": "AUDUSD",
+  "timeframe": "D1",
+  "bias": "W1 baissier depuis le sommet de mai (0,7278) : sommets plus bas 0,7238 (sept.) → 0,7068 (oct.). Le 06/11, clôture D1 sous le plancher de septembre-octobre 0,6894 (volume 1,5 fois la moyenne) ; prix 0,6824 sur le bas du nuage W1 (0,6825), sous toutes les moyennes D1, RSI D1 34, RSI H4 28. Les deux dernières bougies baissières se font sur un volume faible (0,56-0,58 fois). On vend un retour sur le plancher cassé, pas le plus bas.",
+  "levels": {
+    "sommet_29_10": 0.70679,
+    "kijun_d1": 0.69413,
+    "haut_09_11": 0.69307,
+    "plancher_casse": 0.6894,
+    "tenkan_d1": 0.69245,
+    "bas_nuage_w1": 0.68249,
+    "bas_12_11": 0.68147,
+    "mm100_w1": 0.6703,
+    "mm200_w1": 0.66614
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du retour sur le plancher cassé 0,6890-0,6905",
+      "side": "sell",
+      "type": "limit",
+      "entry": 0.6895,
+      "sl": 0.6965,
+      "tp": [
+        0.6815,
+        0.674
+      ],
+      "lot_800eur": 1.27,
+      "lot_texte": "SELL LIMIT 0,63 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e AUD vendu après AUDCHF et GBPAUD ; 3e dollar acheté après USDCAD et l'or). Posable si AUDCHF ET (USDCAD ou l'or) sont retirés ou expirés.",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 0,6965 (au-dessus de la Kijun D1)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 0.6965
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la poursuite sous 0,6800",
+      "side": "sell",
+      "type": "stop",
+      "entry": 0.679,
+      "sl": 0.69,
+      "tp": [
+        0.67,
+        0.658
+      ],
+      "lot_800eur": 0.81,
+      "lot_texte": "SELL STOP 0,40 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 0,6800, si A n'est pas posé, ET mêmes interdits que A (règle 2). PRÉCAUTION VOLUME : si la bougie D1 qui clôture sous 0,6800 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là ; attendre la clôture suivante (test du 16/10 : cassures à volume faible échouent un peu plus souvent, effet petit -0,15 ATR).",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 0.68
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 0,6900 (retour au-dessus du plancher cassé)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 0.69
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "PPI américain (USD, FORT), 14h30 Paris : aucun NOUVEL ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
+    },
+    {
+      "quand_serveur": "2026-11-16 00:00",
+      "texte": "semaine du 16/11 : calendrier AUD/JPY/USD à vérifier lundi (emploi australien et ventes au détail US possibles)"
+    }
+  ],
+  "regles": "USD : déjà acheté 2 fois (BUY LIMIT USDCAD 1,4060 + SELL LIMIT or 3997,60) : maximum de la règle 2 atteint. AUD : déjà vendu 2 fois (SELL STOP AUDCHF + BUY LIMIT GBPAUD) : maximum atteint. Ces ordres USDCAD, or et AUDCHF expirent vendredi 13/11 au soir : les plans redeviennent posables lundi s'ils sont retirés. Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Acheter AUDUSD = INTERDIT règle 1 (AUD vendu et dollar acheté ailleurs). Pip ≈ 9,02 EUR par lot ; swap vendeur ≈ -6,7 EUR par lot et par nuit.",
+  "journal": [
+    {
+      "date": "2026-11-12",
+      "version": 1,
+      "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
+      "resume": "prix 0,6824 ; plancher 0,6894 cassé le 06/11 ; RSI H4 28 : on attend un rebond pour vendre"
+    }
+  ]
+}

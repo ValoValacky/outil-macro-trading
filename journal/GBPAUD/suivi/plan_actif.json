@@ -2,7 +2,7 @@
   "created": "2026-11-12 13:33",
   "created_server_date": "2026-11-12",
   "valid_until": "2026-11-20",
-  "version": 7,
+  "version": 8,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -27,21 +27,21 @@
       "nom": "Achat du repli sur la Tenkan D1 / POC nu 1,9221-1,9290",
       "side": "buy",
       "type": "limit",
-      "entry": 1.92601,
-      "sl": 1.91501,
+      "entry": 1.926,
+      "sl": 1.911,
       "tp": [
-        1.94952
+        1.9495
       ],
       "lot_800eur": 1.18,
-      "lot_texte": "BUY LIMIT posé par l'utilisatrice : 0,58 lot @1,92601, SL 1,91501, TP 1,94952 (plan : TP 1,9470 / 1,9520) ; risque 392 EUR = 0,25 % ; 2e pari livre achetée (avec GBPNZD) : B devient INTERDIT (règle 2)",
+      "lot_texte": "BUY LIMIT reposé par l'utilisatrice : 0,42 lot @1,92600, SL 1,91100 (150 pips = 1,2 ATR, règle SL du 12/11), TP 1,94950 ; risque 388 EUR = 0,24 % ; 2e pari livre achetée (avec GBPNZD) : B INTERDIT (règle 2)",
       "condition_texte": "aucune : BUY LIMIT posé le 12/11 ; tant qu'il est posé, B est interdit (règle 2) et aucune vente de livre (règle 1)",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture D1 sous 1,9150 (sous la Kijun D1 et la MM20 D1) : retirer l'ordre s'il n'est pas déclenché",
+      "invalidation_texte": "clôture D1 sous 1,9110 (= SL) : retirer l'ordre s'il n'est pas déclenché",
       "invalidation": {
         "type": "d1_close_below",
-        "level": 1.915
+        "level": 1.911
       },
       "statut": "en_attente"
     },
@@ -184,6 +184,12 @@
       "version": 7,
       "decision": "A posé (BUY LIMIT 1,92601, 0,58 lot, SL 1,91501, TP 1,94952)",
       "resume": "ordre réel vérifié dans MT5 ; conforme au plan (TP unique 1,9495 entre TP1 et TP2)"
+    },
+    {
+      "date": "2026-11-12",
+      "version": 8,
+      "decision": "A reposé avec SL 1,9110 (0,42 lot)",
+      "resume": "après le rejeu du stop : SL à 1,2 ATR et 55 pips sous le creux du 05/11 ; risque 388 EUR"
     }
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "created": "2026-11-12 15:43",
+  "created_server_date": "2026-11-12",
+  "valid_until": "2026-11-20",
+  "version": 1,
+  "pip": 0.01,
+  "pair": "USDJPY",
+  "timeframe": "D1",
+  "bias": "Range de deux mois 156,07-158,95 cassé par le haut le 11/11 (clôture 159,801, +104 pips) ; prix au-dessus de toutes les moyennes D1 (MM20 158,12, MM50 157,36, MM100 158,99, MM200 158,72) et du nuage D1 ; W1 au-dessus de la Kijun 158,43 et du nuage. Mais cassure sur volume faible (0,64 fois, jour férié US) et sous les résistances 160,39-160,72 (sommets de sept., mars, avril), zone où le Japon est déjà intervenu en 2024. On achète un retour sur l'ancien plafond, pas la cassure elle-même. Volume : la cassure du 11/11 s est faite à 0,64 fois la moyenne (jour férié US), le gros volume était dans le range (04-06/11) : cassure non confirmée.",
+  "levels": {
+    "sommet_28_06": 162.838,
+    "sommet_26_04": 160.723,
+    "sommet_02_09": 160.39,
+    "haut_11_11": 159.945,
+    "bas_12_11": 159.479,
+    "ancien_plafond": 158.946,
+    "vwap_hebdo": 158.806,
+    "tenkan_d1": 158.599,
+    "kijun_d1": 158.01,
+    "bas_09_11": 157.668,
+    "bas_range": 156.075
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du retour sur l'ancien plafond du range 158,60-158,95",
+      "side": "buy",
+      "type": "limit",
+      "entry": 158.9,
+      "sl": 157.5,
+      "tp": [
+        160.35,
+        161.5
+      ],
+      "lot_800eur": 1.01,
+      "lot_texte": "BUY LIMIT 0,50 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e dollar acheté après USDCAD et l'or). Posable dès que le BUY LIMIT USDCAD ou le SELL LIMIT or est retiré ou expiré (vendredi 13/11 au soir).",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 157,50 (= SL ; retour dans le bas du range)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 157.5
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la cassure des sommets 160,39-160,72",
+      "side": "buy",
+      "type": "stop",
+      "entry": 160.5,
+      "sl": 159.3,
+      "tp": [
+        161.7,
+        162.8
+      ],
+      "lot_800eur": 1.18,
+      "lot_texte": "BUY STOP 0,59 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé, ET mêmes interdits que A (règle 2). PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là ; attendre la clôture suivante (test du 16/10).",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 160.4
+      },
+      "invalidation_texte": "clôture D1 sous 158,90 (retour sous l'ancien plafond)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 158.9
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "PPI américain (USD, FORT), 14h30 Paris : aucun NOUVEL ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
+    },
+    {
+      "quand_serveur": "2026-11-16 00:00",
+      "texte": "semaine du 16/11 : calendrier AUD/JPY/USD à vérifier lundi (emploi australien et ventes au détail US possibles)"
+    }
+  ],
+  "regles": "USD : déjà acheté 2 fois (BUY LIMIT USDCAD 1,4060 + SELL LIMIT or 3997,60) : maximum de la règle 2 atteint. AUD : déjà vendu 2 fois (SELL STOP AUDCHF + BUY LIMIT GBPAUD) : maximum atteint. Ces ordres USDCAD, or et AUDCHF expirent vendredi 13/11 au soir : les plans redeviennent posables lundi s'ils sont retirés. Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. JPY : aucune exposition. Vendre USDJPY = INTERDIT règle 1 (dollar acheté ailleurs). Pip ≈ 5,65 EUR par lot ; swap acheteur ≈ +1 EUR par lot et par nuit (vendeur ≈ -9,8).",
+  "journal": [
+    {
+      "date": "2026-11-12",
+      "version": 1,
+      "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
+      "resume": "prix 159,77 ; range 156,07-158,95 cassé le 11/11 sur volume faible ; résistance 160,39-160,72"
+    }
+  ]
+}
