@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 13:33",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-13 11:20",
+  "created_server_date": "2026-11-13",
   "valid_until": "2026-11-13",
-  "version": 11,
+  "version": 12,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -42,7 +42,8 @@
         "type": "h4_close_above",
         "level": 4042.0
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "note_v12": "Ordre SELL LIMIT 3997,60 retiré par l'utilisatrice le 13/11 vers 10h20 Paris (plan expirant ce soir ; règle 1 USD / règle 3 NZD), jamais déclenché. Vérifié dans MT5 (controle_devises 10:27)."
     },
     {
       "id": "B",
@@ -193,6 +194,12 @@
       "version": 11,
       "decision": "A posé (SELL LIMIT 3997,60, 0,09 lot, SL 4042,30, TP 3923,39)",
       "resume": "ordre réel vérifié dans MT5 ; conforme au plan (TP un peu plus bas, sous le plus bas du jour 3924,43)"
+    },
+    {
+      "date": "2026-11-13",
+      "version": 12,
+      "decision": "A annulé : SELL LIMIT 3997,60 retiré par l'utilisatrice (expiration du plan ce soir)",
+      "resume": "plus aucun ordre en attente sur la paire ; nouvelles analyses lundi"
     }
   ]
 }

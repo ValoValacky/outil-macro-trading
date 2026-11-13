@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-09 10:45",
-  "created_server_date": "2026-11-09",
+  "created": "2026-11-13 11:20",
+  "created_server_date": "2026-11-13",
   "valid_until": "2026-11-13",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "AUDCHF",
@@ -68,11 +68,12 @@
         "type": "d1_close_above",
         "level": 0.5756
       },
-      "statut": "armé",
+      "statut": "annulé",
       "note_v3": "Armé par la clôture D1 du 06/11 à 0,56318 (< 0,5655). AUDNZD est sorti (SL lundi 00h05, -805 EUR), donc la condition « AUDNZD sorti » est remplie. Non posé chez le courtier.",
       "ordre_reel": "SELL STOP 0.55 lot @0.5635 SL 0.5693 TP 0.5548 (magic 20260900, posé le 2026-11-09 11:29 serveur) ; seul TP1 posé, TP2 0,5448 à gérer à la main",
       "armement_constate": "clôture D1 du ven 06/11 = 0,56318 < 0,5655 : condition remplie vendredi (jeudi 05/11 clôturait à 0,56559, juste au-dessus)",
-      "a_decider_ce_soir": "Aujourd'hui AUDCHF rebondit de +53 pip (bas 0,5614, prix 0,5673) : si la bougie D1 clôture AU-DESSUS de 0,5655, la cassure du vendredi est annulée ; l'ordre SELL STOP reste posé mais le contexte change (voir note). Le plancher réel est maintenant 0,5605 (vendredi) / 0,5614 (aujourd'hui), à 21-29 pip sous l'entrée."
+      "a_decider_ce_soir": "Aujourd'hui AUDCHF rebondit de +53 pip (bas 0,5614, prix 0,5673) : si la bougie D1 clôture AU-DESSUS de 0,5655, la cassure du vendredi est annulée ; l'ordre SELL STOP reste posé mais le contexte change (voir note). Le plancher réel est maintenant 0,5605 (vendredi) / 0,5614 (aujourd'hui), à 21-29 pip sous l'entrée.",
+      "note_v5": "Ordre SELL STOP 0,56350 retiré par l'utilisatrice le 13/11 vers 10h20 Paris (plan expirant ce soir ; règle 1 USD / règle 3 NZD), jamais déclenché. Vérifié dans MT5 (controle_devises 10:27)."
     }
   ],
   "positions_suivies": [],
@@ -111,6 +112,12 @@
       "version": 4,
       "decision": "B confirmé armé (clôture D1 06/11 0,56318 < 0,5655) ; plan aligné sur l'ordre réel 0,55 lot / SL 0,5693 / TP 0,5548",
       "resume": "AUDCHF rebondit de +53 pip aujourd'hui (rebond AUD général) ; décision à la clôture D1 de ce soir"
+    },
+    {
+      "date": "2026-11-13",
+      "version": 5,
+      "decision": "B annulé : SELL STOP 0,56350 retiré par l'utilisatrice (expiration du plan ce soir)",
+      "resume": "plus aucun ordre en attente sur la paire ; nouvelles analyses lundi"
     }
   ]
 }

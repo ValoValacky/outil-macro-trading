@@ -1,0 +1,116 @@
+{
+  "created": "2026-11-09 10:45",
+  "created_server_date": "2026-11-09",
+  "valid_until": "2026-11-13",
+  "version": 4,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "AUDCHF",
+  "bias": "tendance de fond haussière (W1), repli de 3 semaines en D1 ; fausse cassure du plus bas aujourd'hui (0,56599, volume 1,6 fois la moyenne) puis retour à 0,5729 ; prix sous la Kijun D1 (0,57559) et sous le nuage D1 (0,57515-0,58190). RBA relevée à 4,85 % le 03/11 (vote 6-3, pause annoncée), SNB à 0 %.",
+  "levels": {
+    "plus_bas_jour": 0.56599,
+    "support_haut": 0.5715,
+    "creux_15_10": 0.57042,
+    "mm200_d1": 0.56437,
+    "kijun_w1": 0.57151,
+    "kijun_d1": 0.57559,
+    "mm50_d1": 0.58051,
+    "haut_29_10": 0.58519,
+    "haut_18_09": 0.58823
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat sur le support (zone du plus bas du jour)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 0.569,
+      "sl": 0.5638,
+      "tp": [
+        0.5756,
+        0.5805,
+        0.5852
+      ],
+      "lot_800eur": 1.41,
+      "lot_texte": "0,70 lot (risque 397 EUR, demi-risque : AUDNZD déjà acheté = même pari « AUD fort »)",
+      "condition_texte": "aucune (ordre posé d'avance sur la zone 0,5660-0,5715)",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 0,5655 (plus bas du jour perdu) : on annule l'achat et on passe au plan B",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 0.5655
+      },
+      "statut": "terminé",
+      "note_v2": "Déclenché jeudi 16h56 (0,70 lot @ 0,56898), SL 0,56375 touché vendredi 05h18 : -402,90 EUR (perte réelle)."
+    },
+    {
+      "id": "B",
+      "nom": "Vente de continuation sous le plancher",
+      "side": "sell",
+      "type": "stop",
+      "entry": 0.5635,
+      "sl": 0.5693,
+      "tp": [
+        0.5548,
+        0.5448
+      ],
+      "lot_800eur": 1.13,
+      "lot_texte": "0,55 lot posé par l'utilisatrice (risque réel ≈ 347 EUR = 0.22 %, demi-risque ; SL 0,5693 au lieu de 0,5700) ; 2e pari vendeur sur l'AUD avec GBPAUD acheté (règle 2)",
+      "condition_texte": "seulement après une clôture D1 sous 0,5655",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 0.5655
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 0,5756 (retour au-dessus de la Kijun D1)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 0.5756
+      },
+      "statut": "armé",
+      "note_v3": "Armé par la clôture D1 du 06/11 à 0,56318 (< 0,5655). AUDNZD est sorti (SL lundi 00h05, -805 EUR), donc la condition « AUDNZD sorti » est remplie. Non posé chez le courtier.",
+      "ordre_reel": "SELL STOP 0.55 lot @0.5635 SL 0.5693 TP 0.5548 (magic 20260900, posé le 2026-11-09 11:29 serveur) ; seul TP1 posé, TP2 0,5448 à gérer à la main",
+      "armement_constate": "clôture D1 du ven 06/11 = 0,56318 < 0,5655 : condition remplie vendredi (jeudi 05/11 clôturait à 0,56559, juste au-dessus)",
+      "a_decider_ce_soir": "Aujourd'hui AUDCHF rebondit de +53 pip (bas 0,5614, prix 0,5673) : si la bougie D1 clôture AU-DESSUS de 0,5655, la cassure du vendredi est annulée ; l'ordre SELL STOP reste posé mais le contexte change (voir note). Le plancher réel est maintenant 0,5605 (vendredi) / 0,5614 (aujourd'hui), à 21-29 pip sous l'entrée."
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-05 14:40",
+      "texte": "Schlegel (SNB) parle : pas d'ordre CHF de 14h15 à 15h15"
+    },
+    {
+      "quand_serveur": "2026-11-06 15:30",
+      "texte": "emploi américain NFP + emploi canadien (USD, CAD) : pas d'ordre de 15h00 à 16h00"
+    }
+  ],
+  "regles": "AUD déjà vendu une fois via GBPAUD acheté (533 EUR) : B = 2e vente d'AUD, donc 400 EUR maximum (règle 2) ; total AUD 933 EUR < 1 200 (règle 3). Pas d'ordre dans l'heure avant une annonce forte AUD ou CHF.",
+  "journal": [
+    {
+      "date": "2026-11-04",
+      "version": 1,
+      "decision": "plan initial D1",
+      "resume": "AUDCHF 0,5729, fausse cassure du plus bas (0,56599) + retour, volume 1,6x"
+    },
+    {
+      "date": "2026-11-06",
+      "version": 2,
+      "decision": "A terminé au SL (-402,90 EUR) ; B reste en veille (et interdit tant qu'AUDNZD acheté est ouvert)",
+      "resume": "clôture D1 du 05/11 à 0,56559, 0,9 pip au-dessus du seuil 0,5655 de B ; bougie du jour à 0,5629"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 3,
+      "decision": "B armé, lot réduit à 0,56 lot (400 EUR, règle 2) ; à régler à 0,25 % dans Magic Panel",
+      "resume": "clôture D1 06/11 0,56318 sous 0,5655 ; AUDNZD sorti au SL ; prix 0,5642 sur la MM200 D1 (0,5644)"
+    },
+    {
+      "date": "2026-11-09",
+      "version": 4,
+      "decision": "B confirmé armé (clôture D1 06/11 0,56318 < 0,5655) ; plan aligné sur l'ordre réel 0,55 lot / SL 0,5693 / TP 0,5548",
+      "resume": "AUDCHF rebondit de +53 pip aujourd'hui (rebond AUD général) ; décision à la clôture D1 de ce soir"
+    }
+  ]
+}
