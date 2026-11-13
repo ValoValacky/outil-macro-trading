@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 12:30",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-13 10:40",
+  "created_server_date": "2026-11-13",
   "valid_until": "2026-11-19",
-  "version": 5,
+  "version": 6,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
@@ -60,10 +60,9 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL STOP 0,63 lot = 0,25 % (≈ 397 EUR) ; swap vendeur -16 EUR par lot et par nuit (≈ -10 EUR/nuit)",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,8900 ; ET INTERDIT règle 1 tant que le BUY LIMIT GBPNZD (livre achetée) est posé (GBPAUD est fermé depuis le 12/11).",
+      "condition_texte": "EN VEILLE (armé mais interdit) : la clôture D1 du 12/11 à 1,88672 (< 1,8900, volume 0,99 fois la moyenne 20 = juste sous la moyenne) a armé B ; mais INTERDIT règle 1 tant qu'une livre est achetée (BUY LIMIT GBPAUD A 1,9260 valable jusqu'au 20/11, et BUY LIMIT GBPNZD jusqu'à ce soir). Le 13/11 le prix (1,8860) est déjà SOUS l'entrée 1,8870 : un SELL STOP n'est plus posable à ce prix ; ne pas vendre au marché. À revoir lundi seulement si l'utilisatrice choisit de retirer les achats de livre.",
       "condition": {
-        "type": "d1_close_below",
-        "level": 1.89
+        "type": "none"
       },
       "invalidation_texte": "clôture D1 au-dessus de 1,9045 (sommet de l'année cassé : la cassure a réussi) ; une fois déclenché, c'est le SL 1,8970 qui protège",
       "invalidation": {
@@ -171,6 +170,12 @@
       "version": 5,
       "decision": "B reste en veille (pas de clôture D1 < 1,8900 ; règle 1 désormais à cause de GBPNZD)",
       "resume": "clôtures D1 10/11 1,89323 et 11/11 1,89154 ; prix 1,8908"
+    },
+    {
+      "date": "2026-11-13",
+      "version": 6,
+      "decision": "B armé par la clôture D1 du 12/11 (1,88672 < 1,8900, volume 0,99x) mais reste en veille : INTERDIT règle 1 (livre achetée via GBPAUD A et GBPNZD A) et prix déjà sous l'entrée 1,8870",
+      "resume": "prix 1,8860 ; aucun ordre GBPCAD ; rien à faire dans MT5"
     }
   ]
 }
