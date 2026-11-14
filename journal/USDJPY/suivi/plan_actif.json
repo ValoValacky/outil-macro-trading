@@ -6,7 +6,7 @@
   "pip": 0.01,
   "pair": "USDJPY",
   "timeframe": "D1",
-  "bias": "Range de deux mois 156,07-158,95 cassé par le haut le 11/11 (clôture 159,801, +104 pips) ; prix au-dessus de toutes les moyennes D1 (MM20 158,12, MM50 157,36, MM100 158,99, MM200 158,72) et du nuage D1 ; W1 au-dessus de la Kijun 158,43 et du nuage. Mais cassure sur volume faible (0,64 fois, jour férié US) et sous les résistances 160,39-160,72 (sommets de sept., mars, avril), zone où le Japon est déjà intervenu en 2024. On achète un retour sur l'ancien plafond, pas la cassure elle-même. Volume : la cassure du 11/11 s'est faite à 0,64 fois la moyenne (jour férié US), le gros volume était dans le range (04-06/11) : cassure non confirmée.",
+  "bias": "Range de deux mois 156,07-158,95 cassé par le haut le 11/11 ; trois jours au-dessus de l'ancien plafond (clôture hebdo 159,710), valeur de la semaine montée avec le prix (POC 157,85 -> 159,87) ; au-dessus de toutes les moyennes D1/W1 ; Foule acheteuse de yen contre la tendance. Mais cassure sur volume faible (0,63 fois, jour férié US), jamais confirmée depuis (0,96 et 0,88 fois), et plus haut 160,184 rejeté sous la zone d'interventions japonaises 160,39-160,72. On achète un retour sur l'ancien plafond 158,90 (A, posable lundi), ou une cassure confirmée au-dessus de 160,40 (B).",
   "levels": {
     "sommet_28_06": 162.838,
     "sommet_26_04": 160.723,
