@@ -1,130 +1,99 @@
 {
-  "created": "2026-11-12 12:30",
-  "created_server_date": "2026-11-12",
-  "valid_until": "2026-11-13",
-  "version": 10,
+  "created": "2026-11-14 10:00",
+  "created_server_date": "2026-11-14",
+  "valid_until": "2026-11-20",
+  "version": 11,
   "pip": 0.0001,
   "pair": "EURUSD",
-  "bias": "range de 4 semaines 1,1105-1,1273 dans une tendance de fond baissière ; vendredi, l'emploi américain fort a ramené le prix au plancher (1,1131), il remonte aujourd'hui au milieu (1,1193). On vend le haut du range, on ne poursuit rien au milieu.",
+  "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
   "levels": {
-    "plancher": 1.11045,
-    "bas_vendredi": 1.1131,
-    "mm20_d1": 1.11908,
-    "poc_semaine": 1.11915,
-    "haut_zone_valeur": 1.1247,
-    "ema200_h4": 1.12566,
-    "sommet_range": 1.12731,
-    "mm50_d1": 1.13429
+    "bas_13_11": 1.10194,
+    "chiffre_rond": 1.1,
+    "cible_double_sommet": 1.09396,
+    "creux_avril_2025": 1.08803,
+    "creux_mars_2025": 1.0805,
+    "ancien_plancher": 1.11045,
+    "kijun_h4": 1.11354,
+    "mm20_d1": 1.11701,
+    "poc_semaine": 1.10535,
+    "haut_zone_valeur": 1.1169,
+    "sommet_range": 1.12731
   },
   "plans": [
     {
       "id": "A",
-      "nom": "Vente du haut du range",
+      "nom": "Vente du retour sous l'ancien plancher",
       "side": "sell",
       "type": "limit",
-      "entry": 1.1262,
-      "sl": 1.131,
+      "entry": 1.11,
+      "sl": 1.1185,
       "tp": [
-        1.1192,
-        1.114
+        1.0945,
+        1.0885
       ],
-      "lot_800eur": 1.88,
-      "lot_texte": "0,94 lot = 0,25 % (risque 400 EUR) : 2e pari « dollar acheté » tant que la vente d'or B est posée",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que la position EURNZD achetée (euro acheté) est ouverte. (Règle 2 dollar libérée : la vente d'or est fermée, une vente EURUSD serait le 2e dollar acheté à 400 EUR.) Attention : clôture D1 du 11/11 à 1,10890 SOUS le plancher du range 1,1105 : le range est cassé par le bas.",
+      "lot_800eur": 1.04,
+      "lot_texte": "SELL LIMIT 0,52 lot = 0,25 % (risque 400 EUR)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que la position EURNZD (euro acheté) est ouverte. Si EURNZD est fermée : posable à 0,25 % (2e dollar acheté si USDJPY A est posé).",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1277 : on retire l'ordre (la cassure ouvre 1,1343 puis 1,1369)",
+      "invalidation_texte": "clôture D1 au-dessus de 1,1135 (retour dans l'ancien range) : on retire l'ordre",
       "invalidation": {
         "type": "d1_close_above",
-        "level": 1.1277
+        "level": 1.1135
       },
-      "statut": "en_veille",
-      "note_v7": "Toujours en veille, mais maintenant pour l'EURO (règle 1 : EURNZD achète l'euro), plus pour le dollar.",
-      "note_v8": "En veille règle 1 (euro acheté via EURNZD). Si l'utilisatrice retire EURNZD, A (SELL LIMIT 1,1262) redevient possible.",
-      "note_v9": "11/11 : raison mise à jour (robot sorti ; EURNZD B + USD 2 fois)."
+      "statut": "en_veille"
     },
     {
       "id": "B",
-      "nom": "Vente de la cassure du plancher",
+      "nom": "Vente de la cassure de 1,1000",
       "side": "sell",
       "type": "stop",
-      "entry": 1.109,
-      "sl": 1.114,
+      "entry": 1.0975,
+      "sl": 1.106,
       "tp": [
-        1.1,
-        1.09
+        1.0885,
+        1.081
       ],
-      "lot_800eur": 1.78,
-      "lot_texte": "0,89 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "seulement après une clôture D1 sous 1,1100",
+      "lot_800eur": 1.04,
+      "lot_texte": "SELL STOP 0,52 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,0990, et mêmes interdits que A (règle 1). PRÉCAUTION VOLUME : si la bougie D1 qui clôture sous 1,0990 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
       "condition": {
         "type": "d1_close_below",
-        "level": 1.11
+        "level": 1.099
       },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1200 (retour au milieu du range)",
+      "invalidation_texte": "clôture D1 au-dessus de 1,1105",
       "invalidation": {
         "type": "d1_close_above",
-        "level": 1.12
+        "level": 1.1105
       },
-      "statut": "annulé",
-      "note_v6": "Invalidé : clôture D1 du 09/11 à 1,12237, au-dessus de 1,1200."
-    },
-    {
-      "id": "C",
-      "nom": "Achat sur le plancher (contre-tendance)",
-      "side": "buy",
-      "type": "limit",
-      "entry": 1.112,
-      "sl": 1.1088,
-      "tp": [
-        1.119,
-        1.1245
-      ],
-      "lot_800eur": 2.77,
-      "lot_texte": "BUY LIMIT 1,1120, 1,38 lot = 0,25 % (≈ 400 EUR) ; 2e pari « euro acheté » avec EURNZD (règle 2) et 1er « dollar vendu » (2e si l'achat d'or A est posé)",
-      "condition_texte": "EN VEILLE : interdit par la règle 1 tant que la vente d'or (XAUUSD B, dollar acheté) est posée ; si l'ordre d'or est retiré, C serait le 2e pari « euro acheté » (avec le robot) à 0,25 % = 400 EUR",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture D1 sous 1,1100",
-      "invalidation": {
-        "type": "d1_close_below",
-        "level": 1.11
-      },
-      "statut": "annulé",
-      "note_v7": "Autorisé depuis la sortie du robot EURUSD (stoppé après l'inflation US). Prix 1,1179, entrée 59 pip plus bas. NE PAS acheter au marché. Règle 1 : interdit si USDCAD A est posé (dollar acheté). Attention règle 6 : si un robot EURUSD reprend une vente, retirer l'ordre.",
-      "note_v8": "Annulé le 10/11 18h Paris (jamais posé) : achat contre la tendance D1 (sous MM50/100/200 D1 et MM20 W1) et sous EMA20/50/200 H4 après l'inflation US, prix 1,1153. Une vente EURUSD reste INTERDITE (règle 1) tant que l'ordre d'achat EURNZD (euro acheté) existe."
+      "statut": "en_veille"
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-10 11:00",
-      "texte": "Waller (Fed) parle (USD, moyen)"
+      "quand_serveur": "2026-11-16 12:00",
+      "texte": "PIB zone euro + production industrielle (EUR, moyen), 11h Paris"
     },
     {
-      "quand_serveur": "2026-11-10 15:30",
-      "texte": "inflation américaine CPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
+      "quand_serveur": "2026-11-16 22:30",
+      "texte": "rapport COT décalé (jour férié US du 11/11) : vérifier lundi soir / mardi"
     },
     {
-      "quand_serveur": "2026-11-12 15:30",
-      "texte": "chômage hebdo US (USD, moyen)"
+      "quand_serveur": "2026-11-17 15:30",
+      "texte": "ventes au détail US (USD, FORT), 14h30 Paris : aucun NOUVEL ordre USD de 13h30 à 15h30 Paris"
     },
     {
-      "quand_serveur": "2026-11-12 21:30",
-      "texte": "Mme Lagarde parle (EUR, moyen)"
+      "quand_serveur": "2026-11-18 12:00",
+      "texte": "inflation zone euro définitive (EUR, moyen), 11h Paris"
     },
     {
-      "quand_serveur": "2026-11-13 15:30",
-      "texte": "prix à la production PPI (USD, FORT) : aucun nouvel ordre USD de 14h30 à 16h30"
-    },
-    {
-      "quand_serveur": "2026-11-10 15:30",
-      "texte": "10/11 15h30 serveur (14h30 Paris) : inflation US plus forte que prévu (CPI 0,4 % vs 0,3 % ; core 0,3 % vs 0,2 %). Dollar en hausse : EURUSD 1,1210 → 1,1179, or 4069 → 4039, USDCAD 1,4135 → 1,4163. Le robot EURUSD (achat 0,8 @1,12203) a été stoppé à 1,11844 (-258,6 EUR) : plus aucune exposition au dollar."
+      "quand_serveur": "2026-11-18 21:00",
+      "texte": "compte rendu de la Fed (USD, FORT), 20h Paris : aucun NOUVEL ordre USD de 19h à 21h Paris"
     }
   ],
-  "regles": "Contrôle devise par devise (règles du 06/11) : 1 seul sens par devise ; 2 paris max dans le même sens, le 2e à 400 € ; 1 200 € max par devise ; 3 200 € max au total, ordres en attente compris. EUR : les plans de vente (EURUSD A, EURJPY A, EURNZD A) sont 3 paris « euro vendu » : 2 au maximum. USD : tant que la vente d'or (XAUUSD B, dollar acheté) est posée (jusqu'au 10/11 au soir), un seul nouveau pari « dollar acheté » (EURUSD A OU USDCAD A). Tous les lots sont à 0,25 % (risque 400 EUR).",
+  "regles": "Contrôle devise par devise au 14/11 : EURNZD acheté (euro acheté, NZD vendu, 804 €) ; BUY LIMIT GBPAUD (387 €). USD et JPY : aucune exposition. Vendre EURUSD = INTERDIT règle 1 tant qu'EURNZD est ouvert. Acheter USDJPY = 1er dollar acheté : autorisé ; une vente EURUSD serait alors le 2e (400 € max). Règle 6 : un achat EURUSD d'un robot (dollar vendu) interdirait l'achat USDJPY. Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Heures en Paris (serveur = Paris + 1 h). Tous les lots à 0,25 % (400 €).",
   "journal": [
     {
       "date": "2026-11-03",
@@ -175,6 +144,13 @@
       "version": 10,
       "decision": "A reste en veille (règle 1) ; range cassé par le bas (clôture D1 1,10890 < 1,1105)",
       "resume": "prix 1,1098 ; entrée A 1,1262 à 164 pip ; aucun nouveau plan sans analyse"
+    },
+    {
+      "date": "2026-11-14",
+      "version": 11,
+      "decision": "nouveau plan de la semaine (analyse D1 du week-end) : anciens plans terminés ; A vente 1,1100 et B vente cassure 1,0975 en veille (règle 1, EURNZD)",
+      "resume": "clôture hebdo 1,10212 ; range cassé par le bas ; RSI W1 29 ; COT au 03/11 (rapport du 10/11 décalé)"
     }
-  ]
+  ],
+  "timeframe": "D1"
 }

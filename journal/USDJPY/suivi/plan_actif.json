@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 15:43",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-14 10:00",
+  "created_server_date": "2026-11-14",
   "valid_until": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "pip": 0.01,
   "pair": "USDJPY",
   "timeframe": "D1",
@@ -18,7 +18,12 @@
     "tenkan_d1": 158.599,
     "kijun_d1": 158.01,
     "bas_09_11": 157.668,
-    "bas_range": 156.075
+    "bas_range": 156.075,
+    "haut_13_11": 160.184,
+    "poc_semaine": 159.868,
+    "bas_zone_valeur": 158.275,
+    "ema50_h4": 158.909,
+    "kijun_h4": 158.926
   },
   "plans": [
     {
@@ -33,8 +38,8 @@
         161.5
       ],
       "lot_800eur": 1.01,
-      "lot_texte": "BUY LIMIT 0,50 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e dollar acheté après USDCAD et l'or). Posable dès que le BUY LIMIT USDCAD ou le SELL LIMIT or est retiré ou expiré (vendredi 13/11 au soir).",
+      "lot_texte": "BUY LIMIT 0,50 lot = 0,25 % (risque 400 EUR) ; 1er dollar acheté",
+      "condition_texte": "POSABLE lundi 16/11 après l'ouverture (règle 2 levée : aucun dollar acheté ailleurs). Pas entre 13h30 et 15h30 Paris mardi (ventes au détail US). Si un robot ouvre un achat EURUSD (dollar vendu) : interdit règle 1.",
       "condition": {
         "type": "none"
       },
@@ -43,7 +48,8 @@
         "type": "d1_close_below",
         "level": 157.5
       },
-      "statut": "en_veille"
+      "statut": "en_attente",
+      "note_v2": "14/11 : règle 2 levée (USDCAD et or expirés vendredi) ; niveau confirmé (EMA50 H4 158,91, Kijun H4 158,93)."
     },
     {
       "id": "B",
@@ -51,14 +57,14 @@
       "side": "buy",
       "type": "stop",
       "entry": 160.5,
-      "sl": 159.3,
+      "sl": 159.1,
       "tp": [
-        161.7,
+        161.9,
         162.8
       ],
-      "lot_800eur": 1.18,
-      "lot_texte": "BUY STOP 0,59 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé, ET mêmes interdits que A (règle 2). PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là ; attendre la clôture suivante (test du 16/10).",
+      "lot_800eur": 1.01,
+      "lot_texte": "BUY STOP 0,50 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé. PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
       "condition": {
         "type": "d1_close_above",
         "level": 160.4
@@ -68,27 +74,42 @@
         "type": "d1_close_below",
         "level": 158.9
       },
-      "statut": "en_veille"
+      "statut": "en_veille",
+      "note_v2": "14/11 : SL 159,30 -> 159,10 (collé au bas du 12/11 159,31, règle SL) ; TP 161,90 / 162,80."
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
-      "quand_serveur": "2026-11-13 15:30",
-      "texte": "PPI américain (USD, FORT), 14h30 Paris : aucun NOUVEL ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
+      "quand_serveur": "2026-11-16 22:30",
+      "texte": "rapport COT décalé (jour férié US du 11/11) : vérifier lundi soir / mardi"
     },
     {
-      "quand_serveur": "2026-11-16 00:00",
-      "texte": "semaine du 16/11 : calendrier AUD/JPY/USD à vérifier lundi (emploi australien et ventes au détail US possibles)"
+      "quand_serveur": "2026-11-17 15:30",
+      "texte": "ventes au détail US (USD, FORT), 14h30 Paris : aucun NOUVEL ordre USD de 13h30 à 15h30 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-18 21:00",
+      "texte": "compte rendu de la Fed (USD, FORT), 20h Paris : aucun NOUVEL ordre USD de 19h à 21h Paris"
+    },
+    {
+      "quand_serveur": "2026-11-16 01:50",
+      "texte": "PIB japonais (JPY, moyen) : heure à vérifier"
     }
   ],
-  "regles": "USD : déjà acheté 2 fois (BUY LIMIT USDCAD 1,4060 + SELL LIMIT or 3997,60) : maximum de la règle 2 atteint. AUD : déjà vendu 2 fois (SELL STOP AUDCHF + BUY LIMIT GBPAUD) : maximum atteint. Ces ordres USDCAD, or et AUDCHF expirent vendredi 13/11 au soir : les plans redeviennent posables lundi s'ils sont retirés. Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. JPY : aucune exposition. Vendre USDJPY = INTERDIT règle 1 (dollar acheté ailleurs). Pip ≈ 5,65 EUR par lot ; swap acheteur ≈ +1 EUR par lot et par nuit (vendeur ≈ -9,8).",
+  "regles": "Contrôle devise par devise au 14/11 : EURNZD acheté (euro acheté, NZD vendu, 804 €) ; BUY LIMIT GBPAUD (387 €). USD et JPY : aucune exposition. Vendre EURUSD = INTERDIT règle 1 tant qu'EURNZD est ouvert. Acheter USDJPY = 1er dollar acheté : autorisé ; une vente EURUSD serait alors le 2e (400 € max). Règle 6 : un achat EURUSD d'un robot (dollar vendu) interdirait l'achat USDJPY. Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Heures en Paris (serveur = Paris + 1 h). Tous les lots à 0,25 % (400 €).",
   "journal": [
     {
       "date": "2026-11-12",
       "version": 1,
       "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
       "resume": "prix 159,77 ; range 156,07-158,95 cassé le 11/11 sur volume faible ; résistance 160,39-160,72"
+    },
+    {
+      "date": "2026-11-14",
+      "version": 2,
+      "decision": "A EN ATTENTE (posable lundi, règle 2 levée) ; B en veille, SL corrigé 159,10",
+      "resume": "clôture hebdo 159,710, plus haut 160,184 rejeté sous 160,39 ; la valeur de la semaine a suivi (POC 159,868)"
     }
   ]
 }
