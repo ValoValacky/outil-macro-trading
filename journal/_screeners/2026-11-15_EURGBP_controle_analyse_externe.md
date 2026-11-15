@@ -26,6 +26,19 @@ Données MT5 FTMO, clôture de vendredi 13/11 : 0,83415. ATR D1 26 pip, ATR H4 1
 - GBP : acheté 1 fois (BUY LIMIT GBPAUD) → ce serait le 2e : 400 € maximum (règle 2).
 - Lot si autorisé : risque 400 € = 0,25 % de 158 137 € ; ≈ 12,0 € par pip et par lot → 0,61 lot (entrée 0,8370) à 1,14 lot (entrée 0,8390).
 
+## Chiffres économiques vérifiés sur le net (15/11)
+| Affirmation de l'analyse | Source trouvée | Verdict |
+|---|---|---|
+| GBP/EUR au plus haut depuis 20 mois | MT5 : EURGBP 0,83208 le 05/11, jamais aussi bas depuis le 28/03/2025 (0,83153) = ~20 mois | confirmé |
+| CPI UK précédent 3,5 % | ONS : 3,5 % en septembre 2026 (3,1 % en août), services 3,7 %, core 2,8 % | confirmé |
+| Prévision BoE 3,73 % | chiffre exact introuvable (graphique du rapport sans valeurs). Commons Library : BoE ~3,75 % en moyenne au T4 2026 ; Trésor (moyenne des prévisionnistes) 3,6 % au T4 (3,3-3,9 %) | plausible, non vérifié au centième |
+| CPI UK mercredi 8h00 Paris | ONS : publication du CPI d'octobre le 18/11 (7h00 Londres = 8h00 Paris, 9h00 serveur) | confirmé |
+| Emploi UK mardi 8h00 Paris | ONS : marché du travail le 17/11 à 7h00 Londres ; dernier chômage 4,7 % (juin-août) | confirmé |
+| HICP mercredi | Eurostat : HICP final d'octobre le 18/11 ; estimation rapide 4,0 % (plus haut depuis 3 ans) | confirmé |
+| Ventes au détail UK vendredi 8h00 Paris | ONS : 20/11 à 7h00 Londres ; septembre -0,4 % | confirmé |
+
+Contexte trouvé en plus : BoE a MONTÉ son taux à 4,0 % le 5/11 (vote 8-1, un membre voulait 4,25 %), et dit qu'une nouvelle hausse « peut être justifiée » ; inflation vue à ~5 % mi-2027 (énergie, conflit au Moyen-Orient). BCE inchangée à 2,50 % le 29/10. Écart de taux en faveur de la livre = cohérent avec EURGBP en baisse. Risque inverse : l'inflation de la zone euro (4,0 %) dépasse celle du Royaume-Uni (3,5 %) → une hausse de la BCE en décembre ferait remonter EURGBP.
+
 ## Verdict
 Sens confirmé par nos outils, niveaux plausibles, mais : TP1 quasi au prix actuel, TP2 sous le plus bas d'un an avec un achat Quasimodo et un RSI bas juste au-dessus, et INTERDIT règle 1 tant que EURNZD est ouvert. Candidat pour l'analyse de lundi, pas d'ordre à poser. Chiffres macro (prévision CPI BoE 3,73 %) non vérifiés.
 Annonces : emploi UK mardi 8h00 Paris (9h00 serveur), CPI UK mercredi 8h00 Paris (9h00 serveur) : pas de nouvel ordre GBP de 7h00 à 8h00 Paris ces jours-là.
