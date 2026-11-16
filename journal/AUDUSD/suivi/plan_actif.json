@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 11:15",
+  "created": "2026-11-16 11:45",
   "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 3,
+  "version": 4,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -32,7 +32,7 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL LIMIT 0,36 lot = 0,25 % (risque 250 USD, compte 100 000 USD)",
-      "condition_texte": "POSABLE sur le nouveau compte 1515301801 (100 000 USD) : SELL LIMIT 0,6895 à 0,25 %, environ 138 pip au-dessus du prix (0,6756) ; NE PAS vendre au marché. 2e pari dollar acheté si EURUSD A est posé (règle 2 : 0,25 % max, OK).",
+      "condition_texte": "EN VEILLE (à trancher par l'utilisatrice) : le rapport fondamental du 16/11 vend AUDUSD plus bas (zone 0,6800-0,6830) et dit que l'idée vendeuse est morte en clôture H4 au-dessus de 0,6875 et au-dessus de 0,69. Notre entrée 0,6895 est donc là où le rapport n'y croit plus. Variante possible (rapport + notre règle SL 1,2 ATR = 68 pip) : SELL LIMIT 0,6815, SL 0,6905 (au-dessus du plancher cassé 0,6894), TP 0,6700 / 0,6600, 0,25 % ≈ 0,28 lot. NE PAS vendre au marché.",
       "condition": {
         "type": "none"
       },
@@ -41,7 +41,7 @@
         "type": "d1_close_above",
         "level": 0.6965
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -99,6 +99,12 @@
       "version": 3,
       "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
       "resume": "prix 0,6756 ; nouveau compte 1515301801 branché"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 4,
+      "decision": "A remis en veille : entrée 0,6895 au-dessus de l'invalidation du rapport fondamental (0,6875 / 0,69) ; variante 0,6815 proposée, à valider",
+      "resume": "prix 0,6756 ; rapport fondamental 16/11 relu"
     }
   ]
 }
