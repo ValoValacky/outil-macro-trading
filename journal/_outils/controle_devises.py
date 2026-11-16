@@ -6,8 +6,8 @@ Usage : PYTHONIOENCODING=utf-8 python -u controle_devises.py [--md chemin_note.m
 Regles verifiees :
  1 un seul sens par devise (jamais achetee ET vendue)
  2 pas plus de 2 paris dans le meme sens sur une devise
- 3 plafond de risque par devise (1 200 EUR)
- 4 plafond de risque total positions + ordres (3 200 EUR)
+ 3 plafond de risque par devise (750 USD, 0,75 % du compte)
+ 4 plafond de risque total positions + ordres (2 000 USD, 2 % du compte)
  5 un ordre en attente compte comme une position
  6 les positions des robots comptent
 Les plans du journal encore posables (statut en_attente / armé, pas encore poses
@@ -16,7 +16,8 @@ chez le courtier) sont testes un par un : « si tu le poses, est-ce permis ? ».
 import json, re, sys, datetime as dt, pathlib
 import MetaTrader5 as mt5
 
-NORMAL, DEMI, PLAF_DEVISE, PLAF_TOTAL, SEUIL_GARDE = 800, 400, 1200, 3200, 4800
+# compte 100 000 USD depuis le 2026-11-16 (avant : 160 000 EUR = 800/400/1200/3200/4800) : memes pourcentages (0,5 / 0,25 / 0,75 / 2 / 3 % du compte)
+NORMAL, DEMI, PLAF_DEVISE, PLAF_TOTAL, SEUIL_GARDE = 500, 250, 750, 2000, 3000
 ROOT = pathlib.Path(__file__).resolve().parents[1]          # .../journal
 GUARD = ROOT.parents[1] / "Bot Trading FTMO" / "state" / "ftmo_demo_guard.json"
 NOMS = {"EUR": "euro", "USD": "dollar US", "GBP": "livre", "JPY": "yen", "CHF": "franc suisse",
@@ -78,10 +79,10 @@ def etat(dev, x):
     if nb > 2:
         return f"TROP règle 2 : {n} en {sens} {nb} fois"
     if r > PLAF_DEVISE:
-        return f"TROP règle 3 : {r:,.0f} € sur le {n} (maximum {PLAF_DEVISE} €)".replace(",", " ")
+        return f"TROP règle 3 : {r:,.0f} $ sur le {n} (maximum {PLAF_DEVISE} $)".replace(",", " ")
     if nb == 0:
         return None
-    return f"OK : {n} en {sens} {nb} fois ({r:,.0f} €)".replace(",", " ")
+    return f"OK : {n} en {sens} {nb} fois ({r:,.0f} $)".replace(",", " ")
 
 
 def verdict_nouveau(sym, achat, r, t, total):
@@ -97,11 +98,11 @@ def verdict_nouveau(sym, achat, r, t, total):
         if x[meme] >= 2:
             return f"INTERDIT règle 2 : {dev} déjà en {meme} {x[meme]} fois"
         if x["r_" + meme] + r > PLAF_DEVISE:
-            return f"INTERDIT règle 3 : {x['r_' + meme] + r:,.0f} € sur {dev}".replace(",", " ")
+            return f"INTERDIT règle 3 : {x['r_' + meme] + r:,.0f} $ sur {dev}".replace(",", " ")
         if x[meme] == 1 and r > DEMI:
-            msgs.append(f"RÉDUIS à {DEMI} € (2e pari en {meme} sur {dev})")
+            msgs.append(f"RÉDUIS à {DEMI} $ (2e pari en {meme} sur {dev})")
     if total + r > PLAF_TOTAL:
-        return f"INTERDIT règle 4 : total {total + r:,.0f} € (maximum {PLAF_TOTAL} €)".replace(",", " ")
+        return f"INTERDIT règle 4 : total {total + r:,.0f} $ (maximum {PLAF_TOTAL} $)".replace(",", " ")
     return msgs[0] if msgs else "OK"
 
 
@@ -125,7 +126,7 @@ def plans_posables(lignes):
                        and abs(l["prix"] - entree) <= 0.003 * entree for l in lignes)
             if pose:
                 continue
-            m = re.search(r"risque\s+([\d\s]+)\s*EUR", pl.get("lot_texte", ""))
+            m = re.search(r"risque\s+([\d\s]+)\s*(?:EUR|USD|\$)", pl.get("lot_texte", ""))
             r = float(m.group(1).replace(" ", "")) if m else float(NORMAL)
             out.append(dict(pair=p["pair"], id=pl["id"], achat=achat, entree=entree, risque=r))
     return out
@@ -150,7 +151,7 @@ def main():
     for l in lignes:
         a, b = devises(l["sym"])
         clair = (f"j'achète {a}, je vends {b}" if l["achat"] else f"je vends {a}, j'achète {b}") if a else "hors devises"
-        r = "SANS STOP" if l["risque"] is None else f"{l['risque']:,.0f} €".replace(",", " ")
+        r = "SANS STOP" if l["risque"] is None else f"{l['risque']:,.0f} $".replace(",", " ")
         P(f"| {l['sym']} | {'ACHAT' if l['achat'] else 'VENTE'} | {l['statut']} | {l['qui']} | {clair} | {r} |")
     P("")
     P("### Chaque devise")
@@ -161,15 +162,15 @@ def main():
         e = etat(dev, x)
         if e is None:
             continue
-        P(f"| {dev} | {x['achat']} ({x['r_achat']:,.0f} €) | {x['vente']} ({x['r_vente']:,.0f} €) | {e} |".replace(",", " "))
+        P(f"| {dev} | {x['achat']} ({x['r_achat']:,.0f} $) | {x['vente']} ({x['r_vente']:,.0f} $) | {e} |".replace(",", " "))
         if not e.startswith("OK"):
             alertes.append((dev, e, x))
     P("")
     pct = total / acc.balance * 100 if acc.balance else 0
     tot_txt = f"{total:,.0f}".replace(",", " ")
     pct_txt = f"{pct:.2f}".replace(".", ",")
-    regle4 = f"TROP règle 4 (maximum {PLAF_TOTAL} €)" if total > PLAF_TOTAL else "OK"
-    P(f"**Total du risque (positions + ordres) : {tot_txt} € soit {pct_txt} % du compte** -> {regle4}")
+    regle4 = f"TROP règle 4 (maximum {PLAF_TOTAL} $)" if total > PLAF_TOTAL else "OK"
+    P(f"**Total du risque (positions + ordres) : {tot_txt} $ soit {pct_txt} % du compte** -> {regle4}")
     sans_stop = [l["sym"] for l in lignes if l["risque"] is None]
     if sans_stop:
         P(f"**ATTENTION : sans stop (risque illimité) : {', '.join(sans_stop)}**")
@@ -184,14 +185,14 @@ def main():
         P("### Si tu poses un ordre de plan pas encore posé")
         for c in cand:
             v = verdict_nouveau(c["pair"], c["achat"], c["risque"], t, total)
-            P(f"- {c['pair']} plan {c['id']} ({'achat' if c['achat'] else 'vente'} à {c['entree']}, {c['risque']:.0f} €) : **{v}**")
+            P(f"- {c['pair']} plan {c['id']} ({'achat' if c['achat'] else 'vente'} à {c['entree']}, {c['risque']:.0f} $) : **{v}**")
     try:
         g = json.loads(GUARD.read_text(encoding="utf-8"))
         perte = g["daily_start_balance"] - acc.equity
         P("")
-        P(f"**Garde-fou** : référence {g['daily_start_balance']:,.2f} € ({g['daily_start_date']}) ; équité {acc.equity:,.2f} € -> "
-          f"{'perte' if perte > 0 else 'gain'} du jour {abs(perte):,.0f} € "
-          f"({max(perte, 0) / SEUIL_GARDE * 100:.0f} % du seuil de {SEUIL_GARDE} €)".replace(",", " "))
+        P(f"**Garde-fou** : référence {g['daily_start_balance']:,.2f} $ ({g['daily_start_date']}) ; équité {acc.equity:,.2f} $ -> "
+          f"{'perte' if perte > 0 else 'gain'} du jour {abs(perte):,.0f} $ "
+          f"({max(perte, 0) / SEUIL_GARDE * 100:.0f} % du seuil de {SEUIL_GARDE} $)".replace(",", " "))
     except Exception as ex:
         P(f"Garde-fou illisible : {ex}")
     mt5.shutdown()
