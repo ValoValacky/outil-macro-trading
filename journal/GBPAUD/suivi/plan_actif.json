@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 10:50",
+  "created": "2026-11-16 11:15",
   "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 9,
+  "version": 10,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -33,8 +33,8 @@
         1.9495
       ],
       "lot_800eur": 1.18,
-      "lot_texte": "BUY LIMIT reposé par l'utilisatrice : 0,42 lot @1,92600, SL 1,91100 (150 pips = 1,2 ATR, règle SL du 12/11), TP 1,94950 ; risque 388 EUR = 0,24 % ; 2e pari livre achetée (avec GBPNZD) : B INTERDIT (règle 2)",
-      "condition_texte": "EN VEILLE : le BUY LIMIT 1,9260 a été supprimé par FTMO le 16/11 00h08 Paris (fin du compte d'essai). À reposer seulement sur un nouveau compte, à 0,25 % ; entrée 290 pip sous le prix (1,9550). Jamais en même temps que B.",
+      "lot_texte": "BUY LIMIT 0,25 lot = 0,25 % (risque 250 USD, compte 100 000 USD)",
+      "condition_texte": "POSABLE sur le nouveau compte 1515301801 (100 000 USD) : BUY LIMIT 1,9260 à 0,25 %, environ 288 pip sous le prix (1,9548) ; NE PAS acheter au marché. Jamais en même temps que B.",
       "condition": {
         "type": "none"
       },
@@ -43,7 +43,7 @@
         "type": "d1_close_below",
         "level": 1.911
       },
-      "statut": "en_veille"
+      "statut": "en_attente"
     },
     {
       "id": "B",
@@ -196,6 +196,12 @@
       "version": 9,
       "decision": "compte bloqué : BUY LIMIT A supprimé par FTMO (jamais déclenché) ; A et B en veille ; B s'arme si la clôture D1 de ce soir dépasse 1,9500 (vendredi 1,94996, à 0,04 pip)",
       "resume": "prix 1,9550 ; rapport du 16/11 : GBP 6/10, AUD 3/10 (même sens que nos achats)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 10,
+      "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
+      "resume": "prix 1,9548 ; nouveau compte 1515301801 branché"
     }
   ]
 }

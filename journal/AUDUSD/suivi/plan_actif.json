@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 10:50",
+  "created": "2026-11-16 11:15",
   "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 2,
+  "version": 3,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -31,8 +31,8 @@
         0.674
       ],
       "lot_800eur": 1.27,
-      "lot_texte": "SELL LIMIT 0,63 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : compte d'essai FTMO bloqué depuis le 16/11 00h08 Paris. Les règles devises ne l'interdisent plus (aucune exposition). Sur un nouveau compte : SELL LIMIT 0,6895 à 0,25 %, 135 pip au-dessus du prix du 16/11 (0,6760).",
+      "lot_texte": "SELL LIMIT 0,36 lot = 0,25 % (risque 250 USD, compte 100 000 USD)",
+      "condition_texte": "POSABLE sur le nouveau compte 1515301801 (100 000 USD) : SELL LIMIT 0,6895 à 0,25 %, environ 138 pip au-dessus du prix (0,6756) ; NE PAS vendre au marché. 2e pari dollar acheté si EURUSD A est posé (règle 2 : 0,25 % max, OK).",
       "condition": {
         "type": "none"
       },
@@ -41,7 +41,7 @@
         "type": "d1_close_above",
         "level": 0.6965
       },
-      "statut": "en_veille"
+      "statut": "en_attente"
     },
     {
       "id": "B",
@@ -93,6 +93,12 @@
       "version": 2,
       "decision": "compte bloqué (FTMO) : rien à poser ; règle 2 levée (plus aucune exposition) ; B armé (clôture 13/11 0,67739) mais prix 0,6760 déjà sous l'entrée 0,6790 : ne pas le poser",
       "resume": "prix 0,6760 ; rapport fondamental du 16/11 : vente AUDUSD n°1 (zone 0,6800-0,6830)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 3,
+      "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
+      "resume": "prix 0,6756 ; nouveau compte 1515301801 branché"
     }
   ]
 }
