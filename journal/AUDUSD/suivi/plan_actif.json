@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 11:45",
+  "created": "2026-11-16 12:45",
   "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -32,7 +32,7 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL LIMIT 0,36 lot = 0,25 % (risque 250 USD, compte 100 000 USD)",
-      "condition_texte": "EN VEILLE (à trancher par l'utilisatrice) : le rapport fondamental du 16/11 vend AUDUSD plus bas (zone 0,6800-0,6830) et dit que l'idée vendeuse est morte en clôture H4 au-dessus de 0,6875 et au-dessus de 0,69. Notre entrée 0,6895 est donc là où le rapport n'y croit plus. Variante possible (rapport + notre règle SL 1,2 ATR = 68 pip) : SELL LIMIT 0,6815, SL 0,6905 (au-dessus du plancher cassé 0,6894), TP 0,6700 / 0,6600, 0,25 % ≈ 0,28 lot. NE PAS vendre au marché.",
+      "condition_texte": "POSABLE (choix de l'utilisatrice le 16/11 : garder 0,6895 malgré le rapport fondamental qui place l'invalidation à 0,6875/0,69) : SELL LIMIT 0,6895 à 0,25 %, environ 138 pip au-dessus du prix (0,6756) ; NE PAS vendre au marché. Poser avant 17h ou après 18h Paris (discours de Warsh 18h Paris). 2e dollar acheté avec EURUSD A (règle 2 : 0,25 % max, OK).",
       "condition": {
         "type": "none"
       },
@@ -41,7 +41,7 @@
         "type": "d1_close_above",
         "level": 0.6965
       },
-      "statut": "en_veille"
+      "statut": "en_attente"
     },
     {
       "id": "B",
@@ -105,6 +105,12 @@
       "version": 4,
       "decision": "A remis en veille : entrée 0,6895 au-dessus de l'invalidation du rapport fondamental (0,6875 / 0,69) ; variante 0,6815 proposée, à valider",
       "resume": "prix 0,6756 ; rapport fondamental 16/11 relu"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 5,
+      "decision": "A reposable à 0,6895 (choix de l'utilisatrice), variante 0,6815 abandonnée",
+      "resume": "prix 0,6756"
     }
   ]
 }
