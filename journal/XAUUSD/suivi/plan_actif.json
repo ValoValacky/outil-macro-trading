@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-13 11:20",
-  "created_server_date": "2026-11-13",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-13",
-  "version": 12,
+  "version": 13,
   "pip": 1.0,
   "timeframe": "H4",
   "pair": "XAUUSD",
@@ -68,7 +68,8 @@
         "type": "h4_close_above",
         "level": 3925.0
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v13": "Plan expiré le 13/11 ; armé après expiration (clôture H4 3869,06 le 16/11 00h serveur) : non reconduit sans nouvelle analyse (le rapport fondamental du 16/11 conseille au contraire de ne pas vendre la cassure, RSI en survente)."
     },
     {
       "id": "ancien_D",
@@ -200,6 +201,12 @@
       "version": 12,
       "decision": "A annulé : SELL LIMIT 3997,60 retiré par l'utilisatrice (expiration du plan ce soir)",
       "resume": "plus aucun ordre en attente sur la paire ; nouvelles analyses lundi"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 13,
+      "decision": "fin de semaine : B expiré (armé seulement après expiration, clôture H4 3869 le 16/11 00h serveur)",
+      "resume": "prix 3862 ; plus bas de l'année 3870 cassé"
     }
   ]
 }

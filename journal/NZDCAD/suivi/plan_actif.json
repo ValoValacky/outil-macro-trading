@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-10 19:40",
-  "created_server_date": "2026-11-10",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-13",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "NZDCAD",
@@ -40,7 +40,8 @@
         "type": "d1_close_above",
         "level": 0.799
       },
-      "statut": "en_veille"
+      "statut": "annulé",
+      "note_v2": "Plan expiré le vendredi 13/11 (bilan de semaine du 16/11) ; jamais déclenché. Simulation : entrée 10/11 23h serveur, TP1 0,7890 touché le 13/11 13h serveur (gain théorique manqué, non posé à cause des règles devises)."
     }
   ],
   "positions_suivies": [],
@@ -52,6 +53,12 @@
   ],
   "regles": "NZD vendu 2 fois (max), CAD vendu 1 fois (USDCAD). Aucun sens autorisé tant que ces ordres existent.",
   "journal": [
-    "2026-11-10 19:40 v1 : création après l'analyse H4, plan A en veille (règles 1 et 2)."
+    "2026-11-10 19:40 v1 : création après l'analyse H4, plan A en veille (règles 1 et 2).",
+    {
+      "date": "2026-11-16",
+      "version": 2,
+      "decision": "fin de semaine : A expiré (jamais posé, interdit règles 1 et 2) ; simulation : aurait touché le TP1 0,7890 le 13/11",
+      "resume": "prix 0,7885"
+    }
   ]
 }

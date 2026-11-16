@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 15:43",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -32,7 +32,7 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL LIMIT 0,63 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e AUD vendu après AUDCHF et GBPAUD ; 3e dollar acheté après USDCAD et l'or). Posable si AUDCHF ET (USDCAD ou l'or) sont retirés ou expirés.",
+      "condition_texte": "EN VEILLE : compte d'essai FTMO bloqué depuis le 16/11 00h08 Paris. Les règles devises ne l'interdisent plus (aucune exposition). Sur un nouveau compte : SELL LIMIT 0,6895 à 0,25 %, 135 pip au-dessus du prix du 16/11 (0,6760).",
       "condition": {
         "type": "none"
       },
@@ -56,7 +56,7 @@
       ],
       "lot_800eur": 0.81,
       "lot_texte": "SELL STOP 0,40 lot = 0,25 % (risque 400 EUR) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 0,6800, si A n'est pas posé, ET mêmes interdits que A (règle 2). PRÉCAUTION VOLUME : si la bougie D1 qui clôture sous 0,6800 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là ; attendre la clôture suivante (test du 16/10 : cassures à volume faible échouent un peu plus souvent, effet petit -0,15 ATR).",
+      "condition_texte": "ARMÉ par la clôture D1 du 13/11 (0,67739 < 0,6800) mais le prix (0,6760 le 16/11) est déjà sous l'entrée 0,6790 : un SELL STOP n'est plus posable ; ne pas vendre au marché. Compte bloqué de toute façon.",
       "condition": {
         "type": "d1_close_below",
         "level": 0.68
@@ -87,6 +87,12 @@
       "version": 1,
       "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
       "resume": "prix 0,6824 ; plancher 0,6894 cassé le 06/11 ; RSI H4 28 : on attend un rebond pour vendre"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 2,
+      "decision": "compte bloqué (FTMO) : rien à poser ; règle 2 levée (plus aucune exposition) ; B armé (clôture 13/11 0,67739) mais prix 0,6760 déjà sous l'entrée 0,6790 : ne pas le poser",
+      "resume": "prix 0,6760 ; rapport fondamental du 16/11 : vente AUDUSD n°1 (zone 0,6800-0,6830)"
     }
   ]
 }

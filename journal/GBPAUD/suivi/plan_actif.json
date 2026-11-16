@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 13:33",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 8,
+  "version": 9,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -34,7 +34,7 @@
       ],
       "lot_800eur": 1.18,
       "lot_texte": "BUY LIMIT reposé par l'utilisatrice : 0,42 lot @1,92600, SL 1,91100 (150 pips = 1,2 ATR, règle SL du 12/11), TP 1,94950 ; risque 388 EUR = 0,24 % ; 2e pari livre achetée (avec GBPNZD) : B INTERDIT (règle 2)",
-      "condition_texte": "aucune : BUY LIMIT posé le 12/11 ; tant qu'il est posé, B est interdit (règle 2) et aucune vente de livre (règle 1)",
+      "condition_texte": "EN VEILLE : le BUY LIMIT 1,9260 a été supprimé par FTMO le 16/11 00h08 Paris (fin du compte d'essai). À reposer seulement sur un nouveau compte, à 0,25 % ; entrée 290 pip sous le prix (1,9550). Jamais en même temps que B.",
       "condition": {
         "type": "none"
       },
@@ -43,7 +43,7 @@
         "type": "d1_close_below",
         "level": 1.911
       },
-      "statut": "en_attente"
+      "statut": "en_veille"
     },
     {
       "id": "B",
@@ -58,7 +58,7 @@
       ],
       "lot_800eur": 0.93,
       "lot_texte": "BUY STOP 0,46 lot = 0,25 % (risque 400 EUR) ; INTERDIT si A est posé (ce serait le 3e pari livre achetée, règle 2)",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 1,9500, ET seulement si le BUY LIMIT A n'est pas posé (règle 2).",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 1,9500 (vendredi 13/11 : 1,94996, raté de 0,04 pip), et seulement si A n'est pas posé (règle 2). Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante. Compte bloqué : rien à poser aujourd'hui.",
       "condition": {
         "type": "d1_close_above",
         "level": 1.95
@@ -190,6 +190,12 @@
       "version": 8,
       "decision": "A reposé avec SL 1,9110 (0,42 lot)",
       "resume": "après le rejeu du stop : SL à 1,2 ATR et 55 pips sous le creux du 05/11 ; risque 388 EUR"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 9,
+      "decision": "compte bloqué : BUY LIMIT A supprimé par FTMO (jamais déclenché) ; A et B en veille ; B s'arme si la clôture D1 de ce soir dépasse 1,9500 (vendredi 1,94996, à 0,04 pip)",
+      "resume": "prix 1,9550 ; rapport du 16/11 : GBP 6/10, AUD 3/10 (même sens que nos achats)"
     }
   ]
 }

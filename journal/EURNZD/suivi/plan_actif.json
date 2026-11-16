@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-12 12:30",
-  "created_server_date": "2026-11-12",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-13",
-  "version": 8,
+  "version": 9,
   "pip": 0.0001,
   "pair": "EURNZD",
   "bias": "large range de 3 mois 1,950-2,017 ; la semaine dernière a fait +313 pips jusqu'au plafond 2,0111-2,0172 (4 sommets depuis septembre), puis le prix est revenu au milieu (1,9934). La Foule vend les deux devises à l'extrême : pas de camp clair. On vend le plafond, et l'achat du repli reste en veille (règle 1).",
@@ -38,8 +38,9 @@
         "type": "d1_close_above",
         "level": 2.0235
       },
-      "statut": "en_veille",
-      "note_v7": "11/11 : raison mise à jour (le robot EURUSD est sorti le 10/11)."
+      "statut": "annulé",
+      "note_v7": "11/11 : raison mise à jour (le robot EURUSD est sorti le 10/11).",
+      "note_v9": "Plan expiré le vendredi 13/11 (bilan de semaine du 16/11) ; jamais déclenché."
     },
     {
       "id": "B",
@@ -62,7 +63,8 @@
         "type": "d1_close_below",
         "level": 1.9765
       },
-      "statut": "déclenché"
+      "statut": "terminé",
+      "note_v9": "Position 1,88 lot @1,99631 fermée par FTMO (CLOSED_BY_FTMO) lundi 16/11 01h08 serveur à 1,99418 : -219,92 EUR (fin du compte d'essai, pas le SL)."
     }
   ],
   "positions_suivies": [
@@ -146,6 +148,12 @@
       "version": 8,
       "decision": "B : BUY LIMIT annulé et remplacé par un achat AU MARCHÉ 1,88 lot @1,99631 (0,50 %, ≈ 804 EUR, double du plan) ; A en veille (règle 1)",
       "resume": "le BUY LIMIT 1,98748 n'a pas été exécuté à la bascule de minuit (creux 1,98225 avec écart de cotation énorme) ; position -212 EUR à 11h35 Paris, SL à 63 pip ; NZD 1 205 EUR (règle 3, +5 EUR)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 9,
+      "decision": "fin de semaine : B terminé (position fermée par FTMO lundi 01h08 serveur, -219,92 EUR) ; A expiré",
+      "resume": "prix 1,9963 ; compte d'essai FTMO clôturé"
     }
   ]
 }

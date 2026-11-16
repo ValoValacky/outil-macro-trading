@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-13 10:40",
-  "created_server_date": "2026-11-13",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-19",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCAD",
@@ -60,7 +60,7 @@
       ],
       "lot_800eur": 1.27,
       "lot_texte": "SELL STOP 0,63 lot = 0,25 % (≈ 397 EUR) ; swap vendeur -16 EUR par lot et par nuit (≈ -10 EUR/nuit)",
-      "condition_texte": "EN VEILLE (armé mais interdit) : la clôture D1 du 12/11 à 1,88672 (< 1,8900, volume 0,99 fois la moyenne 20 = juste sous la moyenne) a armé B ; mais INTERDIT règle 1 tant qu'une livre est achetée (BUY LIMIT GBPAUD A 1,9260 valable jusqu'au 20/11, et BUY LIMIT GBPNZD jusqu'à ce soir). Le 13/11 le prix (1,8860) est déjà SOUS l'entrée 1,8870 : un SELL STOP n'est plus posable à ce prix ; ne pas vendre au marché. À revoir lundi seulement si l'utilisatrice choisit de retirer les achats de livre.",
+      "condition_texte": "EN VEILLE (armé le 12/11) : règle 1 levée (plus aucune livre achetée), prix 1,8875 revenu 5 pip au-dessus de l'entrée 1,8870 ; mais compte d'essai bloqué, et le rapport fondamental du 16/11 recommande l'achat de GBPCAD dans 1,8830-1,8860 (sens contraire). À trancher avec une nouvelle analyse.",
       "condition": {
         "type": "none"
       },
@@ -176,6 +176,12 @@
       "version": 6,
       "decision": "B armé par la clôture D1 du 12/11 (1,88672 < 1,8900, volume 0,99x) mais reste en veille : INTERDIT règle 1 (livre achetée via GBPAUD A et GBPNZD A) et prix déjà sous l'entrée 1,8870",
       "resume": "prix 1,8860 ; aucun ordre GBPCAD ; rien à faire dans MT5"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 7,
+      "decision": "compte bloqué : rien à poser ; règle 1 levée, prix 1,8875 revenu au-dessus de l'entrée 1,8870 mais le rapport du 16/11 conseille l'inverse (achat 1,883-1,886) : B reste en veille, décision à l'utilisatrice",
+      "resume": "prix 1,8875 ; rapport du 16/11 : ACHAT GBPCAD (contraire de notre B)"
     }
   ]
 }

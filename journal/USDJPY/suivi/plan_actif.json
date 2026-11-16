@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-14 10:00",
-  "created_server_date": "2026-11-14",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 2,
+  "version": 3,
   "pip": 0.01,
   "pair": "USDJPY",
   "timeframe": "D1",
@@ -39,7 +39,7 @@
       ],
       "lot_800eur": 1.01,
       "lot_texte": "BUY LIMIT 0,50 lot = 0,25 % (risque 400 EUR) ; 1er dollar acheté",
-      "condition_texte": "POSABLE lundi 16/11 après l'ouverture (règle 2 levée : aucun dollar acheté ailleurs). Pas entre 13h30 et 15h30 Paris mardi (ventes au détail US). Si un robot ouvre un achat EURUSD (dollar vendu) : interdit règle 1.",
+      "condition_texte": "EN VEILLE : compte d'essai FTMO bloqué ; et le rapport fondamental du 16/11 met USDJPY en paire à éviter (risque d'intervention japonaise : chute de plusieurs centaines de pips en minutes, qui pourrait remplir le BUY LIMIT 158,90 puis sauter le SL 157,50). À reprendre seulement si l'utilisatrice l'accepte en connaissance de cause, sur un nouveau compte.",
       "condition": {
         "type": "none"
       },
@@ -48,7 +48,7 @@
         "type": "d1_close_below",
         "level": 157.5
       },
-      "statut": "en_attente",
+      "statut": "en_veille",
       "note_v2": "14/11 : règle 2 levée (USDCAD et or expirés vendredi) ; niveau confirmé (EMA50 H4 158,91, Kijun H4 158,93)."
     },
     {
@@ -110,6 +110,12 @@
       "version": 2,
       "decision": "A EN ATTENTE (posable lundi, règle 2 levée) ; B en veille, SL corrigé 159,10",
       "resume": "clôture hebdo 159,710, plus haut 160,184 rejeté sous 160,39 ; la valeur de la semaine a suivi (POC 159,868)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 3,
+      "decision": "A passe EN VEILLE (n'est plus « posable lundi ») : compte bloqué + le rapport du 16/11 classe USDJPY « à éviter » (intervention japonaise possible entre 160 et 164)",
+      "resume": "prix 159,43 ; A à 53 pip sous le prix"
     }
   ]
 }

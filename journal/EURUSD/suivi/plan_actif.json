@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-14 10:00",
-  "created_server_date": "2026-11-14",
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
   "valid_until": "2026-11-20",
-  "version": 11,
+  "version": 12,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
@@ -33,7 +33,7 @@
       ],
       "lot_800eur": 1.04,
       "lot_texte": "SELL LIMIT 0,52 lot = 0,25 % (risque 400 EUR)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que la position EURNZD (euro acheté) est ouverte. Si EURNZD est fermée : posable à 0,25 % (2e dollar acheté si USDJPY A est posé).",
+      "condition_texte": "EN VEILLE : compte d'essai FTMO bloqué. Règle 1 levée (EURNZD fermée par FTMO le 16/11). Sur un nouveau compte : SELL LIMIT 1,1100 à 0,25 %, 76 pip au-dessus du prix (1,1024). Pas de nouvel ordre USD de 13h30 à 15h30 Paris mardi (ventes au détail) ni de 19h à 21h Paris mercredi (compte rendu Fed).",
       "condition": {
         "type": "none"
       },
@@ -150,6 +150,12 @@
       "version": 11,
       "decision": "nouveau plan de la semaine (analyse D1 du week-end) : anciens plans terminés ; A vente 1,1100 et B vente cassure 1,0975 en veille (règle 1, EURNZD)",
       "resume": "clôture hebdo 1,10212 ; range cassé par le bas ; RSI W1 29 ; COT au 03/11 (rapport du 10/11 décalé)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 12,
+      "decision": "compte bloqué (FTMO) : rien à poser ; règle 1 levée (EURNZD fermée) : A redevient posable à 0,25 % sur un nouveau compte",
+      "resume": "prix 1,1024 ; rapport fondamental du 16/11 : vente EURUSD demi-taille, même sens que A"
     }
   ],
   "timeframe": "D1"
