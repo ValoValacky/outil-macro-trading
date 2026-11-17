@@ -53,10 +53,3 @@ Repère du plan : le plan A invalide sa vente sur une clôture D1 au-dessus de 1
 ## 5. Contexte avec les ordres posés
 
 AUDUSD vente (0.35 lot) et GBPAUD achat (0.23 lot) sont déjà deux paris sur la faiblesse de l'AUD. AUDJPY va dans le même sens : c'est le même thème, pas une confirmation indépendante. Pas de 3e pari AUD (règle 2).
-
-## 6. À compléter vendredi 20/11 soir
-
-- Profil réellement formé : _____ (sens, jour du sommet/creux, bougies Lun-Ven)
-- Scénario 1 ou 2 ? _____
-- Le niveau 108,06-108,07 a-t-il servi de plafond ? _____
-- Ce que j'en retiens : _____
