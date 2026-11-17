@@ -1,28 +1,76 @@
 {
-  "created": "2026-11-17 11:48",
+  "created": "2026-11-17 12:10",
   "created_server_date": "2026-11-17",
   "valid_until": "2026-11-20",
-  "version": 4,
+  "version": 5,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
-  "bias": "tendance D1 haussière (plus haut de l'année 2,41794 le 06/11, toutes les MM D1 montantes) ; en H4 le repli a cassé le creux du 05/11 (2,38458 → 2,38110 ce matin) : correction à court terme dans une tendance de fond haussière. On achète le repli sur 2,3664-2,3720 (ancien plafond d'octobre + POC nu 2,36985 + bas du nuage H4 2,3719), pas au prix actuel.",
+  "bias": "Tendance haussière W1/D1 intacte (toutes les MM montantes, plus haut de l'année 2,41794 le 06/11). Repli 06-12/11 arrêté à 2,37368 au-dessus de la Kijun D1, volume faible ; en H4 creux de plus en plus hauts et sommet 2,39112 cassé le 16/11 (volume normal à fort). COT : Livre rachetée, Kiwi vendu (deux sources) mais Foule Kiwi à un extrême de 3 ans. On achète un repli sur 2,3811, pas au marché.",
   "levels": {
     "plus_haut_annee": 2.41794,
-    "kijun_h4": 2.39952,
-    "ema20_h4": 2.39227,
-    "ema50_h4": 2.38749,
-    "bas_10_11": 2.3811,
-    "ema100_h4": 2.37748,
-    "bas_nuage_h4": 2.37191,
+    "sommet_04_11": 2.40832,
+    "plus_haut_17_11": 2.40412,
+    "ema50_h4": 2.39,
+    "kijun_h4": 2.3889,
+    "poc_semaine_passee": 2.38668,
+    "bas_10_13_11": 2.3811,
+    "dernier_creux_d1": 2.37368,
+    "kijun_d1": 2.37672,
+    "ema200_h4": 2.37049,
     "poc_nu_26_10": 2.36985,
-    "ancien_plafond": 2.36661,
-    "ema200_h4": 2.36349,
-    "bas_27_10": 2.3355
+    "ancien_plafond": 2.36661
   },
   "plans": [
     {
       "id": "A",
+      "nom": "Achat du repli sur les creux du 10/11 et du 13/11 (remplace l'ordre posé le 16/11)",
+      "side": "buy",
+      "type": "limit",
+      "entry": 2.3811,
+      "sl": 2.365,
+      "tp": [
+        2.415
+      ],
+      "lot": 0.28,
+      "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (risque ≈ 248 USD sur 100 000 USD, SL à 161 pip) ; 2e livre achetée (règle 2 : 250 USD max, OK)",
+      "condition_texte": "À POSER : supprimer le BUY LIMIT actuel (0,39 lot, SL 2,3700, TP 2,39719) et poser BUY LIMIT 2,3811 / SL 2,3650 / TP 2,4150 au bouton 0,25 %. Prix 2,3985 : entrée 174 pip plus bas ; NE PAS acheter au marché ; si le prix est déjà sous 2,3811, ne pas le poser. Pas de NOUVEL ordre GBP de 7h à 8h Paris mercredi (CPI UK).",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture H4 sous 2,3650 (= SL) ; non déclenché vendredi 20/11 au soir : retirer",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 2.365
+      },
+      "statut": "en_attente"
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la cassure du plus haut de l'année",
+      "side": "buy",
+      "type": "stop",
+      "entry": 2.42,
+      "sl": 2.399,
+      "tp": [
+        2.455
+      ],
+      "lot": 0.21,
+      "lot_texte": "BUY STOP 0,21 lot = 0,25 % (risque ≈ 242 USD, SL à 210 pip = 1,2 ATR D1) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture H4 au-dessus de 2,4180, et seulement si A n'est ni posé ni déclenché (sinon 3e livre achetée : INTERDIT règle 2). Précaution volume : si la bougie H4 qui arme a un volume sous sa moyenne 20, attendre la clôture suivante.",
+      "condition": {
+        "type": "h4_close_above",
+        "level": 2.418
+      },
+      "invalidation_texte": "clôture H4 sous 2,3890 avant le déclenchement",
+      "invalidation": {
+        "type": "h4_close_below",
+        "level": 2.389
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "ancien_A",
       "nom": "Achat du repli sur l'ancien plafond (ordre posé)",
       "side": "buy",
       "type": "limit",
@@ -47,7 +95,7 @@
       "note_v3": "Ordre BUY LIMIT 2,37021 retiré par l'utilisatrice le 13/11 vers 10h20 Paris (plan expirant ce soir ; règle 1 USD / règle 3 NZD), jamais déclenché. Vérifié dans MT5 (controle_devises 10:27)."
     },
     {
-      "id": "B",
+      "id": "ancien_B",
       "nom": "Rachat de la reprise (cassure de la Kijun H4)",
       "side": "buy",
       "type": "stop",
@@ -72,7 +120,7 @@
       "note_v2": "Invalidé : clôture H4 du 11/11 04h00 serveur à 2,37921, sous 2,3800. Jamais posé (interdit règle 2 de toute façon)."
     },
     {
-      "id": "R",
+      "id": "ancien_R",
       "nom": "Ordre réel HORS PLAN : BUY LIMIT posé le 16/11 vers 23h16 Paris (00h16 serveur le 17/11)",
       "side": "buy",
       "type": "limit",
@@ -91,21 +139,26 @@
         "type": "h4_close_below",
         "level": 2.37
       },
-      "statut": "en_attente"
+      "statut": "annulé",
+      "note_v5": "Remplacé par le plan A de l'analyse du 17/11 (même entrée 2,3811, SL 2,3650, TP 2,4150, 0,25 %). Tant que l'utilisatrice n'a pas reposé l'ordre, l'ordre réel 0,39 lot SL 2,3700 TP 2,39719 reste dans MT5."
     }
   ],
   "positions_suivies": [],
   "evenements": [
     {
       "quand_serveur": "2026-11-18 09:00",
-      "texte": "inflation britannique CPI (GBP, FORT), 8h00 Paris : aucun NOUVEL ordre GBP de 7h00 à 8h00 Paris ; un ordre déjà posé reste actif"
+      "texte": "inflation britannique CPI (GBP, FORT), 8h00 Paris : aucun NOUVEL ordre GBP de 7h à 8h Paris ; un ordre déjà posé reste actif"
     },
     {
       "quand_serveur": "2026-11-18 21:00",
       "texte": "compte rendu de la Fed (USD, FORT), 20h Paris : effet indirect"
+    },
+    {
+      "quand_serveur": "2026-11-27 00:00",
+      "texte": "résultat définitif de l'élection néo-zélandaise (NZD) : risque de rachat du Kiwi (Foule vendeuse à l'extrême)"
     }
   ],
-  "regles": "Compte 1515301801 en USD (100 000) depuis le 16/11. GBP : achetée 2 fois (GBPAUD A + GBPNZD R, ≈ 471 USD) : aucun 3e achat de livre (règle 2), aucune vente de livre (règle 1). NZD : vendu 1 fois (GBPNZD R). Heures en Paris (serveur = Paris + 1 h).",
+  "regles": "Compte 1515301801 en USD (100 000). GBP achetée 2 fois (GBPAUD A + GBPNZD A) : aucun 3e achat de livre (règle 2), aucune vente de livre (règle 1). NZD vendu 1 fois. Pip GBPNZD ≈ 5,50 USD par lot. Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 respectée (A : sous le dernier creux D1 et les niveaux évidents ; B : 1,2 ATR D1).",
   "journal": [
     {
       "date": "2026-11-10",
@@ -130,6 +183,12 @@
       "version": 4,
       "decision": "ordre réel HORS PLAN repéré : BUY LIMIT 0,39 lot @2,38110, SL 2,37000, TP 2,39719 (posé 17/11 00h16 serveur)",
       "resume": "suivi ajouté (plan R) ; SL sous la règle du 12/11 (0,64 ATR D1) ; décision garder/retirer laissée à l'utilisatrice"
+    },
+    {
+      "date": "2026-11-17",
+      "version": 5,
+      "decision": "nouvelle analyse H4 (17/11) : A BUY LIMIT 2,3811 / SL 2,3650 / TP 2,4150 à 0,25 % remplace l'ordre hors plan ; B BUY STOP 2,4200 en veille",
+      "resume": "tendance haussière intacte, structure H4 redevenue haussière (sommet 2,39112 cassé le 16/11) ; stop de l'ordre réel collé à 2,3700/POC nu/EMA200 H4, TP sous le prix"
     }
   ]
 }
