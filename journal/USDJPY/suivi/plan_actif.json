@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 10:50",
-  "created_server_date": "2026-11-16",
+  "created": "2026-11-17 11:48",
+  "created_server_date": "2026-11-17",
   "valid_until": "2026-11-20",
-  "version": 4,
+  "version": 5,
   "pip": 0.01,
   "pair": "USDJPY",
   "timeframe": "D1",
@@ -38,7 +38,7 @@
         161.5
       ],
       "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); 1er dollar acheté",
-      "condition_texte": "EN VEILLE (choix à confirmer par l'utilisatrice) : le compte 1515301801 est branché, mais le rapport fondamental du 16/11 met USDJPY en paire à éviter (risque d'intervention japonaise : chute de plusieurs centaines de pips en minutes, qui pourrait remplir le BUY LIMIT 158,90 puis sauter le SL 157,50). Autre blocage : si EURUSD A et AUDUSD A sont posés (déjà 2 paris « dollar acheté »), acheter USDJPY serait le 3e : INTERDIT règle 2.",
+      "condition_texte": "EN VEILLE, INTERDIT règle 2 : EURUSD A et AUDUSD A sont posés (2 paris dollar acheté, le maximum) ; acheter USDJPY serait le 3e. Et le rapport du 16/11 classe USDJPY « à éviter » (intervention japonaise possible entre 160 et 164). Le 17/11, le prix est descendu à 158,865 (sous l'entrée 158,90) : aucun ordre n'était posé, rien à faire.",
       "condition": {
         "type": "none"
       },
@@ -122,6 +122,12 @@
       "version": 4,
       "decision": "plans A et B recalculés en dollars (0,25 % de 100 000 USD = 250 USD, pip USDJPY ≈ 6,27 USD par lot) ; A et B restent EN VEILLE",
       "resume": "A 0,28 lot (au lieu de 0,50 lot / 400 EUR) ; B 0,28 lot ; blocage ajouté : USDJPY serait le 3e dollar acheté si EURUSD A et AUDUSD A sont posés"
+    },
+    {
+      "date": "2026-11-17",
+      "version": 5,
+      "decision": "A reste en veille : INTERDIT règle 2 (EURUSD A + AUDUSD A posés) + paire à éviter selon le rapport",
+      "resume": "plus bas 158,865 le 17/11, sous l'entrée 158,90 (aucun ordre posé)"
     }
   ]
 }

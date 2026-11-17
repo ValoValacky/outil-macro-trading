@@ -1,0 +1,127 @@
+{
+  "created": "2026-11-16 10:50",
+  "created_server_date": "2026-11-16",
+  "valid_until": "2026-11-20",
+  "version": 4,
+  "pip": 0.01,
+  "pair": "USDJPY",
+  "timeframe": "D1",
+  "bias": "Range de deux mois 156,07-158,95 cassé par le haut le 11/11 ; trois jours au-dessus de l'ancien plafond (clôture hebdo 159,710), valeur de la semaine montée avec le prix (POC 157,85 -> 159,87) ; au-dessus de toutes les moyennes D1/W1 ; Foule acheteuse de yen contre la tendance. Mais cassure sur volume faible (0,63 fois, jour férié US), jamais confirmée depuis (0,96 et 0,88 fois), et plus haut 160,184 rejeté sous la zone d'interventions japonaises 160,39-160,72. On achète un retour sur l'ancien plafond 158,90 (A, posable lundi), ou une cassure confirmée au-dessus de 160,40 (B).",
+  "levels": {
+    "sommet_28_06": 162.838,
+    "sommet_26_04": 160.723,
+    "sommet_02_09": 160.39,
+    "haut_11_11": 159.945,
+    "bas_12_11": 159.479,
+    "ancien_plafond": 158.946,
+    "vwap_hebdo": 158.806,
+    "tenkan_d1": 158.599,
+    "kijun_d1": 158.01,
+    "bas_09_11": 157.668,
+    "bas_range": 156.075,
+    "haut_13_11": 160.184,
+    "poc_semaine": 159.868,
+    "bas_zone_valeur": 158.275,
+    "ema50_h4": 158.909,
+    "kijun_h4": 158.926
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du retour sur l'ancien plafond du range 158,60-158,95",
+      "side": "buy",
+      "type": "limit",
+      "entry": 158.9,
+      "sl": 157.5,
+      "tp": [
+        160.35,
+        161.5
+      ],
+      "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); 1er dollar acheté",
+      "condition_texte": "EN VEILLE (choix à confirmer par l'utilisatrice) : le compte 1515301801 est branché, mais le rapport fondamental du 16/11 met USDJPY en paire à éviter (risque d'intervention japonaise : chute de plusieurs centaines de pips en minutes, qui pourrait remplir le BUY LIMIT 158,90 puis sauter le SL 157,50). Autre blocage : si EURUSD A et AUDUSD A sont posés (déjà 2 paris « dollar acheté »), acheter USDJPY serait le 3e : INTERDIT règle 2.",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 sous 157,50 (= SL ; retour dans le bas du range)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 157.5
+      },
+      "statut": "en_veille",
+      "note_v2": "14/11 : règle 2 levée (USDCAD et or expirés vendredi) ; niveau confirmé (EMA50 H4 158,91, Kijun H4 158,93).",
+      "lot": 0.28
+    },
+    {
+      "id": "B",
+      "nom": "Achat de la cassure des sommets 160,39-160,72",
+      "side": "buy",
+      "type": "stop",
+      "entry": 160.5,
+      "sl": 159.1,
+      "tp": [
+        161.9,
+        162.8
+      ],
+      "lot_texte": "BUY STOP 0,28 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé. PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 160.4
+      },
+      "invalidation_texte": "clôture D1 sous 158,90 (retour sous l'ancien plafond)",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 158.9
+      },
+      "statut": "en_veille",
+      "note_v2": "14/11 : SL 159,30 -> 159,10 (collé au bas du 12/11 159,31, règle SL) ; TP 161,90 / 162,80.",
+      "lot": 0.28
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-16 22:30",
+      "texte": "rapport COT décalé (jour férié US du 11/11) : vérifier lundi soir / mardi"
+    },
+    {
+      "quand_serveur": "2026-11-17 15:30",
+      "texte": "ventes au détail US (USD, FORT), 14h30 Paris : aucun NOUVEL ordre USD de 13h30 à 15h30 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-18 21:00",
+      "texte": "compte rendu de la Fed (USD, FORT), 20h Paris : aucun NOUVEL ordre USD de 19h à 21h Paris"
+    },
+    {
+      "quand_serveur": "2026-11-16 01:50",
+      "texte": "PIB japonais (JPY, moyen) : heure à vérifier"
+    }
+  ],
+  "regles": "Compte 1515301801 en USD (100 000) depuis le 16/11. Contrôle devise par devise : 1 seul sens par devise ; 2 paris max dans le même sens (le 1er à 500 USD = 0,5 %, le 2e à 250 USD = 0,25 %) ; 750 USD max par devise ; 2 000 USD max au total, ordres en attente compris. Tous les lots de ce plan sont à 0,25 % (250 USD). Compte vide au 16/11 : aucune position, aucun ordre. Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Heures en Paris (serveur = Paris + 1 h). Acheter USDJPY = dollar acheté + yen vendu. EURUSD A et AUDUSD A font déjà 2 paris dollar acheté : si les deux sont posés, USDJPY est INTERDIT (règle 2). Risque d'intervention japonaise entre 160 et 164.",
+  "journal": [
+    {
+      "date": "2026-11-12",
+      "version": 1,
+      "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
+      "resume": "prix 159,77 ; range 156,07-158,95 cassé le 11/11 sur volume faible ; résistance 160,39-160,72"
+    },
+    {
+      "date": "2026-11-14",
+      "version": 2,
+      "decision": "A EN ATTENTE (posable lundi, règle 2 levée) ; B en veille, SL corrigé 159,10",
+      "resume": "clôture hebdo 159,710, plus haut 160,184 rejeté sous 160,39 ; la valeur de la semaine a suivi (POC 159,868)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 3,
+      "decision": "A passe EN VEILLE (n'est plus « posable lundi ») : compte bloqué + le rapport du 16/11 classe USDJPY « à éviter » (intervention japonaise possible entre 160 et 164)",
+      "resume": "prix 159,43 ; A à 53 pip sous le prix"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 4,
+      "decision": "plans A et B recalculés en dollars (0,25 % de 100 000 USD = 250 USD, pip USDJPY ≈ 6,27 USD par lot) ; A et B restent EN VEILLE",
+      "resume": "A 0,28 lot (au lieu de 0,50 lot / 400 EUR) ; B 0,28 lot ; blocage ajouté : USDJPY serait le 3e dollar acheté si EURUSD A et AUDUSD A sont posés"
+    }
+  ]
+}

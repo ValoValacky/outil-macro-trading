@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 11:15",
-  "created_server_date": "2026-11-16",
+  "created": "2026-11-17 11:48",
+  "created_server_date": "2026-11-17",
   "valid_until": "2026-11-20",
-  "version": 12,
+  "version": 13,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPAUD",
@@ -58,7 +58,7 @@
         1.985
       ],
       "lot_texte": "BUY STOP 0,26 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); INTERDIT si A est posé (3e pari livre achetée, règle 2)",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 1,9500 (vendredi 13/11 : 1,94996, raté de 0,04 pip), et seulement si A n'est pas posé (règle 2). Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante.",
+      "condition_texte": "ARMÉ par la clôture D1 du 16/11 (1,95713 > 1,9500, volume 1,05 fois la moyenne 20 : correct) mais NON POSABLE : (1) le prix (1,9602 le 17/11) est déjà 67 pip au-dessus de l'entrée 1,9535 : un BUY STOP ne se pose plus, ne pas acheter au marché ; (2) A est posé et GBPNZD (achat de livre hors plan) aussi : ce serait le 3e pari livre achetée, INTERDIT règle 2.",
       "condition": {
         "type": "d1_close_above",
         "level": 1.95
@@ -215,6 +215,12 @@
       "version": 12,
       "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
       "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
+    },
+    {
+      "date": "2026-11-17",
+      "version": 13,
+      "decision": "B armé (clôture D1 16/11 1,95713) mais non posable : prix au-dessus de l'entrée + règle 2 (3e livre)",
+      "resume": "A (BUY LIMIT 1,9260, 0,23 lot réel) poursuit ; prix 1,9602"
     }
   ]
 }
