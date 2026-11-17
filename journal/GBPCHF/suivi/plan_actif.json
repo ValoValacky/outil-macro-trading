@@ -1,0 +1,97 @@
+{
+  "created": "2026-11-17 20:02",
+  "created_server_date": "2026-11-17",
+  "valid_until": "2026-11-26",
+  "version": 1,
+  "pip": 0.0001,
+  "timeframe": "D1",
+  "pair": "GBPCHF",
+  "bias": "Range 3 mois 1,0890-1,1104, prix au HAUT (1,1085) : haut du range touché 3 fois (13/11 1,1094, 16/11 1,1096, 17/11 1,1099), clôtures ≤ 1,1084. Semaine passée « Rallye LUN » 5 bougies vertes. Protocole du 17/11 : paire éliminée à l'étape 1 (case 0,70), COT GBP et CHF en affaiblissement baissier (pas de direction), divergence COT inter-catégories. Plan en VEILLE uniquement pour suivre les deux niveaux.",
+  "levels": {
+    "haut_range": 1.1104,
+    "cloture_sortie_haut": 1.1105,
+    "haut_semaine": 1.1099,
+    "pwh": 1.1094,
+    "ouverture_semaine": 1.107,
+    "bas_semaine": 1.1051,
+    "milieu_sem_prec": 1.1008,
+    "milieu_range": 1.0997,
+    "bas_sem_prec": 1.0921,
+    "bas_range": 1.089,
+    "atr_d1": 0.00596
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Achat du retour sur le haut du range cassé",
+      "side": "buy",
+      "type": "limit",
+      "entry": 1.1105,
+      "sl": 1.103,
+      "tp": [
+        1.1318
+      ],
+      "lot": 0.28,
+      "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (≈ 250 USD, SL à 75 pip ; pip ≈ 11,92 USD par lot)",
+      "condition_texte": "EN VEILLE : seulement après une CLÔTURE D1 au-dessus de 1,1105 (sortie du range par le haut). INTERDIT règle 2 aujourd'hui (3e pari livre acheté : GBPAUD A + GBPNZD A) ; posable seulement si l'utilisatrice retire l'un des deux. TP = hauteur du range (214 pip) projetée au-dessus du haut, indicatif. Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante. NE PAS acheter au marché.",
+      "condition": {
+        "type": "d1_close_above",
+        "level": 1.1105
+      },
+      "invalidation_texte": "clôture D1 sous 1,1051 (bas de la semaine) avant déclenchement",
+      "invalidation": {
+        "type": "d1_close_below",
+        "level": 1.1051
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "B",
+      "nom": "Vente après le rejet du haut du range",
+      "side": "sell",
+      "type": "limit",
+      "entry": 1.105,
+      "sl": 1.1125,
+      "tp": [
+        1.093
+      ],
+      "lot": 0.28,
+      "lot_texte": "SELL LIMIT 0,28 lot = 0,25 % (≈ 250 USD, SL à 75 pip ; pip ≈ 11,92 USD par lot) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une CLÔTURE D1 sous 1,1051 (bas de la semaine : le rejet du haut est validé). INTERDIT règle 1 aujourd'hui (GBP vendue alors que GBPAUD A et GBPNZD A achètent la livre) ; posable seulement si ces deux achats sont retirés ou clos. SL au-dessus du haut du range avec marge (≥ 1,2 ATR). TP juste avant le bas du 09/11 (1,0921). NE PAS vendre au marché.",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 1.1051
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 1,1105",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 1.1105
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-18 09:00",
+      "texte": "CPI britannique (GBP, FORT), 8h00 Paris : aucun NOUVEL ordre livre de 7h00 à 8h00 Paris ; peut aussi bouger GBPAUD A et GBPNZD A"
+    },
+    {
+      "quand_serveur": "2026-11-18 17:00",
+      "texte": "discours du gouverneur de la BoE Bailey (GBP, FORT), 16h00 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-18 21:00",
+      "texte": "minutes du FOMC (USD, FORT), 20h00 Paris"
+    }
+  ],
+  "regles": "Acheter GBPCHF = livre achetée + franc vendu ; vendre = l'inverse. Livre déjà achetée 2 fois (GBPAUD A, GBPNZD A) : acheter = INTERDIT règle 2, vendre = INTERDIT règle 1. Swap acheteur très cher (-22 EUR/lot/nuit selon la note du 10/11). Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 respectée (SL 75 pip ≈ 1,26 ATR). Carte de contexte, pas un signal (aucun avantage testé sur ranges, cassures, profils de semaine).",
+  "journal": [
+    {
+      "date": "2026-11-17",
+      "version": 1,
+      "decision": "plan initial D1 en veille (étude protocole + profil de semaine apportée par l'utilisatrice)",
+      "resume": "A et B en veille : INTERDIT par les règles devises ; on surveille la clôture D1 > 1,1105 ou < 1,1051"
+    }
+  ]
+}
