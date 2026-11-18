@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-17 12:10",
-  "created_server_date": "2026-11-17",
+  "created": "2026-11-18 10:26",
+  "created_server_date": "2026-11-18",
   "valid_until": "2026-11-20",
-  "version": 5,
+  "version": 6,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
@@ -33,8 +33,8 @@
         2.415
       ],
       "lot": 0.28,
-      "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (risque ≈ 248 USD sur 100 000 USD, SL à 161 pip) ; 2e livre achetée (règle 2 : 250 USD max, OK)",
-      "condition_texte": "À POSER : supprimer le BUY LIMIT actuel (0,39 lot, SL 2,3700, TP 2,39719) et poser BUY LIMIT 2,3811 / SL 2,3650 / TP 2,4150 au bouton 0,25 %. Prix 2,3985 : entrée 174 pip plus bas ; NE PAS acheter au marché ; si le prix est déjà sous 2,3811, ne pas le poser. Pas de NOUVEL ordre GBP de 7h à 8h Paris mercredi (CPI UK).",
+      "lot_texte": "Plan : BUY LIMIT 0,28 lot = 0,25 % (≈ 248 USD, SL à 161 pip). RÉEL (vu le 18/11) : 0,39 lot @2,38110, SL 2,36500, TP 2,41500 = risque ≈ 345 USD = 0,35 % (plus gros que le plan ; règles devises OK : livre 577 USD < 750, NZD 345 USD).",
+      "condition_texte": "POSÉ (ordre réel vu le 18/11 : prix/SL/TP conformes au plan, lot 0,39 au lieu de 0,28). Prix 2,3987 : entrée 176 pip plus bas ; rien ne se passe tant que le prix n'y descend pas. Garder 0,39 lot ou reposer au bouton 0,25 % : choix de l'utilisatrice.",
       "condition": {
         "type": "none"
       },
@@ -189,6 +189,12 @@
       "version": 5,
       "decision": "nouvelle analyse H4 (17/11) : A BUY LIMIT 2,3811 / SL 2,3650 / TP 2,4150 à 0,25 % remplace l'ordre hors plan ; B BUY STOP 2,4200 en veille",
       "resume": "tendance haussière intacte, structure H4 redevenue haussière (sommet 2,39112 cassé le 16/11) ; stop de l'ordre réel collé à 2,3700/POC nu/EMA200 H4, TP sous le prix"
+    },
+    {
+      "date": "2026-11-18",
+      "version": 6,
+      "decision": "A posé : l'ordre réel a reçu le SL 2,3650 et le TP 2,4150 du plan, mais garde 0,39 lot (0,35 %, ≈ 345 USD) au lieu de 0,28 lot (0,25 %)",
+      "resume": "prix 2,3987, entrée 176 pip plus bas ; aucune clôture H4 sous 2,3650 ; B en veille (pas de clôture H4 > 2,4180) ; règles devises OK"
     }
   ]
 }
