@@ -23,7 +23,7 @@ GUARD = ROOT.parents[1] / "Bot Trading FTMO" / "state" / "ftmo_demo_guard.json"
 NOMS = {"EUR": "euro", "USD": "dollar US", "GBP": "livre", "JPY": "yen", "CHF": "franc suisse",
         "AUD": "dollar australien", "NZD": "dollar néo-zélandais", "CAD": "dollar canadien",
         "XAU": "or", "XAG": "argent métal"}
-QUI = {20260801: "robot structure-bot", 20260827: "robot HORIIZON", 20260900: "Magic Panel", 0: "manuel"}
+QUI = {20260801: "robot structure-bot", 20260827: "robot HORIIZON", 20260828: "robot Gold Watch", 20260829: "scanner HA-Ichimoku", 20260900: "Magic Panel", 20260910: "robot exécutant", 0: "manuel"}
 BUY_TYPES = {0, 2, 4, 6}  # buy, buy limit, buy stop, buy stop limit
 
 
@@ -106,6 +106,28 @@ def verdict_nouveau(sym, achat, r, t, total):
     return msgs[0] if msgs else "OK"
 
 
+def reference_du_jour():
+    """Compte à minuit heure de Prague (début de journée FTMO). 2026-11-19 : les robots Python qui tenaient
+    ftmo_demo_guard.json à jour sont coupés -> on reconstruit nous-mêmes depuis l'historique MT5
+    (midnight_reference.py, copie). Repli : le fichier du garde-fou s'il est du jour. MT5 doit être connecté."""
+    from zoneinfo import ZoneInfo
+    jour = dt.datetime.now(ZoneInfo("Europe/Prague")).date()
+    try:
+        from midnight_reference import midnight_reference
+        info = midnight_reference(jour)
+        if info is not None:
+            return {"reference": info["reference"], "jour": jour.isoformat(), "source": "minuit Prague recalculé"}
+    except Exception:
+        pass
+    try:
+        g = json.loads(GUARD.read_text(encoding="utf-8"))
+        if g.get("daily_start_date") == jour.isoformat():
+            return {"reference": g["daily_start_balance"], "jour": jour.isoformat(), "source": "fichier garde-fou"}
+    except Exception:
+        pass
+    return None
+
+
 def plans_posables(lignes):
     """Plans du journal en_attente / armé, encore valables, pas encore posés chez le courtier."""
     today = dt.date.today().isoformat()
@@ -186,15 +208,15 @@ def main():
         for c in cand:
             v = verdict_nouveau(c["pair"], c["achat"], c["risque"], t, total)
             P(f"- {c['pair']} plan {c['id']} ({'achat' if c['achat'] else 'vente'} à {c['entree']}, {c['risque']:.0f} $) : **{v}**")
-    try:
-        g = json.loads(GUARD.read_text(encoding="utf-8"))
-        perte = g["daily_start_balance"] - acc.equity
+    ref = reference_du_jour()
+    if ref is not None:
+        perte = ref["reference"] - acc.equity
         P("")
-        P(f"**Garde-fou** : référence {g['daily_start_balance']:,.2f} $ ({g['daily_start_date']}) ; équité {acc.equity:,.2f} $ -> "
+        P(f"**Garde-fou** : référence {ref['reference']:,.2f} $ ({ref['jour']}, {ref['source']}) ; équité {acc.equity:,.2f} $ -> "
           f"{'perte' if perte > 0 else 'gain'} du jour {abs(perte):,.0f} $ "
           f"({max(perte, 0) / SEUIL_GARDE * 100:.0f} % du seuil de {SEUIL_GARDE} $)".replace(",", " "))
-    except Exception as ex:
-        P(f"Garde-fou illisible : {ex}")
+    else:
+        P("Garde-fou illisible : référence du jour impossible à calculer")
     mt5.shutdown()
     txt = "\n".join(out)
     print(txt)

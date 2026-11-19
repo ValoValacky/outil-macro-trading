@@ -61,3 +61,50 @@ def test_annonce_dans_l_heure():
     assert r.annonce_proche({"EUR", "USD"}, now, ev)
     assert r.annonce_proche({"EUR", "GBP"}, now, ev) is None           # Medium ignoré, USD absent
     assert r.annonce_proche({"USD"}, now - dt.timedelta(hours=2), ev) is None
+
+
+# ---------------------------------------------------------------- phase 2 (19/11/2026)
+def test_exclusifs_lus_dans_le_texte():
+    p = {"id": "B", "lot_texte": "SELL STOP 0,29 lot = 0,25 %; jamais en même temps que A"}
+    assert r.exclusifs(p) == {"A"}
+    assert r.exclusifs({"id": "A", "condition_texte": "POSABLE. Jamais en même temps que B."}) == {"B"}
+    assert r.exclusifs({"id": "A", "exclusif_avec": ["C"]}) == {"C"}
+    assert r.exclusifs({"id": "A"}) == set()
+
+
+def test_stop_minuscule_refuse():
+    # structure-bot 13/11 : stop 1,5 pip avec ATR D1 ~ 70 pip -> refus
+    assert r.juge_sl(0.00015, 0.0070)[0] == "refus"
+    # GBPAUD A : 150 pip, ATR 127 -> 1,18 ATR -> à vérifier
+    assert r.juge_sl(0.0150, 0.0127)[0] == "court"
+    assert r.juge_sl(0.0085, 0.0070)[0] == "ok"
+    assert r.juge_sl(0.01, None)[0] == "ok"
+
+
+def test_reposer_cas_gbpnzd():
+    # ordre 0,39 lot, SL 2,3650 alors que le plan veut 0,28 lot -> reposer
+    e, rep = r.ecarts_ordre(0.39, 0.28, 0.01, 2.3650, 2.3650, 2.4150, 2.4150, 0.0002)
+    assert rep and "risque trop gros" in e[0]
+    # SL déplacé sur l'ordre -> reposer
+    assert r.ecarts_ordre(0.28, 0.28, 0.01, 2.3700, 2.3650, 2.4150, 2.4150, 0.0002)[1]
+    # lot un peu plus petit (GBPAUD 0,23 au lieu de 0,24) -> pas d'écart (tolérance d'un pas)
+    assert r.ecarts_ordre(0.23, 0.24, 0.01, 1.911, 1.911, 1.9495, 1.9495, 0.0002) == ([], False)
+    # lot nettement plus petit -> signalé, pas reposé
+    e, rep = r.ecarts_ordre(0.10, 0.28, 0.01, 1.0, 1.0, 1.1, 1.1, 0.0002)
+    assert e and not rep
+
+
+def test_garde_jour():
+    assert r.garde_jour(0) == "ok"
+    assert r.garde_jour(1199) == "ok"
+    assert r.garde_jour(1200) == "bloque"
+    assert r.garde_jour(3000) == "stop"
+    assert r.garde_jour(None) == "bloque"
+
+
+def test_envoi_verrouille(tmp_path):
+    assert not r.envoi_autorise(tmp_path)[0]
+    (tmp_path / "autorisation.json").write_text('{"envoi_reel": false}', encoding="utf-8")
+    assert not r.envoi_autorise(tmp_path)[0]
+    (tmp_path / "autorisation.json").write_text('{"envoi_reel": true, "valide_par": "utilisatrice"}', encoding="utf-8")
+    assert r.envoi_autorise(tmp_path)[0]
