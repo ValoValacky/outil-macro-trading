@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-18 10:26",
-  "created_server_date": "2026-11-18",
+  "created": "2026-11-19 11:40",
+  "created_server_date": "2026-11-19",
   "valid_until": "2026-11-20",
-  "version": 6,
+  "version": 7,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
@@ -34,16 +34,16 @@
       ],
       "lot": 0.28,
       "lot_texte": "Plan : BUY LIMIT 0,28 lot = 0,25 % (≈ 248 USD, SL à 161 pip). RÉEL (vu le 18/11) : 0,39 lot @2,38110, SL 2,36500, TP 2,41500 = risque ≈ 345 USD = 0,35 % (plus gros que le plan ; règles devises OK : livre 577 USD < 750, NZD 345 USD).",
-      "condition_texte": "POSÉ (ordre réel vu le 18/11 : prix/SL/TP conformes au plan, lot 0,39 au lieu de 0,28). Prix 2,3987 : entrée 176 pip plus bas ; rien ne se passe tant que le prix n'y descend pas. Garder 0,39 lot ou reposer au bouton 0,25 % : choix de l'utilisatrice.",
+      "condition_texte": "DÉCLENCHÉ le 19/11 à 11h27 serveur (10h27 Paris) : achat 0,39 lot @2,38107, SL 2,36500, TP 2,41500 (ticket 585588620). Risque ≈ 345 USD = 0,35 % (plan : 0,28 lot = 0,25 %). Rien à faire : le SL et le TP protègent.",
       "condition": {
         "type": "none"
       },
-      "invalidation_texte": "clôture H4 sous 2,3650 (= SL) ; non déclenché vendredi 20/11 au soir : retirer",
+      "invalidation_texte": "position ouverte : c'est le SL 2,3650 qui protège (158 pip, 1,06 ATR D1, 87 pip sous le dernier creux D1 2,37368)",
       "invalidation": {
         "type": "h4_close_below",
         "level": 2.365
       },
-      "statut": "en_attente"
+      "statut": "déclenché"
     },
     {
       "id": "B",
@@ -57,7 +57,7 @@
       ],
       "lot": 0.21,
       "lot_texte": "BUY STOP 0,21 lot = 0,25 % (risque ≈ 242 USD, SL à 210 pip = 1,2 ATR D1) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture H4 au-dessus de 2,4180, et seulement si A n'est ni posé ni déclenché (sinon 3e livre achetée : INTERDIT règle 2). Précaution volume : si la bougie H4 qui arme a un volume sous sa moyenne 20, attendre la clôture suivante.",
+      "condition_texte": "EN VEILLE, INTERDIT tant que A est ouvert (3e livre achetée, règle 2). Seulement après une clôture H4 au-dessus de 2,4180.",
       "condition": {
         "type": "h4_close_above",
         "level": 2.418
@@ -143,7 +143,9 @@
       "note_v5": "Remplacé par le plan A de l'analyse du 17/11 (même entrée 2,3811, SL 2,3650, TP 2,4150, 0,25 %). Tant que l'utilisatrice n'a pas reposé l'ordre, l'ordre réel 0,39 lot SL 2,3700 TP 2,39719 reste dans MT5."
     }
   ],
-  "positions_suivies": [],
+  "positions_suivies": [
+    585588620
+  ],
   "evenements": [
     {
       "quand_serveur": "2026-11-18 09:00",
@@ -195,6 +197,12 @@
       "version": 6,
       "decision": "A posé : l'ordre réel a reçu le SL 2,3650 et le TP 2,4150 du plan, mais garde 0,39 lot (0,35 %, ≈ 345 USD) au lieu de 0,28 lot (0,25 %)",
       "resume": "prix 2,3987, entrée 176 pip plus bas ; aucune clôture H4 sous 2,3650 ; B en veille (pas de clôture H4 > 2,4180) ; règles devises OK"
+    },
+    {
+      "date": "2026-11-19",
+      "version": 7,
+      "decision": "A déclenché (achat 0,39 lot @2,38107, 19/11 11h27 serveur) ; B reste en veille (règle 2 tant que A est ouvert)",
+      "resume": "prix 2,3808, SL 2,3650 à 158 pip (1,06 ATR, derrière le dernier creux D1 2,37368), TP 2,4150 à 342 pip ; lot 0,39 au lieu de 0,28"
     }
   ]
 }

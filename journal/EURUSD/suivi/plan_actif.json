@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 11:15",
-  "created_server_date": "2026-11-16",
+  "created": "2026-11-19 11:40",
+  "created_server_date": "2026-11-19",
   "valid_until": "2026-11-20",
-  "version": 15,
+  "version": 16,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
@@ -57,7 +57,7 @@
         1.081
       ],
       "lot_texte": "SELL STOP 0,29 lot = 0,25 % (risque 247 USD sur 100 000 USD, SL à 85 pip); jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,0990, et mêmes interdits que A (règle 1). PRÉCAUTION VOLUME : si la bougie D1 qui clôture sous 1,0990 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
+      "condition_texte": "ARMÉ par la clôture D1 du 18/11 (1,09739 < 1,0990) mais NON POSABLE : (1) volume de cette bougie 0,96 fois sa moyenne 20 (sous la moyenne : précaution volume) ; (2) A est posé (jamais en même temps) ; (3) ce serait le 3e dollar acheté (EURUSD A + AUDUSD A) : INTERDIT règle 2. NE PAS vendre au marché.",
       "condition": {
         "type": "d1_close_below",
         "level": 1.099
@@ -175,6 +175,12 @@
       "version": 15,
       "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
       "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
+    },
+    {
+      "date": "2026-11-19",
+      "version": 16,
+      "decision": "A poursuit (SELL LIMIT 1,1100 posé) ; B armé par la clôture 18/11 1,09739 mais non posable (volume 0,96, jamais avec A, règle 2)",
+      "resume": "prix 1,0996 ; structure-bot (magic 20260801) a acheté 5,15 lot EURUSD le 18/11 16h49 serveur, stoppé en 2 min (-190,55 $ + 25,76 $ de frais) : règle 1 cassée pendant 2 min"
     }
   ],
   "timeframe": "D1"
