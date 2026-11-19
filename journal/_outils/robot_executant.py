@@ -42,6 +42,11 @@ from __future__ import annotations
 
 import argparse, datetime as dt, json, logging, math, pathlib, sys
 
+import os
+if sys.stdout is None:                 # lancé par pythonw.exe (tâche planifiée sans fenêtre, 19/11/2026)
+    sys.stdout = open(os.devnull, "w", encoding="utf-8")
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, "w", encoding="utf-8")
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
