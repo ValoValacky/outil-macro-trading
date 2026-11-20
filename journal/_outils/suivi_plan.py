@@ -146,6 +146,9 @@ for p in pos:
 if not pos: print("Aucune position ouverte sur la paire.")
 for o in orders: print(f"ORDRE EN ATTENTE type {o.type} {o.volume_current} lot @ {o.price_open:.5f} SL {o.sl:.5f} TP {o.tp:.5f} magic {o.magic} ({o.comment})")
 for sp in plan.get("positions_suivies", []):
+    if not isinstance(sp, dict):  # ticket seul (format court) : SL/TP de reference = ceux de la position
+        t = int(sp); cp = [p for p in pos if p.ticket == t]
+        sp = {"ticket": t, "sl": cp[0].sl if cp else 0.0, "tp": cp[0].tp if cp else 0.0}
     if not any(p.ticket == sp["ticket"] for p in pos):
         deals = mt5.history_deals_get(position=sp["ticket"]) or []
         outs = [d for d in deals if d.entry == 1]

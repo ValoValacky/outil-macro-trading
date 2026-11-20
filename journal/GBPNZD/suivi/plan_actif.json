@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-19 11:40",
-  "created_server_date": "2026-11-19",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-20",
-  "version": 7,
+  "version": 8,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
@@ -57,7 +57,7 @@
       ],
       "lot": 0.21,
       "lot_texte": "BUY STOP 0,21 lot = 0,25 % (risque ≈ 242 USD, SL à 210 pip = 1,2 ATR D1) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE, INTERDIT tant que A est ouvert (3e livre achetée, règle 2). Seulement après une clôture H4 au-dessus de 2,4180.",
+      "condition_texte": "Invalidé : clôture H4 du 19/11 12h00 serveur à 2,38053, sous 2,3890. Jamais posé (interdit règle 2 tant que A est ouvert).",
       "condition": {
         "type": "h4_close_above",
         "level": 2.418
@@ -67,7 +67,7 @@
         "type": "h4_close_below",
         "level": 2.389
       },
-      "statut": "en_veille"
+      "statut": "annulé"
     },
     {
       "id": "ancien_A",
@@ -203,6 +203,12 @@
       "version": 7,
       "decision": "A déclenché (achat 0,39 lot @2,38107, 19/11 11h27 serveur) ; B reste en veille (règle 2 tant que A est ouvert)",
       "resume": "prix 2,3808, SL 2,3650 à 158 pip (1,06 ATR, derrière le dernier creux D1 2,37368), TP 2,4150 à 342 pip ; lot 0,39 au lieu de 0,28"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 8,
+      "decision": "B annulé (clôture H4 2,38053 < 2,3890 le 19/11) ; A position ouverte, SL/TP inchangés",
+      "resume": "position achat 0,39 lot @2,38107, prix 2,3823 (+21 $) ; SL 2,3650 à 170 pip, TP 2,4150 à 330 pip ; ventes au détail UK +0,7 % (prévu 0,0 %) ce matin"
     }
   ]
 }

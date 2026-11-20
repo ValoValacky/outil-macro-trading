@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-17 13:00",
-  "created_server_date": "2026-11-17",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "AUDNZD",
@@ -52,7 +52,7 @@
       ],
       "lot": 0.39,
       "lot_texte": "SELL STOP 0,39 lot = 0,25 % (≈ 247 USD, SL à 115 pip) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 1,2205 avec un volume au moins égal à sa moyenne 20 ; mêmes interdits que A (règles 1 et 2).",
+      "condition_texte": "ARMÉ par la clôture D1 du 19/11 (1,21410 < 1,2205) mais NON POSABLE : prix 1,2122 déjà sous l'entrée 1,2195 ; INTERDIT règles 1 et 2 ; rapport : paire à éviter. NE PAS vendre au marché.",
       "condition": {
         "type": "d1_close_below",
         "level": 1.2205
@@ -87,6 +87,12 @@
       "version": 1,
       "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
       "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 2,
+      "decision": "B armé (clôture D1 1,21410) mais non posable (prix sous l'entrée, règles 1 et 2)",
+      "resume": "prix 1,2122, plus bas de semaine 1,21109"
     }
   ]
 }

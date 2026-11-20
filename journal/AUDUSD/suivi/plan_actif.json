@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-16 12:45",
-  "created_server_date": "2026-11-16",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-20",
-  "version": 7,
+  "version": 8,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -31,7 +31,7 @@
         0.674
       ],
       "lot_texte": "SELL LIMIT 0,35 lot = 0,25 % (risque 245 USD sur 100 000 USD, SL à 70 pip); 2e dollar acheté avec EURUSD A (règle 2, 0,25 % max : OK)",
-      "condition_texte": "POSABLE (choix de l'utilisatrice le 16/11 : garder 0,6895 malgré le rapport fondamental qui place l'invalidation à 0,6875/0,69) : SELL LIMIT 0,6895 à 0,25 %, environ 138 pip au-dessus du prix (0,6756) ; NE PAS vendre au marché. Poser avant 17h ou après 18h Paris (discours de Warsh 18h Paris). 2e dollar acheté avec EURUSD A (règle 2 : 0,25 % max, OK).",
+      "condition_texte": "EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 0,6668, entrée 0,6895 : 227 pip plus haut, jamais atteinte.",
       "condition": {
         "type": "none"
       },
@@ -56,7 +56,7 @@
         0.658
       ],
       "lot_texte": "SELL STOP 0,22 lot = 0,25 % (risque 242 USD sur 100 000 USD, SL à 110 pip); jamais en même temps que A",
-      "condition_texte": "ARMÉ par la clôture D1 du 13/11 (0,67739 < 0,6800) mais le prix (0,6760 le 16/11) est déjà sous l'entrée 0,6790 : un SELL STOP n'est plus posable ; ne pas vendre au marché.",
+      "condition_texte": "Armé le 13/11 mais jamais posable (prix déjà sous l'entrée 0,6790). TP1 théorique 0,6700 touché le 19/11 sans nous. Expire ce soir.",
       "condition": {
         "type": "d1_close_below",
         "level": 0.68
@@ -124,6 +124,12 @@
       "version": 7,
       "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
       "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 8,
+      "decision": "fin de semaine : A à retirer ce soir (expire) ; B jamais posable",
+      "resume": "prix 0,6668, plus bas de la semaine 0,66454 ; A jamais atteint"
     }
   ]
 }

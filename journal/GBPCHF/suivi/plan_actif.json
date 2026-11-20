@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-17 20:02",
-  "created_server_date": "2026-11-17",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "pip": 0.0001,
   "timeframe": "D1",
   "pair": "GBPCHF",
@@ -33,7 +33,7 @@
       ],
       "lot": 0.28,
       "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (≈ 250 USD, SL à 75 pip ; pip ≈ 11,92 USD par lot)",
-      "condition_texte": "EN VEILLE : seulement après une CLÔTURE D1 au-dessus de 1,1105 (sortie du range par le haut). INTERDIT règle 2 aujourd'hui (3e pari livre acheté : GBPAUD A + GBPNZD A) ; posable seulement si l'utilisatrice retire l'un des deux. TP = hauteur du range (214 pip) projetée au-dessus du haut, indicatif. Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante. NE PAS acheter au marché.",
+      "condition_texte": "Invalidé : clôture D1 du 19/11 à 1,10454, sous 1,1051, avant tout armement. Jamais posé.",
       "condition": {
         "type": "d1_close_above",
         "level": 1.1105
@@ -43,7 +43,7 @@
         "type": "d1_close_below",
         "level": 1.1051
       },
-      "statut": "en_veille"
+      "statut": "annulé"
     },
     {
       "id": "B",
@@ -57,7 +57,7 @@
       ],
       "lot": 0.28,
       "lot_texte": "SELL LIMIT 0,28 lot = 0,25 % (≈ 250 USD, SL à 75 pip ; pip ≈ 11,92 USD par lot) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une CLÔTURE D1 sous 1,1051 (bas de la semaine : le rejet du haut est validé). INTERDIT règle 1 aujourd'hui (GBP vendue alors que GBPAUD A et GBPNZD A achètent la livre) ; posable seulement si ces deux achats sont retirés ou clos. SL au-dessus du haut du range avec marge (≥ 1,2 ATR). TP juste avant le bas du 09/11 (1,0921). NE PAS vendre au marché.",
+      "condition_texte": "ARMÉ par la clôture D1 du 19/11 (1,10454 < 1,1051) mais INTERDIT règle 1 (livre achetée par GBPNZD et GBPAUD A). Reste EN VEILLE ; posable seulement si ces deux achats sont retirés ou clos, et seulement si le prix est encore SOUS 1,1050 (SELL LIMIT au-dessus du prix). NE PAS vendre au marché.",
       "condition": {
         "type": "d1_close_below",
         "level": 1.1051
@@ -92,6 +92,12 @@
       "version": 1,
       "decision": "plan initial D1 en veille (étude protocole + profil de semaine apportée par l'utilisatrice)",
       "resume": "A et B en veille : INTERDIT par les règles devises ; on surveille la clôture D1 > 1,1105 ou < 1,1051"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 2,
+      "decision": "A annulé (clôture D1 1,10454 < 1,1051) ; B armé mais interdit règle 1 : en veille",
+      "resume": "prix 1,1043, à 7 pip sous l'entrée B 1,1050"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-17 13:00",
-  "created_server_date": "2026-11-17",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "pip": 0.01,
   "timeframe": "D1",
   "pair": "AUDJPY",
@@ -52,7 +52,7 @@
       ],
       "lot": 0.3,
       "lot_texte": "SELL STOP 0,30 lot = 0,25 % (≈ 245 USD, SL à 130 pip) ; jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 106,80, mêmes interdits que A (règle 2). Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante.",
+      "condition_texte": "ARMÉ par la clôture D1 du 19/11 (106,311 < 106,80) mais NON POSABLE : prix 106,02 déjà sous l'entrée 106,50 (un SELL STOP ne se pose plus) ; INTERDIT règle 2 (3e AUD vendu) ; rapport du 16/11 : AUDJPY à éviter (intervention japonaise). NE PAS vendre au marché.",
       "condition": {
         "type": "d1_close_below",
         "level": 106.8
@@ -87,6 +87,12 @@
       "version": 1,
       "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
       "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 2,
+      "decision": "B armé (clôture D1 106,311) mais non posable (prix sous l'entrée, règle 2, paire à éviter)",
+      "resume": "prix 106,02, plus bas de semaine 105,774"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-19 11:40",
-  "created_server_date": "2026-11-19",
+  "created": "2026-11-20 10:44",
+  "created_server_date": "2026-11-20",
   "valid_until": "2026-11-20",
-  "version": 16,
+  "version": 17,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
@@ -32,7 +32,7 @@
         1.0885
       ],
       "lot_texte": "SELL LIMIT 0,29 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 85 pip)",
-      "condition_texte": "POSABLE sur le nouveau compte 1515301801 (100 000 USD) : SELL LIMIT 1,1100 à 0,25 %, environ 79 pip au-dessus du prix (1,1021) ; NE PAS vendre au marché. Poser après 11h Paris lundi (PIB zone euro). Pas de NOUVEL ordre USD de 13h30 à 15h30 Paris mardi ni de 19h à 21h Paris mercredi ; un ordre posé avant reste actif pendant ces annonces.",
+      "condition_texte": "EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 1,0969, entrée 1,1100 : 131 pip plus haut, jamais atteinte.",
       "condition": {
         "type": "none"
       },
@@ -57,7 +57,7 @@
         1.081
       ],
       "lot_texte": "SELL STOP 0,29 lot = 0,25 % (risque 247 USD sur 100 000 USD, SL à 85 pip); jamais en même temps que A",
-      "condition_texte": "ARMÉ par la clôture D1 du 18/11 (1,09739 < 1,0990) mais NON POSABLE : (1) volume de cette bougie 0,96 fois sa moyenne 20 (sous la moyenne : précaution volume) ; (2) A est posé (jamais en même temps) ; (3) ce serait le 3e dollar acheté (EURUSD A + AUDUSD A) : INTERDIT règle 2. NE PAS vendre au marché.",
+      "condition_texte": "Armé par la clôture D1 du 18/11 mais jamais posable (volume 0,96, jamais avec A, règle 2) ; prix 1,0969 déjà sous l'entrée 1,0975 : un SELL STOP ne se pose plus. Expire ce soir.",
       "condition": {
         "type": "d1_close_below",
         "level": 1.099
@@ -181,6 +181,12 @@
       "version": 16,
       "decision": "A poursuit (SELL LIMIT 1,1100 posé) ; B armé par la clôture 18/11 1,09739 mais non posable (volume 0,96, jamais avec A, règle 2)",
       "resume": "prix 1,0996 ; structure-bot (magic 20260801) a acheté 5,15 lot EURUSD le 18/11 16h49 serveur, stoppé en 2 min (-190,55 $ + 25,76 $ de frais) : règle 1 cassée pendant 2 min"
+    },
+    {
+      "date": "2026-11-20",
+      "version": 17,
+      "decision": "fin de semaine : A à retirer ce soir (expire), B non posable (prix sous l'entrée)",
+      "resume": "prix 1,0969 ; A à 131 pip, jamais atteint ; B armé mais jamais posable"
     }
   ],
   "timeframe": "D1"

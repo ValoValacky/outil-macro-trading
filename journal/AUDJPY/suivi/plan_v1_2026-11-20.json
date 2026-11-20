@@ -1,0 +1,92 @@
+{
+  "created": "2026-11-17 13:00",
+  "created_server_date": "2026-11-17",
+  "valid_until": "2026-11-26",
+  "version": 1,
+  "pip": 0.01,
+  "timeframe": "D1",
+  "pair": "AUDJPY",
+  "bias": "Baisse D1 4/4, sommets de plus en plus bas depuis août ; plancher 108,2-108,7 cassé (clôture 13/11 108,187 volume 0,91 ; 16/11 107,381 volume 1,05). Prix sur le creux de février 106,85, RSI D1 31. COT : yen racheté (deux sources), AUD vendu à l'extrême par la Foule. Rapport : paire à éviter.",
+  "levels": {
+    "dernier_sommet_d1": 109.565,
+    "haut_plancher": 108.7,
+    "plancher_casse": 108.2,
+    "creux_fevrier": 106.85,
+    "zone_janvier": 105.9,
+    "mm20_d1": 109.77,
+    "kijun_w1": 110.91
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du retour sur le plancher cassé",
+      "side": "sell",
+      "type": "limit",
+      "entry": 108.2,
+      "sl": 109.75,
+      "tp": [
+        105.9
+      ],
+      "lot": 0.25,
+      "lot_texte": "SELL LIMIT 0,25 lot = 0,25 % (≈ 243 USD, SL à 155 pip ; pip ≈ 6,28 USD par lot)",
+      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e AUD vendu : AUDUSD A + GBPAUD A) ; posable seulement si l'utilisatrice retire l'un des deux. Rapport du 16/11 : AUDJPY à éviter. NE PAS vendre au marché.",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 108,75 avant déclenchement",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 108.75
+      },
+      "statut": "en_veille"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la cassure du creux de février",
+      "side": "sell",
+      "type": "stop",
+      "entry": 106.5,
+      "sl": 107.8,
+      "tp": [
+        104.5
+      ],
+      "lot": 0.3,
+      "lot_texte": "SELL STOP 0,30 lot = 0,25 % (≈ 245 USD, SL à 130 pip) ; jamais en même temps que A",
+      "condition_texte": "EN VEILLE : seulement après une clôture D1 sous 106,80, mêmes interdits que A (règle 2). Précaution volume : si la bougie qui arme a un volume sous sa moyenne 20, attendre la clôture suivante.",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 106.8
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 108,20",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 108.2
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-18 02:30",
+      "texte": "salaires australiens T3 (AUD, moyen), 1h30 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-19 02:30",
+      "texte": "emploi australien (AUD, FORT), 1h30 Paris : aucun NOUVEL ordre AUD de 0h30 à 1h30 Paris"
+    },
+    {
+      "quand_serveur": "2026-11-20 01:30",
+      "texte": "CPI japonais (JPY, moyen), 0h30 Paris"
+    }
+  ],
+  "regles": "Vendre AUDJPY = AUD vendu + yen acheté. AUD déjà vendu 2 fois (AUDUSD A, GBPAUD A) : INTERDIT règle 2. Heures en Paris (serveur = Paris + 1 h). Règle SL du 12/11 respectée.",
+  "journal": [
+    {
+      "date": "2026-11-17",
+      "version": 1,
+      "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
+      "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
+    }
+  ]
+}

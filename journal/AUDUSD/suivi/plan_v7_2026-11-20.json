@@ -1,0 +1,129 @@
+{
+  "created": "2026-11-16 12:45",
+  "created_server_date": "2026-11-16",
+  "valid_until": "2026-11-20",
+  "version": 7,
+  "pip": 0.0001,
+  "pair": "AUDUSD",
+  "timeframe": "D1",
+  "bias": "W1 baissier depuis le sommet de mai (0,7278) : sommets plus bas 0,7238 (sept.) → 0,7068 (oct.). Le 06/11, clôture D1 sous le plancher de septembre-octobre 0,6894 (volume 1,5 fois la moyenne) ; prix 0,6824 sur le bas du nuage W1 (0,6825), sous toutes les moyennes D1, RSI D1 34, RSI H4 28. Les deux dernières bougies baissières se font sur un volume faible (0,56-0,58 fois). On vend un retour sur le plancher cassé, pas le plus bas.",
+  "levels": {
+    "sommet_29_10": 0.70679,
+    "kijun_d1": 0.69413,
+    "haut_09_11": 0.69307,
+    "plancher_casse": 0.6894,
+    "tenkan_d1": 0.69245,
+    "bas_nuage_w1": 0.68249,
+    "bas_12_11": 0.68147,
+    "mm100_w1": 0.6703,
+    "mm200_w1": 0.66614
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du retour sur le plancher cassé 0,6890-0,6905",
+      "side": "sell",
+      "type": "limit",
+      "entry": 0.6895,
+      "sl": 0.6965,
+      "tp": [
+        0.6815,
+        0.674
+      ],
+      "lot_texte": "SELL LIMIT 0,35 lot = 0,25 % (risque 245 USD sur 100 000 USD, SL à 70 pip); 2e dollar acheté avec EURUSD A (règle 2, 0,25 % max : OK)",
+      "condition_texte": "POSABLE (choix de l'utilisatrice le 16/11 : garder 0,6895 malgré le rapport fondamental qui place l'invalidation à 0,6875/0,69) : SELL LIMIT 0,6895 à 0,25 %, environ 138 pip au-dessus du prix (0,6756) ; NE PAS vendre au marché. Poser avant 17h ou après 18h Paris (discours de Warsh 18h Paris). 2e dollar acheté avec EURUSD A (règle 2 : 0,25 % max, OK).",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 0,6965 (au-dessus de la Kijun D1)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 0.6965
+      },
+      "statut": "en_attente",
+      "lot": 0.35,
+      "ordre_reel": "SELL LIMIT 0.35 lot @0.6895 SL 0.6965 TP 0.6815 (ticket 584987862, magic 20260900, posé le 2026-11-16 13:04 serveur) ; seul TP1 posé, TP2 0.6740 à gérer à la main"
+    },
+    {
+      "id": "B",
+      "nom": "Vente de la poursuite sous 0,6800",
+      "side": "sell",
+      "type": "stop",
+      "entry": 0.679,
+      "sl": 0.69,
+      "tp": [
+        0.67,
+        0.658
+      ],
+      "lot_texte": "SELL STOP 0,22 lot = 0,25 % (risque 242 USD sur 100 000 USD, SL à 110 pip); jamais en même temps que A",
+      "condition_texte": "ARMÉ par la clôture D1 du 13/11 (0,67739 < 0,6800) mais le prix (0,6760 le 16/11) est déjà sous l'entrée 0,6790 : un SELL STOP n'est plus posable ; ne pas vendre au marché.",
+      "condition": {
+        "type": "d1_close_below",
+        "level": 0.68
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 0,6900 (retour au-dessus du plancher cassé)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 0.69
+      },
+      "statut": "en_veille",
+      "lot": 0.22
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-13 15:30",
+      "texte": "PPI américain (USD, FORT), 14h30 Paris : aucun NOUVEL ordre de 13h30 à 15h30 Paris (14h30-16h30 serveur)"
+    },
+    {
+      "quand_serveur": "2026-11-16 00:00",
+      "texte": "semaine du 16/11 : calendrier AUD/JPY/USD à vérifier lundi (emploi australien et ventes au détail US possibles)"
+    }
+  ],
+  "regles": "Compte 1515301801 en USD (100 000) depuis le 16/11. Contrôle devise par devise : 1 seul sens par devise ; 2 paris max dans le même sens (le 1er à 500 USD = 0,5 %, le 2e à 250 USD = 0,25 %) ; 750 USD max par devise ; 2 000 USD max au total, ordres en attente compris. Tous les lots de ce plan sont à 0,25 % (250 USD). Compte vide au 16/11 : aucune position, aucun ordre. Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Heures en Paris (serveur = Paris + 1 h). Vendre AUDUSD = AUD vendu + dollar acheté (2e dollar acheté avec EURUSD A : maximum atteint, donc USDJPY A/B interdits). AUD vendu 2 fois avec GBPAUD A (acheté) : maximum atteint aussi.",
+  "journal": [
+    {
+      "date": "2026-11-12",
+      "version": 1,
+      "decision": "plan initial D1 (analyse du 12/11) : A et B en veille (règle 2) ; B : précaution volume ajoutée",
+      "resume": "prix 0,6824 ; plancher 0,6894 cassé le 06/11 ; RSI H4 28 : on attend un rebond pour vendre"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 2,
+      "decision": "compte bloqué (FTMO) : rien à poser ; règle 2 levée (plus aucune exposition) ; B armé (clôture 13/11 0,67739) mais prix 0,6760 déjà sous l'entrée 0,6790 : ne pas le poser",
+      "resume": "prix 0,6760 ; rapport fondamental du 16/11 : vente AUDUSD n°1 (zone 0,6800-0,6830)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 3,
+      "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
+      "resume": "prix 0,6756 ; nouveau compte 1515301801 branché"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 4,
+      "decision": "A remis en veille : entrée 0,6895 au-dessus de l'invalidation du rapport fondamental (0,6875 / 0,69) ; variante 0,6815 proposée, à valider",
+      "resume": "prix 0,6756 ; rapport fondamental 16/11 relu"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 5,
+      "decision": "A reposable à 0,6895 (choix de l'utilisatrice), variante 0,6815 abandonnée",
+      "resume": "prix 0,6756"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 6,
+      "decision": "plans A et B recalculés en dollars (0,25 % de 100 000 USD = 250 USD, pip 10 USD par lot)",
+      "resume": "A passe de 0,36 à 0,35 lot (arrondi vers le bas, comme Magic Panel qui arrondit au centième inférieur) ; B 0,22 lot mais toujours non posable (prix 0,6756 déjà sous l'entrée 0,6790)"
+    },
+    {
+      "date": "2026-11-16",
+      "version": 7,
+      "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
+      "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
+    }
+  ]
+}
