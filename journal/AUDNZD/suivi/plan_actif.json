@@ -1,98 +1,83 @@
 {
-  "created": "2026-11-20 10:44",
-  "created_server_date": "2026-11-20",
-  "valid_until": "2026-11-26",
-  "version": 2,
-  "pip": 0.0001,
-  "timeframe": "D1",
-  "pair": "AUDNZD",
-  "bias": "Correction W1 après le plus haut 1,26018 (28/10) ; support 1,2269-1,2300 cassé le 09-10/11 sur volume faible (0,89-0,96), puis une semaine sans suite entre 1,2226 et 1,2307, posée sur MM100 D1 1,2221 / MM20 W1 1,2220 / Kijun W1 1,2249. COT sans camp clair (fonds vendent le kiwi). Rapport : paire à éviter.",
-  "levels": {
-    "kijun_d1": 1.2414,
-    "sommet_09_11": 1.23698,
-    "support_casse": 1.23,
-    "creux_16_10": 1.22688,
-    "plus_bas_semaine": 1.22263,
-    "mm100_d1": 1.2221,
-    "mm200_d1": 1.2147
+ "created": "2026-11-21 01:04",
+ "created_server_date": "2026-11-21",
+ "valid_until": "2026-11-27",
+ "version": 3,
+ "pip": 0.0001,
+ "timeframe": "D1",
+ "pair": "AUDNZD",
+ "bias": "Retournement : sommets hebdomadaires 1,2602 -> 1,2521 -> 1,2370 -> 1,2289, support 1,2200-1,2231 cassé jeudi 19/11 (volume 1,41) et vendredi (1,66, clôture 1,20999, plus bas 1,20863). D1 sous le nuage et sous MM20/MM50/MM100 ; MM200 D1 1,2153 cassée ; W1 encore au-dessus du nuage W1 ; RSI D1 28 / H4 28. Rapport du 16/11 : paire à éviter (« trop étirée pour acheter, tendance trop forte pour vendre ») : la tendance a tourné depuis.",
+ "levels": {
+  "pwh": 1.22894,
+  "milieu_sem": 1.21879,
+  "mm200_d1_casse": 1.21533,
+  "mm100_d1": 1.22206,
+  "creux_10_11": 1.22315,
+  "pwl": 1.20863,
+  "mm50_w1": 1.20387,
+  "creux_aout": 1.19445,
+  "atr_d1": 0.00721
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du rebond sur la MM200 D1 cassée (1,2150)",
+   "side": "sell",
+   "type": "limit",
+   "entry": 1.215,
+   "sl": 1.2245,
+   "tp": [
+    1.203,
+    1.199
+   ],
+   "lot": 0.48,
+   "lot_texte": "SELL LIMIT 0.48 lot = 0.25 % (≈ 249 USD, SL à 95 pip ; pip ≈ 5.47 USD par lot) ; R/R 1.26 / 1.68",
+   "condition_texte": "EN VEILLE : INTERDIT règle 1 (vendre AUDNZD = NZD acheté, GBPNZD ouvert vend le NZD) et règle 2 (3e AUD vendu avec AUDJPY A + AUDCHF A) ; rapport « à éviter » ; élection néo-zélandaise le 27/11. Posable seulement après la clôture de GBPNZD ET le retrait d'un plan AUD. NE PAS vendre au marché.",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 1,2250 avant déclenchement",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 1.225
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-23 00:00",
+   "texte": "Calendrier de la semaine du 23/11 NON PUBLIÉ au 21/11 (le flux économique ne bascule que le week-end) : le suivi de 10h le lit lundi. Aucun nouvel ordre dans l'heure avant une annonce forte."
   },
-  "plans": [
-    {
-      "id": "A",
-      "nom": "Vente du retour sur le support cassé",
-      "side": "sell",
-      "type": "limit",
-      "entry": 1.23,
-      "sl": 1.2405,
-      "tp": [
-        1.215
-      ],
-      "lot": 0.43,
-      "lot_texte": "SELL LIMIT 0,43 lot = 0,25 % (≈ 248 USD, SL à 105 pip ; pip ≈ 5,50 USD par lot)",
-      "condition_texte": "EN VEILLE : INTERDIT règle 2 (3e AUD vendu) ET règle 1 (achète le kiwi alors que GBPNZD le vend). Rapport : paire à éviter. Cassure à volume faible.",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 1,2340",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 1.234
-      },
-      "statut": "en_veille"
-    },
-    {
-      "id": "B",
-      "nom": "Vente d'une vraie cassure de l'amas de supports",
-      "side": "sell",
-      "type": "stop",
-      "entry": 1.2195,
-      "sl": 1.231,
-      "tp": [
-        1.202
-      ],
-      "lot": 0.39,
-      "lot_texte": "SELL STOP 0,39 lot = 0,25 % (≈ 247 USD, SL à 115 pip) ; jamais en même temps que A",
-      "condition_texte": "ARMÉ par la clôture D1 du 19/11 (1,21410 < 1,2205) mais NON POSABLE : prix 1,2122 déjà sous l'entrée 1,2195 ; INTERDIT règles 1 et 2 ; rapport : paire à éviter. NE PAS vendre au marché.",
-      "condition": {
-        "type": "d1_close_below",
-        "level": 1.2205
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 1,2310",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 1.231
-      },
-      "statut": "en_veille"
-    }
-  ],
-  "positions_suivies": [],
-  "evenements": [
-    {
-      "quand_serveur": "2026-11-18 02:30",
-      "texte": "salaires australiens T3 (AUD, moyen), 1h30 Paris"
-    },
-    {
-      "quand_serveur": "2026-11-19 02:30",
-      "texte": "emploi australien (AUD, FORT), 1h30 Paris : aucun NOUVEL ordre AUD de 0h30 à 1h30 Paris"
-    },
-    {
-      "quand_serveur": "2026-11-27 00:00",
-      "texte": "résultat définitif des élections néo-zélandaises (NZD)"
-    }
-  ],
-  "regles": "Vendre AUDNZD = AUD vendu (3e : règle 2) + NZD acheté (GBPNZD vend le NZD : règle 1). Acheter AUDNZD = AUD acheté (règle 1). Heures en Paris (serveur = Paris + 1 h).",
-  "journal": [
-    {
-      "date": "2026-11-17",
-      "version": 1,
-      "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
-      "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
-    },
-    {
-      "date": "2026-11-20",
-      "version": 2,
-      "decision": "B armé (clôture D1 1,21410) mais non posable (prix sous l'entrée, règles 1 et 2)",
-      "resume": "prix 1,2122, plus bas de semaine 1,21109"
-    }
-  ]
+  {
+   "quand_serveur": "2026-11-26 00:00",
+   "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  },
+  {
+   "quand_serveur": "2026-11-27 00:00",
+   "texte": "NZD : résultats électoraux néo-zélandais définitifs attendus le 27/11 (rapport du 16/11) : risque binaire sur toutes les paires NZD."
+  }
+ ],
+ "regles": "Vendre AUDNZD = AUD vendu (3e : INTERDIT règle 2) + NZD acheté (INTERDIT règle 1 tant que GBPNZD est ouvert). Acheter AUDNZD = AUD acheté (contre AUDJPY A, AUDCHF A : INTERDIT règle 1).",
+ "journal": [
+  {
+   "date": "2026-11-17",
+   "version": 1,
+   "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
+   "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
+  },
+  {
+   "date": "2026-11-20",
+   "version": 2,
+   "decision": "B armé (clôture D1 1,21410) mais non posable (prix sous l'entrée, règles 1 et 2)",
+   "resume": "prix 1,2122, plus bas de semaine 1,21109"
+  },
+  {
+   "date": "2026-11-21",
+   "version": 3,
+   "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
+   "resume": "Le plus haut depuis 2013 (1,2602 le 28/10) s'est retourné : -4,0 % en trois semaines, support 1,2200 cassé jeudi/vendredi. Mais vendre l'AUDNZD achète le NZD contre GBPNZD (règle 1) et ferait un 3e AUD vendu : plan A en veille."
+  }
+ ]
 }
