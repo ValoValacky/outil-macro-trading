@@ -6,7 +6,7 @@
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "BTCUSD",
- "bias": "Baisse D1 4/4 (MM20 69 326 < MM50 76 704 ; MM200 D1 72 354), sous le nuage D1 (81 141-82 547) et le nuage W1 (76 377-93 018), sous la MM200 W1 68 012 (le « plancher » cité par le rapport, cassé). Sommets D1 de plus en plus bas depuis septembre (87 372 → 81 187). Plus bas de 52 semaines 57 734,85 vendredi 20/11 (volume 1,49 fois la moyenne). RSI D1 26, W1 35. Rapport : biais défensif, baromètre du levier.",
+ "bias": "Baisse D1 3/4 (prix < MM20 69 326 < MM50 76 704 < MM100 77 621 ; MM200 D1 72 354), sous le nuage D1 (81 141-82 547) et le nuage W1 (76 377-93 018), sous la MM200 W1 68 012 (le « plancher » cité par le rapport, cassé). Sommets D1 de plus en plus bas depuis septembre (87 372 → 81 187). Plus bas de 52 semaines 57 734,85 vendredi 20/11 (volume 1,49 fois la moyenne). RSI D1 26, W1 35. Rapport : biais défensif, baromètre du levier.",
  "levels": {
   "pwh": 65661.3,
   "poc_sem_passee": 64491.0,
