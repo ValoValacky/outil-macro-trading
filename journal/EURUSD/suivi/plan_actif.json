@@ -1,199 +1,204 @@
 {
-  "created": "2026-11-23 10:50",
-  "created_server_date": "2026-11-23",
-  "valid_until": "2026-11-20",
-  "version": 18,
-  "pip": 0.0001,
-  "pair": "EURUSD",
-  "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
-  "levels": {
-    "bas_13_11": 1.10194,
-    "chiffre_rond": 1.1,
-    "cible_double_sommet": 1.09396,
-    "creux_avril_2025": 1.08803,
-    "creux_mars_2025": 1.0805,
-    "ancien_plancher": 1.11045,
-    "kijun_h4": 1.11354,
-    "mm20_d1": 1.11701,
-    "poc_semaine": 1.10535,
-    "haut_zone_valeur": 1.1169,
-    "sommet_range": 1.12731
+ "created": "2026-11-23 11:07",
+ "created_server_date": "2026-11-23",
+ "valid_until": "2026-11-27",
+ "version": 19,
+ "pip": 0.0001,
+ "timeframe": "D1",
+ "pair": "EURUSD",
+ "bias": "Baisse D1 4/4 (MM20 1,1111 < MM50 1,1230 < MM100 1,1379 < MM200 1,1501), H4 3/4 ; double sommet D1 (cou 1,11045 cassé le 11/11, cible 1,09396) ; plus bas de 52 semaines 1,09533 (18/11) ; RSI D1 32, W1 28,5. Depuis le 16/11, six bougies collées sous 1,1000 (sommets 1,10306 / 1,10234 / 1,09989 / 1,10099 / 1,10000 / 1,10058). Rapport du 23/11 : VENTE EURUSD n°2, conviction élevée (USD 9 vs EUR 5). On vend le retour sur 1,1000-1,1030, pas le plancher.",
+ "levels": {
+  "plafond_6j": 1.10306,
+  "seuil_1_1000": 1.1,
+  "poc_nu_09_11": 1.10547,
+  "tenkan_d1": 1.10617,
+  "cou_double_sommet": 1.11045,
+  "kijun_d1": 1.11132,
+  "pwh": 1.10306,
+  "pwl": 1.09533,
+  "cible_double_sommet": 1.09396,
+  "tp2_rapport": 1.086,
+  "atr_d1": 0.0063
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du retour sur le plafond 1,1000-1,1030 (zone du rapport)",
+   "side": "sell",
+   "type": "limit",
+   "entry": 1.1015,
+   "sl": 1.109,
+   "tp": [
+    1.0945,
+    1.0865
+   ],
+   "lot": 0.33,
+   "lot_texte": "SELL LIMIT 0.33 lot = 0.25 % (≈ 248 USD, SL à 75 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.93 / 2.00",
+   "condition_texte": "EN VEILLE (choix de l'utilisatrice) : vendre EURUSD = 3e dollar acheté avec USDCAD A + vente d'or A : INTERDIT règle 2 tant que les deux sont prévus. Posable seulement À LA PLACE du SELL LIMIT or 3 700. NE PAS vendre au marché (prix 1,0983 : entrée 32 pip plus haut, 0,5 ATR). Pas de pose de 13h30 à 14h30 Paris mercredi (PCE) ; un ordre posé avant reste actif pendant l'annonce. Si le prix est déjà au-dessus de 1,1015 au moment de poser, ne pas le poser.",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 1,1065 (Tenkan D1 reprise) avant déclenchement : on retire l'ordre",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 1.1065
+   },
+   "statut": "en_veille"
   },
-  "plans": [
-    {
-      "id": "A",
-      "nom": "Vente du retour sous l'ancien plancher",
-      "side": "sell",
-      "type": "limit",
-      "entry": 1.11,
-      "sl": 1.1185,
-      "tp": [
-        1.0945,
-        1.0885
-      ],
-      "lot_texte": "SELL LIMIT 0,29 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 85 pip)",
-      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 1,0969, entrée 1,1100 : 131 pip plus haut, jamais atteinte.",
-      "condition": {
-        "type": "none"
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1135 (retour dans l'ancien range) : on retire l'ordre",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 1.1135
-      },
-      "statut": "annulé",
-      "lot": 0.29,
-      "ordre_reel": "SELL LIMIT 0.29 lot @1.1100 SL 1.1185 TP 1.0945 (ticket 584980599, magic 20260900, posé le 2026-11-16 12:58 serveur) ; seul TP1 posé, TP2 1.0885 à gérer à la main"
-    },
-    {
-      "id": "B",
-      "nom": "Vente de la cassure de 1,1000",
-      "side": "sell",
-      "type": "stop",
-      "entry": 1.0975,
-      "sl": 1.106,
-      "tp": [
-        1.0885,
-        1.081
-      ],
-      "lot_texte": "SELL STOP 0,29 lot = 0,25 % (risque 247 USD sur 100 000 USD, SL à 85 pip); jamais en même temps que A",
-      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. Armé par la clôture D1 du 18/11 mais jamais posable (volume 0,96, jamais avec A, règle 2) ; prix 1,0969 déjà sous l'entrée 1,0975 : un SELL STOP ne se pose plus. Expire ce soir.",
-      "condition": {
-        "type": "d1_close_below",
-        "level": 1.099
-      },
-      "invalidation_texte": "clôture D1 au-dessus de 1,1105",
-      "invalidation": {
-        "type": "d1_close_above",
-        "level": 1.1105
-      },
-      "statut": "annulé",
-      "lot": 0.29
-    }
-  ],
-  "positions_suivies": [],
-  "evenements": [
-    {
-      "quand_serveur": "2026-11-16 12:00",
-      "texte": "PIB zone euro + production industrielle (EUR, moyen), 11h Paris"
-    },
-    {
-      "quand_serveur": "2026-11-16 22:30",
-      "texte": "rapport COT décalé (jour férié US du 11/11) : vérifier lundi soir / mardi"
-    },
-    {
-      "quand_serveur": "2026-11-17 15:30",
-      "texte": "ventes au détail US (USD, FORT), 14h30 Paris : aucun NOUVEL ordre USD de 13h30 à 15h30 Paris"
-    },
-    {
-      "quand_serveur": "2026-11-18 12:00",
-      "texte": "inflation zone euro définitive (EUR, moyen), 11h Paris"
-    },
-    {
-      "quand_serveur": "2026-11-18 21:00",
-      "texte": "compte rendu de la Fed (USD, FORT), 20h Paris : aucun NOUVEL ordre USD de 19h à 21h Paris"
-    }
-  ],
-  "regles": "Compte 1515301801 en USD (100 000) depuis le 16/11. Contrôle devise par devise : 1 seul sens par devise ; 2 paris max dans le même sens (le 1er à 500 USD = 0,5 %, le 2e à 250 USD = 0,25 %) ; 750 USD max par devise ; 2 000 USD max au total, ordres en attente compris. Tous les lots de ce plan sont à 0,25 % (250 USD). Compte vide au 16/11 : aucune position, aucun ordre. Règle SL du 12/11 : SL >= 1,2 ATR D1, jamais collé à un niveau. Heures en Paris (serveur = Paris + 1 h). Vendre EURUSD = euro vendu + dollar acheté (1er pari dollar acheté ; AUDUSD A serait le 2e : maximum). Règle 6 : un achat EURUSD d'un robot (dollar vendu) interdirait ces ventes.",
-  "journal": [
-    {
-      "date": "2026-11-03",
-      "version": 1,
-      "decision": "plan initial",
-      "resume": "neutre, plans A/B, SELL du robot ouvert à 1,11961"
-    },
-    {
-      "date": "2026-11-04",
-      "version": 2,
-      "decision": "A annulé, B en veille, C et D ajoutés",
-      "resume": "SELL du robot stoppé à 1,12311 (-241 EUR) ; EURUSD +75 pip dans la nuit (dollar faible), prix 1,1260 au sommet du canal"
-    },
-    {
-      "date": "2026-11-04",
-      "version": 3,
-      "decision": "D annulé, C à demi-risque",
-      "resume": "USDCAD acheté déclenché : on évite les paris opposés sur le dollar"
-    },
-    {
-      "date": "2026-11-09",
-      "version": 4,
-      "decision": "tous les plans expirés (bilan de semaine)",
-      "resume": "plan expiré le 06/11 (B jamais armé, C manqué à 2 pip, ordre C retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
-    },
-    {
-      "date": "2026-11-09",
-      "version": 5,
-      "decision": "nouveau plan de la semaine (analyse du lundi)",
-      "resume": "A Vente du haut du range (en_attente) ; B Vente de la cassure du plancher (en_veille) ; C Achat sur le plancher (contre-tendance) (en_veille)"
-    },
-    {
-      "date": "2026-11-10",
-      "version": 6,
-      "decision": "A en veille (règle 1, achat du robot), B annulé (clôture D1 1,12237 > 1,1200), C en veille",
-      "resume": "robot structure-bot BUY 0,8 lot @ 1,12203 à 00:46 ; prix 1,1235 à 27 pip de l'entrée A ; CPI US 15h30"
-    },
-    "2026-11-10 15:40 v7 : robot EURUSD stoppé après CPI ; C autorisé à 0,25 % ; A en veille (règle 1 euro).",
-    "2026-11-10 19:05 v8 : C annulé (contre-tendance) ; vente EURUSD bloquée par EURNZD (règle 1).",
-    {
-      "date": "2026-11-11",
-      "version": 9,
-      "decision": "A reste en veille (règle 1 : EURNZD B achète l'euro ; règle 2 : ce serait le 3e dollar acheté)",
-      "resume": "D1 10/11 clôture 1,11637 (-56 pip après l'inflation US) ; prix 1,1141, 37 pip au-dessus du plancher 1,1105"
-    },
-    {
-      "date": "2026-11-12",
-      "version": 10,
-      "decision": "A reste en veille (règle 1) ; range cassé par le bas (clôture D1 1,10890 < 1,1105)",
-      "resume": "prix 1,1098 ; entrée A 1,1262 à 164 pip ; aucun nouveau plan sans analyse"
-    },
-    {
-      "date": "2026-11-14",
-      "version": 11,
-      "decision": "nouveau plan de la semaine (analyse D1 du week-end) : anciens plans terminés ; A vente 1,1100 et B vente cassure 1,0975 en veille (règle 1, EURNZD)",
-      "resume": "clôture hebdo 1,10212 ; range cassé par le bas ; RSI W1 29 ; COT au 03/11 (rapport du 10/11 décalé)"
-    },
-    {
-      "date": "2026-11-16",
-      "version": 12,
-      "decision": "compte bloqué (FTMO) : rien à poser ; règle 1 levée (EURNZD fermée) : A redevient posable à 0,25 % sur un nouveau compte",
-      "resume": "prix 1,1024 ; rapport fondamental du 16/11 : vente EURUSD demi-taille, même sens que A"
-    },
-    {
-      "date": "2026-11-16",
-      "version": 13,
-      "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
-      "resume": "prix 1,1021 ; nouveau compte 1515301801 branché"
-    },
-    {
-      "date": "2026-11-16",
-      "version": 14,
-      "decision": "plans A et B recalculés en dollars (0,25 % de 100 000 USD = 250 USD, pip 10 USD par lot)",
-      "resume": "lots arrondis vers le bas comme Magic Panel ; A inchangé à 0,29 lot, B passe de 0,52 à 0,29 lot (le SL de 85 pip est plus serré que sur l'ancien compte en euros, mais le risque en dollars est le même)"
-    },
-    {
-      "date": "2026-11-16",
-      "version": 15,
-      "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
-      "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
-    },
-    {
-      "date": "2026-11-19",
-      "version": 16,
-      "decision": "A poursuit (SELL LIMIT 1,1100 posé) ; B armé par la clôture 18/11 1,09739 mais non posable (volume 0,96, jamais avec A, règle 2)",
-      "resume": "prix 1,0996 ; structure-bot (magic 20260801) a acheté 5,15 lot EURUSD le 18/11 16h49 serveur, stoppé en 2 min (-190,55 $ + 25,76 $ de frais) : règle 1 cassée pendant 2 min"
-    },
-    {
-      "date": "2026-11-20",
-      "version": 17,
-      "decision": "fin de semaine : A à retirer ce soir (expire), B non posable (prix sous l'entrée)",
-      "resume": "prix 1,0969 ; A à 131 pip, jamais atteint ; B armé mais jamais posable"
-    },
-    {
-      "date": "2026-11-23",
-      "version": 18,
-      "decision": "bilan de semaine : A et B expirés le 20/11 (jamais déclenchés) ; aucun plan EURUSD pour la semaine du 23/11",
-      "resume": "prix 1,0995 ; pertes robots du 18/11 : HORIIZON -203,75 $ et structure-bot -190,55 $ (+ ≈17 $ de frais) ; rapport du 23/11 : VENTE EURUSD n°2 (zone 1,1000-1,1030) -> analyse à demander"
-    }
-  ],
-  "timeframe": "D1"
+  {
+   "id": "B",
+   "nom": "Vente de la cassure du plus bas de l'année (1,0953)",
+   "side": "sell",
+   "type": "stop",
+   "entry": 1.094,
+   "sl": 1.102,
+   "tp": [
+    1.0865,
+    1.081
+   ],
+   "lot": 0.31,
+   "lot_texte": "SELL STOP 0.31 lot = 0.25 % (≈ 248 USD, SL à 80 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.94 / 1.63",
+   "condition_texte": "ARMÉ seulement par une clôture D1 sous 1,0950 avec un volume au moins égal à la moyenne 20 (sinon attendre la clôture suivante). Jamais en même temps que A ; même contrainte règle 2 (3e dollar acheté). NE PAS vendre au marché ; si le prix est déjà sous 1,0940 au moment de poser, ne pas le poser.",
+   "condition": {
+    "type": "d1_close_below",
+    "level": 1.095
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 1,1030 avant déclenchement",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 1.103
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-24 11:00",
+   "texte": "IFO allemand (mar. 10h00 Paris, 11h00 serveur) : moyen."
+  },
+  {
+   "quand_serveur": "2026-11-25 15:30",
+   "texte": "PCE core, PIB T3, commandes durables US (mer. 14h30 Paris, 15h30 serveur) : TRÈS FORT. Aucun nouvel ordre de 13h30 à 14h30 Paris ; un ordre posé avant reste actif pendant l'annonce."
+  },
+  {
+   "quand_serveur": "2026-11-25 21:00",
+   "texte": "Beige Book (mer. 20h00 Paris) : moyen."
+  },
+  {
+   "quand_serveur": "2026-11-26 14:30",
+   "texte": "Jeudi 26/11 : Thanksgiving (US fermés, liquidité très faible) + comptes rendus BCE (13h30 Paris) : pas de nouvel ordre ce jour."
+  },
+  {
+   "quand_serveur": "2026-11-27 20:00",
+   "texte": "Vendredi 27/11 : séance US courte (actions fermées à 19h00 Paris) : positions à protéger avant 21h30 serveur."
+  }
+ ],
+ "regles": "Vendre EURUSD = euro vendu (1er pari) + dollar acheté (3e avec USDCAD A + vente d'or A : INTERDIT règle 2). Remplace la vente d'or, ne s'y ajoute pas. Incompatible avec EURNZD A (euro acheté, règle 1). Va dans le même sens qu'EURJPY A (euro vendu), qui reste en veille.",
+ "journal": [
+  {
+   "date": "2026-11-03",
+   "version": 1,
+   "decision": "plan initial",
+   "resume": "neutre, plans A/B, SELL du robot ouvert à 1,11961"
+  },
+  {
+   "date": "2026-11-04",
+   "version": 2,
+   "decision": "A annulé, B en veille, C et D ajoutés",
+   "resume": "SELL du robot stoppé à 1,12311 (-241 EUR) ; EURUSD +75 pip dans la nuit (dollar faible), prix 1,1260 au sommet du canal"
+  },
+  {
+   "date": "2026-11-04",
+   "version": 3,
+   "decision": "D annulé, C à demi-risque",
+   "resume": "USDCAD acheté déclenché : on évite les paris opposés sur le dollar"
+  },
+  {
+   "date": "2026-11-09",
+   "version": 4,
+   "decision": "tous les plans expirés (bilan de semaine)",
+   "resume": "plan expiré le 06/11 (B jamais armé, C manqué à 2 pip, ordre C retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+  },
+  {
+   "date": "2026-11-09",
+   "version": 5,
+   "decision": "nouveau plan de la semaine (analyse du lundi)",
+   "resume": "A Vente du haut du range (en_attente) ; B Vente de la cassure du plancher (en_veille) ; C Achat sur le plancher (contre-tendance) (en_veille)"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 6,
+   "decision": "A en veille (règle 1, achat du robot), B annulé (clôture D1 1,12237 > 1,1200), C en veille",
+   "resume": "robot structure-bot BUY 0,8 lot @ 1,12203 à 00:46 ; prix 1,1235 à 27 pip de l'entrée A ; CPI US 15h30"
+  },
+  "2026-11-10 15:40 v7 : robot EURUSD stoppé après CPI ; C autorisé à 0,25 % ; A en veille (règle 1 euro).",
+  "2026-11-10 19:05 v8 : C annulé (contre-tendance) ; vente EURUSD bloquée par EURNZD (règle 1).",
+  {
+   "date": "2026-11-11",
+   "version": 9,
+   "decision": "A reste en veille (règle 1 : EURNZD B achète l'euro ; règle 2 : ce serait le 3e dollar acheté)",
+   "resume": "D1 10/11 clôture 1,11637 (-56 pip après l'inflation US) ; prix 1,1141, 37 pip au-dessus du plancher 1,1105"
+  },
+  {
+   "date": "2026-11-12",
+   "version": 10,
+   "decision": "A reste en veille (règle 1) ; range cassé par le bas (clôture D1 1,10890 < 1,1105)",
+   "resume": "prix 1,1098 ; entrée A 1,1262 à 164 pip ; aucun nouveau plan sans analyse"
+  },
+  {
+   "date": "2026-11-14",
+   "version": 11,
+   "decision": "nouveau plan de la semaine (analyse D1 du week-end) : anciens plans terminés ; A vente 1,1100 et B vente cassure 1,0975 en veille (règle 1, EURNZD)",
+   "resume": "clôture hebdo 1,10212 ; range cassé par le bas ; RSI W1 29 ; COT au 03/11 (rapport du 10/11 décalé)"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 12,
+   "decision": "compte bloqué (FTMO) : rien à poser ; règle 1 levée (EURNZD fermée) : A redevient posable à 0,25 % sur un nouveau compte",
+   "resume": "prix 1,1024 ; rapport fondamental du 16/11 : vente EURUSD demi-taille, même sens que A"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 13,
+   "decision": "nouveau compte 1515301801 (100 000 USD) : plan A redevient posable à 0,25 % (lot recalculé en USD)",
+   "resume": "prix 1,1021 ; nouveau compte 1515301801 branché"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 14,
+   "decision": "plans A et B recalculés en dollars (0,25 % de 100 000 USD = 250 USD, pip 10 USD par lot)",
+   "resume": "lots arrondis vers le bas comme Magic Panel ; A inchangé à 0,29 lot, B passe de 0,52 à 0,29 lot (le SL de 85 pip est plus serré que sur l'ancien compte en euros, mais le risque en dollars est le même)"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 15,
+   "decision": "A posé chez le courtier sur le compte 1515301801, conforme au plan",
+   "resume": "ordre réel vérifié dans MT5 (compte USD 100 000, trading automatique autorisé)"
+  },
+  {
+   "date": "2026-11-19",
+   "version": 16,
+   "decision": "A poursuit (SELL LIMIT 1,1100 posé) ; B armé par la clôture 18/11 1,09739 mais non posable (volume 0,96, jamais avec A, règle 2)",
+   "resume": "prix 1,0996 ; structure-bot (magic 20260801) a acheté 5,15 lot EURUSD le 18/11 16h49 serveur, stoppé en 2 min (-190,55 $ + 25,76 $ de frais) : règle 1 cassée pendant 2 min"
+  },
+  {
+   "date": "2026-11-20",
+   "version": 17,
+   "decision": "fin de semaine : A à retirer ce soir (expire), B non posable (prix sous l'entrée)",
+   "resume": "prix 1,0969 ; A à 131 pip, jamais atteint ; B armé mais jamais posable"
+  },
+  {
+   "date": "2026-11-23",
+   "version": 18,
+   "decision": "bilan de semaine : A et B expirés le 20/11 (jamais déclenchés) ; aucun plan EURUSD pour la semaine du 23/11",
+   "resume": "prix 1,0995 ; pertes robots du 18/11 : HORIIZON -203,75 $ et structure-bot -190,55 $ (+ ≈17 $ de frais) ; rapport du 23/11 : VENTE EURUSD n°2 (zone 1,1000-1,1030) -> analyse à demander"
+  },
+  {
+   "date": "2026-11-23",
+   "version": 19,
+   "decision": "nouvelle analyse D1 du lundi 23/11 (demandée pour comparer avec la vente d'or) : A et B en veille (règle 2, 3e dollar acheté)",
+   "resume": "Baisse D1 (MM D1 4/4, H4 3/4) et double sommet D1 actif (cou 1,11045 cassé, cible 1,09396). Depuis six jours le prix tourne juste sous 1,1000 (plafond 1,0999-1,1031, plancher 1,0953) : on vend un retour sur 1,1000-1,1030, la zone du rapport, jamais au marché. Plan A EN VEILLE : ce serait le 3e dollar acheté avec USDCAD A et la vente d'or (règle 2) ; il ne se pose qu'À LA PLACE de la vente d'or."
+  }
+ ]
 }
