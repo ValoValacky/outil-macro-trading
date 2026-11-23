@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 11:07",
+ "created": "2026-11-23 11:18",
  "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 19,
+ "version": 20,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "EURUSD",
@@ -27,14 +27,14 @@
    "side": "sell",
    "type": "limit",
    "entry": 1.1015,
-   "sl": 1.109,
+   "sl": 1.1095,
    "tp": [
     1.0945,
     1.0865
    ],
-   "lot": 0.33,
-   "lot_texte": "SELL LIMIT 0.33 lot = 0.25 % (≈ 248 USD, SL à 75 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.93 / 2.00",
-   "condition_texte": "EN VEILLE (choix de l'utilisatrice) : vendre EURUSD = 3e dollar acheté avec USDCAD A + vente d'or A : INTERDIT règle 2 tant que les deux sont prévus. Posable seulement À LA PLACE du SELL LIMIT or 3 700. NE PAS vendre au marché (prix 1,0983 : entrée 32 pip plus haut, 0,5 ATR). Pas de pose de 13h30 à 14h30 Paris mercredi (PCE) ; un ordre posé avant reste actif pendant l'annonce. Si le prix est déjà au-dessus de 1,1015 au moment de poser, ne pas le poser.",
+   "lot": 0.31,
+   "lot_texte": "SELL LIMIT 0.31 lot = 0.25 % (≈ 248 USD, SL à 80 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.87 / 1.87",
+   "condition_texte": "CHOISI par l'utilisatrice le 23/11 à la place de la vente d'or (règle 2 : 2e dollar acheté avec USDCAD A, 250 $ max). Aucune condition : SELL LIMIT posé d'avance. NE PAS vendre au marché (prix 1,0983 : entrée 32 pip plus haut, 0,5 ATR). Si le prix est déjà au-dessus de 1,1015 au moment de poser, ne pas le poser. Pas de pose de 13h30 à 14h30 Paris mercredi (PCE) ; un ordre posé avant reste actif pendant l'annonce.",
    "condition": {
     "type": "none"
    },
@@ -43,7 +43,7 @@
     "type": "d1_close_above",
     "level": 1.1065
    },
-   "statut": "en_veille"
+   "statut": "en_attente"
   },
   {
    "id": "B",
@@ -58,7 +58,7 @@
    ],
    "lot": 0.31,
    "lot_texte": "SELL STOP 0.31 lot = 0.25 % (≈ 248 USD, SL à 80 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.94 / 1.63",
-   "condition_texte": "ARMÉ seulement par une clôture D1 sous 1,0950 avec un volume au moins égal à la moyenne 20 (sinon attendre la clôture suivante). Jamais en même temps que A ; même contrainte règle 2 (3e dollar acheté). NE PAS vendre au marché ; si le prix est déjà sous 1,0940 au moment de poser, ne pas le poser.",
+   "condition_texte": "ARMÉ seulement par une clôture D1 sous 1,0950 avec un volume au moins égal à la moyenne 20 (sinon attendre la clôture suivante). Jamais en même temps que A : si B s'arme, retirer A d'abord. NE PAS vendre au marché ; si le prix est déjà sous 1,0940, ne pas le poser.",
    "condition": {
     "type": "d1_close_below",
     "level": 1.095
@@ -94,7 +94,7 @@
    "texte": "Vendredi 27/11 : séance US courte (actions fermées à 19h00 Paris) : positions à protéger avant 21h30 serveur."
   }
  ],
- "regles": "Vendre EURUSD = euro vendu (1er pari) + dollar acheté (3e avec USDCAD A + vente d'or A : INTERDIT règle 2). Remplace la vente d'or, ne s'y ajoute pas. Incompatible avec EURNZD A (euro acheté, règle 1). Va dans le même sens qu'EURJPY A (euro vendu), qui reste en veille.",
+ "regles": "Vendre EURUSD = euro vendu (1er pari) + dollar acheté (2e avec USDCAD A : maximum, 250 $). Remplace la vente d'or (XAUUSD A en veille). Incompatible avec EURNZD A (euro acheté, règle 1). Même sens qu'EURJPY A (euro vendu), qui reste en veille.",
  "journal": [
   {
    "date": "2026-11-03",
@@ -199,6 +199,12 @@
    "version": 19,
    "decision": "nouvelle analyse D1 du lundi 23/11 (demandée pour comparer avec la vente d'or) : A et B en veille (règle 2, 3e dollar acheté)",
    "resume": "Baisse D1 (MM D1 4/4, H4 3/4) et double sommet D1 actif (cou 1,11045 cassé, cible 1,09396). Depuis six jours le prix tourne juste sous 1,1000 (plafond 1,0999-1,1031, plancher 1,0953) : on vend un retour sur 1,1000-1,1030, la zone du rapport, jamais au marché. Plan A EN VEILLE : ce serait le 3e dollar acheté avec USDCAD A et la vente d'or (règle 2) ; il ne se pose qu'À LA PLACE de la vente d'or."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 20,
+   "decision": "A choisi par l'utilisatrice à la place de la vente d'or : en_attente (à poser) ; B reste en veille",
+   "resume": "prix 1,0983, entrée 1,1015 à 32 pip ; règle 2 : 2e dollar acheté avec USDCAD A ; SL éloigné de 1,1090 à 1,1095 avant la pose (1,2 ATR même avec l'ATR 66 pip du robot), lot 0,31 ; SL éloigné de 1,1090 à 1,1095 avant la pose (1,2 ATR même avec l'ATR 66 pip du robot), lot 0,31"
   }
  ]
 }

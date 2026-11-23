@@ -1,8 +1,8 @@
 {
- "created": "2026-11-21 01:04",
- "created_server_date": "2026-11-21",
+ "created": "2026-11-23 11:18",
+ "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 3,
+ "version": 4,
  "pip": 0.01,
  "timeframe": "D1",
  "pair": "AUDJPY",
@@ -33,7 +33,7 @@
    ],
    "lot": 0.29,
    "lot_texte": "SELL LIMIT 0.29 lot = 0.25 % (≈ 247 USD, SL à 135 pip ; pip ≈ 6.31 USD par lot) ; R/R 1.22 / 2.15",
-   "condition_texte": "Aucune condition : ordre posé d'avance, mais seulement lundi après le nouveau rapport fondamental et hors annonce forte. NE PAS vendre au marché (prix 104,90 : l'entrée est à 1,4 ATR au-dessus).",
+   "condition_texte": "POSÉ par l'utilisatrice le 23/11 (vu dans MT5 à 11h28 serveur) : SELL LIMIT 0,29 lot @106,500, SL 107,851, TP 104,832 (plan : TP 104,85, écart sans importance). Rien à faire : l'ordre attend le prix. Il reste actif pendant le CPI australien (mer. 1h30 Paris) et le CPI de Tokyo (ven. 0h30 Paris).",
    "condition": {
     "type": "none"
    },
@@ -75,6 +75,12 @@
    "version": 3,
    "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
    "resume": "Baisse propre sur tous les repères, mais le prix est sur son plus bas (RSI D1 22, 1,0 ATR au-dessus du dernier fond). On ne vend pas ici : on vend un REBOND vers 106,50. Plan A posable (statut en_attente)."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 4,
+   "decision": "A posé par l'utilisatrice (SELL LIMIT 0,29 lot @106,50, SL 107,851, TP 104,832)",
+   "resume": "prix 105,9, entrée 60 pip plus haut"
   }
  ]
 }

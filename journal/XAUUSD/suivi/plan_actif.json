@@ -1,8 +1,8 @@
 {
- "created": "2026-11-21 01:04",
- "created_server_date": "2026-11-21",
+ "created": "2026-11-23 11:18",
+ "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 14,
+ "version": 15,
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "XAUUSD",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.02,
    "lot_texte": "SELL LIMIT 0.02 lot = 0.26 % (≈ 260 USD, SL à 130 $ de prix ; 1 $ de mouvement = 100 USD par lot) ; R/R 1.08 / 1.42",
-   "condition_texte": "Aucune condition : ordre posé d'avance, lundi après le nouveau rapport et hors annonce forte. NE PAS vendre au marché (prix 3 532,65 : l'entrée est 167 points plus haut, 1,6 ATR). 2e dollar acheté avec USDCAD A (250 $ : maximum). Lot minimum 0,01 = 130 $ de risque ; 0,02 = 260 $ (0,26 %).",
+   "condition_texte": "EN VEILLE : remplacé par EURUSD A (choix de l'utilisatrice le 23/11 ; probabilité de déclenchement avant vendredi : or 3 700 ≈ 52 % contre EURUSD 1,1015 ≈ 69 %). INTERDIT règle 2 tant que USDCAD A et EURUSD A sont prévus (ce serait le 3e dollar acheté). Posable seulement si EURUSD A est abandonné. NE PAS vendre au marché.",
    "condition": {
     "type": "none"
    },
@@ -41,7 +41,7 @@
     "type": "d1_close_above",
     "level": 3860.0
    },
-   "statut": "en_attente"
+   "statut": "en_veille"
   }
  ],
  "positions_suivies": [],
@@ -55,7 +55,7 @@
    "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
   }
  ],
- "regles": "Vendre l'or = dollar acheté (2e avec USDCAD A : maximum, 250 $). Interdit : tout achat d'or ou toute vente d'USD tant que ce plan existe.",
+ "regles": "Vendre l'or = dollar acheté : 3e avec USDCAD A + EURUSD A : INTERDIT règle 2. Interdit aussi : tout achat d'or tant que les plans dollar existent.",
  "journal": [
   {
    "date": "2026-11-05",
@@ -130,6 +130,12 @@
    "version": 14,
    "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
    "resume": "Chute de 9,3 % en une semaine, RSI H4 19 / D1 23 : vendre ici serait courir après le prix. Plan A = vendre un rebond vers 3 700 (statut en_attente, 0,02 lot). Entrée à 1,6 ATR au-dessus : peu de chance de déclenchement, c'est volontaire."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 15,
+   "decision": "A en veille : remplacé par EURUSD A (choix de l'utilisatrice, règle 2)",
+   "resume": "prix 3 620, entrée 3 700 jamais posée ; aucun ordre or dans MT5"
   }
  ]
 }
