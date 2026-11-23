@@ -1,0 +1,76 @@
+{
+  "created": "2026-11-18 16:30",
+  "created_server_date": "2026-11-18",
+  "valid_until": "2026-11-26",
+  "version": 1,
+  "pip": 0.01,
+  "timeframe": "D1",
+  "pair": "NZDJPY",
+  "bias": "Baissier : MM D1 et H4 en baisse 4/4, double sommet D1 actif (ligne de cou 88,112 cassée, cible 85,891), prix 87,586 près du bas de semaine 87,301. Même thème que le protocole du 17/11 (JPY/NZD le plus propre). Volumes de la cassure normaux (0,95 et 1,03 x moyenne 20). Plan en VEILLE : on attend un REPLI du prix vers la ligne de cou, jamais d'entrée au marché (le prochain repère sous le prix est à 0,4 ATR seulement).",
+  "levels": {
+    "sl_zone_haut": 88.9,
+    "sommet_lundi": 88.361,
+    "ouverture_semaine": 88.147,
+    "ligne_de_cou": 88.112,
+    "entree": 88.0,
+    "pwl": 87.9,
+    "bas_semaine": 87.301,
+    "cible_double_sommet": 85.891,
+    "mm20_d1": 88.632,
+    "mm50_d1": 88.957,
+    "atr_d1": 0.725
+  },
+  "plans": [
+    {
+      "id": "A",
+      "nom": "Vente du retour sur la ligne de cou (double sommet D1)",
+      "side": "sell",
+      "type": "limit",
+      "entry": 88.0,
+      "sl": 88.9,
+      "tp": [
+        85.9
+      ],
+      "lot": 0.44,
+      "lot_texte": "SELL LIMIT 0,44 lot = 0,25 % (≈ 250 USD, SL à 90 pip = 1,24 ATR ; pip ≈ 6,27 USD par lot, à recalculer avec la valeur du tick le jour de la pose)",
+      "condition_texte": "EN VEILLE : poser le SELL LIMIT 88,00 seulement si le prix remonte vers 87,90-88,15 SANS clôture D1 au-dessus de 88,40. NE PAS vendre au marché (prix 87,586 : cible la plus proche à 0,4 ATR, mauvais rapport gain/risque). Pas de nouvel ordre NZD de 18h00 à 19h00 Paris (discours RBNZ) ; ne rien poser dans l'heure avant une annonce forte. Précaution volume : si une bougie de cassure a un volume sous sa moyenne 20, attendre la clôture suivante. Règles devises : NZD déjà vendu une fois (GBPNZD A) → 2e pari à moitié risque (250 USD) ; JPY nouveau.",
+      "condition": {
+        "type": "none"
+      },
+      "invalidation_texte": "clôture D1 au-dessus de 88,40 (sommet de lundi 88,361 dépassé)",
+      "invalidation": {
+        "type": "d1_close_above",
+        "level": 88.4
+      },
+      "statut": "en_veille"
+    }
+  ],
+  "positions_suivies": [],
+  "evenements": [
+    {
+      "quand_serveur": "2026-11-18 20:00",
+      "texte": "discours du gouverneur RBNZ Breman (NZD, impact moyen), 19h00 Paris : aucun nouvel ordre NZD de 18h à 19h"
+    },
+    {
+      "quand_serveur": "2026-11-18 21:00",
+      "texte": "minutes du FOMC (USD, FORT), 20h00 Paris : peut bouger le yen"
+    },
+    {
+      "quand_serveur": "2026-11-19 02:30",
+      "texte": "emploi australien (AUD, FORT), 01h30 Paris : peut bouger tout le bloc AUD/NZD"
+    },
+    {
+      "quand_serveur": "2026-11-27 00:00",
+      "texte": "élections néo-zélandaises (27/11) : risque de gap NZD, plan non valable au-delà du 26/11"
+    }
+  ],
+  "regles": "Vente NZDJPY = NZD vendu + JPY acheté. NZD : 1 pari vendeur déjà (GBPNZD A, 345 USD) → 2e pari autorisé à 250 USD (règle 2). JPY : aucun pari → autorisé. Total après pose ≈ 1 318 USD sur 2 000. Le rapport du 16/11 classe les croisés yen « à éviter » (NZDJPY non nommé ; une intervention japonaise jouerait pour la vente). SL ≥ 1,2 ATR (90 pip = 1,24 ATR) et au-dessus du sommet de lundi, règle du 12/11 respectée. Heures en Paris (serveur = Paris + 1 h). Carte de contexte, pas un signal : tests faits, aucun avantage mesuré sur les doubles sommets (+0,06 R brut) ni les cassures.",
+  "journal": [
+    {
+      "date": "2026-11-18",
+      "version": 1,
+      "decision": "plan initial D1 en veille (tri des alertes MT5 du 18/11)",
+      "resume": "NZDJPY seule vente compatible avec les règles devises ; attendre un repli vers 88,00 sans clôture D1 > 88,40"
+    }
+  ]
+}

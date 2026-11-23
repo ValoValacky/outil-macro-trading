@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-20 10:44",
-  "created_server_date": "2026-11-20",
+  "created": "2026-11-23 10:50",
+  "created_server_date": "2026-11-23",
   "valid_until": "2026-11-20",
-  "version": 17,
+  "version": 18,
   "pip": 0.0001,
   "pair": "EURUSD",
   "bias": "Range de 4 semaines 1,1105-1,1273 cassé par le bas (clôtures 11/11 1,10890, 12/11 1,10537, 13/11 1,10212) ; plus bas de clôture hebdomadaire depuis fin mars 2025 ; sous toutes les moyennes D1/W1 ; fonds à levier vendeurs d'euro (-78 559) ; double sommet D1 (cou 1,11045, cible 1,09396). Mais cassure sur volume faible (0,74 fois, jour férié US), RSI W1 29 et Foule vendeuse à l'extrême de 3 ans : on vend un retour sous l'ancien plancher ou une cassure confirmée de 1,1000, jamais au marché au plus bas.",
@@ -32,7 +32,7 @@
         1.0885
       ],
       "lot_texte": "SELL LIMIT 0,29 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 85 pip)",
-      "condition_texte": "EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 1,0969, entrée 1,1100 : 131 pip plus haut, jamais atteinte.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 1,0969, entrée 1,1100 : 131 pip plus haut, jamais atteinte.",
       "condition": {
         "type": "none"
       },
@@ -41,7 +41,7 @@
         "type": "d1_close_above",
         "level": 1.1135
       },
-      "statut": "en_attente",
+      "statut": "annulé",
       "lot": 0.29,
       "ordre_reel": "SELL LIMIT 0.29 lot @1.1100 SL 1.1185 TP 1.0945 (ticket 584980599, magic 20260900, posé le 2026-11-16 12:58 serveur) ; seul TP1 posé, TP2 1.0885 à gérer à la main"
     },
@@ -57,7 +57,7 @@
         1.081
       ],
       "lot_texte": "SELL STOP 0,29 lot = 0,25 % (risque 247 USD sur 100 000 USD, SL à 85 pip); jamais en même temps que A",
-      "condition_texte": "Armé par la clôture D1 du 18/11 mais jamais posable (volume 0,96, jamais avec A, règle 2) ; prix 1,0969 déjà sous l'entrée 1,0975 : un SELL STOP ne se pose plus. Expire ce soir.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. Armé par la clôture D1 du 18/11 mais jamais posable (volume 0,96, jamais avec A, règle 2) ; prix 1,0969 déjà sous l'entrée 1,0975 : un SELL STOP ne se pose plus. Expire ce soir.",
       "condition": {
         "type": "d1_close_below",
         "level": 1.099
@@ -67,7 +67,7 @@
         "type": "d1_close_above",
         "level": 1.1105
       },
-      "statut": "en_veille",
+      "statut": "annulé",
       "lot": 0.29
     }
   ],
@@ -187,6 +187,12 @@
       "version": 17,
       "decision": "fin de semaine : A à retirer ce soir (expire), B non posable (prix sous l'entrée)",
       "resume": "prix 1,0969 ; A à 131 pip, jamais atteint ; B armé mais jamais posable"
+    },
+    {
+      "date": "2026-11-23",
+      "version": 18,
+      "decision": "bilan de semaine : A et B expirés le 20/11 (jamais déclenchés) ; aucun plan EURUSD pour la semaine du 23/11",
+      "resume": "prix 1,0995 ; pertes robots du 18/11 : HORIIZON -203,75 $ et structure-bot -190,55 $ (+ ≈17 $ de frais) ; rapport du 23/11 : VENTE EURUSD n°2 (zone 1,1000-1,1030) -> analyse à demander"
     }
   ],
   "timeframe": "D1"

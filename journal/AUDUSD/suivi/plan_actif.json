@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-20 10:44",
-  "created_server_date": "2026-11-20",
+  "created": "2026-11-23 10:50",
+  "created_server_date": "2026-11-23",
   "valid_until": "2026-11-20",
-  "version": 8,
+  "version": 9,
   "pip": 0.0001,
   "pair": "AUDUSD",
   "timeframe": "D1",
@@ -31,7 +31,7 @@
         0.674
       ],
       "lot_texte": "SELL LIMIT 0,35 lot = 0,25 % (risque 245 USD sur 100 000 USD, SL à 70 pip); 2e dollar acheté avec EURUSD A (règle 2, 0,25 % max : OK)",
-      "condition_texte": "EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 0,6668, entrée 0,6895 : 227 pip plus haut, jamais atteinte.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. EXPIRE CE SOIR (vendredi 20/11, fin de semaine) : retirer l'ordre avant 20h30 Paris (21h30 serveur) ; nouveau plan lundi après l'analyse. NE PAS vendre au marché. Prix 0,6668, entrée 0,6895 : 227 pip plus haut, jamais atteinte.",
       "condition": {
         "type": "none"
       },
@@ -40,7 +40,7 @@
         "type": "d1_close_above",
         "level": 0.6965
       },
-      "statut": "en_attente",
+      "statut": "annulé",
       "lot": 0.35,
       "ordre_reel": "SELL LIMIT 0.35 lot @0.6895 SL 0.6965 TP 0.6815 (ticket 584987862, magic 20260900, posé le 2026-11-16 13:04 serveur) ; seul TP1 posé, TP2 0.6740 à gérer à la main"
     },
@@ -56,7 +56,7 @@
         0.658
       ],
       "lot_texte": "SELL STOP 0,22 lot = 0,25 % (risque 242 USD sur 100 000 USD, SL à 110 pip); jamais en même temps que A",
-      "condition_texte": "Armé le 13/11 mais jamais posable (prix déjà sous l'entrée 0,6790). TP1 théorique 0,6700 touché le 19/11 sans nous. Expire ce soir.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais déclenché ni posé. Armé le 13/11 mais jamais posable (prix déjà sous l'entrée 0,6790). TP1 théorique 0,6700 touché le 19/11 sans nous. Expire ce soir.",
       "condition": {
         "type": "d1_close_below",
         "level": 0.68
@@ -66,7 +66,7 @@
         "type": "d1_close_above",
         "level": 0.69
       },
-      "statut": "en_veille",
+      "statut": "annulé",
       "lot": 0.22
     }
   ],
@@ -130,6 +130,12 @@
       "version": 8,
       "decision": "fin de semaine : A à retirer ce soir (expire) ; B jamais posable",
       "resume": "prix 0,6668, plus bas de la semaine 0,66454 ; A jamais atteint"
+    },
+    {
+      "date": "2026-11-23",
+      "version": 9,
+      "decision": "bilan de semaine : A et B expirés le 20/11 ; B aurait touché son TP1 0,6700 sans nous",
+      "resume": "prix 0,6652 ; rapport du 23/11 : VENTE AUDUSD n°5 demi-taille (3e AUD vendu avec AUDJPY A + AUDCHF A : règle 2)"
     }
   ]
 }

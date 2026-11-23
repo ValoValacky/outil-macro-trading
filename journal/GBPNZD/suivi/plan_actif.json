@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-20 10:44",
-  "created_server_date": "2026-11-20",
-  "valid_until": "2026-11-20",
-  "version": 8,
+  "created": "2026-11-23 10:50",
+  "created_server_date": "2026-11-23",
+  "valid_until": "2026-11-27",
+  "version": 9,
   "pip": 0.0001,
   "timeframe": "H4",
   "pair": "GBPNZD",
@@ -33,8 +33,8 @@
         2.415
       ],
       "lot": 0.28,
-      "lot_texte": "Plan : BUY LIMIT 0,28 lot = 0,25 % (≈ 248 USD, SL à 161 pip). RÉEL (vu le 18/11) : 0,39 lot @2,38110, SL 2,36500, TP 2,41500 = risque ≈ 345 USD = 0,35 % (plus gros que le plan ; règles devises OK : livre 577 USD < 750, NZD 345 USD).",
-      "condition_texte": "DÉCLENCHÉ le 19/11 à 11h27 serveur (10h27 Paris) : achat 0,39 lot @2,38107, SL 2,36500, TP 2,41500 (ticket 585588620). Risque ≈ 345 USD = 0,35 % (plan : 0,28 lot = 0,25 %). Rien à faire : le SL et le TP protègent.",
+      "lot_texte": "RÉEL restant : 0,01 lot @2,38107 (risque ≈ 9 $ = 0,01 %). Fermé 0,38 lot le 23/11 à 2,3979 (+347 $).",
+      "condition_texte": "DÉCLENCHÉ le 19/11 (0,39 lot @2,38107). Le 23/11 à 10h32-10h33 serveur (9h32 Paris), l'utilisatrice a fermé 0,38 lot à 2,3979 : +347 $ net (≈ +168 pip). RESTE 0,01 lot (SL 2,36500, TP 2,41500, risque ≈ 9 $). Rien à faire.",
       "condition": {
         "type": "none"
       },
@@ -209,6 +209,12 @@
       "version": 8,
       "decision": "B annulé (clôture H4 2,38053 < 2,3890 le 19/11) ; A position ouverte, SL/TP inchangés",
       "resume": "position achat 0,39 lot @2,38107, prix 2,3823 (+21 $) ; SL 2,3650 à 170 pip, TP 2,4150 à 330 pip ; ventes au détail UK +0,7 % (prévu 0,0 %) ce matin"
+    },
+    {
+      "date": "2026-11-23",
+      "version": 9,
+      "decision": "A : fermeture partielle 0,38 lot à 2,3979 par l'utilisatrice (+347 $ net) ; reste 0,01 lot avec SL/TP d'origine",
+      "resume": "prix 2,3975 ; suivi prolongé tant que la position reste ouverte ; élection NZ définitive le 27/11"
     }
   ]
 }

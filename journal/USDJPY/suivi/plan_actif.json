@@ -1,8 +1,8 @@
 {
-  "created": "2026-11-17 11:48",
-  "created_server_date": "2026-11-17",
+  "created": "2026-11-23 10:50",
+  "created_server_date": "2026-11-23",
   "valid_until": "2026-11-20",
-  "version": 5,
+  "version": 6,
   "pip": 0.01,
   "pair": "USDJPY",
   "timeframe": "D1",
@@ -38,7 +38,7 @@
         161.5
       ],
       "lot_texte": "BUY LIMIT 0,28 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); 1er dollar acheté",
-      "condition_texte": "EN VEILLE, INTERDIT règle 2 : EURUSD A et AUDUSD A sont posés (2 paris dollar acheté, le maximum) ; acheter USDJPY serait le 3e. Et le rapport du 16/11 classe USDJPY « à éviter » (intervention japonaise possible entre 160 et 164). Le 17/11, le prix est descendu à 158,865 (sous l'entrée 158,90) : aucun ordre n'était posé, rien à faire.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais posé. EN VEILLE, INTERDIT règle 2 : EURUSD A et AUDUSD A sont posés (2 paris dollar acheté, le maximum) ; acheter USDJPY serait le 3e. Et le rapport du 16/11 classe USDJPY « à éviter » (intervention japonaise possible entre 160 et 164). Le 17/11, le prix est descendu à 158,865 (sous l'entrée 158,90) : aucun ordre n'était posé, rien à faire.",
       "condition": {
         "type": "none"
       },
@@ -47,7 +47,7 @@
         "type": "d1_close_below",
         "level": 157.5
       },
-      "statut": "en_veille",
+      "statut": "annulé",
       "note_v2": "14/11 : règle 2 levée (USDCAD et or expirés vendredi) ; niveau confirmé (EMA50 H4 158,91, Kijun H4 158,93).",
       "lot": 0.28
     },
@@ -63,7 +63,7 @@
         162.8
       ],
       "lot_texte": "BUY STOP 0,28 lot = 0,25 % (risque 246 USD sur 100 000 USD, SL à 140 pip); jamais en même temps que A",
-      "condition_texte": "EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé. PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
+      "condition_texte": "EXPIRÉ le 20/11 (fin de semaine), jamais posé. EN VEILLE : seulement après une clôture D1 au-dessus de 160,40, si A n'est pas posé. PRÉCAUTION VOLUME : si la bougie D1 qui clôture au-dessus de 160,40 a un volume SOUS sa moyenne 20 jours, ne pas poser B ce soir-là.",
       "condition": {
         "type": "d1_close_above",
         "level": 160.4
@@ -73,7 +73,7 @@
         "type": "d1_close_below",
         "level": 158.9
       },
-      "statut": "en_veille",
+      "statut": "annulé",
       "note_v2": "14/11 : SL 159,30 -> 159,10 (collé au bas du 12/11 159,31, règle SL) ; TP 161,90 / 162,80.",
       "lot": 0.28
     }
@@ -128,6 +128,12 @@
       "version": 5,
       "decision": "A reste en veille : INTERDIT règle 2 (EURUSD A + AUDUSD A posés) + paire à éviter selon le rapport",
       "resume": "plus bas 158,865 le 17/11, sous l'entrée 158,90 (aucun ordre posé)"
+    },
+    {
+      "date": "2026-11-23",
+      "version": 6,
+      "decision": "bilan de semaine : A expiré (entrée théorique 158,90 le 20/11, non posée car interdite règle 2) ; B invalidé (clôture D1 20/11 158,558 < 158,90)",
+      "resume": "prix 159,15 ; rapport du 23/11 : USDJPY toujours à éviter"
     }
   ]
 }
