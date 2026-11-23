@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 11:18",
+ "created": "2026-11-23 11:55",
  "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 20,
+ "version": 21,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "EURUSD",
@@ -29,12 +29,11 @@
    "entry": 1.1015,
    "sl": 1.1095,
    "tp": [
-    1.0945,
     1.0865
    ],
    "lot": 0.31,
-   "lot_texte": "SELL LIMIT 0.31 lot = 0.25 % (≈ 248 USD, SL à 80 pip ; pip ≈ 10.00 USD par lot) ; R/R 0.87 / 1.87",
-   "condition_texte": "CHOISI par l'utilisatrice le 23/11 à la place de la vente d'or (règle 2 : 2e dollar acheté avec USDCAD A, 250 $ max). Aucune condition : SELL LIMIT posé d'avance. NE PAS vendre au marché (prix 1,0983 : entrée 32 pip plus haut, 0,5 ATR). Si le prix est déjà au-dessus de 1,1015 au moment de poser, ne pas le poser. Pas de pose de 13h30 à 14h30 Paris mercredi (PCE) ; un ordre posé avant reste actif pendant l'annonce.",
+   "lot_texte": "SELL LIMIT 0,31 lot = 0,25 % (≈ 248 USD, SL à 80 pip) ; TP unique 1,0865 = 150 pip, R/R 1,88 (choix de l'utilisatrice : 1,0945 ne donnait que 0,88)",
+   "condition_texte": "POSÉ le 23/11 à 11h42 serveur (ticket 590143235) : SELL LIMIT 0,31 lot @1,10150, SL 1,10950, TP 1,08650. Rien à faire : l'ordre attend le prix. Actif pendant le PCE (mer. 14h30 Paris).",
    "condition": {
     "type": "none"
    },
@@ -205,6 +204,12 @@
    "version": 20,
    "decision": "A choisi par l'utilisatrice à la place de la vente d'or : en_attente (à poser) ; B reste en veille",
    "resume": "prix 1,0983, entrée 1,1015 à 32 pip ; règle 2 : 2e dollar acheté avec USDCAD A ; SL éloigné de 1,1090 à 1,1095 avant la pose (1,2 ATR même avec l'ATR 66 pip du robot), lot 0,31 ; SL éloigné de 1,1090 à 1,1095 avant la pose (1,2 ATR même avec l'ATR 66 pip du robot), lot 0,31"
+  },
+  {
+   "date": "2026-11-23",
+   "version": 21,
+   "decision": "A posé (SELL LIMIT 0,31 lot @1,1015, SL 1,1095, TP 1,0865 au lieu de 1,0945 : R/R 1,88)",
+   "resume": "vu dans MT5 (capture de l'utilisatrice)"
   }
  ]
 }

@@ -1,8 +1,8 @@
 {
- "created": "2026-11-21 01:04",
- "created_server_date": "2026-11-21",
+ "created": "2026-11-23 11:55",
+ "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 9,
+ "version": 10,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "USDCAD",
@@ -31,7 +31,7 @@
    ],
    "lot": 0.42,
    "lot_texte": "BUY LIMIT 0.42 lot = 0.25 % (≈ 249 USD, SL à 85 pip ; pip ≈ 6.97 USD par lot) ; R/R 1.76",
-   "condition_texte": "Aucune condition : ordre posé d'avance, lundi après le nouveau rapport et hors annonce forte. NE PAS acheter au marché (prix 1,4349 : l'entrée est à 0,7 ATR plus bas). Obstacle : PWH 1,4357 (le prix peut y buter avant d'aller plus haut).",
+   "condition_texte": "POSÉ le 23/11 à 12h02 serveur (ticket 590154073) : BUY LIMIT 0,42 lot @1,43000, SL 1,42148, TP 1,44505 (conforme au plan). Rien à faire : l'ordre attend le prix. Actif pendant Macklem (mar. 17h30 Paris) et le PCE (mer. 14h30 Paris).",
    "condition": {
     "type": "none"
    },
@@ -129,6 +129,12 @@
    "version": 9,
    "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
    "resume": "Tendance haussière la plus propre de la liste (MM D1 et H4 4/4, 9 clôtures hausse de suite, volume en hausse sur la cassure de 1,43). Mais RSI D1 73 : on achète le RETOUR sur 1,4300, pas la poursuite. Plan A posable (en_attente), plan B de cassure en veille."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 10,
+   "decision": "A posé (BUY LIMIT 0,42 lot @1,4300, SL 1,42148, TP 1,44505)",
+   "resume": "vu dans MT5 (capture de l'utilisatrice)"
   }
  ]
 }
