@@ -1,8 +1,8 @@
 {
- "created": "2026-11-21 01:04",
- "created_server_date": "2026-11-21",
+ "created": "2026-11-23 13:20",
+ "created_server_date": "2026-11-23",
  "valid_until": "2026-11-27",
- "version": 6,
+ "version": 7,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "AUDCHF",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.29,
    "lot_texte": "SELL LIMIT 0.29 lot = 0.25 % (≈ 248 USD, SL à 72 pip ; pip ≈ 11.90 USD par lot) ; R/R 1.08 / 1.57",
-   "condition_texte": "Aucune condition : ordre posé d'avance, lundi après le nouveau rapport et hors annonce forte. 2e pari AUD vendu (maximum) : 250 $ seulement. NE PAS vendre au marché (prix 0,5558 : l'entrée est à 1,3 ATR au-dessus).",
+   "condition_texte": "POSÉ le 23/11 (vu dans MT5 à 13h27 serveur) : SELL LIMIT 0,29 lot @0,56280, SL 0,57000, TP 0,55500 (conforme au plan ; 4e idée du jour, limite Magic Panel montée à 4 ce jour-là). Rien à faire : l'ordre attend le prix. Actif pendant le CPI australien (mer. 1h30 Paris).",
    "condition": {
     "type": "none"
    },
@@ -92,6 +92,12 @@
    "version": 6,
    "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
    "resume": "Même histoire que AUDJPY (AUD faible, refuges forts) mais écart de score faible (1) et franc très vendu par les fonds. Plan A de vente du rebond posable en 2e pari AUD (statut en_attente, 250 $)."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 7,
+   "decision": "A posé par l'utilisatrice (SELL LIMIT 0,29 lot @0,5628, SL 0,5700, TP 0,5550)",
+   "resume": "vu dans MT5"
   }
  ]
 }

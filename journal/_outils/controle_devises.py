@@ -22,7 +22,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]          # .../journal
 GUARD = ROOT.parents[1] / "Bot Trading FTMO" / "state" / "ftmo_demo_guard.json"
 NOMS = {"EUR": "euro", "USD": "dollar US", "GBP": "livre", "JPY": "yen", "CHF": "franc suisse",
         "AUD": "dollar australien", "NZD": "dollar néo-zélandais", "CAD": "dollar canadien",
-        "XAU": "or", "XAG": "argent métal"}
+        "XAU": "or", "XAG": "argent métal", "BTC": "bitcoin"}
 QUI = {20260801: "robot structure-bot", 20260827: "robot HORIIZON", 20260828: "robot Gold Watch", 20260829: "scanner HA-Ichimoku", 20260900: "Magic Panel", 20260910: "robot exécutant", 0: "manuel"}
 BUY_TYPES = {0, 2, 4, 6}  # buy, buy limit, buy stop, buy stop limit
 

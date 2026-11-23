@@ -1,0 +1,97 @@
+{
+ "created": "2026-11-23 13:20",
+ "created_server_date": "2026-11-23",
+ "valid_until": "2026-11-27",
+ "version": 1,
+ "pip": 1.0,
+ "timeframe": "D1",
+ "pair": "BTCUSD",
+ "bias": "Baisse D1 4/4 (MM20 69 326 < MM50 76 704 ; MM200 D1 72 354), sous le nuage D1 (81 141-82 547) et le nuage W1 (76 377-93 018), sous la MM200 W1 68 012 (le « plancher » cité par le rapport, cassé). Sommets D1 de plus en plus bas depuis septembre (87 372 → 81 187). Plus bas de 52 semaines 57 734,85 vendredi 20/11 (volume 1,49 fois la moyenne). RSI D1 26, W1 35. Rapport : biais défensif, baromètre du levier.",
+ "levels": {
+  "pwh": 65661.3,
+  "poc_sem_passee": 64491.0,
+  "poc_novembre": 64624.0,
+  "haut_15_11": 66088.87,
+  "mm200_w1": 68012.0,
+  "tenkan_d1": 61912.0,
+  "milieu_sem": 61698.07,
+  "bas_sem": 60355.66,
+  "pwl_plus_bas_52s": 57734.85,
+  "val_novembre": 58028.0,
+  "creux_sept_2024": 52595.56,
+  "atr_d1": 2625.0
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du rebond sur le POC de la semaine passée (64 500 $)",
+   "side": "sell",
+   "type": "limit",
+   "entry": 64500.0,
+   "sl": 68400.0,
+   "tp": [
+    58300.0
+   ],
+   "lot": 0.06,
+   "lot_texte": "SELL LIMIT 0.06 lot = 0.23 % (≈ 234 USD, SL à 3900 $ de prix ; 1 $ de mouvement = 1 USD par lot) ; R/R 1.59",
+   "condition_texte": "EN VEILLE : INTERDIT règle 2 (vendre le bitcoin = 3e dollar acheté, avec le BUY LIMIT USDCAD et le SELL LIMIT EURUSD déjà posés). Posable seulement si l'un de ces deux ordres est retiré, ou se déclenche puis se ferme. Magic Panel : 3 idées par jour maximum. NE PAS vendre au marché (prix 61 340 $ : entrée 3 160 $ plus haut, 1,2 ATR). À retirer vendredi 27/11 avant 20h30 Paris s'il n'est pas déclenché (le bitcoin se traite le week-end, sans suivi).",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 66 100 $ (au-dessus du sommet du 15/11) avant déclenchement : on retire l'ordre",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 66100.0
+   },
+   "statut": "en_veille"
+  },
+  {
+   "id": "B",
+   "nom": "Vente de la cassure du plus bas de 52 semaines (57 735 $)",
+   "side": "sell",
+   "type": "stop",
+   "entry": 57200.0,
+   "sl": 60900.0,
+   "tp": [
+    53000.0
+   ],
+   "lot": 0.07,
+   "lot_texte": "SELL STOP 0.07 lot = 0.26 % (≈ 259 USD, SL à 3700 $ de prix ; 1 $ de mouvement = 1 USD par lot) ; R/R 1.14",
+   "condition_texte": "ARMÉ seulement par une clôture D1 sous 57 700 $ avec un volume au moins égal à la moyenne 20 (un samedi ou un dimanche ne compte pas : volume de week-end). Même interdiction règle 2 que A. Jamais en même temps que A. NE PAS vendre au marché ; si le prix est déjà sous 57 200 $ au moment de poser, ne pas le poser.",
+   "condition": {
+    "type": "d1_close_below",
+    "level": 57700.0
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 62 000 $ avant déclenchement",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 62000.0
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-25 15:30",
+   "texte": "PCE core, PIB T3 US (mer. 14h30 Paris, 15h30 serveur) : TRÈS FORT. Aucun nouvel ordre de 13h30 à 14h30 Paris."
+  },
+  {
+   "quand_serveur": "2026-11-26 15:00",
+   "texte": "Jeudi 26/11 : Thanksgiving, marchés US fermés, liquidité très faible : pas de nouvel ordre."
+  },
+  {
+   "quand_serveur": "2026-11-27 21:30",
+   "texte": "Vendredi 27/11 : le bitcoin se traite aussi le week-end, sans suivi : retirer tout ordre BTC non déclenché avant 20h30 Paris (21h30 serveur)."
+  }
+ ],
+ "regles": "Vendre BTCUSD = dollar acheté (3e avec USDCAD A + EURUSD A : INTERDIT règle 2). Acheter BTCUSD = dollar vendu (INTERDIT règle 1 tant que les deux ordres dollar existent). Le bitcoin lui-même compte comme une « devise » à part (BTC) dans le contrôle devise par devise.",
+ "journal": [
+  {
+   "date": "2026-11-23",
+   "version": 1,
+   "decision": "première analyse D1 du bitcoin (demandée le 23/11) : A et B en veille (règle 2, 3e dollar acheté)",
+   "resume": "Chute de 21 % en 20 jours (81 187 → 57 735 $), sous toutes les moyennes D1 et sous la MM200 hebdomadaire (68 012 $), RSI D1 26 : tendance baissière mais très étirée. Le rapport du 23/11 est défensif sous 68 000 $ (résistance 66 000-68 000 $). On vend un REBOND vers 64 500 $ (POC de la semaine passée), jamais au marché. Plans A et B EN VEILLE : vendre le bitcoin = 3e dollar acheté (USDCAD + EURUSD déjà posés), interdit par la règle 2."
+  }
+ ]
+}
