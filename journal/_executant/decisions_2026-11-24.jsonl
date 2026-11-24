@@ -1,0 +1,2 @@
+{"serveur": "2026-11-24 00:16", "paire": "EURUSD", "plan": "B", "statut_plan": "en_veille", "type": "SELL STOP", "entree": 1.094, "sl": 1.102, "tp": 1.0865, "action": "RIEN", "raison": "plan « en_veille », condition remplie mais le prix est déjà sous l'entrée : non posable"}
+{"serveur": "2026-11-24 00:16", "paire": "USDCAD", "plan": "B", "statut_plan": "en_veille", "type": "BUY STOP", "entree": 1.4375, "sl": 1.429, "tp": 1.45, "action": "RIEN", "raison": "plan « en_veille », condition remplie mais plan exclusif avec A (déjà posé ou en position) : non posable"}

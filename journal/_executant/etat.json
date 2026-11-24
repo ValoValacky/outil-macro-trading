@@ -1,0 +1,18 @@
+{
+ "AUDCHF|A|590165391": "RIEN|ordre déjà posé, conforme au plan",
+ "AUDJPY|A|590133581": "RIEN|ordre déjà posé, conforme au plan",
+ "AUDNZD|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "BTCUSD|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "BTCUSD|B|": "RIEN|plan « en_veille » (décision humaine)",
+ "EURJPY|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "EURNZD|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "EURUSD|A|590143235": "RIEN|ordre déjà posé, conforme au plan",
+ "EURUSD|B|": "RIEN|plan « en_veille », condition remplie mais le prix est déjà sous l'entrée : non posable",
+ "GBPCHF|B|": "RIEN|plan « en_veille », condition remplie mais INTERDIT règle  : GBP déjà en achat ailleurs : non posable",
+ "GBPNZD|POSITION|585588620": "RIEN|ACHAT . lot @ . SL . TP ., résultat +. USD (Magic Panel)",
+ "NZDCAD|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "NZDJPY|A|": "RIEN|plan « en_veille » (décision humaine)",
+ "USDCAD|A|590154073": "RIEN|ordre déjà posé, conforme au plan",
+ "USDCAD|B|": "RIEN|plan « en_veille », condition remplie mais plan exclusif avec A (déjà posé ou en position) : non posable",
+ "XAUUSD|A|": "RIEN|plan « en_veille » (décision humaine)"
+}

@@ -1,0 +1,124 @@
+{
+ "created": "2026-11-21 01:04",
+ "created_server_date": "2026-11-21",
+ "valid_until": "2026-11-27",
+ "version": 10,
+ "pip": 0.0001,
+ "timeframe": "D1",
+ "pair": "EURNZD",
+ "bias": "Range de 3 mois 1,950-2,017 : le prix revient sur le plafond (clôture 2,00531, haut de la semaine 2,00680, 4 sommets à 2,0111-2,0172 depuis septembre). H4 4/4 haussier, D1 2/4, au-dessus du nuage D1 et W1. Valoalgo H4 ACHAT il y a 1 bougie. Rapport : EUR 5 vs NZD 2 (écart 3, favorable à l'achat), mais RSI H4 62 et plafond tout proche.",
+ "levels": {
+  "plafond": 2.01716,
+  "pwh": 2.0068,
+  "milieu_sem": 1.99691,
+  "tenkan_d1": 1.99453,
+  "ema50_h4": 1.99698,
+  "kijun_d1": 1.98558,
+  "pwl": 1.98702,
+  "creux_12_11": 1.98225,
+  "atr_d1": 0.01292
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Achat du repli sur le milieu de la semaine / EMA50 H4 (1,9965)",
+   "side": "buy",
+   "type": "limit",
+   "entry": 1.9965,
+   "sl": 1.981,
+   "tp": [
+    2.015
+   ],
+   "lot": 0.3,
+   "lot_texte": "BUY LIMIT 0.30 lot = 0.25 % (≈ 254 USD, SL à 155 pip ; pip ≈ 5.47 USD par lot) ; R/R 1.19",
+   "condition_texte": "EN VEILLE : rapport gain/risque 1,2 seulement (cible avant le plafond 2,0172, stop sous le creux du 12/11) ; incompatible avec EURJPY A (euro vendu) ; 2e vente NZD (avec GBPNZD, 250 $) en pleine semaine d'élection néo-zélandaise. Posable seulement si le prix revient vers 1,9965 ET que l'utilisatrice accepte ce R/R. NE PAS acheter au marché.",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 sous 1,9870 (PWL) avant déclenchement",
+   "invalidation": {
+    "type": "d1_close_below",
+    "level": 1.987
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-23 00:00",
+   "texte": "Calendrier de la semaine du 23/11 NON PUBLIÉ au 21/11 (le flux économique ne bascule que le week-end) : le suivi de 10h le lit lundi. Aucun nouvel ordre dans l'heure avant une annonce forte."
+  },
+  {
+   "quand_serveur": "2026-11-26 00:00",
+   "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  },
+  {
+   "quand_serveur": "2026-11-27 00:00",
+   "texte": "NZD : résultats électoraux néo-zélandais définitifs attendus le 27/11 (rapport du 16/11) : risque binaire sur toutes les paires NZD."
+  }
+ ],
+ "regles": "Acheter EURNZD = euro acheté + NZD vendu (2e vente NZD avec GBPNZD ouvert : maximum, 250 $). VENDRE EURNZD INTERDIT (règle 1 : NZD acheté contre GBPNZD). Incompatible avec EURJPY A (euro vendu).",
+ "journal": [
+  {
+   "date": "2026-11-03",
+   "version": 1,
+   "decision": "plan initial",
+   "resume": "A BUY LIMIT 1,9845 maintenu, B BUY STOP 1,9965 après clôture H4 > 1,99546"
+  },
+  {
+   "date": "2026-11-04",
+   "version": 2,
+   "decision": "B annulé (périmé), A maintenu",
+   "resume": "emploi NZ faible : EURNZD +159 pip hier, haut 2,0112 ce matin, repli à 1,9964"
+  },
+  {
+   "date": "2026-11-09",
+   "version": 3,
+   "decision": "tous les plans expirés (bilan de semaine)",
+   "resume": "plan expiré le 06/11 (A jamais atteint, à 53 pip ; ordre retiré vendredi) ; nouveau plan à faire après l'analyse du lundi"
+  },
+  {
+   "date": "2026-11-09",
+   "version": 4,
+   "decision": "nouveau plan de la semaine (analyse du lundi)",
+   "resume": "A Vente du plafond 2,0111-2,0172 (en_attente) ; B Achat du repli sur la zone de valeur (en_veille)"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 5,
+   "decision": "A en veille (règle 1, achat EURUSD du robot) ; B reste en veille mais redevient autorisé (2e pari euro acheté)",
+   "resume": "prix 1,9934 ; plus bas 1,98946 à 20 pip de l'entrée B ; A à 216 pip"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 6,
+   "decision": "B posé (BUY LIMIT 1,98748, 0,79 lot, SL 1,97749)",
+   "resume": "ordre réel vérifié dans MT5 à 13h20 serveur"
+  },
+  {
+   "date": "2026-11-11",
+   "version": 7,
+   "decision": "B poursuit (BUY LIMIT posé) ; A en veille (règle 1 car B achète l'euro)",
+   "resume": "D1 10/11 clôture 1,99203 ; plus bas du jour 1,98905 (16 pip de l'entrée B 1,98748) ; prix 1,9930"
+  },
+  {
+   "date": "2026-11-12",
+   "version": 8,
+   "decision": "B : BUY LIMIT annulé et remplacé par un achat AU MARCHÉ 1,88 lot @1,99631 (0,50 %, ≈ 804 EUR, double du plan) ; A en veille (règle 1)",
+   "resume": "le BUY LIMIT 1,98748 n'a pas été exécuté à la bascule de minuit (creux 1,98225 avec écart de cotation énorme) ; position -212 EUR à 11h35 Paris, SL à 63 pip ; NZD 1 205 EUR (règle 3, +5 EUR)"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 9,
+   "decision": "fin de semaine : B terminé (position fermée par FTMO lundi 01h08 serveur, -219,92 EUR) ; A expiré",
+   "resume": "prix 1,9963 ; compte d'essai FTMO clôturé"
+  },
+  {
+   "date": "2026-11-21",
+   "version": 10,
+   "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
+   "resume": "Haussier H4 4/4 collé au plafond du range (2,0172). Seul l'ACHAT est autorisé (vendre l'EURNZD achèterait le NZD contre GBPNZD). R/R de l'achat du repli trop faible (1,2) : plan A en veille."
+  }
+ ]
+}
