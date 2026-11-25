@@ -440,3 +440,97 @@
 2026-11-24 09:56:46,155 [INFO] passage terminé : 16 décisions, 0 changement(s)
 2026-11-24 10:04:08,100 [INFO] passage terminé : 16 décisions, 0 changement(s)
 2026-11-24 10:04:08,158 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 10:17:05,800 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 10:32:04,347 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 10:47:03,902 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 11:02:03,631 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 11:17:03,910 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 11:32:03,876 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 11:47:03,169 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 12:02:04,094 [INFO] CHANGEMENT EURUSD B -> RIEN : plan « en_veille », condition remplie mais plan exclusif avec A (déjà posé ou en position) : non posable
+2026-11-24 12:02:04,099 [INFO] passage terminé : 16 décisions, 1 changement(s)
+2026-11-24 12:17:03,554 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 12:32:15,671 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 12:48:04,972 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 13:02:04,555 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 13:17:28,286 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 13:32:03,804 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 13:47:02,979 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 14:02:03,338 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 14:17:03,649 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 14:32:04,157 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 14:47:03,115 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 15:02:03,736 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 15:17:03,276 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 15:32:03,404 [INFO] passage terminé : 16 décisions, 0 changement(s)
+2026-11-24 15:47:03,695 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : le prix est déjà sous l'entrée (bid 1.4298600000000001 / ask 1.42992) : ne jamais entrer au marché
+2026-11-24 15:47:03,696 [INFO] CHANGEMENT USDCAD B -> RIEN : plan « en_veille », condition remplie mais INTERDIT règle 2 : USD déjà en achat 2 fois : non posable
+2026-11-24 15:47:03,697 [INFO] CHANGEMENT USDCAD POSITION -> RIEN : ACHAT 0.42 lot @ 1.42998 SL 1.42148 TP 1.44505, résultat -3.23 USD (Magic Panel)
+2026-11-24 15:47:03,699 [INFO] passage terminé : 17 décisions, 3 changement(s)
+2026-11-24 16:02:04,253 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 16:17:03,656 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : INTERDIT règle 2 : USD déjà en achat 2 fois
+2026-11-24 16:17:03,658 [INFO] CHANGEMENT USDCAD POSITION -> RIEN : ACHAT 0.42 lot @ 1.42998 SL 1.4215 TP 1.445, résultat +1.76 USD (Magic Panel)
+2026-11-24 16:17:03,660 [INFO] passage terminé : 17 décisions, 2 changement(s)
+2026-11-24 16:32:05,104 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : le prix est déjà sous l'entrée (bid 1.42972 / ask 1.42977) : ne jamais entrer au marché
+2026-11-24 16:32:05,104 [INFO] CHANGEMENT USDCAD POSITION -> RIEN : ACHAT 0.42 lot @ 1.42998 SL 1.4215 TP 1.445, résultat -7.64 USD (Magic Panel)
+2026-11-24 16:32:05,107 [INFO] passage terminé : 17 décisions, 2 changement(s)
+2026-11-24 16:47:04,698 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : INTERDIT règle 2 : USD déjà en achat 2 fois
+2026-11-24 16:47:04,703 [INFO] CHANGEMENT USDCAD POSITION -> RIEN : ACHAT 0.42 lot @ 1.42998 SL 1.4215 TP 1.445, résultat +34.34 USD (Magic Panel)
+2026-11-24 16:47:04,707 [INFO] passage terminé : 17 décisions, 2 changement(s)
+2026-11-24 17:02:04,353 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 17:17:03,391 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 17:32:04,018 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 17:47:03,927 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 18:02:05,663 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 18:17:20,571 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 18:33:33,867 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : le prix est déjà sous l'entrée (bid 1.42817 / ask 1.42822) : ne jamais entrer au marché
+2026-11-24 18:33:33,878 [INFO] CHANGEMENT USDCAD POSITION -> RIEN : ACHAT 0.42 lot @ 1.42998 SL 1.4215 TP 1.445, résultat -55.58 USD (Magic Panel)
+2026-11-24 18:33:33,891 [INFO] passage terminé : 17 décisions, 2 changement(s)
+2026-11-24 18:47:24,039 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 19:02:05,224 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 19:18:21,761 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 19:36:49,611 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 19:47:15,311 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 20:02:21,739 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 20:32:18,768 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 20:47:07,466 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 21:53:44,865 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 22:02:10,549 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 22:23:40,196 [ERROR] MT5 ne répond pas : (-6, 'Terminal: Authorization failed')
+2026-11-24 22:32:29,347 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-24 22:48:14,857 [INFO] CHANGEMENT AUDCHF A -> REPOSER : ordre posé, écart : lot 0.29 au lieu de 0.0 (risque trop gros) | risque réel 0.0 % -> retirer #590165391 et reposer SELL LIMIT 0.5628 SL 0.57 TP 0.555 à 0.0 lot = 0.0 %
+2026-11-24 22:48:14,858 [INFO] CHANGEMENT AUDJPY A -> SIGNALER : symbole AUDJPY introuvable dans MT5
+2026-11-24 22:48:14,858 [INFO] CHANGEMENT AUDJPY HORS PLAN -> SIGNALER : SELL LIMIT 0.29 lot @ 106.5 (SL 107.85, TP 104.85) posé par Magic Panel : aucun plan actif ne correspond
+2026-11-24 22:48:14,860 [INFO] CHANGEMENT AUDNZD A -> SIGNALER : symbole AUDNZD introuvable dans MT5
+2026-11-24 22:48:14,860 [INFO] CHANGEMENT BTCUSD A -> SIGNALER : symbole BTCUSD introuvable dans MT5
+2026-11-24 22:48:14,861 [INFO] CHANGEMENT BTCUSD B -> SIGNALER : symbole BTCUSD introuvable dans MT5
+2026-11-24 22:48:14,862 [INFO] CHANGEMENT EURJPY A -> SIGNALER : symbole EURJPY introuvable dans MT5
+2026-11-24 22:48:14,863 [INFO] CHANGEMENT EURNZD A -> SIGNALER : symbole EURNZD introuvable dans MT5
+2026-11-24 22:48:14,864 [INFO] CHANGEMENT EURUSD A -> SIGNALER : symbole EURUSD introuvable dans MT5
+2026-11-24 22:48:14,864 [INFO] CHANGEMENT EURUSD B -> SIGNALER : symbole EURUSD introuvable dans MT5
+2026-11-24 22:48:14,865 [INFO] CHANGEMENT EURUSD HORS PLAN -> SIGNALER : SELL LIMIT 0.31 lot @ 1.1015 (SL 1.1095, TP 1.0865) posé par Magic Panel : aucun plan actif ne correspond
+2026-11-24 22:48:14,868 [INFO] CHANGEMENT GBPCHF B -> SIGNALER : symbole GBPCHF introuvable dans MT5
+2026-11-24 22:48:14,869 [INFO] CHANGEMENT NZDCAD A -> SIGNALER : symbole NZDCAD introuvable dans MT5
+2026-11-24 22:48:14,870 [INFO] CHANGEMENT NZDJPY A -> SIGNALER : symbole NZDJPY introuvable dans MT5
+2026-11-24 22:48:14,871 [INFO] CHANGEMENT USDCAD A -> SIGNALER : symbole USDCAD introuvable dans MT5
+2026-11-24 22:48:14,872 [INFO] CHANGEMENT USDCAD B -> SIGNALER : symbole USDCAD introuvable dans MT5
+2026-11-24 22:48:14,872 [INFO] CHANGEMENT XAUUSD A -> SIGNALER : symbole XAUUSD introuvable dans MT5
+2026-11-24 22:48:14,877 [INFO] passage terminé : 19 décisions, 17 changement(s)
+2026-11-25 09:47:19,149 [INFO] CHANGEMENT USDCAD A -> NE PAS POSER : le prix est déjà sous l'entrée (bid 1.42822 / ask 1.4282599999999999) : ne jamais entrer au marché
+2026-11-25 09:47:19,151 [INFO] CHANGEMENT AUDCHF A -> RIEN : ordre déjà posé, conforme au plan
+2026-11-25 09:47:19,152 [INFO] CHANGEMENT AUDJPY A -> RIEN : ordre déjà posé, conforme au plan
+2026-11-25 09:47:19,153 [INFO] CHANGEMENT AUDNZD A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,155 [INFO] CHANGEMENT BTCUSD A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,156 [INFO] CHANGEMENT BTCUSD B -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,157 [INFO] CHANGEMENT EURJPY A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,157 [INFO] CHANGEMENT EURNZD A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,158 [INFO] CHANGEMENT EURUSD A -> RIEN : ordre déjà posé, conforme au plan
+2026-11-25 09:47:19,159 [INFO] CHANGEMENT EURUSD B -> RIEN : plan « en_veille », condition remplie mais plan exclusif avec A (déjà posé ou en position) : non posable
+2026-11-25 09:47:19,160 [INFO] CHANGEMENT GBPCHF B -> RIEN : plan « en_veille », condition remplie mais INTERDIT règle 1 : GBP déjà en achat ailleurs : non posable
+2026-11-25 09:47:19,161 [INFO] CHANGEMENT NZDCAD A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,162 [INFO] CHANGEMENT NZDJPY A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,163 [INFO] CHANGEMENT USDCAD B -> RIEN : plan invalidé : clôture D1 sous 1.429 le 24/11 00:00 (1.42695) (rien de posé ; à passer en « annulé » au prochain suivi)
+2026-11-25 09:47:19,164 [INFO] CHANGEMENT XAUUSD A -> RIEN : plan « en_veille » (décision humaine)
+2026-11-25 09:47:19,169 [INFO] passage terminé : 17 décisions, 15 changement(s)
+2026-11-25 09:58:20,431 [INFO] passage terminé : 17 décisions, 0 changement(s)
+2026-11-25 10:02:03,890 [INFO] passage terminé : 15 décisions, 0 changement(s)

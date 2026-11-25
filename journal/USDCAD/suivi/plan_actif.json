@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 11:55",
- "created_server_date": "2026-11-23",
+ "created": "2026-11-25 11:00",
+ "created_server_date": "2026-11-25",
  "valid_until": "2026-11-27",
- "version": 10,
+ "version": 11,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "USDCAD",
@@ -30,17 +30,17 @@
     1.445
    ],
    "lot": 0.42,
-   "lot_texte": "BUY LIMIT 0.42 lot = 0.25 % (≈ 249 USD, SL à 85 pip ; pip ≈ 6.97 USD par lot) ; R/R 1.76",
-   "condition_texte": "POSÉ le 23/11 à 12h02 serveur (ticket 590154073) : BUY LIMIT 0,42 lot @1,43000, SL 1,42148, TP 1,44505 (conforme au plan). Rien à faire : l'ordre attend le prix. Actif pendant Macklem (mar. 17h30 Paris) et le PCE (mer. 14h30 Paris).",
+   "lot_texte": "RÉEL : BUY 0,42 lot @1,42998 (= 0,25 % ≈ 249 USD jusqu'au SL, SL 1,42150 à 85 pip = 1,2 ATR, TP 1,44500)",
+   "condition_texte": "DÉCLENCHÉ le 24/11 à 16h45 serveur (15h45 Paris) : achat 0,42 lot @1,42998 (ticket 590154073). Rien à faire : la position est protégée par son SL 1,42150 et vise le TP 1,44500. Elle reste ouverte pendant le PCE et le PIB US (mer. 14h30 Paris, 15h30 serveur). Ne pas rapprocher le SL ; si besoin de réduire le risque, fermeture partielle.",
    "condition": {
     "type": "none"
    },
-   "invalidation_texte": "clôture D1 sous 1,4240 avant déclenchement : on retire l'ordre",
+   "invalidation_texte": "position ouverte : c'est le SL 1,42150 qui protège (sous le PWL 1,42636 et la Tenkan D1 1,42312). Rapport : invalidation H4 sous 1,4195.",
    "invalidation": {
-    "type": "d1_close_below",
-    "level": 1.424
+    "type": "h4_close_below",
+    "level": 1.4215
    },
-   "statut": "en_attente"
+   "statut": "déclenché"
   },
   {
    "id": "B",
@@ -54,7 +54,7 @@
    ],
    "lot": 0.42,
    "lot_texte": "BUY STOP 0.42 lot = 0.25 % (≈ 249 USD, SL à 85 pip ; pip ≈ 6.97 USD par lot) ; R/R 1.47",
-   "condition_texte": "ARMÉ seulement par une clôture D1 au-dessus de 1,4360 avec un volume au moins égal à la moyenne 20 (sinon attendre la clôture suivante). Jamais en même temps que A. NE PAS acheter au marché.",
+   "condition_texte": "ANNULÉ le 25/11 : clôture D1 du 24/11 à 1,42695 sous 1,4290 (invalidation), jamais posé.",
    "condition": {
     "type": "d1_close_above",
     "level": 1.436
@@ -64,10 +64,12 @@
     "type": "d1_close_below",
     "level": 1.429
    },
-   "statut": "en_veille"
+   "statut": "annulé"
   }
  ],
- "positions_suivies": [],
+ "positions_suivies": [
+  590154073
+ ],
  "evenements": [
   {
    "quand_serveur": "2026-11-23 00:00",
@@ -135,6 +137,12 @@
    "version": 10,
    "decision": "A posé (BUY LIMIT 0,42 lot @1,4300, SL 1,42148, TP 1,44505)",
    "resume": "vu dans MT5 (capture de l'utilisatrice)"
+  },
+  {
+   "date": "2026-11-25",
+   "version": 11,
+   "decision": "A déclenché (BUY 0,42 lot @1,42998 le 24/11 16h45 serveur) ; B annulé (clôture D1 24/11 1,42695 < 1,4290)",
+   "resume": "Clôture D1 24/11 -91 pip (volume 1,15) : retour sous l'ancien sommet 1,4300 ; position -63 $ (≈ -0,25 R), SL à 63 pip ; dollar en baisse malgré la confiance Conference Board 103,3 (attendu 92,4) ; CAD acheté pendant Macklem."
   }
  ]
 }
