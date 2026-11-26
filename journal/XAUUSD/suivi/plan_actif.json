@@ -1,8 +1,8 @@
 {
- "created": "2026-11-26 12:52",
+ "created": "2026-11-26 14:01",
  "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 17,
+ "version": 18,
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "XAUUSD",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.01,
    "lot_texte": "SELL LIMIT 0,01 lot = bouton 0,25 % de Magic Panel (le panneau arrondit vers le bas : 0,0192 -> 0,01 lot) ≈ 130 $ = 0,13 % jusqu'au SL (130 $ de prix) ; 2e dollar acheté (règle 2 : 2e pari ≤ 250 $) ; R/R 1,08 / 1,42",
-   "condition_texte": "À POSER (choix de l'utilisatrice le 26/11 vers 12h Paris, malgré Thanksgiving et la consigne du rapport « pas de nouvelle entrée jeudi-vendredi ») : SELL LIMIT 3 700, SL 3 830, TP 3 560, 0,01 lot. Prix 3 558 : entrée 142 $ plus haut (1,26 ATR) ; chances d'être touché avant vendredi 21h serveur ≈ 14 % (862 jeudis depuis 2010), 8 % après une baisse de 3 % ou plus sur 5 jours. NE PAS vendre au marché ; si le prix est déjà au-dessus de 3 700, ne pas le poser. À RETIRER vendredi 27/11 avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché.",
+   "condition_texte": "POSÉ le 26/11 à 14h07 serveur (13h07 Paris), ticket 593378642 : SELL LIMIT 0,01 lot @3 700,00, SL 3 830,00, TP 3 560,00 (conforme au plan). Rien à faire : l'ordre attend le prix. Chances d'être touché avant vendredi soir ≈ 14 % (8 % après une baisse de 3 % sur 5 jours). À RETIRER vendredi 27/11 avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché.",
    "condition": {
     "type": "none"
    },
@@ -148,6 +148,12 @@
    "version": 17,
    "decision": "A passe en_attente : l'utilisatrice choisit de le poser (0,01 lot, bouton 0,25 %), à retirer vendredi avant 20h30 Paris s'il n'est pas déclenché",
    "resume": "Prix 3 558, entrée 3 700 à 1,26 ATR, chances ≈ 14 % avant vendredi soir. Règle 2 OK (2e dollar acheté, 130 $). Rapport : pas de nouvelle entrée jeudi-vendredi (désaccord signalé, décision de l'utilisatrice)."
+  },
+  {
+   "date": "2026-11-26",
+   "version": 18,
+   "decision": "A posé par l'utilisatrice (SELL LIMIT 0,01 lot @3 700, SL 3 830, TP 3 560, ticket 593378642)",
+   "resume": "vu dans MT5 : posé à 14h07 serveur, conforme ; risque ≈ 130 $ = 0,13 %"
   }
  ]
 }
