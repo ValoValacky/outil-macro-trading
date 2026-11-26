@@ -1,8 +1,8 @@
 {
- "created": "2026-11-26 12:00",
+ "created": "2026-11-26 12:52",
  "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 16,
+ "version": 17,
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "XAUUSD",
@@ -30,9 +30,9 @@
     3560.0,
     3515.0
    ],
-   "lot": 0.02,
-   "lot_texte": "SELL LIMIT 0.02 lot = 0.26 % (≈ 260 USD, SL à 130 $ de prix ; 1 $ de mouvement = 100 USD par lot) ; R/R 1.08 / 1.42",
-   "condition_texte": "EN VEILLE : la règle 2 ne bloque plus (USDCAD fermé au SL le 25/11 : dollar acheté 1 seule fois, par le SELL LIMIT EURUSD). Mais le rapport dit « toute nouvelle entrée jeudi-vendredi » à éviter (Thanksgiving, liquidité faible) et le plan expire vendredi 27/11 : pas de pose sans décision de l'utilisatrice. Entrée 3 700 à ≈ 128 $ au-dessus du prix (1,1 ATR). Si elle le pose quand même : 0,02 lot = 260 $ dépasse les 250 $ du 2e pari (règle 2), prendre 0,01 lot (≈ 130 $ = 0,13 %). NE PAS vendre au marché.",
+   "lot": 0.01,
+   "lot_texte": "SELL LIMIT 0,01 lot = bouton 0,25 % de Magic Panel (le panneau arrondit vers le bas : 0,0192 -> 0,01 lot) ≈ 130 $ = 0,13 % jusqu'au SL (130 $ de prix) ; 2e dollar acheté (règle 2 : 2e pari ≤ 250 $) ; R/R 1,08 / 1,42",
+   "condition_texte": "À POSER (choix de l'utilisatrice le 26/11 vers 12h Paris, malgré Thanksgiving et la consigne du rapport « pas de nouvelle entrée jeudi-vendredi ») : SELL LIMIT 3 700, SL 3 830, TP 3 560, 0,01 lot. Prix 3 558 : entrée 142 $ plus haut (1,26 ATR) ; chances d'être touché avant vendredi 21h serveur ≈ 14 % (862 jeudis depuis 2010), 8 % après une baisse de 3 % ou plus sur 5 jours. NE PAS vendre au marché ; si le prix est déjà au-dessus de 3 700, ne pas le poser. À RETIRER vendredi 27/11 avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché.",
    "condition": {
     "type": "none"
    },
@@ -41,7 +41,7 @@
     "type": "d1_close_above",
     "level": 3860.0
    },
-   "statut": "en_veille"
+   "statut": "en_attente"
   }
  ],
  "positions_suivies": [],
@@ -55,7 +55,7 @@
    "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
   }
  ],
- "regles": "Vendre l'or = dollar acheté : 3e avec USDCAD A + EURUSD A : INTERDIT règle 2. Interdit aussi : tout achat d'or tant que les plans dollar existent.",
+ "regles": "Vendre l'or = dollar acheté : 2e pari avec EURUSD A (USDCAD fermé au SL le 25/11), maximum atteint ; 0,01 lot ≈ 130 $ respecte la règle 2 (≤ 250 $). Plus aucun autre achat de dollar possible. Interdit : tout achat d'or tant que EURUSD A est posé.",
  "journal": [
   {
    "date": "2026-11-05",
@@ -142,6 +142,12 @@
    "version": 16,
    "decision": "A reste en veille (raison mise à jour : règle 2 levée, mais pas de nouvelle entrée jeudi-vendredi selon le rapport)",
    "resume": "Clôture D1 25/11 3 581,03 (plus bas 3 426,49 après le PCE, sous le support 3 525,81 du rapport puis rachat) ; entrée 3 700 non atteinte (plus proche 3 689,53 lundi)."
+  },
+  {
+   "date": "2026-11-26",
+   "version": 17,
+   "decision": "A passe en_attente : l'utilisatrice choisit de le poser (0,01 lot, bouton 0,25 %), à retirer vendredi avant 20h30 Paris s'il n'est pas déclenché",
+   "resume": "Prix 3 558, entrée 3 700 à 1,26 ATR, chances ≈ 14 % avant vendredi soir. Règle 2 OK (2e dollar acheté, 130 $). Rapport : pas de nouvelle entrée jeudi-vendredi (désaccord signalé, décision de l'utilisatrice)."
   }
  ]
 }
