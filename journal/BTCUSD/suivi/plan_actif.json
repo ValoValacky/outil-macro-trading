@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 13:20",
- "created_server_date": "2026-11-23",
+ "created": "2026-11-26 12:00",
+ "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 1,
+ "version": 2,
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "BTCUSD",
@@ -34,7 +34,7 @@
    ],
    "lot": 0.06,
    "lot_texte": "SELL LIMIT 0.06 lot = 0.23 % (≈ 234 USD, SL à 3900 $ de prix ; 1 $ de mouvement = 1 USD par lot) ; R/R 1.59",
-   "condition_texte": "EN VEILLE : INTERDIT règle 2 (vendre le bitcoin = 3e dollar acheté, avec le BUY LIMIT USDCAD et le SELL LIMIT EURUSD déjà posés). Posable seulement si l'un de ces deux ordres est retiré, ou se déclenche puis se ferme. Magic Panel : 3 idées par jour maximum. NE PAS vendre au marché (prix 61 340 $ : entrée 3 160 $ plus haut, 1,2 ATR). À retirer vendredi 27/11 avant 20h30 Paris s'il n'est pas déclenché (le bitcoin se traite le week-end, sans suivi).",
+   "condition_texte": "EN VEILLE : la règle 2 ne bloque plus (USDCAD fermé au SL le 25/11). Mais : jeudi-vendredi = aucune nouvelle entrée selon le rapport (Thanksgiving), et tout ordre BTC non déclenché doit être retiré vendredi 27/11 avant 20h30 Paris (week-end sans suivi) : un ordre posé aujourd'hui vivrait un jour et demi pour une entrée 3 600 $ plus haut (1,1 ATR). Pas de pose sans décision de l'utilisatrice. NE PAS vendre au marché.",
    "condition": {
     "type": "none"
    },
@@ -57,7 +57,7 @@
    ],
    "lot": 0.07,
    "lot_texte": "SELL STOP 0.07 lot = 0.26 % (≈ 259 USD, SL à 3700 $ de prix ; 1 $ de mouvement = 1 USD par lot) ; R/R 1.14",
-   "condition_texte": "ARMÉ seulement par une clôture D1 sous 57 700 $ avec un volume au moins égal à la moyenne 20 (un samedi ou un dimanche ne compte pas : volume de week-end). Même interdiction règle 2 que A. Jamais en même temps que A. NE PAS vendre au marché ; si le prix est déjà sous 57 200 $ au moment de poser, ne pas le poser.",
+   "condition_texte": "ARMÉ seulement par une clôture D1 sous 57 700 $ avec un volume au moins égal à la moyenne 20 (un samedi ou un dimanche ne compte pas). Règle 2 levée depuis le 25/11, mais pas de nouvelle entrée jeudi-vendredi et retrait obligatoire vendredi avant 20h30 Paris. Jamais en même temps que A. NE PAS vendre au marché ; si le prix est déjà sous 57 200 $, ne pas le poser.",
    "condition": {
     "type": "d1_close_below",
     "level": 57700.0
@@ -92,6 +92,12 @@
    "version": 1,
    "decision": "première analyse D1 du bitcoin (demandée le 23/11) : A et B en veille (règle 2, 3e dollar acheté)",
    "resume": "Chute de 21 % en 20 jours (81 187 → 57 735 $), sous toutes les moyennes D1 et sous la MM200 hebdomadaire (68 012 $), RSI D1 26 : tendance baissière mais très étirée. Le rapport du 23/11 est défensif sous 68 000 $ (résistance 66 000-68 000 $). On vend un REBOND vers 64 500 $ (POC de la semaine passée), jamais au marché. Plans A et B EN VEILLE : vendre le bitcoin = 3e dollar acheté (USDCAD + EURUSD déjà posés), interdit par la règle 2."
+  },
+  {
+   "date": "2026-11-26",
+   "version": 2,
+   "decision": "A et B restent en veille (raison mise à jour : règle 2 levée, mais pas de nouvelle entrée jeudi-vendredi et retrait vendredi 20h30)",
+   "resume": "Clôture D1 25/11 60 250 $ (plus bas 57 261,81 $ mercredi, sous le PWL 57 735 mais clôture au-dessus) ; prix ≈ 60 870 $ sous le seuil 62 000 $ du rapport = risk-off renforcé."
   }
  ]
 }

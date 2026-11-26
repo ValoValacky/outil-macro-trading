@@ -1,0 +1,141 @@
+{
+ "created": "2026-11-23 11:18",
+ "created_server_date": "2026-11-23",
+ "valid_until": "2026-11-27",
+ "version": 15,
+ "pip": 1.0,
+ "timeframe": "D1",
+ "pair": "XAUUSD",
+ "bias": "Baisse D1 4/4 et H4 4/4 : cassure du plus bas annuel d'octobre (3 870,07) puis cible étendue du rapport 3 500 presque atteinte (plus bas 3 502,59 vendredi, volume 1,52 fois la moyenne). Sous le nuage D1 et W1, sous toutes les MM, RSI D1 23,5 / H4 19,1. Rapport du 16/11 : biais VENTE sur rebonds, pas de vente à la cassure (survente). Positionnement COT de l'or encore massivement acheteur (+179 548 au 03/11, pas de données plus récentes) : carburant de baisse, mais aussi risque de rebond violent.",
+ "levels": {
+  "pwh": 3900.93,
+  "milieu_sem": 3701.76,
+  "zone_valeur_sem_bas": 3660.0,
+  "ema20_h4": 3671.4,
+  "ema50_h4": 3796.05,
+  "pwl": 3502.59,
+  "cible_3500": 3500.0,
+  "plus_bas_annuel_casse": 3870.07,
+  "atr_d1": 103.16
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du rebond sur le milieu de la semaine / zone de valeur 3 660-3 700",
+   "side": "sell",
+   "type": "limit",
+   "entry": 3700.0,
+   "sl": 3830.0,
+   "tp": [
+    3560.0,
+    3515.0
+   ],
+   "lot": 0.02,
+   "lot_texte": "SELL LIMIT 0.02 lot = 0.26 % (≈ 260 USD, SL à 130 $ de prix ; 1 $ de mouvement = 100 USD par lot) ; R/R 1.08 / 1.42",
+   "condition_texte": "EN VEILLE : remplacé par EURUSD A (choix de l'utilisatrice le 23/11 ; probabilité de déclenchement avant vendredi : or 3 700 ≈ 52 % contre EURUSD 1,1015 ≈ 69 %). INTERDIT règle 2 tant que USDCAD A et EURUSD A sont prévus (ce serait le 3e dollar acheté). Posable seulement si EURUSD A est abandonné. NE PAS vendre au marché.",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 3 860 avant déclenchement : on retire l'ordre",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 3860.0
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-23 00:00",
+   "texte": "Calendrier de la semaine du 23/11 NON PUBLIÉ au 21/11 (le flux économique ne bascule que le week-end) : le suivi de 10h le lit lundi. Aucun nouvel ordre dans l'heure avant une annonce forte."
+  },
+  {
+   "quand_serveur": "2026-11-26 00:00",
+   "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  }
+ ],
+ "regles": "Vendre l'or = dollar acheté : 3e avec USDCAD A + EURUSD A : INTERDIT règle 2. Interdit aussi : tout achat d'or tant que les plans dollar existent.",
+ "journal": [
+  {
+   "date": "2026-11-05",
+   "version": 1,
+   "decision": "plan initial H4",
+   "resume": "XAUUSD 4119, journée au-dessus de la valeur d'hier, POC du jour 4124,5, singles 4097-4100"
+  },
+  {
+   "date": "2026-11-06",
+   "version": 2,
+   "decision": "A annulé (H4 sous 4054), C armé (non posé), B posé en attente",
+   "resume": "or 4067, plus bas 4035,80 ce matin ; NFP 15h30"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 3,
+   "decision": "C en veille (règle 1), B posé mais expire ce soir : à retirer",
+   "resume": "D1 09/11 clôture 4139,54, prix 4102 ; ordre B à 100 $ du prix ; CPI US 15h30"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 4,
+   "decision": "B retiré par l'utilisatrice, C expiré : plus aucun plan or actif",
+   "resume": "or 4074 à 13h18 serveur ; nouvelle analyse nécessaire pour retrader l'or"
+  },
+  {
+   "date": "2026-11-10",
+   "version": 5,
+   "decision": "nouvelle analyse H4 (10/11 après-midi)",
+   "resume": "A BUY LIMIT 4032 bas du range (à poser après 15h30 Paris) ; B vente 4195 en veille (règle 1) ; anciens plans clos"
+  },
+  "2026-11-10 15:40 v6 : après CPI : A maintenu avec un filtre (H4 de 16h serveur au-dessus de 4025) ; B en veille règle 1.",
+  "2026-11-10 19:05 v7 : A annulé (plancher percé, contre-tendance) ; nouveau D SELL LIMIT 4055 / SL 4090 / TP 3975-3900 si H4 clôture < 4025.",
+  {
+   "date": "2026-11-11",
+   "version": 8,
+   "decision": "D déclenché (SELL 0,12 lot @4055,04 posé sans attendre le filtre H4) ; B en veille règle 2",
+   "resume": "Position réelle ouverte le 11/11 07h15 serveur à 4055,04 (SL 4090, TP 3975), +55 EUR ; aucune clôture H4 sous 4025 n'avait eu lieu (filtre non respecté)"
+  },
+  {
+   "date": "2026-11-12",
+   "version": 9,
+   "decision": "D terminé au TP1 (+856,32 EUR) ; B en veille (trop loin, expire demain)",
+   "resume": "or 3951 à 12h35 serveur, plus bas 3924 ; B ne serait plus interdit (règle 2 libérée) mais 244 $ au-dessus du prix"
+  },
+  {
+   "date": "2026-11-12",
+   "version": 10,
+   "decision": "nouvelle analyse H4 (12/11) : A SELL LIMIT 3998 à poser, B SELL STOP 3860 en veille",
+   "resume": "or 3946 après le TP de D (+856 EUR) ; tendance H4 et D1 baissières ; un seul pari dollar acheté possible (règle 2)"
+  },
+  {
+   "date": "2026-11-12",
+   "version": 11,
+   "decision": "A posé (SELL LIMIT 3997,60, 0,09 lot, SL 4042,30, TP 3923,39)",
+   "resume": "ordre réel vérifié dans MT5 ; conforme au plan (TP un peu plus bas, sous le plus bas du jour 3924,43)"
+  },
+  {
+   "date": "2026-11-13",
+   "version": 12,
+   "decision": "A annulé : SELL LIMIT 3997,60 retiré par l'utilisatrice (expiration du plan ce soir)",
+   "resume": "plus aucun ordre en attente sur la paire ; nouvelles analyses lundi"
+  },
+  {
+   "date": "2026-11-16",
+   "version": 13,
+   "decision": "fin de semaine : B expiré (armé seulement après expiration, clôture H4 3869 le 16/11 00h serveur)",
+   "resume": "prix 3862 ; plus bas de l'année 3870 cassé"
+  },
+  {
+   "date": "2026-11-21",
+   "version": 14,
+   "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
+   "resume": "Chute de 9,3 % en une semaine, RSI H4 19 / D1 23 : vendre ici serait courir après le prix. Plan A = vendre un rebond vers 3 700 (statut en_attente, 0,02 lot). Entrée à 1,6 ATR au-dessus : peu de chance de déclenchement, c'est volontaire."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 15,
+   "decision": "A en veille : remplacé par EURUSD A (choix de l'utilisatrice, règle 2)",
+   "resume": "prix 3 620, entrée 3 700 jamais posée ; aucun ordre or dans MT5"
+  }
+ ]
+}

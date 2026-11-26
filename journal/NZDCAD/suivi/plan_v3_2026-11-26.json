@@ -1,0 +1,78 @@
+{
+ "created": "2026-11-21 01:04",
+ "created_server_date": "2026-11-21",
+ "valid_until": "2026-11-27",
+ "version": 3,
+ "pip": 0.0001,
+ "timeframe": "D1",
+ "pair": "NZDCAD",
+ "bias": "Baisse D1 4/4 et W1 sous le nuage (-0,44 % sur la semaine, 0,78436 contre un plus bas de la semaine 0,78366), RSI D1 39 / W1 37, MM20 D1 0,7882 : pas de survente. Rapport : NZD 2 vs CAD 3, paire « à éviter ». Les deux devises sont faibles : la paire dépend surtout du pétrole et de la Chine.",
+ "levels": {
+  "pwh": 0.79152,
+  "milieu_sem": 0.78759,
+  "tenkan_d1": 0.79046,
+  "kijun_d1": 0.79035,
+  "mm20_d1": 0.78824,
+  "pwl": 0.78366,
+  "creux_06_11": 0.77746,
+  "sommet_10_11": 0.79726,
+  "atr_d1": 0.00549
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du rebond sur la Tenkan/Kijun D1 (0,7900)",
+   "side": "sell",
+   "type": "limit",
+   "entry": 0.79,
+   "sl": 0.7975,
+   "tp": [
+    0.782,
+    0.779
+   ],
+   "lot": 0.48,
+   "lot_texte": "SELL LIMIT 0.48 lot = 0.25 % (≈ 251 USD, SL à 75 pip ; pip ≈ 6.97 USD par lot) ; R/R 1.07 / 1.47",
+   "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que USDCAD A est prévu (vendre NZDCAD = CAD acheté, USDCAD A = CAD vendu) ; paire « à éviter » (écart 1) ; élection néo-zélandaise le 27/11. Posable seulement si USDCAD A est abandonné. NE PAS vendre au marché.",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 0,7990 avant déclenchement",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 0.799
+   },
+   "statut": "en_veille"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-23 00:00",
+   "texte": "Calendrier de la semaine du 23/11 NON PUBLIÉ au 21/11 (le flux économique ne bascule que le week-end) : le suivi de 10h le lit lundi. Aucun nouvel ordre dans l'heure avant une annonce forte."
+  },
+  {
+   "quand_serveur": "2026-11-26 00:00",
+   "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  },
+  {
+   "quand_serveur": "2026-11-27 00:00",
+   "texte": "NZD : résultats électoraux néo-zélandais définitifs attendus le 27/11 (rapport du 16/11) : risque binaire sur toutes les paires NZD."
+  }
+ ],
+ "regles": "Vendre NZDCAD = NZD vendu (2e avec GBPNZD, 250 $) + CAD acheté (INTERDIT si USDCAD A est posé : CAD vendu).",
+ "journal": [
+  "2026-11-10 19:40 v1 : création après l'analyse H4, plan A en veille (règles 1 et 2).",
+  {
+   "date": "2026-11-16",
+   "version": 2,
+   "decision": "fin de semaine : A expiré (jamais posé, interdit règles 1 et 2) ; simulation : aurait touché le TP1 0,7890 le 13/11",
+   "resume": "prix 0,7885"
+  },
+  {
+   "date": "2026-11-21",
+   "version": 3,
+   "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
+   "resume": "Baisse régulière mais deux devises faibles (écart 1) : pas de biais, rapport « à éviter », et le CAD est déjà pris par USDCAD A. Plan A en veille."
+  }
+ ]
+}

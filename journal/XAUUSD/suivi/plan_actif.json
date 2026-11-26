@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 11:18",
- "created_server_date": "2026-11-23",
+ "created": "2026-11-26 12:00",
+ "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 15,
+ "version": 16,
  "pip": 1.0,
  "timeframe": "D1",
  "pair": "XAUUSD",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.02,
    "lot_texte": "SELL LIMIT 0.02 lot = 0.26 % (≈ 260 USD, SL à 130 $ de prix ; 1 $ de mouvement = 100 USD par lot) ; R/R 1.08 / 1.42",
-   "condition_texte": "EN VEILLE : remplacé par EURUSD A (choix de l'utilisatrice le 23/11 ; probabilité de déclenchement avant vendredi : or 3 700 ≈ 52 % contre EURUSD 1,1015 ≈ 69 %). INTERDIT règle 2 tant que USDCAD A et EURUSD A sont prévus (ce serait le 3e dollar acheté). Posable seulement si EURUSD A est abandonné. NE PAS vendre au marché.",
+   "condition_texte": "EN VEILLE : la règle 2 ne bloque plus (USDCAD fermé au SL le 25/11 : dollar acheté 1 seule fois, par le SELL LIMIT EURUSD). Mais le rapport dit « toute nouvelle entrée jeudi-vendredi » à éviter (Thanksgiving, liquidité faible) et le plan expire vendredi 27/11 : pas de pose sans décision de l'utilisatrice. Entrée 3 700 à ≈ 128 $ au-dessus du prix (1,1 ATR). Si elle le pose quand même : 0,02 lot = 260 $ dépasse les 250 $ du 2e pari (règle 2), prendre 0,01 lot (≈ 130 $ = 0,13 %). NE PAS vendre au marché.",
    "condition": {
     "type": "none"
    },
@@ -136,6 +136,12 @@
    "version": 15,
    "decision": "A en veille : remplacé par EURUSD A (choix de l'utilisatrice, règle 2)",
    "resume": "prix 3 620, entrée 3 700 jamais posée ; aucun ordre or dans MT5"
+  },
+  {
+   "date": "2026-11-26",
+   "version": 16,
+   "decision": "A reste en veille (raison mise à jour : règle 2 levée, mais pas de nouvelle entrée jeudi-vendredi selon le rapport)",
+   "resume": "Clôture D1 25/11 3 581,03 (plus bas 3 426,49 après le PCE, sous le support 3 525,81 du rapport puis rachat) ; entrée 3 700 non atteinte (plus proche 3 689,53 lundi)."
   }
  ]
 }

@@ -1,8 +1,8 @@
 {
- "created": "2026-11-21 01:04",
- "created_server_date": "2026-11-21",
+ "created": "2026-11-26 12:00",
+ "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 3,
+ "version": 4,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "NZDCAD",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.48,
    "lot_texte": "SELL LIMIT 0.48 lot = 0.25 % (≈ 251 USD, SL à 75 pip ; pip ≈ 6.97 USD par lot) ; R/R 1.07 / 1.47",
-   "condition_texte": "EN VEILLE : INTERDIT règle 1 tant que USDCAD A est prévu (vendre NZDCAD = CAD acheté, USDCAD A = CAD vendu) ; paire « à éviter » (écart 1) ; élection néo-zélandaise le 27/11. Posable seulement si USDCAD A est abandonné. NE PAS vendre au marché.",
+   "condition_texte": "EN VEILLE : la règle 1 ne bloque plus (USDCAD fermé au SL le 25/11, plus de CAD vendu). Mais le rapport classe NZDCAD « à éviter », résultats officiels de l'élection néo-zélandaise vendredi 27/11, et aucune nouvelle entrée jeudi-vendredi (Thanksgiving). Prix 0,7792, entrée 0,7900 à 108 pip. NE PAS vendre au marché.",
    "condition": {
     "type": "none"
    },
@@ -73,6 +73,12 @@
    "version": 3,
    "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
    "resume": "Baisse régulière mais deux devises faibles (écart 1) : pas de biais, rapport « à éviter », et le CAD est déjà pris par USDCAD A. Plan A en veille."
+  },
+  {
+   "date": "2026-11-26",
+   "version": 4,
+   "decision": "A reste en veille (raison mise à jour : règle 1 levée, mais paire à éviter + élection NZ + Thanksgiving)",
+   "resume": "Clôture D1 25/11 0,77971 (plus bas 0,77632), entrée 0,7900 jamais approchée (plus proche 0,78554 lundi)."
   }
  ]
 }

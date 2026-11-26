@@ -1,8 +1,8 @@
 {
- "created": "2026-11-25 11:00",
- "created_server_date": "2026-11-25",
+ "created": "2026-11-26 12:00",
+ "created_server_date": "2026-11-26",
  "valid_until": "2026-11-27",
- "version": 11,
+ "version": 12,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "USDCAD",
@@ -30,8 +30,8 @@
     1.445
    ],
    "lot": 0.42,
-   "lot_texte": "RÉEL : BUY 0,42 lot @1,42998 (= 0,25 % ≈ 249 USD jusqu'au SL, SL 1,42150 à 85 pip = 1,2 ATR, TP 1,44500)",
-   "condition_texte": "DÉCLENCHÉ le 24/11 à 16h45 serveur (15h45 Paris) : achat 0,42 lot @1,42998 (ticket 590154073). Rien à faire : la position est protégée par son SL 1,42150 et vise le TP 1,44500. Elle reste ouverte pendant le PCE et le PIB US (mer. 14h30 Paris, 15h30 serveur). Ne pas rapprocher le SL ; si besoin de réduire le risque, fermeture partielle.",
+   "lot_texte": "RÉEL : BUY 0,42 lot @1,42998 (0,25 %), fermé au SL 1,42149 le 25/11 : -254,57 $ (-1 R)",
+   "condition_texte": "TERMINÉ AU SL le 25/11 à 18h56 serveur (17h56 Paris) : 0,42 lot acheté @1,42998, fermé @1,42149 : -254,57 $ (≈ -0,26 % du compte, ≈ -1 R). Plus aucun ordre ni position USDCAD.",
    "condition": {
     "type": "none"
    },
@@ -40,7 +40,7 @@
     "type": "h4_close_below",
     "level": 1.4215
    },
-   "statut": "déclenché"
+   "statut": "annulé"
   },
   {
    "id": "B",
@@ -67,9 +67,7 @@
    "statut": "annulé"
   }
  ],
- "positions_suivies": [
-  590154073
- ],
+ "positions_suivies": [],
  "evenements": [
   {
    "quand_serveur": "2026-11-23 00:00",
@@ -143,6 +141,12 @@
    "version": 11,
    "decision": "A déclenché (BUY 0,42 lot @1,42998 le 24/11 16h45 serveur) ; B annulé (clôture D1 24/11 1,42695 < 1,4290)",
    "resume": "Clôture D1 24/11 -91 pip (volume 1,15) : retour sous l'ancien sommet 1,4300 ; position -63 $ (≈ -0,25 R), SL à 63 pip ; dollar en baisse malgré la confiance Conference Board 103,3 (attendu 92,4) ; CAD acheté pendant Macklem."
+  },
+  {
+   "date": "2026-11-26",
+   "version": 12,
+   "decision": "A terminé au SL (-254,57 $ ≈ -0,26 %, -1 R) ; plus aucun plan USDCAD actif",
+   "resume": "SL 1,42150 touché le 25/11 à 18h56 serveur, environ 3h30 après le PCE ; clôture D1 25/11 1,42132 (volume 1,40). L'invalidation H4 du rapport (sous 1,4195) n'a pas été touchée en clôture (plus bas H4 1,42007). Pas de nouveau plan : rapport = aucune nouvelle entrée jeudi-vendredi (Thanksgiving)."
   }
  ]
 }
