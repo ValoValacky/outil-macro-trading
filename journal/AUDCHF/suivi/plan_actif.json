@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 13:20",
- "created_server_date": "2026-11-23",
+ "created": "2026-11-27 10:40",
+ "created_server_date": "2026-11-27",
  "valid_until": "2026-11-27",
- "version": 7,
+ "version": 8,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "AUDCHF",
@@ -32,7 +32,7 @@
    ],
    "lot": 0.29,
    "lot_texte": "SELL LIMIT 0.29 lot = 0.25 % (≈ 248 USD, SL à 72 pip ; pip ≈ 11.90 USD par lot) ; R/R 1.08 / 1.57",
-   "condition_texte": "POSÉ le 23/11 (vu dans MT5 à 13h27 serveur) : SELL LIMIT 0,29 lot @0,56280, SL 0,57000, TP 0,55500 (conforme au plan ; 4e idée du jour, limite Magic Panel montée à 4 ce jour-là). Rien à faire : l'ordre attend le prix. Actif pendant le CPI australien (mer. 1h30 Paris).",
+   "condition_texte": "POSÉ le 23/11 : SELL LIMIT 0,29 lot @0,56280, SL 0,57000, TP 0,55500. Le 27/11 le prix 0,5578 est 50 pip sous l'entrée, jamais atteinte cette semaine (plus proche 0,56018 lundi). VENDREDI 27/11 : le plan expire ce soir. RETIRER l'ordre avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché (rapport : aucune nouvelle entrée jeudi-vendredi ; week-end = risque d'écart d'ouverture dimanche soir). Nouveau plan dimanche 18h, confirmé lundi.",
    "condition": {
     "type": "none"
    },
@@ -53,6 +53,10 @@
   {
    "quand_serveur": "2026-11-26 00:00",
    "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  },
+  {
+   "quand_serveur": "2026-11-27 21:30",
+   "texte": "Vendredi 27/11 : retirer l'ordre non déclenché avant 20h30 Paris (21h30 serveur) ; actions US fermées à 19h00 Paris (20h00 serveur) ; nouveau rapport COT ce soir."
   }
  ],
  "regles": "Vendre AUDCHF = AUD vendu (2e : maximum, 2e pari à 250 $) + franc acheté (1er pari). Plus aucune autre vente AUD possible (AUDNZD, GBPAUD...). Alternative à EURJPY A pour le même pari « refuge fort ».",
@@ -98,6 +102,12 @@
    "version": 7,
    "decision": "A posé par l'utilisatrice (SELL LIMIT 0,29 lot @0,5628, SL 0,5700, TP 0,5550)",
    "resume": "vu dans MT5"
+  },
+  {
+   "date": "2026-11-27",
+   "version": 8,
+   "decision": "A poursuit jusqu'à ce soir puis RETIRER avant 20h30 Paris s'il n'est pas déclenché (fin de semaine)",
+   "resume": "jamais atteint (plus proche 26 pip) ; à retirer ce soir (plan expiré)"
   }
  ]
 }

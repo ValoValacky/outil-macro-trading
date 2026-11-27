@@ -1,0 +1,3 @@
+{"serveur": "2026-11-27 00:05", "paire": "GBPCHF", "plan": "B", "statut_plan": "en_veille", "type": "SELL LIMIT", "entree": 1.105, "sl": 1.1125, "tp": 1.093, "action": "RIEN", "raison": "plan expiré le 2026-11-26 (rien de posé)"}
+{"serveur": "2026-11-27 00:05", "paire": "NZDJPY", "plan": "A", "statut_plan": "en_veille", "type": "SELL LIMIT", "entree": 88.0, "sl": 88.9, "tp": 85.9, "action": "RIEN", "raison": "plan expiré le 2026-11-26 (rien de posé)"}
+{"serveur": "2026-11-27 10:47", "paire": "EURUSD", "plan": "B", "statut_plan": "en_veille", "type": "SELL STOP", "entree": 1.094, "sl": 1.102, "tp": 1.0865, "action": "RIEN", "raison": "plan « en_veille » (décision humaine)"}

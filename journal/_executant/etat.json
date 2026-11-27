@@ -7,10 +7,10 @@
  "EURJPY|A|": "RIEN|plan « en_veille » (décision humaine)",
  "EURNZD|A|": "RIEN|plan « en_veille » (décision humaine)",
  "EURUSD|A|590143235": "RIEN|ordre déjà posé, conforme au plan",
- "EURUSD|B|": "RIEN|plan « en_veille », condition remplie mais plan exclusif avec A (déjà posé ou en position) : non posable",
- "GBPCHF|B|": "RIEN|plan « en_veille », condition remplie mais INTERDIT règle  : GBP déjà en achat ailleurs : non posable",
+ "EURUSD|B|": "RIEN|plan « en_veille » (décision humaine)",
+ "GBPCHF|B|": "RIEN|plan expiré le -- (rien de posé)",
  "GBPNZD|POSITION|585588620": "RIEN|ACHAT . lot @ . SL . TP ., résultat +. USD (Magic Panel)",
  "NZDCAD|A|": "RIEN|plan « en_veille » (décision humaine)",
- "NZDJPY|A|": "RIEN|plan « en_veille » (décision humaine)",
- "XAUUSD|A|": "RIEN|plan « en_veille » (décision humaine)"
+ "NZDJPY|A|": "RIEN|plan expiré le -- (rien de posé)",
+ "XAUUSD|A|593378642": "RIEN|ordre déjà posé, conforme au plan"
 }

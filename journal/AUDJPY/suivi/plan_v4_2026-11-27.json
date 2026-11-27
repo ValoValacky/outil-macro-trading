@@ -1,0 +1,86 @@
+{
+ "created": "2026-11-23 11:18",
+ "created_server_date": "2026-11-23",
+ "valid_until": "2026-11-27",
+ "version": 4,
+ "pip": 0.01,
+ "timeframe": "D1",
+ "pair": "AUDJPY",
+ "bias": "Baisse D1 4/4 et H4 4/4 : toute la semaine en rouge (5 bougies), sept clôtures D1 en baisse de suite (-3,0 % sur la semaine), creux de février 106,85 cassé jeudi (volume 1,21) puis vendredi (1,57 fois la moyenne), plus bas 104,718. Prix 104,90 sous le nuage D1, sous toutes les MM, RSI D1 21,9 (survente forte). Rapport du 16/11 : paire à éviter (risque d'intervention japonaise). On vend le rebond, pas le plus bas.",
+ "levels": {
+  "pwh": 108.371,
+  "milieu_sem": 106.544,
+  "creux_fevrier_casse": 106.85,
+  "poc_semaine": 107.278,
+  "pwl": 104.718,
+  "nuage_w1_bas": 103.373,
+  "mm100_w1": 103.272,
+  "creux_250j": 102.095,
+  "ema50_h4": 107.468,
+  "atr_d1": 1.109
+ },
+ "plans": [
+  {
+   "id": "A",
+   "nom": "Vente du rebond sur la zone 106,2-106,85 (creux de février cassé, milieu de la semaine)",
+   "side": "sell",
+   "type": "limit",
+   "entry": 106.5,
+   "sl": 107.85,
+   "tp": [
+    104.85,
+    103.6
+   ],
+   "lot": 0.29,
+   "lot_texte": "SELL LIMIT 0.29 lot = 0.25 % (≈ 247 USD, SL à 135 pip ; pip ≈ 6.31 USD par lot) ; R/R 1.22 / 2.15",
+   "condition_texte": "POSÉ par l'utilisatrice le 23/11 (vu dans MT5 à 11h28 serveur) : SELL LIMIT 0,29 lot @106,500, SL 107,851, TP 104,832 (plan : TP 104,85, écart sans importance). Rien à faire : l'ordre attend le prix. Il reste actif pendant le CPI australien (mer. 1h30 Paris) et le CPI de Tokyo (ven. 0h30 Paris).",
+   "condition": {
+    "type": "none"
+   },
+   "invalidation_texte": "clôture D1 au-dessus de 107,60 (sommet du 17/11) avant déclenchement : on retire l'ordre",
+   "invalidation": {
+    "type": "d1_close_above",
+    "level": 107.6
+   },
+   "statut": "en_attente"
+  }
+ ],
+ "positions_suivies": [],
+ "evenements": [
+  {
+   "quand_serveur": "2026-11-23 00:00",
+   "texte": "Calendrier de la semaine du 23/11 NON PUBLIÉ au 21/11 (le flux économique ne bascule que le week-end) : le suivi de 10h le lit lundi. Aucun nouvel ordre dans l'heure avant une annonce forte."
+  },
+  {
+   "quand_serveur": "2026-11-26 00:00",
+   "texte": "Jeudi 26/11 : Thanksgiving aux États-Unis, marchés US fermés, volumes faibles : cassures peu fiables, pas de nouvel ordre sur ce jour."
+  }
+ ],
+ "regles": "Vendre AUDJPY = AUD vendu (1re vente) + yen acheté (1er pari). Seul plan JPY en attente. 2e vente AUD possible avec AUDCHF A (maximum, 2e à 250 $). Aucun autre pari AUD/JPY ensemble.",
+ "journal": [
+  {
+   "date": "2026-11-17",
+   "version": 1,
+   "decision": "plan initial D1 (graphique apporté par l'utilisatrice, cassure de support)",
+   "resume": "A et B en veille : INTERDIT par les règles devises + paire à éviter selon le rapport du 16/11"
+  },
+  {
+   "date": "2026-11-20",
+   "version": 2,
+   "decision": "B armé (clôture D1 106,311) mais non posable (prix sous l'entrée, règle 2, paire à éviter)",
+   "resume": "prix 106,02, plus bas de semaine 105,774"
+  },
+  {
+   "date": "2026-11-21",
+   "version": 3,
+   "decision": "nouvelle analyse W1/D1 sur les clôtures du vendredi 20/11 (plans de la semaine du 23/11)",
+   "resume": "Baisse propre sur tous les repères, mais le prix est sur son plus bas (RSI D1 22, 1,0 ATR au-dessus du dernier fond). On ne vend pas ici : on vend un REBOND vers 106,50. Plan A posable (statut en_attente)."
+  },
+  {
+   "date": "2026-11-23",
+   "version": 4,
+   "decision": "A posé par l'utilisatrice (SELL LIMIT 0,29 lot @106,50, SL 107,851, TP 104,832)",
+   "resume": "prix 105,9, entrée 60 pip plus haut"
+  }
+ ]
+}

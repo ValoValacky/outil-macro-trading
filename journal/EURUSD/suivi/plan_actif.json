@@ -1,8 +1,8 @@
 {
- "created": "2026-11-23 11:55",
- "created_server_date": "2026-11-23",
+ "created": "2026-11-27 10:40",
+ "created_server_date": "2026-11-27",
  "valid_until": "2026-11-27",
- "version": 21,
+ "version": 22,
  "pip": 0.0001,
  "timeframe": "D1",
  "pair": "EURUSD",
@@ -33,7 +33,7 @@
    ],
    "lot": 0.31,
    "lot_texte": "SELL LIMIT 0,31 lot = 0,25 % (≈ 248 USD, SL à 80 pip) ; TP unique 1,0865 = 150 pip, R/R 1,88 (choix de l'utilisatrice : 1,0945 ne donnait que 0,88)",
-   "condition_texte": "POSÉ le 23/11 à 11h42 serveur (ticket 590143235) : SELL LIMIT 0,31 lot @1,10150, SL 1,10950, TP 1,08650. Rien à faire : l'ordre attend le prix. Actif pendant le PCE (mer. 14h30 Paris).",
+   "condition_texte": "POSÉ le 23/11 (ticket 590143235) : SELL LIMIT 0,31 lot @1,10150, SL 1,10950, TP 1,08650. Le 27/11 le prix 1,0962 est 53 pip sous l'entrée, jamais atteinte cette semaine (plus proche 1,09929 le 25/11). VENDREDI 27/11 : le plan expire ce soir. RETIRER l'ordre avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché (rapport : aucune nouvelle entrée jeudi-vendredi ; week-end = risque d'écart d'ouverture dimanche soir). Nouveau plan dimanche 18h, confirmé lundi.",
    "condition": {
     "type": "none"
    },
@@ -91,6 +91,10 @@
   {
    "quand_serveur": "2026-11-27 20:00",
    "texte": "Vendredi 27/11 : séance US courte (actions fermées à 19h00 Paris) : positions à protéger avant 21h30 serveur."
+  },
+  {
+   "quand_serveur": "2026-11-27 21:30",
+   "texte": "Vendredi 27/11 : retirer l'ordre non déclenché avant 20h30 Paris (21h30 serveur) ; actions US fermées à 19h00 Paris (20h00 serveur) ; nouveau rapport COT ce soir."
   }
  ],
  "regles": "Vendre EURUSD = euro vendu (1er pari) + dollar acheté (2e avec USDCAD A : maximum, 250 $). Remplace la vente d'or (XAUUSD A en veille). Incompatible avec EURNZD A (euro acheté, règle 1). Même sens qu'EURJPY A (euro vendu), qui reste en veille.",
@@ -210,6 +214,12 @@
    "version": 21,
    "decision": "A posé (SELL LIMIT 0,31 lot @1,1015, SL 1,1095, TP 1,0865 au lieu de 1,0945 : R/R 1,88)",
    "resume": "vu dans MT5 (capture de l'utilisatrice)"
+  },
+  {
+   "date": "2026-11-27",
+   "version": 22,
+   "decision": "A poursuit jusqu'à ce soir puis RETIRER avant 20h30 Paris s'il n'est pas déclenché (fin de semaine)",
+   "resume": "jamais atteint (plus proche 22 pip) ; à retirer ce soir (plan expiré)"
   }
  ]
 }
