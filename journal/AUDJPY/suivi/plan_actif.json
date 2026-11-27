@@ -1,8 +1,8 @@
 {
- "created": "2026-11-27 10:40",
+ "created": "2026-11-27 11:50",
  "created_server_date": "2026-11-27",
- "valid_until": "2026-11-27",
- "version": 5,
+ "valid_until": "2026-12-04",
+ "version": 6,
  "pip": 0.01,
  "timeframe": "D1",
  "pair": "AUDJPY",
@@ -32,20 +32,29 @@
     103.6
    ],
    "lot": 0.29,
-   "lot_texte": "SELL LIMIT 0.29 lot = 0.25 % (≈ 247 USD, SL à 135 pip ; pip ≈ 6.31 USD par lot) ; R/R 1.22 / 2.15",
-   "condition_texte": "POSÉ le 23/11 : SELL LIMIT 0,29 lot @106,500, SL 107,850, TP 104,850. Le 27/11 à 10h40 serveur le prix (106,39) est à 11 pip de l'entrée après +78 pip ce matin (rebond des actions, US500 +1,4 %) : il peut se déclencher aujourd'hui et passer le week-end ouvert (risque 246 $ = 0,25 %, SL protégé). VENDREDI 27/11 : le plan expire ce soir. RETIRER l'ordre avant 20h30 Paris (21h30 serveur) s'il n'est pas déclenché (rapport : aucune nouvelle entrée jeudi-vendredi ; week-end = risque d'écart d'ouverture dimanche soir). Nouveau plan dimanche 18h, confirmé lundi.",
+   "lot_texte": "RÉEL : SELL 0,29 lot @106,500 (ticket 590133581), risque jusqu'au SL ≈ 245 $ = 0,25 % (135 pip × 1,82 $/pip) ; TP 104,850 = +165 pip ≈ +300 $ = +1,2 R",
+   "condition_texte": "DÉCLENCHÉ vendredi 27/11 à 11h14 serveur (10h14 Paris) : SELL 0,29 lot @106,500, SL 107,850, TP 104,850 (ticket 590133581), porté par le rebond des actions (US500 +1,4 % le matin). Position gardée pour le week-end avec son SL (décision de l'utilisatrice). Ne pas rapprocher le SL (règle du 12/11) ; pour réduire le risque du week-end, fermeture partielle seulement.",
    "condition": {
     "type": "none"
    },
-   "invalidation_texte": "clôture D1 au-dessus de 107,60 (sommet du 17/11) avant déclenchement : on retire l'ordre",
+   "invalidation_texte": "position ouverte : c'est le SL 107,850 qui protège (135 pip = 1,3 ATR D1, au-dessus du sommet du 17/11 107,60)",
    "invalidation": {
-    "type": "d1_close_above",
-    "level": 107.6
+    "type": "none"
    },
-   "statut": "en_attente"
+   "statut": "déclenché"
   }
  ],
- "positions_suivies": [],
+ "positions_suivies": [
+  {
+   "ticket": 590133581,
+   "sens": "sell",
+   "lot": 0.29,
+   "entree": 106.5,
+   "sl": 107.85,
+   "tp": 104.85,
+   "ouverte": "2026-11-27 11:14"
+  }
+ ],
  "evenements": [
   {
    "quand_serveur": "2026-11-23 00:00",
@@ -91,6 +100,12 @@
    "version": 5,
    "decision": "A poursuit jusqu'à ce soir puis RETIRER avant 20h30 Paris s'il n'est pas déclenché (fin de semaine)",
    "resume": "rebond à 11 pip de l'entrée ; à retirer ce soir s'il n'est pas déclenché (choix possible : le retirer dès maintenant)"
+  },
+  {
+   "date": "2026-11-27",
+   "version": 6,
+   "decision": "A DÉCLENCHÉ à 11h14 serveur (SELL 0,29 lot @106,500)",
+   "resume": "prix 106,46 à 11h59 serveur, +5 $ ; risque 0,25 % jusqu'au SL ; week-end avec SL"
   }
  ]
 }
